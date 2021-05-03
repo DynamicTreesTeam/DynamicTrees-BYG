@@ -38,7 +38,8 @@ sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = co
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
-    mappings channel: 'snapshot', version: '20201028-1.16.3'
+    mappings channel: 'official', version: config.mc_version
+
     runs {
         client {
             workingDirectory project.file('run')
@@ -53,7 +54,7 @@ minecraft {
             properties 'mixin.env.disableRefMap' : 'true'
 
             mods {
-                dynamictreesquark {
+                dtbyg {
                     source sourceSets.main
                 }
             }
@@ -72,7 +73,7 @@ minecraft {
             properties 'mixin.env.disableRefMap' : 'true'
 
             mods {
-                dynamictreesquark {
+                dtbyg {
                     source sourceSets.main
                 }
             }
