@@ -1,5 +1,7 @@
 {
   "primitive_leaves": "minecraft:birch_leaves",
   "cell_kit": "dtbyg:poplar",
-  "color": "@birch"
+  "color": "@birch",
+  "smother": 9,
+  "light": 13
 }
