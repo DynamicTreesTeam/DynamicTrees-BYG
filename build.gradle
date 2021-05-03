@@ -30,9 +30,16 @@ apply plugin: 'net.minecraftforge.gradle'
 //apply plugin: 'eclipse'
 //apply plugin: 'maven-publish'
 
-version = '1.0.0'
-group = 'maxhyper.dtbyg' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'DynamicTreesBYG'
+ext.configFile = file "gradle.properties"
+configFile.withReader {
+    def prop = new Properties()
+    prop.load(it)
+    ext.config = new ConfigSlurper().parse prop
+}
+
+version = "${config.mc_version}-${config.mod_version}"
+group = config.package_group
+archivesBaseName = config.mod_name
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
