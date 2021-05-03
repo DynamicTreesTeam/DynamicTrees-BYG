@@ -1,6 +1,7 @@
 package maxhyper.dtbyg;
 
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
+import corgiaoc.byg.BYG;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -20,6 +21,7 @@ public class DynamicTreesBYG
         MinecraftForge.EVENT_BUS.register(this);
 
         RegistryHandler.setup(MOD_ID);
+        BYG.ENABLE_OVERWORLD_TREES = true;
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

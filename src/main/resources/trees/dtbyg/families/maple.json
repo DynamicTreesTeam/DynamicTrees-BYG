@@ -1,0 +1,8 @@
+{
+  "common_leaves": "dtbyg:maple",
+  "common_species": "dtbyg:maple",
+  "primitive_log": "byg:maple_log",
+  "primitive_stripped_log": "byg:stripped_maple_log",
+  "stick": "stick",
+  "max_branch_radius": 24
+}
