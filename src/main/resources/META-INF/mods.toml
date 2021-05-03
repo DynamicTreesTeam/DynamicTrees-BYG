@@ -78,7 +78,7 @@ Compatibility Mod between Dynamic trees and The Biomes You'll Go
 
 [[dependencies.dtbyg]]
     modId="dynamictreesplus"
-    mandatory=false
+    mandatory=true
     versionRange="[0.1.0,)"
     ordering="AFTER"
     side="BOTH"
