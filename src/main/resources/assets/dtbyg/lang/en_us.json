@@ -1,3 +1,23 @@
 {
+  "block.dtbyg.maple_branch":"Maple Tree",
+  "block.dtbyg.blue_enchanted_branch":"Blue Enchanted Tree",
+  "block.dtbyg.green_enchanted_branch":"Green Enchanted Tree",
 
+  "species.dtbyg.red_maple":"Red Maple",
+  "species.dtbyg.silver_maple":"Silver Maple",
+  "species.dtbyg.blue_enchanted":"Blue Enchanted",
+  "species.dtbyg.green_enchanted":"Green Enchanted",
+  "species.dtbyg.blue_enchanted_poplar":"Blue Enchanted Poplar",
+  "species.dtbyg.green_enchanted_poplar":"Green Enchanted Poplar",
+  "species.dtbyg.poplar":"Poplar",
+  "species.dtbyg.yellow_poplar":"Yellow Poplar",
+
+  "item.dtbyg.red_maple_seed":"Red Maple Samara",
+  "item.dtbyg.silver_maple_seed":"Silver Maple Samara",
+  "item.dtbyg.blue_enchanted_seed":"Blue Enchanted Seed",
+  "item.dtbyg.green_enchanted_seed":"Green Enchanted Seed",
+  "item.dtbyg.blue_enchanted_seed_poplar":"Blue Enchanted Poplar Catkin",
+  "item.dtbyg.green_enchanted_seed_poplar":"Green Enchanted Poplar Catkin",
+  "item.dtbyg.poplar":"Poplar Catkin",
+  "item.dtbyg.yellow_poplar":"Yellow Poplar Catkin"
 }
