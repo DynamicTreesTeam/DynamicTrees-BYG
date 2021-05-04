@@ -1,0 +1,7 @@
+{
+  "parent": "dynamictrees:item/branch",
+  "textures": {
+    "bark": "byg:block/green_enchanted_log",
+    "rings": "byg:block/green_enchanted_log_top"
+  }
+}

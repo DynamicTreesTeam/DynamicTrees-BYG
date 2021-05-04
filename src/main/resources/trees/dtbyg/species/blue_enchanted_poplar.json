@@ -1,0 +1,16 @@
+{
+  "type": "dtbyg:poplar",
+  "family": "dtbyg:blue_enchanted",
+  "generate_seed": true,
+  "generate_sapling": true,
+  "tapering": 0.25,
+  "signal_energy": 11.0,
+  "up_probability": 5,
+  "lowest_branch_height": 4,
+  "growth_rate": 0.85,
+  "growth_logic_kit": "dtbyg:poplar",
+  "leaves_properties": "dtbyg:blue_enchanted_poplar",
+  "seed_drop_rarity": 1.0,
+  "stick_drop_rarity": 1.0,
+  "perfect_biomes": { "name": "byg:.*grove" }
+}

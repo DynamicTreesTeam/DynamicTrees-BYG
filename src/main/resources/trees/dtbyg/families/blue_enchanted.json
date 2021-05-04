@@ -1,0 +1,8 @@
+{
+  "common_leaves": "dtbyg:blue_enchanted",
+  "common_species": "dtbyg:blue_enchanted",
+  "primitive_log": "byg:blue_enchanted_log",
+  "primitive_stripped_log": "byg:stripped_blue_enchanted_log",
+  "stick": "stick",
+  "max_branch_radius": 24
+}
