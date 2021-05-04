@@ -72,6 +72,8 @@ minecraft {
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
 
+            properties 'mixin.env.disableRefMap' : 'true'
+
             mods {
                 dtbyg {
                     source sourceSets.main
@@ -103,7 +105,6 @@ dependencies {
     implementation fg.deobf("curse.maven:oh-the-biomes-youll-go-247560:3297487")
 
     runtimeOnly fg.deobf("curse.maven:cc-tweaked-282001:3236650")
-    runtimeOnly fg.deobf("curse.maven:ShutUpExperimentalSettings-407174:3188120")
 
     // At runtime, use suggestion provider fix mod.
     runtimeOnly fg.deobf("com.harleyoconnor.suggestionproviderfix:SuggestionProviderFix:${config.mc_version}-${config.suggestion_provider_fix_version}")
