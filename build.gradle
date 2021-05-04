@@ -60,7 +60,7 @@ minecraft {
             properties 'mixin.env.disableRefMap' : 'true'
 
             mods {
-                dtnaturesaura {
+                dtbyg {
                     source sourceSets.main
                 }
             }
@@ -73,7 +73,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                dtnaturesaura {
+                dtbyg {
                     source sourceSets.main
                 }
             }
