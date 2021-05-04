@@ -16,5 +16,7 @@
     "name": "byg:maple.*"
   },
   "primitive_sapling": "byg:red_maple_sapling",
-  "features": []
+  "features": [
+    "roots"
+  ]
 }

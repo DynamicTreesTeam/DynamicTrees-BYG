@@ -4,9 +4,15 @@
       "name": "byg:maple.*"
     },
     "apply": {
-      "species": "dtbyg:red_maple",
+      "species": {
+        "random": {
+          "dtbyg:maple": 8,
+          "dtbyg:red_maple": 4,
+          "dtbyg:silver_maple": 1
+        }
+      },
       "density": 1.0,
-      "chance": 0.2
+      "chance": 1.0
     }
   }
 ]
