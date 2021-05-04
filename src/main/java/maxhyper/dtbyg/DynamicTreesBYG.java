@@ -21,6 +21,9 @@ public class DynamicTreesBYG
         MinecraftForge.EVENT_BUS.register(this);
 
         RegistryHandler.setup(MOD_ID);
+
+        DTBYGRegistries.setup();
+
         BYG.ENABLE_OVERWORLD_TREES = true;
     }
 
