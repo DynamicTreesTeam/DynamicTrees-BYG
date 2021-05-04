@@ -1,5 +1,6 @@
 package maxhyper.dtbyg.growthlogic;
 
+import com.ferreusveritas.dynamictrees.api.registry.IRegistry;
 import com.ferreusveritas.dynamictrees.api.registry.Registry;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
 import maxhyper.dtbyg.DynamicTreesBYG;
@@ -9,7 +10,7 @@ public class DTBYGGrowthLogicKits {
 
     public static final GrowthLogicKit POPLAR = new PoplarLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "poplar"));
 
-    public static void register(final Registry<GrowthLogicKit> registry) {
+    public static void register(final IRegistry<GrowthLogicKit> registry) {
         registry.registerAll(POPLAR);
     }
 
