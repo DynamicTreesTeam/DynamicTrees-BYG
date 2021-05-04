@@ -14,5 +14,20 @@
       "density": 1.0,
       "chance": 1.0
     }
+  },
+  {
+    "select": {
+      "name": "byg:grove"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:poplar": 1,
+          "dtbyg:yellow_poplar": 1
+        }
+      },
+      "density": 1.0,
+      "chance": 0.5
+    }
   }
 ]
