@@ -1,0 +1,6 @@
+{
+    "parent":"dynamictrees:item/standard_seed",
+    "textures": {
+        "layer0":"dtbyg:item/green_enchanted_poplar_seed"
+    }
+}

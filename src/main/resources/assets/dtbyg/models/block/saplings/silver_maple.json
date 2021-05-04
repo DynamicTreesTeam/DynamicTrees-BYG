@@ -1,0 +1,7 @@
+{   "parent": "dynamictrees:block/smartmodel/sapling",
+    "textures": {
+        "particle": "byg:block/silver_maple_leaves",
+        "log": "byg:block/maple_log",
+        "leaves": "byg:block/silver_maple_leaves"
+    }
+}
