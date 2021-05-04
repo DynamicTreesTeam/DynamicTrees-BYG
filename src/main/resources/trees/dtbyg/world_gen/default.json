@@ -17,7 +17,7 @@
   },
   {
     "select": {
-      "name": "byg:grove"
+      "name": "byg:.*grove"
     },
     "apply": {
       "species": {
