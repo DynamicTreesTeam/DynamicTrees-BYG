@@ -1,22 +1,28 @@
-package maxhyper.dtbyg;
+package maxhyper.dtbyg.init;
 
 import com.ferreusveritas.dynamictrees.api.cells.CellKit;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
 import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
+import com.ferreusveritas.dynamictrees.blocks.rootyblocks.RootyBlock;
 import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SpreadableRootyBlock;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
 import com.ferreusveritas.dynamictrees.systems.DirtHelper;
+import com.ferreusveritas.dynamictrees.systems.RootyBlockHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import corgiaoc.byg.core.BYGBlocks;
+import maxhyper.dtbyg.DynamicTreesBYG;
 import maxhyper.dtbyg.cells.DTBYGCellKits;
 import maxhyper.dtbyg.growthlogic.DTBYGGrowthLogicKits;
 import maxhyper.dtbyg.trees.PoplarSpecies;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.item.Items;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.LinkedList;
 
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class DTBYGRegistries {
@@ -25,7 +31,9 @@ public class DTBYGRegistries {
     public static final String NYLIUM_SOUL_LIKE = "nylium_soil_like";
     public static final String SCULK_LIKE = "sculk_like";
 
-    public static void setup() {
+    public static LinkedList<RootyBlock> rootyBlocks;
+
+    public static void setupBlocks() {
         setUpSoils();
         setupConnectables();
     }
@@ -75,7 +83,7 @@ public class DTBYGRegistries {
         DirtHelper.registerSoil(BYGBlocks.OVERGROWN_NETHERRACK, DirtHelper.NETHER_LIKE);
         DirtHelper.registerSoil(BYGBlocks.MYCELIUM_NETHERRACK, DirtHelper.NETHER_LIKE);
         DirtHelper.registerSoil(BYGBlocks.MOSSY_NETHERRACK, DirtHelper.NETHER_LIKE);
-        DirtHelper.registerSoil(BYGBlocks.BLUE_NETHERRACK, DirtHelper.NETHER_LIKE);
+        DirtHelper.registerSoil(BYGBlocks.BLUE_NETHERRACK, DirtHelper.NETHER_LIKE, new SpreadableRootyBlock(BYGBlocks.BLUE_NETHERRACK, Items.BONE_MEAL, BYGBlocks.EMBUR_NYLIUM));
         DirtHelper.registerSoil(BYGBlocks.SYTHIAN_NYLIUM, DirtHelper.NETHER_SOIL_LIKE);
         DirtHelper.registerSoil(BYGBlocks.EMBUR_NYLIUM, DirtHelper.NETHER_SOIL_LIKE);
         DirtHelper.registerSoil(BYGBlocks.OVERGROWN_CRIMSON_BLACKSTONE, DirtHelper.NETHER_SOIL_LIKE);
@@ -85,6 +93,16 @@ public class DTBYGRegistries {
         DirtHelper.registerSoil(BYGBlocks.NIGHTSHADE_PHYLIUM, DirtHelper.END_LIKE);
         DirtHelper.registerSoil(BYGBlocks.SHULKREN_PHYLIUM, DirtHelper.END_LIKE);
         DirtHelper.registerSoil(BYGBlocks.VERMILION_SCULK, SCULK_LIKE);
+
+        RootyBlock rootyNetherrack = RootyBlockHelper.getRootyBlock(Blocks.NETHERRACK);
+        if (rootyNetherrack instanceof SpreadableRootyBlock){
+            SpreadableRootyBlock rootNeth = (SpreadableRootyBlock) rootyNetherrack;
+            rootNeth.addSpreadableBlock(BYGBlocks.SYTHIAN_NYLIUM);
+            rootNeth.addSpreadableBlock(BYGBlocks.OVERGROWN_NETHERRACK);
+            rootNeth.addSpreadableBlock(BYGBlocks.MYCELIUM_NETHERRACK);
+        }
+
+        rootyBlocks = RootyBlockHelper.generateListForRegistry(true, DynamicTreesBYG.MOD_ID);
     }
 
     private static void setupConnectables() {
@@ -112,7 +130,10 @@ public class DTBYGRegistries {
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
+        setupBlocks();
 
+        for (RootyBlock rooty : rootyBlocks)
+            event.getRegistry().register(rooty);
     }
 
 }

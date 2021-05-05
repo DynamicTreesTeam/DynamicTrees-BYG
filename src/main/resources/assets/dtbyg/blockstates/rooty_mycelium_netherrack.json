@@ -1,0 +1,6 @@
+{
+	"multipart": [
+		{   "apply": { "model": "byg:block/mycelium_netherrack" }},
+		{	"apply": { "model": "dynamictrees:block/roots" }}
+	]
+}

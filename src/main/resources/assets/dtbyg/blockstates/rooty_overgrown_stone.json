@@ -1,0 +1,6 @@
+{
+	"multipart": [
+		{   "apply": { "model": "byg:block/overgrown_stone" }},
+		{	"apply": { "model": "dtbyg:block/roots_index_2" }}
+	]
+}

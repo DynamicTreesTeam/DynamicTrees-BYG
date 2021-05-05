@@ -1,0 +1,6 @@
+{
+	"multipart": [
+		{   "apply": { "model": "byg:block/meadow_grass_block" }},
+		{	"apply": { "model": "dtbyg:block/roots_index_2" }}
+	]
+}

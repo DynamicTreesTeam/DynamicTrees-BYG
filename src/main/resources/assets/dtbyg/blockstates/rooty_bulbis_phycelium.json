@@ -1,0 +1,6 @@
+{
+	"multipart": [
+		{   "apply": { "model": "byg:block/bulbis_phycelium" }},
+		{	"apply": { "model": "dynamictrees:block/roots" }}
+	]
+}

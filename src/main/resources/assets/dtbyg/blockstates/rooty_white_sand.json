@@ -1,0 +1,6 @@
+{
+	"multipart": [
+		{   "apply": { "model": "byg:block/white_sand" }},
+		{	"apply": { "model": "dynamictrees:block/roots" }}
+	]
+}

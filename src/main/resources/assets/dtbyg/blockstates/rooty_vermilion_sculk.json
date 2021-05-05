@@ -1,0 +1,6 @@
+{
+	"multipart": [
+		{   "apply": { "model": "byg:block/vermilion_sculk" }},
+		{	"apply": { "model": "dynamictrees:block/roots" }}
+	]
+}

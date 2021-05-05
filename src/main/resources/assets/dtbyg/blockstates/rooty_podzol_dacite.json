@@ -1,0 +1,6 @@
+{
+	"multipart": [
+		{   "apply": { "model": "byg:block/podzol_dacite" }},
+		{	"apply": { "model": "dynamictrees:block/roots" }}
+	]
+}

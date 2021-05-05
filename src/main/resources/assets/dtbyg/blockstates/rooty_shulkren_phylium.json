@@ -1,0 +1,6 @@
+{
+	"multipart": [
+		{   "apply": { "model": "byg:block/shulkren_phylium" }},
+		{	"apply": { "model": "dynamictrees:block/roots" }}
+	]
+}
