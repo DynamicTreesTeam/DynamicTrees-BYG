@@ -2,15 +2,15 @@
     "family": "spruce",
     "tapering": 0.175,
     "signal_energy": 20.0,
-    "soil_longevity": 16,
+    "soil_longevity": 8,
     "up_probability": 5,
     "lowest_branch_height": 5,
     "growth_rate": 0.9,
     "growth_logic_kit": "conifer",
     "leaves_properties": "spruce",
     "environment_factors" : {
-        "hot": 1.00,
-        "dry": 1.00,
+        "hot": 0.50,
+        "dry": 0.25,
         "wet": 0.75
     },
     "seed_drop_rarity": 1.0,
