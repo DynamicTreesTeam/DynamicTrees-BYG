@@ -46,5 +46,15 @@
       "density": 1.0,
       "chance": 1.0
     }
+  },
+  {
+    "select": {
+      "name": "byg:wooded_grassland_plateau"
+    },
+    "apply": {
+      "species": "dtbyg:tall_spruce",
+      "density": 1.0,
+      "chance": 0.5
+    }
   }
 ]

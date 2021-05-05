@@ -1,0 +1,32 @@
+{
+    "family": "spruce",
+    "tapering": 0.175,
+    "signal_energy": 20.0,
+    "soil_longevity": 16,
+    "up_probability": 5,
+    "lowest_branch_height": 5,
+    "growth_rate": 0.9,
+    "growth_logic_kit": "conifer",
+    "leaves_properties": "spruce",
+    "environment_factors" : {
+        "hot": 1.00,
+        "dry": 1.00,
+        "wet": 0.75
+    },
+    "seed_drop_rarity": 1.0,
+    "stick_drop_rarity": 1.0,
+    "perfect_biomes": {
+        "name": "byg:wooded_grassland_plateau"
+    },
+    "primitive_sapling": "spruce_sapling",
+    "features" : [
+        {
+            "name": "conifer_topper",
+            "properties": {
+                "leaves_properties": "spruce"
+            }
+        },
+        "podzol",
+        "roots"
+    ]
+}
