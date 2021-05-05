@@ -1,0 +1,9 @@
+{
+  "only_if_loaded": "dynamictreesplus",
+  "type": "dynamictreesplus:cactus",
+  "common_leaves": "dynamictreesplus:bare",
+  "common_species": "dtbyg:oddity_cactus",
+  "primitive_log": "byg:oddity_cactus",
+  "stick": "air",
+  "generate_stripped_branch": false
+}

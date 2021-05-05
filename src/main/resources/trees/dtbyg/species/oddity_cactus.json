@@ -1,0 +1,17 @@
+{
+  "only_if_loaded": "dynamictreesplus",
+  "type": "dynamictreesplus:cactus",
+  "family": "dtbyg:oddity_cactus",
+  "generate_seed": true,
+  "generate_sapling": true,
+  "signal_energy": 4,
+  "up_probability": 4,
+  "lowest_branch_height": 2,
+  "growth_rate": 1,
+  "soil_longevity": 1,
+  "seed_per_branch": 0.5,
+  "growth_logic_kit": "dynamictreesplus:saguaro_cactus",
+  "cactus_thickness_logic": "dynamictreesplus:saguaro",
+  "perfect_biomes": { "name": "byg_shattered_desert_isles" },
+  "acceptable_soils": ["end_sand_like"]
+}

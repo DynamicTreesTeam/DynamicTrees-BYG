@@ -28,7 +28,7 @@ import java.util.LinkedList;
 public class DTBYGRegistries {
 
     public static final String END_SAND_LIKE = "end_sand_like";
-    public static final String NYLIUM_SOUL_LIKE = "nylium_soil_like";
+    public static final String NYLIUM_SOUL_LIKE = "nylium_soul_like";
     public static final String SCULK_LIKE = "sculk_like";
 
     public static LinkedList<RootyBlock> rootyBlocks;
