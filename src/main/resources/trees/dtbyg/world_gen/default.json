@@ -29,5 +29,22 @@
       "density": 1.0,
       "chance": 0.5
     }
+  },
+  {
+    "select": {
+      "name": "byg:seasonal_taiga.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:red_spruce": 1,
+          "dtbyg:yellow_spruce": 1,
+          "dtbyg:orange_spruce": 1,
+          "spruce": 1
+        }
+      },
+      "density": 1.0,
+      "chance": 1.0
+    }
   }
 ]
