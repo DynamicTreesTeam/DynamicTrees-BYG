@@ -1,0 +1,32 @@
+{
+  "family": "oak",
+  "tapering": 0.3,
+  "signal_energy": 28.0,
+  "growth_rate": 0.8,
+  "up_probability": 1,
+  "lowest_branch_height": 6,
+  "leaves_properties": "oak",
+  "growth_logic_kit": "dtbyg:tall_prairie",
+  "environment_factors" : {
+    "cold": 0.75,
+    "hot": 0.5,
+    "dry": 0.5,
+    "forest": 1.05
+  },
+  "seed_drop_rarity": 1.0,
+  "stick_drop_rarity": 1.0,
+  "perfect_biomes": {
+    "name": "byg:prairie.*"
+  },
+  "primitive_sapling": "oak_sapling",
+  "features" : [
+    {
+      "name": "rot_soil",
+      "properties": {
+        "rotted_soil": "podzol"
+      }
+    },
+    "mushroom_rot",
+    "bee_nest"
+  ]
+}
