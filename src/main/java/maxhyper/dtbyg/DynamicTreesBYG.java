@@ -30,7 +30,7 @@ public class DynamicTreesBYG
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-        DTBYGClient.setup();
+        //DTBYGClient.setup();
     }
 
 }

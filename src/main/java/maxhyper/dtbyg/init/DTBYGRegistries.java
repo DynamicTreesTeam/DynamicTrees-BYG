@@ -11,6 +11,7 @@ import com.ferreusveritas.dynamictrees.systems.RootyBlockHelper;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import corgiaoc.byg.core.BYGBlocks;
 import maxhyper.dtbyg.DynamicTreesBYG;
+import maxhyper.dtbyg.blocks.BYGTintedRootyBlock;
 import maxhyper.dtbyg.cells.DTBYGCellKits;
 import maxhyper.dtbyg.growthlogic.DTBYGGrowthLogicKits;
 import maxhyper.dtbyg.trees.PoplarSpecies;
@@ -44,13 +45,13 @@ public class DTBYGRegistries {
         DirtHelper.createNewAdjective(SCULK_LIKE);
 
         DirtHelper.registerSoil(BYGBlocks.PODZOL_DACITE, DirtHelper.DIRT_LIKE);
-        DirtHelper.registerSoil(BYGBlocks.OVERGROWN_DACITE, DirtHelper.DIRT_LIKE);
-        DirtHelper.registerSoil(BYGBlocks.OVERGROWN_STONE, DirtHelper.DIRT_LIKE);
+        DirtHelper.registerSoil(BYGBlocks.OVERGROWN_DACITE, DirtHelper.DIRT_LIKE, new BYGTintedRootyBlock(BYGBlocks.OVERGROWN_DACITE));
+        DirtHelper.registerSoil(BYGBlocks.OVERGROWN_STONE, DirtHelper.DIRT_LIKE, new BYGTintedRootyBlock(BYGBlocks.OVERGROWN_STONE));
         DirtHelper.registerSoil(BYGBlocks.PEAT, DirtHelper.DIRT_LIKE);
-        DirtHelper.registerSoil(BYGBlocks.MEADOW_GRASSBLOCK, DirtHelper.DIRT_LIKE);
+        DirtHelper.registerSoil(BYGBlocks.MEADOW_GRASSBLOCK, DirtHelper.DIRT_LIKE, new BYGTintedRootyBlock(BYGBlocks.MEADOW_GRASSBLOCK));
         DirtHelper.registerSoil(BYGBlocks.MEADOW_DIRT, DirtHelper.DIRT_LIKE, new SpreadableRootyBlock(BYGBlocks.MEADOW_DIRT, 9, BYGBlocks.MEADOW_GRASSBLOCK));
-        DirtHelper.registerSoil(BYGBlocks.GLOWCELIUM, DirtHelper.DIRT_LIKE);
-        DirtHelper.registerSoil(BYGBlocks.OVERGROWN_NETHERRACK, DirtHelper.DIRT_LIKE);
+        DirtHelper.registerSoil(BYGBlocks.GLOWCELIUM, DirtHelper.DIRT_LIKE, new BYGTintedRootyBlock(BYGBlocks.GLOWCELIUM));
+        DirtHelper.registerSoil(BYGBlocks.OVERGROWN_NETHERRACK, DirtHelper.DIRT_LIKE, new BYGTintedRootyBlock(BYGBlocks.OVERGROWN_NETHERRACK));
         DirtHelper.registerSoil(BYGBlocks.ETHER_PHYLIUM, DirtHelper.DIRT_LIKE);
         DirtHelper.registerSoil(BYGBlocks.ETHER_SOIL, DirtHelper.DIRT_LIKE);
         DirtHelper.registerSoil(BYGBlocks.PEAT, DirtHelper.MUD_LIKE);
@@ -82,7 +83,7 @@ public class DTBYGRegistries {
         DirtHelper.registerSoil(BYGBlocks.NYLIUM_SOUL_SOIL, DirtHelper.NETHER_LIKE);
         DirtHelper.registerSoil(BYGBlocks.OVERGROWN_NETHERRACK, DirtHelper.NETHER_LIKE);
         DirtHelper.registerSoil(BYGBlocks.MYCELIUM_NETHERRACK, DirtHelper.NETHER_LIKE);
-        DirtHelper.registerSoil(BYGBlocks.MOSSY_NETHERRACK, DirtHelper.NETHER_LIKE);
+        DirtHelper.registerSoil(BYGBlocks.MOSSY_NETHERRACK, DirtHelper.NETHER_LIKE, new BYGTintedRootyBlock(BYGBlocks.MOSSY_NETHERRACK));
         DirtHelper.registerSoil(BYGBlocks.BLUE_NETHERRACK, DirtHelper.NETHER_LIKE, new SpreadableRootyBlock(BYGBlocks.BLUE_NETHERRACK, Items.BONE_MEAL, BYGBlocks.EMBUR_NYLIUM));
         DirtHelper.registerSoil(BYGBlocks.SYTHIAN_NYLIUM, DirtHelper.NETHER_SOIL_LIKE);
         DirtHelper.registerSoil(BYGBlocks.EMBUR_NYLIUM, DirtHelper.NETHER_SOIL_LIKE);
