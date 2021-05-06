@@ -12,10 +12,6 @@ public class TallPrairieOakLogic extends PrairieOakLogic {
 
     @Override
     public Direction newDirectionSelected(Species species, Direction newDir, GrowSignal signal) {
-        if (!signal.isInTrunk()) {
-
-        }
-
         return newDir;
     }
 }
