@@ -1,0 +1,21 @@
+{
+  "family": "dtbyg:aspen",
+  "tapering": 0.125,
+  "signal_energy": 24.0,
+  "growth_rate": 0.8,
+  "leaves_properties": "dtbyg:aspen",
+  "growth_logic_kit": "dtbyg:aspen",
+  "environment_factors": {
+    "cold": 1.1,
+    "hot": 0.2,
+    "dry": 0.4,
+    "forest": 0.9
+  },
+  "seed_drop_rarity": 1.0,
+  "stick_drop_rarity": 1.0,
+  "perfect_biomes": {
+    "name": "byg:aspen.*"
+  },
+  "primitive_sapling": "byg:aspen_sapling",
+  "features": []
+}

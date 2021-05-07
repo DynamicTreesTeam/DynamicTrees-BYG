@@ -12,9 +12,10 @@ public class DTBYGGrowthLogicKits {
     public static final GrowthLogicKit PRAIRIE = new PrairieOakLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "prairie"));
     public static final GrowthLogicKit TALL_PRAIRIE = new TallPrairieOakLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "tall_prairie"));
     public static final GrowthLogicKit MAPLE = new MapleLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "maple"));
+    public static final GrowthLogicKit ASPEN = new AspenLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "aspen"));
 
     public static void register(final IRegistry<GrowthLogicKit> registry) {
-        registry.registerAll(POPLAR, PRAIRIE, TALL_PRAIRIE, MAPLE);
+        registry.registerAll(POPLAR, PRAIRIE, TALL_PRAIRIE, MAPLE, ASPEN);
     }
 
 }

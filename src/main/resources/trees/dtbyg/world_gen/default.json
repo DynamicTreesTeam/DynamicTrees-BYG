@@ -37,10 +37,11 @@
     "apply": {
       "species": {
         "random": {
-          "dtbyg:red_spruce": 1,
-          "dtbyg:yellow_spruce": 1,
-          "dtbyg:orange_spruce": 1,
-          "spruce": 1
+          "dtbyg:aspen": 1,
+          "dtbyg:red_spruce": 6,
+          "dtbyg:yellow_spruce": 6,
+          "dtbyg:orange_spruce": 6,
+          "spruce": 6
         }
       },
       "density": 1.0,
@@ -70,6 +71,20 @@
       },
       "density": 0.2,
       "chance": 0.15
+    }
+  },
+  {
+    "select": {
+      "name": "byg:aspen_forest.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:aspen": 1
+        }
+      },
+      "density": 1.0,
+      "chance": 1.0
     }
   }
 ]
