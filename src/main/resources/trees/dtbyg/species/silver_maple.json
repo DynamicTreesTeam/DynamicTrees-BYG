@@ -1,9 +1,10 @@
 {
   "family": "dtbyg:maple",
   "tapering": 0.3,
-  "signal_energy": 12.0,
+  "signal_energy": 20.0,
   "growth_rate": 0.8,
   "leaves_properties": "dtbyg:silver_maple",
+  "growth_logic_kit": "dtbyg:maple",
   "environment_factors": {
     "cold": 1.1,
     "hot": 0.2,

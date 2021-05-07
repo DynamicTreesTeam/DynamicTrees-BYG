@@ -11,8 +11,8 @@
           "dtbyg:silver_maple": 1
         }
       },
-      "density": 1.0,
-      "chance": 1.0
+      "density": 0.5,
+      "chance": 0.9
     }
   },
   {
