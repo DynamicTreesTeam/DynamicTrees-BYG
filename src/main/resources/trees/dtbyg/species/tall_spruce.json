@@ -20,12 +20,7 @@
     },
     "primitive_sapling": "spruce_sapling",
     "features" : [
-        {
-            "name": "conifer_topper",
-            "properties": {
-                "leaves_properties": "spruce"
-            }
-        },
+        "conifer_topper",
         "podzol",
         "roots"
     ]

@@ -83,7 +83,7 @@
           "dtbyg:aspen": 1
         }
       },
-      "density": 1.0,
+      "density": [ 2.0, 0.3 ],
       "chance": 1.0
     }
   }
