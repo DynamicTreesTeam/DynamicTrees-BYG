@@ -17,5 +17,6 @@
     "name": "byg:sierra.*"
   },
   "primitive_sapling": "byg:palo_verde_sapling",
+  "acceptable_soils": ["dirt_like", "terracotta_like" ],
   "features": []
 }

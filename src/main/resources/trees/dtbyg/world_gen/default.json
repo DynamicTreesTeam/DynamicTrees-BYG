@@ -1,5 +1,13 @@
 [
   {
+    "__comment": "Cancel standard tree features from the overworld.",
+    "select": { "name": "byg.*", "type": "overworld" },
+    "cancellers": {
+      "type": "tree",
+      "namespace": "byg"
+    }
+  },
+  {
     "select": {
       "name": "byg:maple.*"
     },

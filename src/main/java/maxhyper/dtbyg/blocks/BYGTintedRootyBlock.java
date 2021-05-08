@@ -14,7 +14,7 @@ public class BYGTintedRootyBlock extends RootyBlock {
     /**
      * Grassy blocks in BYG use a tint index of 1 instead of 0, so the tint indices for
      * the rooty soil block need to be shifted. Blocks using this class should use the model
-     * roots_index_2.json instead of roots.json
+     * roots_tint_2.json instead of roots.json
      */
     public BYGTintedRootyBlock(Block primitiveDirt) {
         super(primitiveDirt);

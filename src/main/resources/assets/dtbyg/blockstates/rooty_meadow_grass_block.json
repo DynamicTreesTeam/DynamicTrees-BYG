@@ -1,6 +1,6 @@
 {
 	"multipart": [
 		{   "apply": { "model": "byg:block/meadow_grass_block" }},
-		{	"apply": { "model": "dynamictrees:block/roots_index_2" }}
+		{	"apply": { "model": "dynamictrees:block/roots_tint_2" }}
 	]
 }
