@@ -86,5 +86,19 @@
       "density": 1.0,
       "chance": 1.0
     }
+  },
+  {
+    "select": {
+      "name": "byg:sierra.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:palo_verde": 1
+        }
+      },
+      "density": 0.4,
+      "chance": 0.2
+    }
   }
 ]

@@ -1,0 +1,8 @@
+{
+  "common_leaves": "dtbyg:palo_verde",
+  "common_species": "dtbyg:palo_verde",
+  "primitive_log": "byg:palo_verde_log",
+  "primitive_stripped_log": "byg:stripped_palo_verde_log",
+  "stick": "stick",
+  "max_branch_radius": 24
+}
