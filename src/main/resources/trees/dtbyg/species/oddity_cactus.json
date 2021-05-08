@@ -2,6 +2,7 @@
   "only_if_loaded": "dynamictreesplus",
   "type": "dynamictreesplus:cactus",
   "family": "dtbyg:oddity_cactus",
+  "always_show_on_waila": true,
   "generate_seed": true,
   "generate_sapling": true,
   "signal_energy": 4,

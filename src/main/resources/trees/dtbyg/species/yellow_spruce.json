@@ -18,12 +18,7 @@
   },
   "primitive_sapling": "byg:yellow_spruce_sapling",
   "features" : [
-    {
-      "name": "conifer_topper",
-      "properties": {
-        "leaves_properties": "dtbyg:yellow_spruce"
-      }
-    },
+    "conifer_topper",
     "podzol"
   ]
 }
