@@ -5,17 +5,16 @@ import com.ferreusveritas.dynamictrees.api.cells.CellNull;
 import com.ferreusveritas.dynamictrees.api.cells.ICell;
 import com.ferreusveritas.dynamictrees.api.cells.ICellSolver;
 import com.ferreusveritas.dynamictrees.api.registry.IRegistry;
-import com.ferreusveritas.dynamictrees.api.registry.Registry;
-import com.ferreusveritas.dynamictrees.cells.MetadataCell;
-import com.ferreusveritas.dynamictrees.cells.NormalCell;
+import com.ferreusveritas.dynamictrees.cells.*;
 import com.ferreusveritas.dynamictrees.util.SimpleVoxmap;
 import maxhyper.dtbyg.DynamicTreesBYG;
+import maxhyper.dtbyg.cells.cell.*;
 import net.minecraft.util.ResourceLocation;
 
 public class DTBYGCellKits {
 
     public static void register(final IRegistry<CellKit> registry) {
-        registry.registerAll(SPARSE, POPLAR);
+        registry.registerAll(SPARSE, POPLAR, DECIDUOUS);
     }
 
     public static final CellKit SPARSE = new CellKit(new ResourceLocation(DynamicTreesBYG.MOD_ID, "sparse")) {
@@ -23,7 +22,7 @@ public class DTBYGCellKits {
         private final ICell sparseBranch = new SparseBranchCell();
         private final ICell sparseLeaves = new NormalCell(1);
 
-        private final ICellSolver solver = new com.ferreusveritas.dynamictrees.cells.CellKits.BasicSolver(new short[] {0x0211});
+        private final ICellSolver solver = new CellKits.BasicSolver(new short[] {0x0211});
 
         @Override
         public ICell getCellForLeaves(int hydro) {
@@ -37,7 +36,7 @@ public class DTBYGCellKits {
 
         @Override
         public SimpleVoxmap getLeafCluster() {
-            return DTBYGLeafClusters.sparse;
+            return DTBYGLeafClusters.SPARSE;
         }
 
         @Override
@@ -66,7 +65,7 @@ public class DTBYGCellKits {
                 new PoplarLeafCell(4),
         };
 
-        private final ICellSolver solver = new com.ferreusveritas.dynamictrees.cells.CellKits.BasicSolver(new short[] {
+        private final ICellSolver solver = new CellKits.BasicSolver(new short[] {
                 0x0412, 0x0311, 0x0211
         });
 
@@ -85,7 +84,7 @@ public class DTBYGCellKits {
 
         @Override
         public SimpleVoxmap getLeafCluster() {
-            return DTBYGLeafClusters.poplar;
+            return DTBYGLeafClusters.POPLAR;
         }
 
         @Override
@@ -100,4 +99,49 @@ public class DTBYGCellKits {
 
     };
 
+    public static final CellKit DECIDUOUS = new CellKit(new ResourceLocation(DynamicTreesBYG.MOD_ID, "deciduous")) {
+        private final ICell branch = new ConiferBranchCell();
+
+        private final ICell[] coniferLeafCells = {
+                CellNull.NULL_CELL,
+                new DeciduousOakCell(1),
+                new DeciduousOakCell(2),
+                new DeciduousOakCell(3),
+                new DeciduousOakCell(4),
+                new DeciduousOakCell(5),
+                new DeciduousOakCell(6),
+                new DeciduousOakCell(7)
+        };
+
+        private final CellKits.BasicSolver solver = new CellKits.BasicSolver(new short[]{0x0514, 0x0413, 0x0312, 0x0211});
+
+        @Override
+        public ICell getCellForLeaves(int hydro) {
+            return coniferLeafCells[hydro];
+        }
+
+        @Override
+        public ICell getCellForBranch(int radius, int meta) {
+            if (radius == 1) {
+                return branch;
+            } else {
+                return CellNull.NULL_CELL;
+            }
+        }
+
+        @Override
+        public SimpleVoxmap getLeafCluster() {
+            return LeafClusters.CONIFER;
+        }
+
+        @Override
+        public ICellSolver getCellSolver() {
+            return solver;
+        }
+
+        @Override
+        public int getDefaultHydration() {
+            return 4;
+        }
+    };
 }

@@ -1,4 +1,4 @@
-package maxhyper.dtbyg.cells;
+package maxhyper.dtbyg.cells.cell;
 
 import com.ferreusveritas.dynamictrees.cells.MatrixCell;
 

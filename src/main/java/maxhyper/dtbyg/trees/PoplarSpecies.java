@@ -86,7 +86,7 @@ public class PoplarSpecies extends Species {
                 if (isTop) {
                     // Handle top leaves here
                     leafMap.setVoxel(pos, (byte) 16); // 16(bit 5) is code for a twig
-                    SimpleVoxmap leafCluster = DTBYGLeafClusters.poplarTop;
+                    SimpleVoxmap leafCluster = DTBYGLeafClusters.POPLAR_TOP;
                     leafMap.blitMax(pos, leafCluster);
                 } else if (isTwig) {
                     // Handle branch leaves here
