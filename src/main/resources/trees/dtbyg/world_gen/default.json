@@ -123,5 +123,21 @@
       "density": 1.0,
       "chance": 1.0
     }
+  },
+  {
+    "select": {
+      "name": "byg:boreal_forest.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:poplar": 1,
+          "dtbyg:yellow_poplar": 1,
+          "spruce": 1
+        }
+      },
+      "density": 1.0,
+      "chance": 1.0
+    }
   }
 ]
