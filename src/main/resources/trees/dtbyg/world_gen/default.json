@@ -1,13 +1,5 @@
 [
   {
-    "__comment": "Cancel standard tree features from the overworld.",
-    "select": { "name": "byg.*", "type": "overworld" },
-    "cancellers": {
-      "type": "tree",
-      "namespace": "byg"
-    }
-  },
-  {
     "select": {
       "name": "byg:maple.*"
     },
@@ -139,6 +131,18 @@
       },
       "density": 1.0,
       "chance": 1.0
+    }
+  },
+  {
+    "select": {
+      "name": "byg:cold_swamplan"
+    },
+    "cancellers": {
+      "type": "tree",
+      "namespace": "minecraft"
+    },
+    "apply": {
+
     }
   }
 ]
