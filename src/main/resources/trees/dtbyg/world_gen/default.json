@@ -134,15 +134,15 @@
     }
   },
   {
-    "select": {
-      "name": "byg:cold_swamplan"
-    },
+    "select": "byg:cold_swamplands",
     "cancellers": {
       "type": "tree",
       "namespace": "minecraft"
     },
     "apply": {
-
+      "species" : "swamp_oak",
+      "density": [ 0.2 ],
+      "chance": 0.75
     }
   }
 ]
