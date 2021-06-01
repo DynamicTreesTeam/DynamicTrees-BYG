@@ -1,0 +1,8 @@
+{
+  "_comment": "DT will ignore (generate through) any blocks with this tag when generating trees.",
+  "replace": false,
+  "values": [
+    "byg:leaf_pile",
+    "byg:short_grass"
+  ]
+}

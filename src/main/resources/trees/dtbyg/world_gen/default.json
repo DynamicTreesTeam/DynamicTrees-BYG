@@ -92,7 +92,8 @@
         }
       },
       "density": [ 2.0, 0.3 ],
-      "chance": 1.0
+      "chance": 1,
+      "forestness": 1
     }
   },
   {
