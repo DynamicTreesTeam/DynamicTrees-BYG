@@ -3,12 +3,12 @@ package maxhyper.dtbyg;
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import corgiaoc.byg.BYG;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-// The value here should match an entry in the META-INF/mods.toml file
 @Mod(DynamicTreesBYG.MOD_ID)
 public class DynamicTreesBYG
 {
@@ -22,7 +22,11 @@ public class DynamicTreesBYG
 
         RegistryHandler.setup(MOD_ID);
 
-        BYG.ENABLE_OVERWORLD_TREES = true;
+        BYG.ENABLE_OVERWORLD_TREES = false;
+
+        if (ModList.get().isLoaded("dynamictreesplus")) {
+            BYG.ENABLE_CACTI = false;
+        }
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

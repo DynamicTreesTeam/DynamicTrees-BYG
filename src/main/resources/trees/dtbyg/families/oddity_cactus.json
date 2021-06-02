@@ -5,5 +5,8 @@
   "common_species": "dtbyg:oddity_cactus",
   "primitive_log": "byg:oddity_cactus",
   "stick": "air",
-  "generate_stripped_branch": false
+  "generate_stripped_branch": false,
+  "branch_properties": {
+    "light": 8
+  }
 }
