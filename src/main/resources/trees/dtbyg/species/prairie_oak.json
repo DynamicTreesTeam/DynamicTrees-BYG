@@ -16,7 +16,11 @@
   "perfect_biomes": {
     "name": "byg:prairie.*"
   },
+  "common_override": {
+    "name": "byg:prairie.*"
+  },
   "primitive_sapling": "oak_sapling",
+  "mega_species": "dtbyg:mega_prairie_oak",
   "features" : [
     {
       "name": "rot_soil",
