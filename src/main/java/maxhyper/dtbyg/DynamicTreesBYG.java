@@ -2,6 +2,7 @@ package maxhyper.dtbyg;
 
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import corgiaoc.byg.BYG;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
@@ -34,6 +35,10 @@ public class DynamicTreesBYG
 
     private void clientSetup(final FMLClientSetupEvent event) {
         //DTBYGClient.setup();
+    }
+
+    public static ResourceLocation resLoc (final String path) {
+        return new ResourceLocation(MOD_ID, path);
     }
 
 }

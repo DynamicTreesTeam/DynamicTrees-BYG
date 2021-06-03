@@ -4,8 +4,11 @@
   "block.dtbyg.blue_enchanted_branch": "Blue Enchanted Tree",
   "block.dtbyg.green_enchanted_branch": "Green Enchanted Tree",
   "block.dtbyg.palo_verde_branch": "Palo Verde Tree",
+  "block.dtbyg.palm_branch": "Palm Tree",
+
   "block.dtbyg.warped_cactus_branch": "Warped Cactus",
   "block.dtbyg.oddity_cactus_branch": "Oddity Cactus",
+
 
   "species.dtbyg.red_maple": "Red Maple",
   "species.dtbyg.silver_maple": "Silver Maple",
@@ -20,9 +23,11 @@
   "species.dtbyg.aspen": "Aspen",
   "species.dtbyg.palo_verde": "Palo Verde",
   "species.dtbyg.deciduous_oak": "Deciduous Oak",
+  "species.dtbyg.palm": "Palm",
 
   "species.dtbyg.warped_cactus": "Warped Cactus",
   "species.dtbyg.oddity_cactus": "Oddity Cactus",
+
 
   "item.dtbyg.maple_seed": "Maple Samara",
   "item.dtbyg.red_maple_seed": "Red Maple Samara",
@@ -35,6 +40,8 @@
   "item.dtbyg.yellow_poplar_seed": "Yellow Poplar Catkin",
   "item.dtbyg.aspen_seed": "Aspen Catkin",
   "item.dtbyg.palo_verde_seed": "Palo Verde Seed",
+  "item.dtbyg.palm_seed": "Palm Seed",
+
   "item.dtbyg.warped_cactus_seed": "Warped Cactus Seed",
   "item.dtbyg.oddity_cactus_seed": "Oddity Cactus Seed"
 }

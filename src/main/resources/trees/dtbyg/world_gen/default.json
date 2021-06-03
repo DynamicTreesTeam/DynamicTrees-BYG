@@ -1,8 +1,8 @@
 [
   {
     "select": {
-      "type": "forest",
-      "name": "byg:.*"
+      "name": "byg:.*",
+      "category": "forest"
     },
     "apply": {
       "density": [ 1 ],
@@ -154,6 +154,28 @@
       "species" : "swamp_oak",
       "density": [ 0.2 ],
       "chance": 0.75
+    }
+  },
+  {
+    "select": {
+      "name": "minecraft:.*",
+      "category": "beach"
+    },
+    "apply": {
+      "species": "dtbyg:palm",
+      "density": [ 0.3 ],
+      "chance": 0.7
+    }
+  },
+  {
+    "select": {
+      "name": "byg:.*",
+      "category": "beach"
+    },
+    "apply": {
+      "species": "dtbyg:palm",
+      "density": [ 0.3 ],
+      "chance": 0.7
     }
   },
 

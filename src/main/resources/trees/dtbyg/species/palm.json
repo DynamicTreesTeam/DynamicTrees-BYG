@@ -1,0 +1,19 @@
+{
+  "type": "palm",
+  "family": "dtbyg:palm",
+  "tapering": 0.5,
+  "signal_energy": 8.0,
+  "growth_rate": 0.8,
+  "leaves_properties": "dtbyg:palm",
+  "environment_factors" : {
+    "cold": 0.75,
+    "hot": 1.1,
+    "dry": 1.1
+  },
+  "seed_drop_rarity": 0.0,
+  "stick_drop_rarity": 1.0,
+  "transformable": false,
+  "perfect_biomes": { "category": "beach" },
+  "primitive_sapling": "byg:palm_sapling",
+  "acceptable_soils": [ "dirt_like", "sand_like" ]
+}

@@ -1,0 +1,6 @@
+{
+  "loader": "dtbyg:palm_fronds",
+  "textures": {
+    "frond": "dtbyg:block/palm_frond"
+  }
+}

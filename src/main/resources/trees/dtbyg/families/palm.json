@@ -1,0 +1,8 @@
+{
+  "common_leaves": "dtbyg:palm",
+  "common_species": "dtbyg:palm",
+  "primitive_log": "byg:palm_log",
+  "primitive_stripped_log": "byg:stripped_palm_log",
+  "primary_thickness": 3,
+  "secondary_thickness": 3
+}
