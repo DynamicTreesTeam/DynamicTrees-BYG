@@ -2,5 +2,5 @@
   "primitive_leaves": "byg:yellow_birch_leaves",
   "cell_kit": "dtbyg:poplar",
   "smother": 9,
-  "light": 13
+  "light_requirement": 13
 }

@@ -1,3 +1,4 @@
 {
-  "primitive_leaves": "byg:green_enchanted_leaves"
+  "primitive_leaves": "byg:green_enchanted_leaves",
+  "light": 15
 }
