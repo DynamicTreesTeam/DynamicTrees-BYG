@@ -18,7 +18,6 @@ import maxhyper.dtbyg.trees.PoplarSpecies;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
-import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -29,7 +28,8 @@ import java.util.LinkedList;
 public class DTBYGRegistries {
 
     public static final String END_SAND_LIKE = "end_sand_like";
-    public static final String NYLIUM_SOUL_LIKE = "nylium_soul_like";
+    public static final String NYLIUM_SOIL_LIKE = "nylium_soil_like";
+    public static final String NYLIUM_SAND_LIKE = "nylium_sand_like";
     public static final String SCULK_LIKE = "sculk_like";
 
     public static LinkedList<RootyBlock> rootyBlocks;
@@ -41,7 +41,8 @@ public class DTBYGRegistries {
 
     private static void setUpSoils() {
         DirtHelper.createNewAdjective(END_SAND_LIKE);
-        DirtHelper.createNewAdjective(NYLIUM_SOUL_LIKE);
+        DirtHelper.createNewAdjective(NYLIUM_SOIL_LIKE);
+        DirtHelper.createNewAdjective(NYLIUM_SAND_LIKE);
         DirtHelper.createNewAdjective(SCULK_LIKE);
 
         DirtHelper.registerSoil(BYGBlocks.PODZOL_DACITE, DirtHelper.DIRT_LIKE);
@@ -75,8 +76,8 @@ public class DTBYGRegistries {
         DirtHelper.registerSoil(BYGBlocks.BULBIS_PHYCELIUM, DirtHelper.FUNGUS_LIKE);
         DirtHelper.registerSoil(BYGBlocks.NIGHTSHADE_PHYLIUM, DirtHelper.FUNGUS_LIKE);
         DirtHelper.registerSoil(BYGBlocks.SHULKREN_PHYLIUM, DirtHelper.FUNGUS_LIKE);
-        DirtHelper.registerSoil(BYGBlocks.NYLIUM_SOUL_SAND, NYLIUM_SOUL_LIKE);
-        DirtHelper.registerSoil(BYGBlocks.NYLIUM_SOUL_SOIL, NYLIUM_SOUL_LIKE);
+        DirtHelper.registerSoil(BYGBlocks.NYLIUM_SOUL_SAND, NYLIUM_SAND_LIKE);
+        DirtHelper.registerSoil(BYGBlocks.NYLIUM_SOUL_SOIL, NYLIUM_SOIL_LIKE);
         DirtHelper.registerSoil(BYGBlocks.SYTHIAN_NYLIUM, DirtHelper.NETHER_LIKE);
         DirtHelper.registerSoil(BYGBlocks.EMBUR_NYLIUM, DirtHelper.NETHER_LIKE);
         DirtHelper.registerSoil(BYGBlocks.NYLIUM_SOUL_SAND, DirtHelper.NETHER_LIKE);
@@ -122,7 +123,7 @@ public class DTBYGRegistries {
 
     @SubscribeEvent
     public static void registerSpeciesTypes (final TypeRegistryEvent<Species> event) {
-        event.registerType(new ResourceLocation(DynamicTreesBYG.MOD_ID, "poplar"), PoplarSpecies.TYPE);
+        event.registerType(DynamicTreesBYG.resLoc("poplar"), PoplarSpecies.TYPE);
     }
 
     @SubscribeEvent
