@@ -1,8 +1,6 @@
 package maxhyper.dtbyg.cells.cell;
 
-import com.ferreusveritas.dynamictrees.api.cells.ICell;
 import com.ferreusveritas.dynamictrees.cells.MatrixCell;
-import net.minecraft.util.Direction;
 
 public class DeciduousOakCell extends MatrixCell {
 

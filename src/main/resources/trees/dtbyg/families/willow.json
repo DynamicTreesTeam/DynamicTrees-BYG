@@ -1,0 +1,8 @@
+{
+  "common_leaves": "dtbyg:willow",
+  "common_species": "dtbyg:willow",
+  "primitive_log": "byg:willow_log",
+  "primitive_stripped_log": "byg:stripped_willow_log",
+  "max_branch_radius": 24,
+  "generate_surface_root": true
+}

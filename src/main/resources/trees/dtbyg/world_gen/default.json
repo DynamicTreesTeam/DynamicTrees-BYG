@@ -157,6 +157,24 @@
     }
   },
   {
+    "select": "byg:vibrant_swamplands",
+    "cancellers": {
+      "type": "tree",
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "swamp_oak": 4,
+          "dtbyg:willow": 2,
+          "dtbyg:mega_willow": 1
+        }
+      },
+      "density": [ 0.2 ],
+      "chance": 0.75
+    }
+  },
+  {
     "select": {
       "name": "minecraft:.*",
       "category": "beach"

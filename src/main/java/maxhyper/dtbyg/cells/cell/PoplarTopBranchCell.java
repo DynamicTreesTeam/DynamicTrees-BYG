@@ -14,7 +14,7 @@ public class PoplarTopBranchCell implements ICell {
 	
 	@Override
 	public int getValueFromSide(Direction side) {
-		return map[side.ordinal()];
+			return map[side.ordinal()];
 	}
 
 }

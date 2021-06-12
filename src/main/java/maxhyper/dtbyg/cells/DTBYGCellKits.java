@@ -14,7 +14,7 @@ import net.minecraft.util.ResourceLocation;
 public class DTBYGCellKits {
 
     public static void register(final IRegistry<CellKit> registry) {
-        registry.registerAll(SPARSE, POPLAR, DECIDUOUS);
+        registry.registerAll(SPARSE, POPLAR, DECIDUOUS, WILLOW);
     }
 
     public static final CellKit SPARSE = new CellKit(new ResourceLocation(DynamicTreesBYG.MOD_ID, "sparse")) {
@@ -144,4 +144,50 @@ public class DTBYGCellKits {
             return 4;
         }
     };
+
+    // TODO: Still needs some work.
+    public static final CellKit WILLOW = new CellKit(DynamicTreesBYG.resLoc("willow")) {
+
+        private final ICell branch = new WillowBranchCell();
+
+        private final ICell[] willowLeafCells = {
+                CellNull.NULL_CELL,
+                new WillowLeafCell(1),
+                new WillowLeafCell(2),
+                new WillowLeafCell(3),
+                new WillowLeafCell(4),
+                new WillowLeafCell(5),
+                new WillowLeafCell(6),
+                new WillowLeafCell(7)
+        };
+
+        private final CellKits.BasicSolver solver = new CellKits.BasicSolver(new short[]{0x0817, 0x0726, 0x0625, 0x0714, 0x0614, 0x0514, 0x0413, 0x0312, 0x0211});
+
+        @Override
+        public ICell getCellForLeaves(int distance) {
+            return this.willowLeafCells[distance];
+        }
+
+        @Override
+        public ICell getCellForBranch(int radius, int meta) {
+            return radius == 1 ? this.branch : CellNull.NULL_CELL;
+        }
+
+        @Override
+        public ICellSolver getCellSolver() {
+            return this.solver;
+        }
+
+        // TODO: Willow leaf cluster.
+        @Override
+        public SimpleVoxmap getLeafCluster() {
+            return LeafClusters.DECIDUOUS;
+        }
+
+        @Override
+        public int getDefaultHydration() {
+            return 7;
+        }
+    };
+
 }
