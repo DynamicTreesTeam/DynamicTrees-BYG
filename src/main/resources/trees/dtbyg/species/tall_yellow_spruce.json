@@ -1,12 +1,11 @@
 {
   "family": "spruce",
-  "generate_seed": true,
-  "generate_sapling": true,
   "tapering": 0.25,
-  "signal_energy": 16.0,
+  "signal_energy": 20.0,
   "growth_rate": 0.8,
+  "soil_longevity": 12,
   "growth_logic_kit": "conifer",
-  "leaves_properties": "dtbyg:red_spruce",
+  "leaves_properties": "dtbyg:yellow_spruce",
   "environment_factors": {
     "cold": 1.1,
     "hot": 0.2,
@@ -16,11 +15,17 @@
   "seed_drop_rarity": 1.0,
   "stick_drop_rarity": 1.0,
   "perfect_biomes": {
-    "name": "byg:red_spruce_taiga"
+    "name": "byg:.*taiga.*"
   },
-  "primitive_sapling": "byg:red_spruce_sapling",
+  "primitive_sapling": "byg:yellow_spruce_sapling",
   "features" : [
     "conifer_topper",
-    "podzol"
+    "podzol",
+    {
+      "name": "roots",
+      "properties": {
+        "min_trunk_radius": 6
+      }
+    }
   ]
 }

@@ -48,15 +48,52 @@
     "apply": {
       "species": {
         "random": {
-          "dtbyg:aspen": 1,
+          "dtbyg:aspen": 3,
           "dtbyg:red_spruce": 6,
           "dtbyg:yellow_spruce": 6,
           "dtbyg:orange_spruce": 6,
+          "dtbyg:tall_red_spruce": 2,
+          "dtbyg:tall_yellow_spruce": 2,
+          "dtbyg:tall_orange_spruce": 2,
           "spruce": 6
         }
       },
-      "density": 1.0,
-      "chance": 1.0
+      "density": [ 1 ],
+      "chance": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:red_spruce_taiga"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "spruce": 3,
+          "tall_spruce": 3,
+          "dtbyg:red_spruce": 2,
+          "dtbyg:tall_red_spruce": 2
+        }
+      },
+      "density": [ 1 ],
+      "chance": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:blue_taiga.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "spruce": 3,
+          "tall_spruce": 3,
+          "dtbyg:blue_spruce": 2,
+          "dtbyg:tall_blue_spruce": 2
+        }
+      },
+      "density": [ 1 ],
+      "chance": 1
     }
   },
   {

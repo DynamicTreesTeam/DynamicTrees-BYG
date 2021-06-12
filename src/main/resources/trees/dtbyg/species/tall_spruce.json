@@ -22,6 +22,11 @@
     "features" : [
         "conifer_topper",
         "podzol",
-        "roots"
+        {
+            "name": "roots",
+            "properties": {
+                "min_trunk_radius": 6
+            }
+        }
     ]
 }
