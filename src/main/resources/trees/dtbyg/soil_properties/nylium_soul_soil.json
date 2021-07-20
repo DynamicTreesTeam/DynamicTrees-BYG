@@ -1,0 +1,4 @@
+{
+  "primitive_soil": "byg:nylium_soul_soil",
+  "acceptable_soils": [ "nylium_soul_like", "nether_soil_like", "nether_like" ]
+}

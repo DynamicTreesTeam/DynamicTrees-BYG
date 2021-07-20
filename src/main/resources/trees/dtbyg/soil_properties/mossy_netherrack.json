@@ -1,0 +1,5 @@
+{
+  "type": "dtbyg:offset_tint",
+  "primitive_soil": "byg:mossy_netherrack",
+  "acceptable_soils": [ "nether_like" ]
+}

@@ -1,0 +1,4 @@
+{
+  "primitive_soil": "byg:pink_sand",
+  "acceptable_soils": [ "sand_like" ]
+}

@@ -1,0 +1,4 @@
+{
+  "primitive_soil": "byg:mycelium_netherrack",
+  "acceptable_soils": [ "fungus_like", "nether_like" ]
+}

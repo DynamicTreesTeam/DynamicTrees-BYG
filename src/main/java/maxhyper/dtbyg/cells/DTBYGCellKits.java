@@ -51,6 +51,40 @@ public class DTBYGCellKits {
 
     };
 
+    public static final CellKit SMALL_DECIDUOUS = new CellKit(new ResourceLocation(DynamicTreesBYG.MOD_ID, "small_deciduous")) {
+
+        private final ICell sparseBranch = new NormalCell(4);
+        private final ICell sparseLeaves = new NormalCell(1);
+
+        private final ICellSolver solver = new CellKits.BasicSolver(new short[] {0x0211});
+
+        @Override
+        public ICell getCellForLeaves(int hydro) {
+            return hydro > 0 ? sparseLeaves : CellNull.NULL_CELL;
+        }
+
+        @Override
+        public ICell getCellForBranch(int radius, int meta) {
+            return radius == 1 ? sparseBranch : CellNull.NULL_CELL;
+        }
+
+        @Override
+        public SimpleVoxmap getLeafCluster() {
+            return DTBYGLeafClusters.SPARSE;
+        }
+
+        @Override
+        public ICellSolver getCellSolver() {
+            return solver;
+        }
+
+        @Override
+        public int getDefaultHydration() {
+            return 1;
+        }
+
+    };
+
     public static final CellKit POPLAR = new CellKit(new ResourceLocation(DynamicTreesBYG.MOD_ID, "poplar")) {
 
         private final ICell poplarBranch = new PoplarBranchCell();
@@ -71,7 +105,7 @@ public class DTBYGCellKits {
 
         @Override
         public ICell getCellForLeaves(int hydro) {
-            return poplarLeaves[hydro];
+            return poplarLeaves[Math.max(hydro, 4)];
         }
 
         @Override

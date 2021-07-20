@@ -1,0 +1,4 @@
+{
+  "primitive_soil": "byg:ether_phylium",
+  "acceptable_soils": [ "dirt_like", "fungus_like" ]
+}

@@ -1,0 +1,4 @@
+{
+  "primitive_soil": "byg:vermilion_sculk",
+  "acceptable_soils": [ "sculk_like" ]
+}

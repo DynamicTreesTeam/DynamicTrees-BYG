@@ -219,7 +219,7 @@
     "apply": {
       "species": "dtbyg:palm",
       "density": [ 0.3 ],
-      "chance": 0.7
+      "chance": 0.2
     }
   },
   {

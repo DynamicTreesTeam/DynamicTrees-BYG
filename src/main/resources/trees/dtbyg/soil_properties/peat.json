@@ -1,0 +1,4 @@
+{
+  "primitive_soil": "byg:peat",
+  "acceptable_soils": [ "dirt_like", "mud_like" ]
+}
