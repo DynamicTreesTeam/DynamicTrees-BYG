@@ -1,0 +1,7 @@
+{
+  "type": "dtbyg:twiglet",
+  "family": "dtbyg:ether",
+  "leaves_properties": "dtbyg:ether_twiglet",
+  "perfect_biomes": {"name": "byg:ethereal.*"},
+  "acceptable_soils": ["dirt_like", "end_soil_like"]
+}

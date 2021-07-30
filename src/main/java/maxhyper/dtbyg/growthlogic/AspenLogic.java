@@ -28,12 +28,12 @@ public class AspenLogic extends GrowthLogicKit {
 
         // Allow for turning if in trunk, otherwise reinforce current travel direction
         if (signal.isInTrunk()) {
-            // Make it so every 2 blocks the trunk has a higher chance of branching out
-
-            // Choose a random direction to do the branch
-            int directionSelection = Math.abs(CoordUtils.coordHashCode(pos, 2)) % 4;
-
-            probMap[2 + directionSelection] = (signal.numSteps % 2 == 0) ? 3 : 0;
+            // Make it so every 2 blocks the trunk has a higher chance of branching out, except at the tip
+            if (radius > 1){
+                // Choose a random direction to do the branch
+                int directionSelection = Math.abs(CoordUtils.coordHashCode(pos, 2)) % 4;
+                probMap[2 + directionSelection] = (signal.numSteps % 2 == 0) ? 3 : 0;
+            }
         } else {
             // If we're twig or small branch, don't grow up or down
             if (radius < 3) {

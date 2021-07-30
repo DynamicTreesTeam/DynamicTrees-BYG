@@ -1,0 +1,8 @@
+{
+  "common_leaves": "dtbyg:fir",
+  "common_species": "dtbyg:fir",
+  "primitive_log": "byg:fir_log",
+  "primitive_stripped_log": "byg:stripped_fir_log",
+  "max_branch_radius": 24,
+  "conifer_variants": true
+}

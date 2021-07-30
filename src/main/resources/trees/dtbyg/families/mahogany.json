@@ -1,0 +1,8 @@
+{
+  "common_leaves": "dtbyg:mahogany",
+  "common_species": "dtbyg:mahogany",
+  "primitive_log": "byg:mahogany_log",
+  "primitive_stripped_log": "byg:stripped_mahogany_log",
+  "max_branch_radius": 24,
+  "generate_surface_root": true
+}

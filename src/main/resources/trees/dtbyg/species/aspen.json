@@ -11,11 +11,11 @@
     "dry": 0.4,
     "forest": 0.9
   },
-  "seed_drop_rarity": 1.0,
-  "stick_drop_rarity": 1.0,
   "perfect_biomes": {
     "name": "byg:aspen.*"
   },
   "primitive_sapling": "byg:aspen_sapling",
-  "features": []
+  "features" : [
+    "conifer_topper"
+  ]
 }

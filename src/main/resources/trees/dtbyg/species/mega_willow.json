@@ -10,8 +10,6 @@
     "cold": 0.5,
     "dry": 0.5
   },
-  "seed_drop_rarity": 1.0,
-  "stick_drop_rarity": 1.0,
   "perfect_biomes": { "type": "swamp" },
   "primitive_sapling": "byg:willow_sapling",
   "acceptable_soils": ["dirt_like", "water_like"],

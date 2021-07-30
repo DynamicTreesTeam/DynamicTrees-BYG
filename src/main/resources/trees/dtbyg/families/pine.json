@@ -1,0 +1,8 @@
+{
+  "common_leaves": "dtbyg:pine",
+  "common_species": "dtbyg:pine",
+  "primitive_log": "byg:pine_log",
+  "primitive_stripped_log": "byg:stripped_pine_log",
+  "max_branch_radius": 8,
+  "conifer_variants": true
+}

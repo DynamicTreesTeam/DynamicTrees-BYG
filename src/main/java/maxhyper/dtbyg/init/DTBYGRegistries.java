@@ -23,6 +23,7 @@ import maxhyper.dtbyg.cells.DTBYGCellKits;
 import maxhyper.dtbyg.growthlogic.DTBYGGrowthLogicKits;
 import maxhyper.dtbyg.trees.EtherSpecies;
 import maxhyper.dtbyg.trees.PoplarSpecies;
+import maxhyper.dtbyg.trees.TwigletSpecies;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
@@ -80,6 +81,7 @@ public class DTBYGRegistries {
     public static void registerSpeciesTypes (final TypeRegistryEvent<Species> event) {
         event.registerType(DynamicTreesBYG.resLoc("poplar"), PoplarSpecies.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("ether"), EtherSpecies.TYPE);
+        event.registerType(DynamicTreesBYG.resLoc("twiglet"), TwigletSpecies.TYPE);
     }
 
     @SubscribeEvent

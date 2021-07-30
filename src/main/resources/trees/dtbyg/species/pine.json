@@ -1,0 +1,19 @@
+{
+  "family": "dtbyg:pine",
+  "tapering": 0.2,
+  "signal_energy": 28.0,
+  "up_probability": 10,
+  "lowest_branch_height": 7,
+  "growth_rate": 0.9,
+  "growth_logic_kit": "dtbyg:pine_conifer",
+  "leaves_properties": "dtbyg:pine",
+  "environment_factors" : {
+    "hot": 0.50,
+    "wet": 0.75
+  },
+  "perfect_biomes": { "type": "coniferous" },
+  "primitive_sapling": "byg:pine_sapling",
+  "features" : [
+    "conifer_topper"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "common_leaves": "dtbyg:baobab",
+  "common_species": "dtbyg:baobab",
+  "primitive_log": "byg:baobab_log",
+  "primitive_stripped_log": "byg:stripped_baobab_log",
+  "max_branch_radius": 24
+}

@@ -1,0 +1,8 @@
+{
+  "common_leaves": "dtbyg:zelkova",
+  "common_species": "dtbyg:zelkova",
+  "primitive_log": "byg:zelkova_log",
+  "primitive_stripped_log": "byg:stripped_zelkova_log",
+  "max_branch_radius": 8,
+  "conifer_variants": true
+}

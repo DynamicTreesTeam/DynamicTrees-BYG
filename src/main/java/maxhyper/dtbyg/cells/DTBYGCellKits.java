@@ -14,46 +14,12 @@ import net.minecraft.util.ResourceLocation;
 public class DTBYGCellKits {
 
     public static void register(final IRegistry<CellKit> registry) {
-        registry.registerAll(SPARSE, POPLAR, DECIDUOUS, WILLOW);
+        registry.registerAll(SPARSE, POPLAR, DECIDUOUS, SMALL_DECIDUOUS, WILLOW);
     }
 
     public static final CellKit SPARSE = new CellKit(new ResourceLocation(DynamicTreesBYG.MOD_ID, "sparse")) {
 
         private final ICell sparseBranch = new SparseBranchCell();
-        private final ICell sparseLeaves = new NormalCell(1);
-
-        private final ICellSolver solver = new CellKits.BasicSolver(new short[] {0x0211});
-
-        @Override
-        public ICell getCellForLeaves(int hydro) {
-            return hydro > 0 ? sparseLeaves : CellNull.NULL_CELL;
-        }
-
-        @Override
-        public ICell getCellForBranch(int radius, int meta) {
-            return radius == 1 ? sparseBranch : CellNull.NULL_CELL;
-        }
-
-        @Override
-        public SimpleVoxmap getLeafCluster() {
-            return DTBYGLeafClusters.SPARSE;
-        }
-
-        @Override
-        public ICellSolver getCellSolver() {
-            return solver;
-        }
-
-        @Override
-        public int getDefaultHydration() {
-            return 1;
-        }
-
-    };
-
-    public static final CellKit SMALL_DECIDUOUS = new CellKit(new ResourceLocation(DynamicTreesBYG.MOD_ID, "small_deciduous")) {
-
-        private final ICell sparseBranch = new NormalCell(4);
         private final ICell sparseLeaves = new NormalCell(1);
 
         private final ICellSolver solver = new CellKits.BasicSolver(new short[] {0x0211});
@@ -105,7 +71,7 @@ public class DTBYGCellKits {
 
         @Override
         public ICell getCellForLeaves(int hydro) {
-            return poplarLeaves[Math.max(hydro, 4)];
+            return poplarLeaves[hydro];
         }
 
         @Override
@@ -136,7 +102,7 @@ public class DTBYGCellKits {
     public static final CellKit DECIDUOUS = new CellKit(new ResourceLocation(DynamicTreesBYG.MOD_ID, "deciduous")) {
         private final ICell branch = new ConiferBranchCell();
 
-        private final ICell[] coniferLeafCells = {
+        private final ICell[] deciduousOakLeafCells = {
                 CellNull.NULL_CELL,
                 new DeciduousOakCell(1),
                 new DeciduousOakCell(2),
@@ -151,7 +117,7 @@ public class DTBYGCellKits {
 
         @Override
         public ICell getCellForLeaves(int hydro) {
-            return coniferLeafCells[hydro];
+            return deciduousOakLeafCells[hydro];
         }
 
         @Override
@@ -177,6 +143,40 @@ public class DTBYGCellKits {
         public int getDefaultHydration() {
             return 4;
         }
+    };
+
+    public static final CellKit SMALL_DECIDUOUS = new CellKit(new ResourceLocation(DynamicTreesBYG.MOD_ID, "small_deciduous")) {
+
+        private final ICell sparseBranch = new NormalCell(4);
+        private final ICell sparseLeaves = new NormalCell(1);
+
+        private final ICellSolver solver = new CellKits.BasicSolver(new short[] {0x0211});
+
+        @Override
+        public ICell getCellForLeaves(int hydro) {
+            return hydro > 0 ? sparseLeaves : CellNull.NULL_CELL;
+        }
+
+        @Override
+        public ICell getCellForBranch(int radius, int meta) {
+            return radius == 1 ? sparseBranch : CellNull.NULL_CELL;
+        }
+
+        @Override
+        public SimpleVoxmap getLeafCluster() {
+            return DTBYGLeafClusters.SPARSE;
+        }
+
+        @Override
+        public ICellSolver getCellSolver() {
+            return solver;
+        }
+
+        @Override
+        public int getDefaultHydration() {
+            return 1;
+        }
+
     };
 
     // TODO: Still needs some work.

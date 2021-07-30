@@ -1,0 +1,18 @@
+{
+  "family": "dtbyg:ether",
+  "tapering": 0.125,
+  "signal_energy": 24.0,
+  "growth_rate": 0.8,
+  "leaves_properties": "dtbyg:ether",
+  "growth_logic_kit": "dtbyg:ether",
+  "environment_factors": {
+    "cold": 1.1,
+    "hot": 0.2,
+    "dry": 0.4,
+    "forest": 0.9
+  },
+  "perfect_biomes": {
+    "name": "byg:ethereal.*"
+  },
+  "acceptable_soils": ["dirt_like", "end_soil_like"]
+}

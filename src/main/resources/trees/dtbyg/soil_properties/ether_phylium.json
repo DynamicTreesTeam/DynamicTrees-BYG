@@ -1,4 +1,4 @@
 {
   "primitive_soil": "byg:ether_phylium",
-  "acceptable_soils": [ "dirt_like", "fungus_like" ]
+  "acceptable_soils": [ "dirt_like", "fungus_like", "end_soil_like" ]
 }
