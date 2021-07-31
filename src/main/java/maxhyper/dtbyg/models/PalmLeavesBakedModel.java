@@ -51,7 +51,7 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
                     new BlockVertexData(0, 1, 3, 15, 0)
             };
 
-            for (int pass = 0; pass < 4; pass++) {
+            for (int pass = 0; pass < 3; pass++) {
                 for (int half = 0; half < 2; half++) {
 
                     BlockVertexData[] outData = new BlockVertexData[8];
@@ -85,16 +85,16 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
                         angle = Math.atan2(y, z);
                         switch (pass){
                             case 0:
-                                mult = -0.29;
+                                mult = -0.26;
                                 break;
                             case 1:
-                                mult = -0.06;
+                                mult = -0.05;
                                 break;
+//                            case 2:
+//                                mult = 0.04;
+//                                break;
                             case 2:
-                                mult = 0.16;
-                                break;
-                            case 3:
-                                mult = 0.32;
+                                mult = 0.12;
                                 break;
                             default:
                                 mult = 0;
@@ -103,6 +103,9 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
                         y = (float) (Math.sin(angle) * len);
                         z = (float) (Math.cos(angle) * len);
 
+                        // offset the top leaves to make the canopy less cylindrical
+                        if (pass == 2)
+                            z -= 0.4;
 
                         // Rotate the vertex around x0,z0
                         // Rotate on y axis
@@ -110,7 +113,7 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
                         angle = Math.atan2(x, z);
                         switch (pass){
                             default:
-                            case 3:
+//                            case 3:
                             case 0:
                                 mult = 0;
                                 break;
@@ -157,7 +160,7 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
                             outData[3].toInts(frondsTexture)
                     );
                     builder.addUnculledFace(new BakedQuad(vertices,
-                            0, FaceBakery.calculateFacing(vertices), frondsTexture, false)
+                            0, FaceBakery.calculateFacing(vertices), frondsTexture, true)
                     );
 
                     vertices = Ints.concat(
@@ -167,7 +170,7 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
                             outData[7].toInts(frondsTexture)
                     );
                     builder.addUnculledFace(new BakedQuad(vertices,
-                            0, FaceBakery.calculateFacing(vertices), frondsTexture, false)
+                            0, FaceBakery.calculateFacing(vertices), frondsTexture, true)
                     );
 
 

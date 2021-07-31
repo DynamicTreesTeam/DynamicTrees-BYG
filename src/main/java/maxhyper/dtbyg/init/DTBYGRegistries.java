@@ -13,7 +13,9 @@ import com.ferreusveritas.dynamictrees.blocks.rootyblocks.WaterSoilProperties;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
 import com.ferreusveritas.dynamictrees.init.DTConfigs;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.FruitDropCreator;
+import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
+import com.ferreusveritas.dynamictrees.trees.families.NetherFungusFamily;
 import com.ferreusveritas.dynamictrees.util.ShapeUtils;
 import corgiaoc.byg.core.BYGBlocks;
 import maxhyper.dtbyg.DynamicTreesBYG;
@@ -21,9 +23,7 @@ import maxhyper.dtbyg.blocks.BYGTintedSoilProperties;
 import maxhyper.dtbyg.blocks.EtherBulbsFruitBlock;
 import maxhyper.dtbyg.cells.DTBYGCellKits;
 import maxhyper.dtbyg.growthlogic.DTBYGGrowthLogicKits;
-import maxhyper.dtbyg.trees.EtherSpecies;
-import maxhyper.dtbyg.trees.PoplarSpecies;
-import maxhyper.dtbyg.trees.TwigletSpecies;
+import maxhyper.dtbyg.trees.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
@@ -82,6 +82,11 @@ public class DTBYGRegistries {
         event.registerType(DynamicTreesBYG.resLoc("poplar"), PoplarSpecies.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("ether"), EtherSpecies.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("twiglet"), TwigletSpecies.TYPE);
+    }
+    
+    @SubscribeEvent
+    public static void registerFamilyTypes (final TypeRegistryEvent<Family> event) {
+        event.registerType(DynamicTreesBYG.resLoc("diagonal_palm"), DiagonalPalmFamily.TYPE);
     }
 
     @SubscribeEvent

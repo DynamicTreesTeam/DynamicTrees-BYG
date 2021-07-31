@@ -1,9 +1,10 @@
 {
   "type": "palm",
   "family": "dtbyg:palm",
-  "tapering": 0.5,
-  "signal_energy": 8.0,
+  "tapering": 0.2,
+  "signal_energy": 10.0,
   "growth_rate": 0.8,
+  "soil_longevity": 2,
   "growth_logic_kit": "dtbyg:diagonal_palm",
   "leaves_properties": "dtbyg:palm",
   "environment_factors" : {
