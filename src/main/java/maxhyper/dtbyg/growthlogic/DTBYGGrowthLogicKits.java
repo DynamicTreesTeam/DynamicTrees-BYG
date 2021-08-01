@@ -14,14 +14,16 @@ public class DTBYGGrowthLogicKits {
     public static final GrowthLogicKit MAPLE = new MapleLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "maple"));
     public static final GrowthLogicKit ASPEN = new AspenLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "aspen"));
     public static final GrowthLogicKit DECIDUOUS = new DeciduousOakLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "deciduous"));
+    public static final GrowthLogicKit DIAGONAL_PALM = new DiagonalPalmLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "diagonal_palm"));
     public static final GrowthLogicKit TALL_CONIFER = new ConiferLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "tall_conifer"), 4);
     public static final GrowthLogicKit NORTHERN_CONIFER = new ConiferLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "northern_conifer"), 10).setHorizontalLimiter(2);
-    public static final GrowthLogicKit PINE_CONIFER = new PineLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "pine_conifer"));
-    public static final GrowthLogicKit DIAGONAL_PALM = new DiagonalPalmLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "diagonal_palm"));
-
+    public static final GrowthLogicKit THIN_CONIFER = new PineLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "thin_conifer"));
+    public static final GrowthLogicKit MEGA_PINE = new MegaPineLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "mega_pine"));
+    public static final GrowthLogicKit MEGA_FIR = new ConiferLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "mega_fir"),4.5f).setHeightVariation(8);
 
     public static void register(final IRegistry<GrowthLogicKit> registry) {
-        registry.registerAll(POPLAR, PRAIRIE, MEGA_PRAIRIE, MAPLE, ASPEN, DECIDUOUS, TALL_CONIFER, NORTHERN_CONIFER, PINE_CONIFER, DIAGONAL_PALM);
+        registry.registerAll(POPLAR, MEGA_PRAIRIE, MAPLE, ASPEN, DECIDUOUS, DIAGONAL_PALM,
+                TALL_CONIFER, NORTHERN_CONIFER, THIN_CONIFER, MEGA_PINE, MEGA_FIR);
     }
 
 }

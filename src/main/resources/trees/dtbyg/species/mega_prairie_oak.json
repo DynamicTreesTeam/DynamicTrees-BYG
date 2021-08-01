@@ -1,14 +1,13 @@
 {
   "family": "oak",
-  "tapering": 0.4,
-  "signal_energy": 28.0,
-  "up_probability": 6,
-  "lowest_branch_height": 5,
-  "growth_rate": 1.2,
+  "tapering": 0.25,
+  "signal_energy": 32.0,
+  "up_probability": 2,
+  "lowest_branch_height": 9,
+  "growth_rate": 1.5,
   "soil_longevity": 16,
   "max_branch_radius": 24,
   "leaves_properties": "oak",
-  "growth_logic_kit": "dtbyg:mega_prairie",
   "environment_factors" : {
     "cold": 0.75,
     "hot": 0.5,
@@ -18,7 +17,6 @@
   "perfect_biomes": {
     "name": "byg:prairie.*"
   },
-  "primitive_sapling": "oak_sapling",
   "features" : [
     {
       "name": "rot_soil",
@@ -26,7 +24,11 @@
         "rotted_soil": "podzol"
       }
     },
+    "bottom_flare",
+    "roots",
+    "mound",
     "mushroom_rot",
-    "bee_nest"
+    "bee_nest",
+    "podzol"
   ]
 }

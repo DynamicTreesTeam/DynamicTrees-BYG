@@ -19,7 +19,7 @@ public class MegaPrairieOakLogic extends PrairieOakLogic {
 
         // Can't grow down, set it's chance to 0
         probMap[0] = 0;
-
+        probMap[1] = species.getUpProbability();
         // If we're in the trunk, have a higher chance of branching out. If not, then lower chance
         probMap[2] = probMap[3] = probMap[4] = probMap[5] = signal.isInTrunk() ? 7 : 4;
 
@@ -31,11 +31,10 @@ public class MegaPrairieOakLogic extends PrairieOakLogic {
 
     @Override
     public Direction newDirectionSelected(Species species, Direction newDir, GrowSignal signal) {
-        if (!signal.isInTrunk()) {
-            if (signal.energy >= 3.5f) {
-                // Increase energy when not in the trunk, to encourage branching out.
-                signal.energy *= 2.25;
-            }
+        //signal is about to branch out
+        if (signal.isInTrunk() && newDir != Direction.UP){
+            // Increase energy, to encourage bigger branch-out.
+            signal.energy *= 2.25;
         }
 
         return newDir;

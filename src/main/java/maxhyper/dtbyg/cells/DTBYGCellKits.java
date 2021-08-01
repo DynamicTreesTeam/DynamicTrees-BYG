@@ -1,6 +1,5 @@
 package maxhyper.dtbyg.cells;
 
-import com.ferreusveritas.dynamictrees.DynamicTrees;
 import com.ferreusveritas.dynamictrees.api.cells.CellKit;
 import com.ferreusveritas.dynamictrees.api.cells.CellNull;
 import com.ferreusveritas.dynamictrees.api.cells.ICell;
@@ -12,6 +11,7 @@ import maxhyper.dtbyg.DynamicTreesBYG;
 import maxhyper.dtbyg.cells.cell.*;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 
 public class DTBYGCellKits {
 

@@ -1,0 +1,8 @@
+{
+  "common_leaves": "dtbyg:holly",
+  "common_species": "dtbyg:holly",
+  "primitive_log": "byg:holly_log",
+  "primitive_stripped_log": "byg:stripped_holly_log",
+  "max_branch_radius": 24,
+  "conifer_variants": true
+}

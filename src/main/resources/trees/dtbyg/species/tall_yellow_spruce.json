@@ -8,6 +8,7 @@
   "soil_longevity": 8,
   "growth_logic_kit": "dtbyg:tall_conifer",
   "leaves_properties": "dtbyg:yellow_spruce",
+  "use_seed_of_other_species": "dtbyg:yellow_spruce",
   "environment_factors": {
     "cold": 1.1,
     "hot": 0.2,
@@ -23,7 +24,8 @@
     {
       "name": "roots",
       "properties": {
-        "min_trunk_radius": 8
+        "min_trunk_radius": 8,
+        "scale_factor": 12
       }
     },
     "bottom_flare"

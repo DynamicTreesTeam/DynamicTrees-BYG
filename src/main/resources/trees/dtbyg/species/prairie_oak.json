@@ -3,8 +3,8 @@
   "tapering": 0.25,
   "signal_energy": 14.0,
   "growth_rate": 0.8,
+  "lowest_branch_height": 4,
   "leaves_properties": "oak",
-  "growth_logic_kit": "dtbyg:prairie",
   "environment_factors" : {
     "cold": 0.75,
     "hot": 0.5,
@@ -17,7 +17,6 @@
   "common_override": {
     "name": "byg:prairie.*"
   },
-  "primitive_sapling": "oak_sapling",
   "mega_species": "dtbyg:mega_prairie_oak",
   "features" : [
     {
@@ -26,6 +25,15 @@
         "rotted_soil": "podzol"
       }
     },
+    {
+      "name": "roots",
+      "properties": {
+        "min_trunk_radius": 8,
+        "scale_factor": 16
+      }
+    },
+    "bottom_flare",
+    "mound",
     "mushroom_rot",
     "bee_nest"
   ]

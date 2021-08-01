@@ -5,7 +5,7 @@
   "up_probability": 10,
   "lowest_branch_height": 7,
   "growth_rate": 0.9,
-  "growth_logic_kit": "dtbyg:pine_conifer",
+  "growth_logic_kit": "dtbyg:thin_conifer",
   "leaves_properties": "dtbyg:pine",
   "environment_factors" : {
     "hot": 0.50,
@@ -13,6 +13,7 @@
   },
   "perfect_biomes": { "type": "coniferous" },
   "primitive_sapling": "byg:pine_sapling",
+  "mega_species": "dtbyg:mega_pine",
   "features" : [
     "conifer_topper"
   ]

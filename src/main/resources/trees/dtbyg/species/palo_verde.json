@@ -1,9 +1,9 @@
 {
   "family": "dtbyg:palo_verde",
-  "tapering": 0.15,
-  "signal_energy": 12.0,
-  "up_probability": 0,
-  "lowest_branch_height": 3,
+  "tapering": 0.1,
+  "signal_energy": 10.0,
+  "up_probability": 2,
+  "lowest_branch_height": 2,
   "growth_rate": 0.7,
   "leaves_properties": "dtbyg:palo_verde",
   "environment_factors" : {
@@ -16,5 +16,13 @@
   },
   "primitive_sapling": "byg:palo_verde_sapling",
   "acceptable_soils": ["dirt_like", "terracotta_like" ],
-  "features": []
+  "features" : [
+    {
+      "name": "alt_leaves",
+      "properties": {
+        "alternative_leaves": "dtbyg:flowering_palo_verde",
+        "place_chance": 0.15
+      }
+    }
+  ]
 }

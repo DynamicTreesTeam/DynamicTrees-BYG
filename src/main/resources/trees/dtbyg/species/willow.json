@@ -11,6 +11,7 @@
   "perfect_biomes": { "type": "swamp" },
   "primitive_sapling": "byg:willow_sapling",
   "acceptable_soils": ["dirt_like", "water_like"],
+  "mega_species": "dtbyg:mega_willow",
   "features": [
     {
       "name": "roots",

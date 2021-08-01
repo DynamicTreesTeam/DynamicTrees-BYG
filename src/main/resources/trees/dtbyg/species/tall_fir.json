@@ -1,8 +1,8 @@
 {
   "family": "dtbyg:fir",
   "tapering": 0.25,
-  "signal_energy": 24.0,
-  "up_probability": 4,
+  "signal_energy": 28.0,
+  "up_probability": 8,
   "lowest_branch_height": 12,
   "growth_rate": 1.1,
   "growth_logic_kit": "conifer",

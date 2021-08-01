@@ -13,6 +13,7 @@ import com.ferreusveritas.dynamictrees.blocks.rootyblocks.WaterSoilProperties;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
 import com.ferreusveritas.dynamictrees.init.DTConfigs;
 import com.ferreusveritas.dynamictrees.systems.dropcreators.FruitDropCreator;
+import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
 import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.trees.families.NetherFungusFamily;
@@ -22,6 +23,7 @@ import maxhyper.dtbyg.DynamicTreesBYG;
 import maxhyper.dtbyg.blocks.BYGTintedSoilProperties;
 import maxhyper.dtbyg.blocks.EtherBulbsFruitBlock;
 import maxhyper.dtbyg.cells.DTBYGCellKits;
+import maxhyper.dtbyg.genfeatures.DTBYGGenFeatures;
 import maxhyper.dtbyg.growthlogic.DTBYGGrowthLogicKits;
 import maxhyper.dtbyg.trees.*;
 import net.minecraft.block.Block;
@@ -65,6 +67,11 @@ public class DTBYGRegistries {
 
     private static void setupConnectables() {
 
+    }
+
+    @SubscribeEvent
+    public static void onGenFeatureRegistry (final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<GenFeature> event) {
+        DTBYGGenFeatures.register(event.getRegistry());
     }
 
     @SubscribeEvent

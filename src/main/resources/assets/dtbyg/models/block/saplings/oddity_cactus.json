@@ -1,5 +1,5 @@
 {
-  "parent": "dynamictreesplus:block/saplings/cactus",
+  "parent": "dynamictreesplus:block/saplings/saguaro_cactus",
   "textures": {
     "particle": "byg:block/oddity_cactus_side",
     "side": "byg:block/oddity_cactus_side",
