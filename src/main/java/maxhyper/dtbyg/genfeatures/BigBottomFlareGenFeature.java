@@ -10,9 +10,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 
-public class BottomBigFlareGenFeature extends BottomFlareGenFeature {
+public class BigBottomFlareGenFeature extends BottomFlareGenFeature {
 
-    public BottomBigFlareGenFeature(ResourceLocation registryName) {
+    public BigBottomFlareGenFeature(ResourceLocation registryName) {
         super(registryName);
     }
 
