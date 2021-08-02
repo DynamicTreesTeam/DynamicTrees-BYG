@@ -8,6 +8,7 @@
   "soil_longevity": 16,
   "max_branch_radius": 24,
   "leaves_properties": "dtbyg:brown_oak",
+  "use_seed_of_other_species": "dtbyg:brown_oak",
   "environment_factors" : {
     "cold": 0.75,
     "hot": 0.5,

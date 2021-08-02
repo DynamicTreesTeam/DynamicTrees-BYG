@@ -9,9 +9,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class PoplarLogic extends GrowthLogicKit {
-
-    public PoplarLogic(ResourceLocation registryName) {
+public class EbonyLogic extends GrowthLogicKit {
+    public EbonyLogic(ResourceLocation registryName) {
         super(registryName);
     }
 
@@ -19,34 +18,31 @@ public class PoplarLogic extends GrowthLogicKit {
     public int[] directionManipulation(World world, BlockPos pos, Species species, int radius, GrowSignal signal, int[] probMap) {
         Direction originDir = signal.dir.getOpposite();
 
-        // Alter probability map for direction change
-        probMap[0] = signal.isInTrunk() ? 0 : 1;
-        probMap[1] = signal.isInTrunk() ? 4 : 1;
-        probMap[2] = probMap[3] = probMap[4] = probMap[5] = (((signal.isInTrunk() && signal.numSteps % 2 == 0) || !signal.isInTrunk()) && signal.energy < 8) ? 2 : 0;
-        probMap[originDir.ordinal()] = 0; // Disable the direction we came from
-        probMap[signal.dir.ordinal()] += (signal.isInTrunk() ? 0 : signal.numTurns == 1 ? 2 : 1); // Favor current travel direction
+        probMap[0] = 1;
+        probMap[1] = species.getUpProbability();
+        // If we're in the trunk, have a higher chance of branching out. If not, then lower chance
+        probMap[2] = probMap[3] = probMap[4] = probMap[5] = signal.isInTrunk() ? 1 : species.getUpProbability();
+
+        // Disable the direction we came from
+        probMap[originDir.ordinal()] = 0;
 
         return probMap;
     }
 
     @Override
     public Direction newDirectionSelected(Species species, Direction newDir, GrowSignal signal) {
-        if (signal.isInTrunk() && newDir != Direction.UP) { // Turned out of trunk
-            if (signal.energy >= 4f) {
-                signal.energy = 1.8f; // don't grow branches more than 1 block out from the trunk
-            } else if (signal.energy < 5) {
-                signal.energy = 0.8f; // don't grow branches, only leaves
-            } else {
-                signal.energy = 0; // don't grow branches or leaves
-            }
+        //signal is about to branch out
+        if (signal.isInTrunk() && newDir != Direction.UP){
+            // Increase energy, to encourage bigger branch-out.
+            signal.energy *= 2.25;
         }
+
         return newDir;
     }
-
     private float getHashedVariation (World world, BlockPos pos){
         long day = world.getGameTime() / 24000L;
         int month = (int)day / 30;//Change the hashs every in-game month
-        return (CoordUtils.coordHashCode(pos.above(month), 2) % 3);//Vary the height energy by a psuedorandom hash function
+        return (CoordUtils.coordHashCode(pos.above(month), 2) % 8);//Vary the height energy by a psuedorandom hash function
     }
 
     @Override

@@ -8,8 +8,7 @@
   "environment_factors" : {
     "cold": 0.75,
     "hot": 0.5,
-    "dry": 0.5,
-    "forest": 1.05
+    "dry": 0.5
   },
   "perfect_biomes": {
     "name": "byg:prairie.*"

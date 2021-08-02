@@ -1,5 +1,5 @@
 {
-  "primitive_leaves": "byg:zelkova_leaves",
+  "primitive_leaves": "spruce_leaves",
   "cell_kit": "dynamictrees:conifer",
   "smother": 20,
   "light_requirement": 11

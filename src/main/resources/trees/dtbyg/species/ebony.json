@@ -1,0 +1,31 @@
+{
+  "family": "dtbyg:ebony",
+  "tapering": 0.35,
+  "signal_energy": 38.0,
+  "up_probability": 4,
+  "lowest_branch_height": 7,
+  "growth_rate": 1.4,
+  "soil_longevity": 20,
+  "leaves_properties": "dtbyg:ebony",
+  "growth_logic_kit": "dtbyg:ebony",
+  "environment_factors": {
+    "cold": 0.9,
+    "hot": 0.75,
+    "dry": 0.8
+  },
+  "perfect_biomes": {
+    "name": ".*ebony.*"
+  },
+  "primitive_sapling": "byg:ebony_sapling",
+  "features": [
+    {
+      "name": "roots",
+      "properties": {
+        "min_trunk_radius": 8,
+        "scale_factor": 24
+      }
+    },
+    "dtbyg:big_bottom_flare",
+    "mound"
+  ]
+}

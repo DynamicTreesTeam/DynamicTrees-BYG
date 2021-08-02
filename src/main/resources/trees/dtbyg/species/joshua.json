@@ -1,0 +1,32 @@
+{
+  "family": "oak",
+  "tapering": 0.3,
+  "signal_energy": 12.0,
+  "growth_rate": 0.8,
+  "leaves_properties": "dtbyg:joshua",
+  "generate_seed": true,
+  "generate_sapling": true,
+  "environment_factors" : {
+    "wet": 0.75,
+    "cold": 0.75
+  },
+  "perfect_biomes": { "types": [ "desert", "overworld" ] },
+  "primitive_sapling": "byg:joshua_sapling",
+  "acceptable_soils": ["dirt_like", "sand_like"],
+  "features" : [
+    {
+      "name": "rot_soil",
+      "properties": {
+        "rotten_soil": "podzol"
+      }
+    },
+    "mushroom_rot",
+    {
+      "name": "fruit",
+      "properties": {
+        "fruit_block": "dtbyg:joshua_fruit",
+        "quantity": 8
+      }
+    }
+  ]
+}

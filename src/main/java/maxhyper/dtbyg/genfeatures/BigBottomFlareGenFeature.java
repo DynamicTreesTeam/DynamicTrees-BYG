@@ -16,22 +16,23 @@ public class BigBottomFlareGenFeature extends BottomFlareGenFeature {
         super(registryName);
     }
 
+    private static final int[] curve = {0,9,8,6,4,2,1};
+
     @Override
     public void flareBottom(ConfiguredGenFeature<?> configuredGenFeature, IWorld world, BlockPos rootPos, Species species) {
         Family family = species.getFamily();
 
-        //Put a big fat flare for trees like ebony
-        int radius8 = TreeHelper.getRadius(world, rootPos.above(8));
-
-        if(radius8 > configuredGenFeature.get(MIN_RADIUS)) {
-            family.getBranch().setRadius(world, rootPos.above(7), radius8 + 1, Direction.UP);
-            family.getBranch().setRadius(world, rootPos.above(6), radius8 + 2, Direction.UP);
-            family.getBranch().setRadius(world, rootPos.above(5), radius8 + 4, Direction.UP);
-            family.getBranch().setRadius(world, rootPos.above(4), radius8 + 6, Direction.UP);
-            family.getBranch().setRadius(world, rootPos.above(3), radius8 + 8, Direction.UP);
-            family.getBranch().setRadius(world, rootPos.above(2), radius8 + 9, Direction.UP);
-            family.getBranch().setRadius(world, rootPos.above(1), radius8 + 10, Direction.UP);
+        for (int i=curve.length; i>0;i--){
+            int rad = TreeHelper.getRadius(world, rootPos.above(i));
+            if (rad > configuredGenFeature.get(MIN_RADIUS)){
+                for (int j=1; j<i; j++){
+                    family.getBranch().setRadius(
+                            world, rootPos.above(j), rad + curve[j+(curve.length-i)], Direction.UP);
+                }
+                break;
+            }
         }
+
     }
 
 }

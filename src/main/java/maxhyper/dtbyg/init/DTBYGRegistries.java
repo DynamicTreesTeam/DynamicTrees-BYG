@@ -39,6 +39,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class DTBYGRegistries {
 
+    public static FruitBlock JOSHUA_FRUIT = new FruitBlock()
+            .setShape(1, ShapeUtils.createFruitShape(2,3,0))
+            .setShape(2, ShapeUtils.createFruitShape(2.5f,4,2))
+            .setShape(3, ShapeUtils.createFruitShape(3.5f,4,3))
+            .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
     public static FruitBlock ETHER_BULBS_FRUIT = new EtherBulbsFruitBlock()
             .setShape(1, ShapeUtils.createFruitShape(2,3,0))
             .setShape(2, ShapeUtils.createFruitShape(2.5f,4,2))
@@ -51,6 +56,7 @@ public class DTBYGRegistries {
 
     public static void setup() {
         RegistryHandler.addBlock(DynamicTreesBYG.resLoc("ether_bulbs_fruit"), ETHER_BULBS_FRUIT);
+        RegistryHandler.addBlock(DynamicTreesBYG.resLoc("joshua_fruit"), JOSHUA_FRUIT);
     }
 
     public static void setupBlocks() {
@@ -108,8 +114,14 @@ public class DTBYGRegistries {
     @SubscribeEvent
     public static void onItemsRegistry (final RegistryEvent.Register<Item> event) {
         Item etherBulbs = ForgeRegistries.ITEMS.getValue(new ResourceLocation("byg","ether_bulbs"));
+        Species etherSpecies = Species.REGISTRY.get(new ResourceLocation("dtbyg","ether"));
         ETHER_BULBS_FRUIT.setDroppedItem(new ItemStack(etherBulbs));
+        if (etherSpecies.isValid()) ETHER_BULBS_FRUIT.setSpecies(etherSpecies);
 
+        Item joshuaFruit = ForgeRegistries.ITEMS.getValue(new ResourceLocation("byg","joshua_fruit"));
+        Species joshuaSpecies = Species.REGISTRY.get(new ResourceLocation("dtbyg","joshua"));
+        JOSHUA_FRUIT.setDroppedItem(new ItemStack(joshuaFruit));
+        if (joshuaSpecies.isValid()) JOSHUA_FRUIT.setSpecies(joshuaSpecies);
     }
 
     @SubscribeEvent

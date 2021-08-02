@@ -20,10 +20,11 @@ public class DTBYGGrowthLogicKits {
     public static final GrowthLogicKit THIN_CONIFER = new PineLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "thin_conifer"));
     public static final GrowthLogicKit MEGA_PINE = new MegaPineLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "mega_pine"));
     public static final GrowthLogicKit MEGA_FIR = new ConiferLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "mega_fir"),4.5f).setHeightVariation(8);
+    public static final GrowthLogicKit EBONY = new EbonyLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "ebony"));
 
     public static void register(final IRegistry<GrowthLogicKit> registry) {
         registry.registerAll(POPLAR, MEGA_PRAIRIE, MAPLE, ASPEN, DECIDUOUS, DIAGONAL_PALM,
-                TALL_CONIFER, NORTHERN_CONIFER, THIN_CONIFER, MEGA_PINE, MEGA_FIR);
+                TALL_CONIFER, NORTHERN_CONIFER, THIN_CONIFER, MEGA_PINE, MEGA_FIR, EBONY);
     }
 
 }
