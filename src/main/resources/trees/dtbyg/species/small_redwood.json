@@ -1,0 +1,33 @@
+{
+  "family": "dtbyg:redwood",
+  "tapering": 0.45,
+  "signal_energy": 17.0,
+  "up_probability": 3,
+  "lowest_branch_height": 9,
+  "growth_rate": 0.9,
+  "soil_longevity": 2,
+  "max_branch_radius": 24,
+  "growth_logic_kit": "dtbyg:small_redwood",
+  "leaves_properties": "dtbyg:redwood",
+  "environment_factors" : {
+    "hot": 0.50,
+    "dry": 0.25,
+    "wet": 0.75
+  },
+  "always_show_on_waila": true,
+  "seed_name": "redwood_seed",
+  "sapling_name": "redwood_sapling",
+  "perfect_biomes": { "name": ".*redwood.*" },
+  "primitive_sapling": "byg:redwood_sapling",
+  "mega_species": "dtbyg:redwood",
+  "features" : [
+    "conifer_topper",
+    "bottom_flare",
+    {
+      "name": "mound",
+      "properties": {
+        "mound_cutoff_radius": 999
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "type": "dtbyg:very_sparse",
+  "primitive_leaves": "byg:witch_hazel_leaves",
+  "cell_kit": "dtbyg:sparse",
+
+  "leaf_chance": 0.33
+}

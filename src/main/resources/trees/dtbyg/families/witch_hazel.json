@@ -1,0 +1,8 @@
+{
+  "common_leaves": "dtbyg:witch_hazel",
+  "common_species": "dtbyg:witch_hazel",
+  "primitive_log": "byg:witch_hazel_log",
+  "primitive_stripped_log": "byg:stripped_witch_hazel_log",
+  "max_branch_radius": 24,
+  "generate_surface_root": true
+}

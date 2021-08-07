@@ -3,6 +3,6 @@
   "common_species": "dtbyg:aspen",
   "primitive_log": "byg:aspen_log",
   "primitive_stripped_log": "byg:stripped_aspen_log",
-  "max_branch_radius": 24,
+  "max_branch_radius": 8,
   "conifer_variants": true
 }

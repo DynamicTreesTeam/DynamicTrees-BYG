@@ -17,6 +17,7 @@
     "perfect_biomes": {
         "name": "byg:wooded_grassland_plateau"
     },
+    "mega_species": "mega_spruce",
     "features" : [
         "conifer_topper",
         "podzol",

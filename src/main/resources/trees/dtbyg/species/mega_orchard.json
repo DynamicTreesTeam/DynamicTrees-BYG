@@ -14,6 +14,7 @@
     "hot": 0.5,
     "dry": 0.5
   },
+  "world_gen_leaf_map_height": 60,
   "perfect_biomes": {
     "name": "byg:.*orchard.*"
   },

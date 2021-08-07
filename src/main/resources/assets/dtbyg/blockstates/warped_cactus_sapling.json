@@ -1,5 +1,10 @@
 {
   "variants": {
-    "": { "model": "dtbyg:block/saplings/warped_cactus" }
+    "": [
+      { "model": "dtbyg:block/saplings/warped_cactus" },
+      { "model": "dtbyg:block/saplings/warped_cactus", "y": 90 },
+      { "model": "dtbyg:block/saplings/warped_cactus", "y": 180 },
+      { "model": "dtbyg:block/saplings/warped_cactus", "y": 270 }
+    ]
   }
 }

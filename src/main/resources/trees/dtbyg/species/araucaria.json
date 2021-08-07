@@ -1,0 +1,37 @@
+{
+  "family": "dtbyg:pine",
+  "tapering": 0.25,
+  "signal_energy": 34.0,
+  "up_probability": 10,
+  "lowest_branch_height": 6,
+  "growth_rate": 0.9,
+  "soil_longevity": 20,
+  "max_branch_radius": 8,
+  "growth_logic_kit": "dtbyg:araucaria",
+  "leaves_properties": "dtbyg:araucaria",
+  "environment_factors" : {
+    "wet": 0.75,
+    "cold": 0.50
+  },
+  "common_override": { "name": "byg:.*araucaria.*" },
+  "perfect_biomes": { "name": "byg:.*araucaria.*" },
+  "features" : [
+    "conifer_topper",
+    {
+      "name": "mound",
+      "properties": {
+        "mound_cutoff_radius": 999
+      }
+    },
+    {
+      "name": "roots",
+      "properties": {
+        "min_trunk_radius": 8,
+        "scale_factor": 16
+      }
+    },
+    "bottom_flare",
+    "clear_volume",
+    "podzol"
+  ]
+}

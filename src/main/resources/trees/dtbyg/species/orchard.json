@@ -20,23 +20,16 @@
   "mega_species": "dtbyg:mega_orchard",
   "features" : [
     {
-      "name": "rot_soil",
+      "name": "random_predicate",
       "properties": {
-        "rotted_soil": "podzol"
+        "gen_feature": "bottom_flare"
       }
     },
-    "mushroom_rot",
     {
       "name": "roots",
       "properties": {
         "min_trunk_radius": 9,
         "scale_factor": 16
-      }
-    },
-    {
-      "name": "random_predicate",
-      "properties": {
-        "gen_feature": "bottom_flare"
       }
     },
     "mound",
@@ -48,7 +41,14 @@
         "place_chance": 0.33
       }
     },
-    "fruit"
+    "fruit",
+    "mushroom_rot",
+    {
+      "name": "rot_soil",
+      "properties": {
+        "rotted_soil": "podzol"
+      }
+    }
   ],
   "drop_creators": [
     "log",

@@ -1,0 +1,45 @@
+{
+  "family": "dtbyg:redwood",
+  "tapering": 0.22,
+  "signal_energy": 38.0,
+  "up_probability": 20,
+  "lowest_branch_height": 8,
+  "growth_rate": 1.5,
+  "soil_longevity": 40,
+  "max_branch_radius": 24,
+  "growth_logic_kit": "dtbyg:redwood",
+  "leaves_properties": "dtbyg:redwood",
+  "environment_factors" : {
+    "hot": 0.50,
+    "dry": 0.25,
+    "forest": 1.05
+  },
+  "always_show_on_waila": false,
+  "world_gen_leaf_map_height": 64,
+  "common_override": { "name": ".*redwood.*" },
+  "perfect_biomes": { "name": ".*redwood.*" },
+  "features" : [
+    "conifer_topper",
+    {
+      "name": "mound",
+      "properties": {
+        "mound_cutoff_radius": 999
+      }
+    },
+    {
+      "name": "clear_volume",
+      "properties": {
+        "height": 32
+      }
+    },
+    {
+      "name": "roots",
+      "properties": {
+        "min_trunk_radius": 15,
+        "scale_factor": 26,
+        "level_limit": 4
+      }
+    },
+    "bottom_flare"
+  ]
+}

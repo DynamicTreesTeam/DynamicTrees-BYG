@@ -14,6 +14,7 @@
     "dry": 0.25,
     "wet": 0.75
   },
+  "world_gen_leaf_map_height": 70,
   "common_override": { "name": "byg:dover_mountains" },
   "perfect_biomes": { "name": "byg:dover_mountains" },
   "features" : [

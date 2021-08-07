@@ -1,10 +1,10 @@
 {
   "family": "dtbyg:ebony",
   "tapering": 0.35,
-  "signal_energy": 38.0,
-  "up_probability": 4,
+  "signal_energy": 20.0,
+  "up_probability": 5,
   "lowest_branch_height": 7,
-  "growth_rate": 1.4,
+  "growth_rate": 1.1,
   "soil_longevity": 20,
   "leaves_properties": "dtbyg:ebony",
   "growth_logic_kit": "dtbyg:ebony",

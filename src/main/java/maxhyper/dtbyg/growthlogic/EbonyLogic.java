@@ -18,10 +18,15 @@ public class EbonyLogic extends GrowthLogicKit {
     public int[] directionManipulation(World world, BlockPos pos, Species species, int radius, GrowSignal signal, int[] probMap) {
         Direction originDir = signal.dir.getOpposite();
 
-        probMap[0] = 1;
-        probMap[1] = species.getUpProbability();
-        // If we're in the trunk, have a higher chance of branching out. If not, then lower chance
-        probMap[2] = probMap[3] = probMap[4] = probMap[5] = signal.isInTrunk() ? 1 : species.getUpProbability();
+        probMap[0] = species.getUpProbability();
+        probMap[1] = signal.isInTrunk() &&
+                signal.energy > species.getLowestBranchHeight(world, signal.rootPos) ?
+                0 : species.getUpProbability();
+
+        probMap[2] = probMap[3] = probMap[4] = probMap[5] = 4;
+
+        if (!signal.isInTrunk())
+            probMap[signal.dir.ordinal()] += 2;
 
         // Disable the direction we came from
         probMap[originDir.ordinal()] = 0;
@@ -31,18 +36,18 @@ public class EbonyLogic extends GrowthLogicKit {
 
     @Override
     public Direction newDirectionSelected(Species species, Direction newDir, GrowSignal signal) {
-        //signal is about to branch out
-        if (signal.isInTrunk() && newDir != Direction.UP){
-            // Increase energy, to encourage bigger branch-out.
-            signal.energy *= 2.25;
-        }
+//        //signal is about to branch out
+//        if (signal.isInTrunk() && newDir != Direction.UP && signal.energy > 2){
+//            // Increase energy, to encourage bigger branch-out.
+//            signal.energy = 8.2f;
+//        }
 
         return newDir;
     }
     private float getHashedVariation (World world, BlockPos pos){
         long day = world.getGameTime() / 24000L;
         int month = (int)day / 30;//Change the hashs every in-game month
-        return (CoordUtils.coordHashCode(pos.above(month), 2) % 8);//Vary the height energy by a psuedorandom hash function
+        return (CoordUtils.coordHashCode(pos.above(month), 2) % 10);//Vary the height energy by a psuedorandom hash function
     }
 
     @Override

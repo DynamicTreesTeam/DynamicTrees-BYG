@@ -22,6 +22,7 @@ import corgiaoc.byg.core.BYGBlocks;
 import maxhyper.dtbyg.DynamicTreesBYG;
 import maxhyper.dtbyg.blocks.BYGTintedSoilProperties;
 import maxhyper.dtbyg.blocks.EtherBulbsFruitBlock;
+import maxhyper.dtbyg.blocks.VerySparseLeavesProperties;
 import maxhyper.dtbyg.cells.DTBYGCellKits;
 import maxhyper.dtbyg.genfeatures.DTBYGGenFeatures;
 import maxhyper.dtbyg.growthlogic.DTBYGGrowthLogicKits;
@@ -104,6 +105,7 @@ public class DTBYGRegistries {
 
     @SubscribeEvent
     public static void registerLeavesPropertiesTypes (final TypeRegistryEvent<LeavesProperties> event) {
+        event.registerType(DynamicTreesBYG.resLoc("very_sparse"), VerySparseLeavesProperties.TYPE);
     }
 
     @SubscribeEvent

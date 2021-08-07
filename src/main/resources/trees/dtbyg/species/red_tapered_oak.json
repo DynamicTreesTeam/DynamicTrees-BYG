@@ -1,0 +1,33 @@
+{
+  "family": "oak",
+  "tapering": 0.25,
+  "signal_energy": 20.0,
+  "up_probability": 6,
+  "lowest_branch_height": 6,
+  "growth_rate": 0.9,
+  "growth_logic_kit": "dtbyg:tapered",
+  "leaves_properties": "dtbyg:red_tapered_oak",
+  "use_seed_of_other_species": "dtbyg:red_oak",
+  "environment_factors" : {
+    "hot": 0.75,
+    "dry": 0.50
+  },
+  "perfect_biomes": { "type": "forest" },
+  "features" : [
+    "conifer_topper",
+    {
+      "name": "random_predicate",
+      "properties": {
+        "gen_feature": "bottom_flare",
+        "place_chance": 0.25
+      }
+    },
+    {
+      "name": "roots",
+      "properties": {
+        "min_trunk_radius": 9,
+        "scale_factor": 16
+      }
+    }
+  ]
+}

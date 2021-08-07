@@ -1,5 +1,4 @@
 {
-  "type": "dtbyg:offset_tint",
   "primitive_soil": "byg:glowcelium_block",
   "acceptable_soils": [ "dirt_like", "fungus_like" ]
 }

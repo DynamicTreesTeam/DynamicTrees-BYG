@@ -138,7 +138,7 @@ dependencies {
     // Compile Dynamic Trees Plus
     runtimeOnly fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-${mcVersion}:${property("dynamicTreesPlusVersion")}")
 
-    implementation fg.deobf("curse.maven:oh-the-biomes-youll-go-247560:3337158")
+    implementation fg.deobf("curse.maven:oh-the-biomes-youll-go-247560:3409287")
 //    implementation fg.deobf("corgiaoc.byg:BYG:1.2.8")
 
     // At runtime, use Patchouli mod (for the guide book, which is Json so we don't need the API).

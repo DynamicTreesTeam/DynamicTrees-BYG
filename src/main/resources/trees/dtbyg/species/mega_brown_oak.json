@@ -15,6 +15,7 @@
     "dry": 0.5,
     "forest": 1.05
   },
+  "world_gen_leaf_map_height": 60,
   "perfect_biomes": {
     "name": "byg:.*seasonal_forest.*"
   },

@@ -1,5 +1,4 @@
 {
-  "type": "dtbyg:offset_tint",
   "primitive_soil": "byg:overgrown_dacite",
   "acceptable_soils": [ "dirt_like" ]
 }

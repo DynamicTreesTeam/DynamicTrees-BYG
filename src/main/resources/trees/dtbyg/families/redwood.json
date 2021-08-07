@@ -1,0 +1,10 @@
+{
+  "common_leaves": "dtbyg:redwood",
+  "common_species": "dtbyg:small_redwood",
+  "primitive_log": "byg:redwood_log",
+  "primitive_stripped_log": "byg:stripped_redwood_log",
+  "max_branch_radius": 24,
+  "max_signal_depth": 64,
+  "generate_surface_root": true,
+  "conifer_variants": true
+}
