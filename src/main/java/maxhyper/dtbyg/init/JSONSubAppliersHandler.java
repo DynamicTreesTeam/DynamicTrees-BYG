@@ -3,7 +3,7 @@ package maxhyper.dtbyg.init;
 import com.ferreusveritas.dynamictrees.api.treepacks.JsonApplierRegistryEvent;
 import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
 import maxhyper.dtbyg.DynamicTreesBYG;
-import maxhyper.dtbyg.blocks.VerySparseLeavesProperties;
+import maxhyper.dtbyg.blocks.ScruffyLeavesProperties;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -19,7 +19,8 @@ public class JSONSubAppliersHandler {
         if (!event.isReloadApplier())
             return;
 
-        event.getApplierList().register("leaf_chance", VerySparseLeavesProperties.class, Float.class, VerySparseLeavesProperties::setLeafChance);
+        event.getApplierList().register("scruffy_leaf_chance", ScruffyLeavesProperties.class, Float.class, ScruffyLeavesProperties::setLeafChance)
+                .register("scruffy_max_hydro", ScruffyLeavesProperties.class, Integer.class, ScruffyLeavesProperties::setMaxHydro);
     }
 
 }

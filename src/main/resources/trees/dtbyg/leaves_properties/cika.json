@@ -1,0 +1,6 @@
+{
+  "primitive_leaves": "byg:cika_leaves",
+  "cell_kit": "dynamictrees:conifer",
+  "smother": 32,
+  "light_requirement": 6
+}

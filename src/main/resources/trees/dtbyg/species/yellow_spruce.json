@@ -17,6 +17,7 @@
     "name": "byg:.*taiga.*"
   },
   "primitive_sapling": "byg:yellow_spruce_sapling",
+  "mega_species": "dtbyg:mega_yellow_spruce",
   "features" : [
     "conifer_topper",
     "podzol"

@@ -1,0 +1,37 @@
+{
+  "family": "spruce",
+  "tapering": 0.2,
+  "signal_energy": 50.0,
+  "up_probability": 12,
+  "lowest_branch_height": 7,
+  "growth_rate": 1.5,
+  "soil_longevity": 32,
+  "max_branch_radius": 24,
+  "growth_logic_kit": "mega_conifer",
+  "leaves_properties": "dtbyg:yellow_spruce",
+  "environment_factors" : {
+    "hot": 0.50,
+    "dry": 0.25,
+    "wet": 0.75
+  },
+  "world_gen_leaf_map_height": 70,
+  "perfect_biomes": { "name": "byg:.*giant_taiga.*" },
+  "features" : [
+    "conifer_topper",
+    {
+      "name": "mound",
+      "properties": {
+        "mound_cutoff_radius": 999
+      }
+    },
+    {
+      "name": "roots",
+      "properties": {
+        "min_trunk_radius": 16
+      }
+    },
+    "clear_volume",
+    "podzol",
+    "bottom_flare"
+  ]
+}

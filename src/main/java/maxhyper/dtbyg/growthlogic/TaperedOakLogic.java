@@ -15,6 +15,7 @@ public class TaperedOakLogic extends ConiferLogic {
     public TaperedOakLogic(ResourceLocation registryName) {
         super(registryName, 4f);
         setHorizontalLimiter(3);
+        setHeightVariation(7);
     }
 
     @Override

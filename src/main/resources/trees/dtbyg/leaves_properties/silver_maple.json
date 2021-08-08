@@ -1,3 +1,7 @@
 {
-  "primitive_leaves": "byg:silver_maple_leaves"
+  "type": "dtbyg:scruffy",
+  "primitive_leaves": "byg:silver_maple_leaves",
+
+  "scruffy_leaf_chance": 0.66,
+  "scruffy_max_hydro": 1
 }

@@ -1,0 +1,9 @@
+{
+  "common_leaves": "dtbyg:cika",
+  "common_species": "dtbyg:small_cika",
+  "primitive_log": "byg:cika_log",
+  "primitive_stripped_log": "byg:stripped_cika_log",
+  "max_branch_radius": 24,
+  "max_signal_depth": 64,
+  "conifer_variants": true
+}

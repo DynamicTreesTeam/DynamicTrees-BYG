@@ -1,0 +1,7 @@
+{
+  "common_leaves": "dtbyg:skyris",
+  "common_species": "dtbyg:skyris",
+  "primitive_log": "byg:skyris_log",
+  "primitive_stripped_log": "byg:stripped_skyris_log",
+  "max_branch_radius": 24
+}
