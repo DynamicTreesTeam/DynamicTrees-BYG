@@ -1,4 +1,5 @@
 {
   "primitive_leaves": "oak_leaves",
-  "cell_kit": "dtbyg:sparse"
+  "cell_kit": "dtbyg:sparse",
+  "can_grow_on_ground": true
 }

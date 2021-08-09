@@ -2,5 +2,5 @@
   "type": "dtbyg:scruffy",
   "scruffy_leaf_chance": 0.66,
   "scruffy_max_hydro": 1,
-  "primitive_leaves": "byg:red_oak_leaves"
+  "primitive_leaves": "oak_leaves"
 }

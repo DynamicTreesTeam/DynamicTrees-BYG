@@ -39,5 +39,15 @@
       }
     },
     "fruit"
+  ],
+  "drop_creators": [
+    "log",
+    "stick",
+    {
+      "name": "fruit",
+      "properties":{
+        "fruit_item": "apple"
+      }
+    }
   ]
 }

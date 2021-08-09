@@ -1,6 +1,6 @@
 {
   "family": "dtbyg:aspen",
-  "tapering": 0.33,
+  "tapering": 0.25,
   "signal_energy": 10.0,
   "growth_rate": 0.8,
   "lowest_branch_height": 6,

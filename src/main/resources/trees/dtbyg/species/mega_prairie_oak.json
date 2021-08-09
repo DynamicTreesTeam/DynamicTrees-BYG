@@ -7,7 +7,7 @@
   "growth_rate": 1.5,
   "soil_longevity": 16,
   "max_branch_radius": 24,
-  "leaves_properties": "oak",
+  "leaves_properties": "dtbyg:prairie_oak",
   "environment_factors" : {
     "cold": 0.75,
     "hot": 0.5,

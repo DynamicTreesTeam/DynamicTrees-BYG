@@ -28,5 +28,15 @@
         "quantity": 8
       }
     }
+  ],
+  "drop_creators": [
+    "log",
+    "stick",
+    {
+      "name": "fruit",
+      "properties":{
+        "fruit_item": "byg:joshua_fruit"
+      }
+    }
   ]
 }

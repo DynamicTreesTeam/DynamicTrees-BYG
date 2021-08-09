@@ -17,6 +17,7 @@
     "name": ".*witch.*"
   },
   "features": [
+    "dtbyg:big_bottom_flare",
     {
       "name": "roots",
       "properties": {
@@ -24,7 +25,6 @@
         "scale_factor": 24
       }
     },
-    "dtbyg:big_bottom_flare",
     "mound"
   ]
 }

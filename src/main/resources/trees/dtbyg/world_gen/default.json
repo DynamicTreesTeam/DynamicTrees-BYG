@@ -1,0 +1,781 @@
+[
+  {
+    "select": {
+      "name": "byg:.*",
+      "category": "forest"
+    },
+    "apply": {
+      "density": [ 1 ],
+      "chance": 1.0,
+      "forestness" : 1.0
+    }
+  },
+  {
+    "select": {
+      "name": "byg:maple.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:maple": 8,
+          "dtbyg:red_maple": 4,
+          "dtbyg:silver_maple": 1
+        }
+      },
+      "density": 0.5,
+      "chance": 0.9
+    }
+  },
+  {
+    "select": {
+      "name": "byg:.*grove"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:poplar": 1,
+          "dtbyg:yellow_poplar": 1
+        }
+      },
+      "density": 1.0,
+      "chance": 0.5,
+      "forestness": 0.5
+    }
+  },
+  {
+    "select": {
+      "name": "byg:deciduous_forest.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:oak_twiglet": 2,
+          "dtbyg:tapered_oak": 4,
+          "dtbyg:aspen": 1,
+          "dtbyg:canopy_aspen": 1
+        }
+      },
+      "density": [ 0.8 ],
+      "chance": 1,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:seasonal_forest.*"
+    },
+    "cancellers": {
+      "type": "tree",
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "oak": 1,
+          "birch": 1,
+          "dtbyg:prairie_oak": 1,
+          "dtbyg:brown_oak": 1,
+          "dtbyg:orange_oak": 1,
+          "dtbyg:red_oak": 1,
+          "dtbyg:mega_prairie_oak": 1,
+          "dtbyg:mega_brown_oak": 1,
+          "dtbyg:mega_orange_oak": 1,
+          "dtbyg:mega_red_oak": 1
+        }
+      },
+      "density": [ 1 ],
+      "chance": 1,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:seasonal_birch_forest.*"
+    },
+    "cancellers": {
+      "type": "tree",
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:brown_birch": 1,
+          "dtbyg:orange_birch": 1,
+          "dtbyg:red_birch": 1,
+          "dtbyg:yellow_birch": 3,
+          "dtbyg:tall_brown_birch": 1,
+          "dtbyg:tall_orange_birch": 1,
+          "dtbyg:tall_red_birch": 1,
+          "dtbyg:tall_yellow_birch": 3
+        }
+      },
+      "density": [ 1 ],
+      "chance": 1,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:seasonal_deciduous_forest.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:oak_twiglet": 4,
+          "dtbyg:red_oak_twiglet": 4,
+          "dtbyg:tapered_oak": 8,
+          "dtbyg:brown_tapered_oak": 5,
+          "dtbyg:orange_tapered_oak": 5,
+          "dtbyg:red_tapered_oak": 5,
+          "dtbyg:aspen": 1,
+          "dtbyg:canopy_aspen": 1
+        }
+      },
+      "density": [ 0.8 ],
+      "chance": 1,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:seasonal_deciduous_clearing"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:red_oak_twiglet": 1,
+          "dtbyg:tapered_oak": 1,
+          "dtbyg:brown_tapered_oak": 1,
+          "dtbyg:orange_tapered_oak": 1,
+          "dtbyg:red_tapered_oak": 1
+        }
+      },
+      "density": [ 0.2 ],
+      "chance": 0.2
+    }
+  },
+  {
+    "select": {
+      "name": "byg:seasonal_taiga.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:pine": 3,
+          "dtbyg:aspen": 3,
+          "spruce": 6,
+          "dtbyg:red_spruce": 6,
+          "dtbyg:yellow_spruce": 6,
+          "dtbyg:orange_spruce": 6,
+          "dtbyg:tall_spruce": 2,
+          "dtbyg:tall_red_spruce": 2,
+          "dtbyg:tall_yellow_spruce": 2,
+          "dtbyg:tall_orange_spruce": 2
+        }
+      },
+      "density": [ 1 ],
+      "chance": 1,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:seasonal_giant_taiga"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:pine": 1,
+          "spruce": 1,
+          "dtbyg:red_spruce": 1,
+          "dtbyg:yellow_spruce": 1,
+          "dtbyg:orange_spruce": 1,
+          "dtbyg:tall_spruce": 2,
+          "dtbyg:tall_red_spruce": 2,
+          "dtbyg:tall_yellow_spruce": 2,
+          "dtbyg:tall_orange_spruce": 2,
+          "dtbyg:giga_spruce": 3,
+          "dtbyg:giga_red_spruce": 3,
+          "dtbyg:giga_yellow_spruce": 3,
+          "dtbyg:giga_orange_spruce": 3
+        }
+      },
+      "density": [ 1 ],
+      "chance": 1,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:red_spruce_taiga"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "spruce": 3,
+          "tall_spruce": 3,
+          "dtbyg:red_spruce": 2,
+          "dtbyg:tall_red_spruce": 2
+        }
+      },
+      "density": [ 0.6 ],
+      "chance": 1,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:blue_taiga.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "spruce": 3,
+          "tall_spruce": 3,
+          "dtbyg:blue_spruce": 2,
+          "dtbyg:tall_blue_spruce": 2
+        }
+      },
+      "density": [ 0.6 ],
+      "chance": 1,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:bluff.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "spruce": 1,
+          "dtbyg:northern_spruce": 1,
+          "dtbyg:pine": 1,
+          "dtbyg:canopy_aspen": 1,
+          "dtbyg:aspen_twiglet": 1,
+          "dtbyg:fir": 1
+        }
+      },
+      "density": [ 1.5 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:prairie"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:prairie_oak": 4,
+          "dtbyg:mega_prairie_oak": 1
+        }
+      },
+      "density": [ 0.2 ],
+      "chance": 0.2
+    }
+  },
+  {
+    "select": {
+      "name": "byg:allium_fields"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:red_oak": 4,
+          "dtbyg:mega_red_oak": 1
+        }
+      },
+      "density": [ 0.2 ],
+      "chance": 0.2
+    }
+  },
+  {
+    "select": {
+      "name": "byg:red_oak_forest"
+    },
+    "cancellers": {
+      "type": "tree",
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:prairie_oak": 1,
+          "dtbyg:mega_prairie_oak": 1,
+          "dtbyg:red_oak": 1,
+          "dtbyg:mega_red_oak": 1
+        }
+      },
+      "density": [ 0.4 ],
+      "chance": 0.7,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:red_oak_forest_hills"
+    },
+    "cancellers": {
+      "type": "tree",
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:prairie_oak": 1,
+          "dtbyg:mega_prairie_oak": 1,
+          "dtbyg:red_oak": 1,
+          "dtbyg:mega_red_oak": 1,
+          "oak": 1,
+          "birch": 1
+        }
+      },
+      "density": [ 0.6 ],
+      "chance": 0.8,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:aspen_forest.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:aspen": 4,
+          "dtbyg:canopy_aspen": 4,
+          "dtbyg:aspen_twiglet": 1
+        }
+      },
+      "density": [ 2.0, 0.3 ],
+      "chance": 1,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:aspen_forest_hills"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:aspen": 4,
+          "dtbyg:canopy_aspen": 4,
+          "dtbyg:aspen_twiglet": 1,
+          "spruce": 6
+        }
+      },
+      "density": [ 2.0, 0.3 ],
+      "chance": 1,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:aspen_clearing"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:aspen": 1,
+          "dtbyg:canopy_aspen": 1,
+          "dtbyg:aspen_twiglet": 1
+        }
+      },
+      "density": [ 0.5 ],
+      "chance": 0.2
+    }
+  },
+  {
+    "select": {
+      "name": "byg:sierra.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:palo_verde": 1
+        }
+      },
+      "density": 0.4,
+      "chance": 0.2
+    }
+  },
+  {
+    "select": {
+      "name": "byg:grassland_plateau"
+    },
+    "apply": {
+      "species": "oak",
+      "density": 0.1,
+      "chance": 0.01
+    }
+  },
+  {
+    "select": {
+      "name": "byg:wooded_grassland_plateau"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:tall_spruce": 1,
+          "dtbyg:spruce": 2
+        }
+      },
+      "density": 0.5,
+      "chance": 0.7,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:boreal_forest.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:poplar": 1,
+          "dtbyg:yellow_poplar": 1,
+          "dtbyg:boreal_spruce": 2
+        }
+      },
+      "density": 0.6,
+      "chance": 0.8,
+      "forestness": 1
+    }
+  },
+  {
+    "select": "byg:cold_swamplands",
+    "cancellers": {
+      "type": "tree",
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species" : "swamp_oak",
+      "density": [ 0.2 ],
+      "chance": 0.75
+    }
+  },
+  {
+    "select": "byg:vibrant_swamplands",
+    "cancellers": {
+      "type": "tree",
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "swamp_oak": 4,
+          "dtbyg:willow": 2,
+          "dtbyg:mega_willow": 1
+        }
+      },
+      "density": [ 0.2 ],
+      "chance": 0.75
+    }
+  },
+  {
+    "select": "byg:pumpkin_forest",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:witch_hazel": 2,
+          "dtbyg:sparse_witch_hazel": 1
+        }
+      },
+      "density": [ 0.5 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": "byg:weeping_witch_forest",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:witch_hazel": 3,
+          "dtbyg:sparse_witch_hazel": 1
+        }
+      },
+      "density": [ 1 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": "byg:weeping_witch_clearing",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:witch_hazel": 1,
+          "dtbyg:sparse_witch_hazel": 3
+        }
+      },
+      "density": [ 0.2 ],
+      "chance": 0.2
+    }
+  },
+  {
+    "select": {
+      "name": "byg:.*black_forest.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:pine": 10,
+          "dtbyg:mega_pine": 10,
+          "dtbyg:fir": 1,
+          "dtbyg:tall_fir": 1,
+          "dtbyg:aspen": 1,
+          "dtbyg:canopy_aspen": 1
+        }
+      },
+      "density": [ 0.8 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": "byg:black_forest_clearing",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:pine": 1,
+          "dtbyg:mega_pine": 2
+        }
+      },
+      "density": [ 0.2 ],
+      "chance": 0.2,
+      "forestness": 1
+    }
+  },
+  {
+    "select": "byg:forest_fault",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:canopy_oak": 1,
+          "dtbyg:canopy_dark_oak": 2
+        }
+      },
+      "density": [ 0.5 ],
+      "chance": 0.8,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:.*meadow"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:oak_twiglet": 5,
+          "dtbyg:dark_oak_twiglet": 1
+        }
+      },
+      "density": [ 2 ],
+      "chance": 0.1
+    }
+  },
+  {
+    "select": "byg:wooded_meadow",
+    "cancellers": {
+      "type": "tree",
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:canopy_oak": 4,
+          "dtbyg:canopy_dark_oak": 8,
+          "oak": 1,
+          "spruce": 1
+        }
+      },
+      "density": [ 0.8 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:.*coniferous_forest.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:fir": 1,
+          "dtbyg:tall_fir": 5,
+          "dtbyg:mega_fir": 3
+        }
+      },
+      "density": [ 0.5 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:.*coniferous_clearing"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:tall_fir": 4,
+          "dtbyg:mega_fir": 1
+        }
+      },
+      "density": [ 0.2 ],
+      "chance": 0.2,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:ebony.*"
+    },
+    "apply": {
+      "species": "dtbyg:ebony",
+      "density": [ 1.0 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:.*stone_forest"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:tapered_oak": 2,
+          "dtbyg:ebony": 1
+        }
+      },
+      "density": [ 1.0 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": "byg:redwood_tropics",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:redwood": 3,
+          "dtbyg:small_redwood": 1
+        }
+      },
+      "density": [ 0.2 ],
+      "chance": 0.6,
+      "forestness": 1
+    }
+  },
+  {
+    "select": "byg:redwood_mountains",
+    "apply": {
+      "species": "dtbyg:redwood",
+      "density": [ 0.2 ],
+      "chance": 0.8,
+      "forestness": 1
+    }
+  },
+  {
+    "select": "byg:redwood_clearing",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:redwood": 1,
+          "dtbyg:small_redwood": 2
+        }
+      },
+      "density": [ 0.2 ],
+      "chance": 0.2
+    }
+  },
+  {
+    "select": "byg:orchard",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:orchard": 1,
+          "dtbyg:tall_orchard": 1,
+          "dtbyg:mega_orchard": 1
+        }
+      },
+      "density": [ 0.4 ],
+      "chance": 0.3
+    }
+  },
+  {
+    "select": "byg:great_lake_isles",
+    "cancellers": {
+      "type": "tree",
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "oak": 1,
+          "spruce": 8,
+          "dtbyg:tall_spruce": 2
+        }
+      },
+      "density": [ 0.6 ],
+      "chance": 0.5
+    }
+  },
+  {
+    "select": {
+      "name": "minecraft:.*",
+      "category": "beach"
+    },
+    "apply": {
+      "species": "dtbyg:palm",
+      "density": [ 0.3 ],
+      "chance": 0.2
+    }
+  },
+  {
+    "select": {
+      "name": "byg:.*",
+      "category": "beach"
+    },
+    "apply": {
+      "species": "dtbyg:palm",
+      "density": [ 0.3 ],
+      "chance": 0.7
+    }
+  },
+
+  {
+    "__comment": "Flag nether as being subterranean.",
+    "select": { "name": "byg:.*", "type": "nether" },
+    "apply": {
+      "subterranean": true
+    }
+  },
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "select": "byg:warped_desert",
+    "apply": {
+      "species": "dtbyg:warped_cactus",
+      "density" : { "math": { "add" : [ { "mul" : [ "noise", 0.6 ] }, 0.4 ] } },
+      "chance": 0.5
+    }
+  },
+
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "select": {
+      "name": "byg:shattered_desert.*"
+    },
+    "apply": {
+      "species": "dtbyg:oddity_cactus",
+      "density" : { "math": { "add" : [ { "mul" : [ "noise", 0.6 ] }, 0.6 ] } },
+      "chance": 0.7
+    }
+  }
+]

@@ -1,4 +1,8 @@
 {
+  "type": "dtbyg:scruffy",
   "primitive_leaves": "byg:witch_hazel_leaves",
-  "cell_kit": "dtbyg:willow"
+  "cell_kit": "dtbyg:willow",
+
+  "scruffy_leaf_chance": 0.66,
+  "scruffy_max_hydro": 1
 }

@@ -24,10 +24,10 @@ public class DynamicTreesBYG
 
         RegistryHandler.setup(MOD_ID);
 
-//        BYG.ENABLE_OVERWORLD_TREES = false;
-//        if (ModList.get().isLoaded("dynamictreesplus")) {
-//            BYG.ENABLE_CACTI = false;
-//        }
+        BYG.ENABLE_OVERWORLD_TREES = false;
+        if (ModList.get().isLoaded("dynamictreesplus")) {
+            BYG.ENABLE_CACTI = false;
+        }
 
         DTBYGRegistries.setup();
     }
