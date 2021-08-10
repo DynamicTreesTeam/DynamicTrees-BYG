@@ -14,6 +14,12 @@
   "perfect_biomes": {
     "name": "byg:ethereal.*"
   },
-  "primitive_sapling": "byg:ether_sapling",
+  "primitive_saplings": [
+    "byg:ether_sapling",
+    {
+      "sapling_item": "byg:ether_bulbs_block",
+      "can_craft_seed_to_sapling": false
+    }
+  ],
   "acceptable_soils": ["dirt_like", "end_soil_like"]
 }

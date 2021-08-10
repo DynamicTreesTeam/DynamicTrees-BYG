@@ -1,0 +1,44 @@
+{
+  "family": "dtbyg:holly",
+  "tapering": 0.25,
+  "signal_energy": 16.0,
+  "up_probability": 4,
+  "lowest_branch_height": 9,
+  "growth_rate": 1.1,
+  "growth_logic_kit": "dtbyg:tapered",
+  "leaves_properties": "dtbyg:holly",
+  "environment_factors" : {
+    "hot": 0.50,
+    "dry": 0.25,
+    "wet": 0.75
+  },
+  "perfect_biomes": { "name": ".*evergreen.*" },
+  "primitive_saplings": [
+    "byg:holly_sapling",
+    {
+      "sapling_item": "byg:holly_berries",
+      "can_craft_seed_to_sapling": false
+    }
+  ],
+  "mega_species": "dtbyg:mega_holly",
+  "features" : [
+    "conifer_topper",
+    {
+      "name": "fruit",
+      "properties": {
+        "fruit_block": "dtbyg:holly_berries_fruit",
+        "quantity": 6
+      }
+    }
+  ],
+  "drop_creators": [
+    "log",
+    "stick",
+    {
+      "name": "fruit",
+      "properties":{
+        "fruit_item": "byg:holly_berries"
+      }
+    }
+  ]
+}

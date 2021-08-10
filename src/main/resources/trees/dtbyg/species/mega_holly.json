@@ -1,0 +1,46 @@
+{
+  "family": "dtbyg:holly",
+  "tapering": 0.3,
+  "signal_energy": 22.0,
+  "up_probability": 7,
+  "lowest_branch_height": 9,
+  "growth_rate": 1.2,
+  "soil_longevity": 14,
+  "max_branch_radius": 24,
+  "growth_logic_kit": "dtbyg:mega_fir",
+  "leaves_properties": "dtbyg:holly",
+  "environment_factors" : {
+    "hot": 0.50,
+    "dry": 0.25,
+    "wet": 0.75
+  },
+  "perfect_biomes": { "name": ".*evergreen.*" },
+  "features" : [
+    "conifer_topper",
+    {
+      "name": "mound",
+      "properties": {
+        "mound_cutoff_radius": 999
+      }
+    },
+    "clear_volume",
+    "podzol",
+    "bottom_flare",
+    {
+      "name": "fruit",
+      "properties": {
+        "fruit_block": "dtbyg:holly_berries_fruit"
+      }
+    }
+  ],
+  "drop_creators": [
+    "log",
+    "stick",
+    {
+      "name": "fruit",
+      "properties":{
+        "fruit_item": "byg:holly_berries"
+      }
+    }
+  ]
+}

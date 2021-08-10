@@ -1,4 +1,4 @@
 {
   "primitive_soil": "byg:wailing_nylium",
-  "acceptable_soils": [ "nether_like", "nether_soil_like" ]
+  "acceptable_soils": [ "nylium_soul_like", "nether_soil_like", "nether_like" ]
 }

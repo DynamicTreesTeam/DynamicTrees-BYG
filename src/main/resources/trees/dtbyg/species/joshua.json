@@ -11,7 +11,13 @@
     "cold": 0.75
   },
   "perfect_biomes": { "types": [ "desert", "overworld" ] },
-  "primitive_sapling": "byg:joshua_sapling",
+  "primitive_saplings": [
+    "byg:joshua_sapling",
+    {
+      "sapling_item": "byg:joshua_fruit",
+      "can_craft_seed_to_sapling": false
+    }
+  ],
   "acceptable_soils": ["dirt_like", "sand_like"],
   "features" : [
     {

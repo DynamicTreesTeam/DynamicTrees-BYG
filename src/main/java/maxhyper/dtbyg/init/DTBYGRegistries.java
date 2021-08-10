@@ -46,14 +46,16 @@ public class DTBYGRegistries {
             .setShape(2, ShapeUtils.createFruitShape(2.5f,4,2))
             .setShape(3, ShapeUtils.createFruitShape(3.5f,4,3))
             .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
-
-    public static final String END_SAND_LIKE = "end_sand_like";
-    public static final String NYLIUM_SOUL_LIKE = "nylium_soul_like";
-    public static final String SCULK_LIKE = "sculk_like";
+    public static FruitBlock HOLLY_BERRIES_FRUIT = new FruitBlock()
+            .setShape(1, ShapeUtils.createFruitShape(2,3,0))
+            .setShape(2, ShapeUtils.createFruitShape(2.5f,4,2))
+            .setShape(3, ShapeUtils.createFruitShape(3.5f,4,3))
+            .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
 
     public static void setup() {
         RegistryHandler.addBlock(DynamicTreesBYG.resLoc("ether_bulbs_fruit"), ETHER_BULBS_FRUIT);
         RegistryHandler.addBlock(DynamicTreesBYG.resLoc("joshua_fruit"), JOSHUA_FRUIT);
+        RegistryHandler.addBlock(DynamicTreesBYG.resLoc("holly_berries_fruit"), HOLLY_BERRIES_FRUIT);
     }
 
     public static void setupBlocks() {
@@ -120,6 +122,11 @@ public class DTBYGRegistries {
         Species joshuaSpecies = Species.REGISTRY.get(new ResourceLocation("dtbyg","joshua"));
         JOSHUA_FRUIT.setDroppedItem(new ItemStack(joshuaFruit));
         if (joshuaSpecies.isValid()) JOSHUA_FRUIT.setSpecies(joshuaSpecies);
+
+        Item hollyBerries = ForgeRegistries.ITEMS.getValue(new ResourceLocation("byg","holly_berries"));
+        Species hollySpecies = Species.REGISTRY.get(new ResourceLocation("dtbyg","holly"));
+        HOLLY_BERRIES_FRUIT.setDroppedItem(new ItemStack(hollyBerries));
+        if (hollySpecies.isValid()) HOLLY_BERRIES_FRUIT.setSpecies(hollySpecies);
     }
 
     @SubscribeEvent

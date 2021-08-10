@@ -24,8 +24,8 @@ public class TaperedOakLogic extends ConiferLogic {
         Direction originDir = signal.dir.getOpposite();
 
         //Alter probability map for direction change
-        probMap[0] = 0;//Down is always disallowed for spruce
-        probMap[1] = signal.isInTrunk() ? species.getUpProbability(): 0;
+        probMap[0] = 0;//Down is always disallowed
+        probMap[1] = signal.isInTrunk() ? species.getUpProbability(): 1;
         probMap[2] = probMap[3] = probMap[4] = probMap[5] = //Only allow turns when we aren't in the trunk(or the branch is not a twig)
                 !signal.isInTrunk() || radius > 1 ? 2 : 0;
         probMap[originDir.ordinal()] = 0;//Disable the direction we came from

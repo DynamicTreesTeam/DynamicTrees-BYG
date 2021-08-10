@@ -16,7 +16,14 @@
   "perfect_biomes": {
     "name": "byg:.*orchard.*"
   },
-  "primitive_sapling": "byg:orchard_sapling",
+  "primitive_saplings": [
+    "byg:orchard_sapling",
+    {
+      "sapling_item": "apple",
+      "can_craft_seed_to_sapling": false,
+      "sapling_to_seed_extra_ingredient": "bone_meal"
+    }
+  ],
   "mega_species": "dtbyg:mega_orchard",
   "features" : [
     {
@@ -56,7 +63,8 @@
     {
       "name": "fruit",
       "properties":{
-        "fruit_item": "apple"
+        "fruit_item": "apple",
+        "quantity": 12
       }
     }
   ]

@@ -1,9 +1,8 @@
 {
   "type": "dtbyg:scruffy",
-  "primitive_leaves": "minecraft:oak_leaves",
-  "cell_kit": "dynamictrees:conifer",
-  "smother": 9,
-
   "scruffy_leaf_chance": 0.9,
-  "scruffy_max_hydro": 1
+  "scruffy_max_hydro": 1,
+  "primitive_leaves": "minecraft:oak_leaves",
+  "cell_kit": "dtbyg:round_conifer",
+  "smother": 9
 }

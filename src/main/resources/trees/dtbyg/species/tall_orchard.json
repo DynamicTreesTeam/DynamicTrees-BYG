@@ -50,7 +50,8 @@
     {
       "name": "fruit",
       "properties":{
-        "fruit_item": "apple"
+        "fruit_item": "apple",
+        "quantity": 12
       }
     }
   ]
