@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 public class DTBYGCellKits {
 
     public static void register(final IRegistry<CellKit> registry) {
-        registry.registerAll(PALM, SPARSE, POPLAR, SMALL_DECIDUOUS, WILLOW, ROUND_CONIFER);
+        registry.registerAll(PALM, SPARSE, POPLAR, SMALL_DECIDUOUS, WILLOW, ROUND_CONIFER, SYTHIAN_FUNGUS);
     }
 
     public static final CellKit PALM = new CellKit(new ResourceLocation(DynamicTreesBYG.MOD_ID, "palm")) {
@@ -328,6 +328,57 @@ public class DTBYGCellKits {
         @Override
         public ICellSolver getCellSolver() {
             return solver;
+        }
+
+        @Override
+        public int getDefaultHydration() {
+            return 4;
+        }
+
+    };
+
+    public static final CellKit SYTHIAN_FUNGUS = new CellKit(DynamicTreesBYG.resLoc("sythian_fungus")) {
+
+        private final ICell sythianBranch = new SythianWartCell(3);
+        private final ICell sythianTopBranch = new SythianWartCell(4);
+
+        private final ICell[] sythianLeafCells = {
+                CellNull.NULL_CELL,
+                new SythianWartCell(1),
+                new SythianWartCell(2),
+                new SythianWartCell(2),
+                new SythianWartCell(2),
+                new SythianWartCell(2),
+                new SythianWartCell(2),
+                new SythianWartCell(2)
+        };
+
+        private final CellKits.BasicSolver sythianSolver = new CellKits.BasicSolver(new short[]{0x0411, 0x0312, 0x0221});
+
+        @Override
+        public ICell getCellForLeaves(int hydro) {
+            return sythianLeafCells[hydro];
+        }
+
+        @Override
+        public ICell getCellForBranch(int radius, int meta) {
+            if (meta == MetadataCell.CONIFERTOP) {
+                return sythianTopBranch;
+            } else if (radius == 3){
+                return sythianBranch;
+            } else {
+                return CellNull.NULL_CELL;
+            }
+        }
+
+        @Override
+        public SimpleVoxmap getLeafCluster() {
+            return DTBYGLeafClusters.SYTHIAN_FUNGUS;
+        }
+
+        @Override
+        public ICellSolver getCellSolver() {
+            return sythianSolver;
         }
 
         @Override

@@ -1,0 +1,7 @@
+{
+  "loader": "dynamictrees:branch",
+  "textures": {
+    "bark": "byg:block/sythian_stem",
+    "rings": "byg:block/sythian_stem_top"
+  }
+}

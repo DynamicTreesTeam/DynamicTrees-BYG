@@ -1,0 +1,59 @@
+{
+  "type": "nether_fungus",
+  "family": "dtbyg:sythian",
+  "tapering": 0,
+  "signal_energy": 7.0,
+  "up_probability": 4,
+  "lowest_branch_height": 2,
+  "growth_rate": 1,
+  "soil_longevity": 3,
+  "growth_logic_kit": "dtbyg:sythian_fungus",
+  "leaves_properties": "dtbyg:sythian",
+  "environment_factors" : {
+    "cold": 0.25,
+    "wet": 0.75
+  },
+  "perfect_biomes": { "name": "byg:sythian_torrids" },
+  "primitive_sapling": "byg:sythian_fungus",
+  "acceptable_soils": ["nether_soil_like", "fungus_like", "dirt_like"],
+  "acceptable_growth_blocks": ["byg:sythian_nylium", "dtbyg:rooty_sythian_nylium"],
+  "sapling_shape": "round_mushroom_rim",
+  "features": [
+    {
+      "name": "vines",
+      "properties": {
+        "vine_type": "ceiling",
+        "block": "byg:hanging_sythian_roots_plant",
+        "tip_block": "byg:hanging_sythian_roots",
+        "max_length": 5,
+        "quantity": 4
+      }
+    },
+    "shroomlight",
+    "dtbyg:sythian_topper"
+  ],
+  "drop_creators": [
+    "log",
+    {
+      "name": "normal",
+      "properties": {
+        "drops": {
+          "leaves": {
+            "id": "stack",
+            "properties": {
+              "items": [ { "id": "byg:sythian_wart_block", "Count": 1 } ],
+              "chance": 1
+            }
+          },
+          "harvest": {
+            "id": "stack",
+            "properties": {
+              "items": [ { "id": "byg:sythian_wart_block", "Count": 1 } ],
+              "chance": 10
+            }
+          }
+        }
+      }
+    }
+  ]
+}

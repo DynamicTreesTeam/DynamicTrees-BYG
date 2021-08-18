@@ -1,0 +1,7 @@
+{
+  "parent": "dynamictrees:item/branch",
+  "textures": {
+    "bark": "byg:block/zelkova_log",
+    "rings": "byg:block/zelkova_log_top"
+  }
+}

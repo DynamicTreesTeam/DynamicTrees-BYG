@@ -1,0 +1,10 @@
+{
+  "type": "nether_fungus",
+  "common_leaves": "dtbyg:sythian",
+  "common_species": "dtbyg:sythian",
+  "primitive_log": "byg:sythian_stem",
+  "primitive_stripped_log": "byg:stripped_sythian_stem",
+  "max_branch_radius": 8,
+  "conifer_variants": true,
+  "connect_any_radius": true
+}

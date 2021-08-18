@@ -1,0 +1,9 @@
+{
+  "type": "dynamictrees:wart",
+  "primitive_leaves": "byg:sythian_wart_block",
+  "cell_kit": "dtbyg:sythian_fungus",
+  "smother": 16,
+  "light_requirement": 0,
+  "fire_spread": 0,
+  "flammability": 0
+}

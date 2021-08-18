@@ -1,0 +1,29 @@
+{
+  "family": "dtbyg:cika",
+  "tapering": 0.15,
+  "signal_energy": 34.0,
+  "up_probability": 7,
+  "lowest_branch_height": 14,
+  "growth_rate": 1.0,
+  "soil_longevity": 14,
+  "max_branch_radius": 24,
+  "growth_logic_kit": "dtbyg:mega_cika",
+  "leaves_properties": "dtbyg:cika",
+  "environment_factors" : {
+    "hot": 0.8,
+    "dry": 0.75,
+    "wet": 0.9
+  },
+  "world_gen_leaf_map_height": 60,
+  "perfect_biomes": { "type": "coniferous" },
+  "features" : [
+    "conifer_topper",
+    {
+      "name": "mound",
+      "properties": {
+        "mound_cutoff_radius": 999
+      }
+    },
+    "clear_volume"
+  ]
+}

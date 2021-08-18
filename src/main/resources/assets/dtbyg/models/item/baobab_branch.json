@@ -1,0 +1,7 @@
+{
+  "parent": "dynamictrees:item/branch",
+  "textures": {
+    "bark": "byg:block/baobab_log",
+    "rings": "byg:block/baobab_log_top"
+  }
+}

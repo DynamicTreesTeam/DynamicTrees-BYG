@@ -283,12 +283,13 @@
     "apply": {
       "species": {
         "random": {
+          "dtbyg:oak_twiglet": 4,
           "dtbyg:prairie_oak": 4,
           "dtbyg:mega_prairie_oak": 1
         }
       },
       "density": [ 0.2 ],
-      "chance": 0.2
+      "chance": 0.4
     }
   },
   {

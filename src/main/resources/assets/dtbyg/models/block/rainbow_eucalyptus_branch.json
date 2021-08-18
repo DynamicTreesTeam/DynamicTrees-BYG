@@ -1,0 +1,7 @@
+{
+  "loader": "dynamictrees:branch",
+  "textures": {
+    "bark": "byg:block/rainbow_eucalyptus_log",
+    "rings": "byg:block/rainbow_eucalyptus_log_top"
+  }
+}

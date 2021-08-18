@@ -1,6 +1,6 @@
 {
   "common_leaves": "dtbyg:cika",
-  "common_species": "dtbyg:small_cika",
+  "common_species": "dtbyg:cika",
   "primitive_log": "byg:cika_log",
   "primitive_stripped_log": "byg:stripped_cika_log",
   "max_branch_radius": 24,

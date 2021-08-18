@@ -127,4 +127,11 @@ public class DTBYGLeafClusters {
 
     }).setCenter(new BlockPos(2, 2, 2));
 
+    public static final SimpleVoxmap SYTHIAN_FUNGUS = new SimpleVoxmap(3, 1, 3, new byte[] {
+            1, 2, 1,
+            2, 0, 2,
+            1, 2, 1
+
+    }).setCenter(new BlockPos(1, 0, 1));
+
 }

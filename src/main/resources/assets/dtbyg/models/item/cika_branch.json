@@ -1,0 +1,7 @@
+{
+  "parent": "dynamictrees:item/branch",
+  "textures": {
+    "bark": "byg:block/cika_log",
+    "rings": "byg:block/cika_log_top"
+  }
+}

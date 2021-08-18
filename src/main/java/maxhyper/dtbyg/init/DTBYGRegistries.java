@@ -1,15 +1,18 @@
 package maxhyper.dtbyg.init;
 
+import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.api.cells.CellKit;
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
 import com.ferreusveritas.dynamictrees.blocks.FruitBlock;
+import com.ferreusveritas.dynamictrees.blocks.branches.BranchBlock;
 import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
 import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SoilHelper;
 import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SoilProperties;
 import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SpreadableSoilProperties;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
 import com.ferreusveritas.dynamictrees.init.DTConfigs;
+import com.ferreusveritas.dynamictrees.systems.BranchConnectables;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
 import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
@@ -24,10 +27,13 @@ import maxhyper.dtbyg.genfeatures.DTBYGGenFeatures;
 import maxhyper.dtbyg.growthlogic.DTBYGGrowthLogicKits;
 import maxhyper.dtbyg.trees.*;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.MathHelper;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -51,11 +57,17 @@ public class DTBYGRegistries {
             .setShape(2, ShapeUtils.createFruitShape(2.5f,4,2))
             .setShape(3, ShapeUtils.createFruitShape(3.5f,4,3))
             .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
+    public static FruitBlock BAOBAB_FRUIT = new FruitBlock()
+            .setShape(1, ShapeUtils.createFruitShape(2,3,0))
+            .setShape(2, ShapeUtils.createFruitShape(2.5f,4,2))
+            .setShape(3, ShapeUtils.createFruitShape(3.5f,4,3))
+            .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
 
     public static void setup() {
         RegistryHandler.addBlock(DynamicTreesBYG.resLoc("ether_bulbs_fruit"), ETHER_BULBS_FRUIT);
         RegistryHandler.addBlock(DynamicTreesBYG.resLoc("joshua_fruit"), JOSHUA_FRUIT);
         RegistryHandler.addBlock(DynamicTreesBYG.resLoc("holly_berries_fruit"), HOLLY_BERRIES_FRUIT);
+        RegistryHandler.addBlock(DynamicTreesBYG.resLoc("baobab_fruit"), BAOBAB_FRUIT);
     }
 
     public static void setupBlocks() {
@@ -71,7 +83,21 @@ public class DTBYGRegistries {
     }
 
     private static void setupConnectables() {
+        BranchConnectables.makeBlockConnectable(BYGBlocks.POLLEN_BLOCK, (state, world, pos, side) -> {
+            if (side == Direction.DOWN) return 1;
+            return 0;
+        });
 
+        BranchConnectables.makeBlockConnectable(BYGBlocks.PURPLE_SHROOMLIGHT, (state, world, pos, side) -> {
+            if (side == Direction.DOWN) {
+                BlockState branchState = world.getBlockState(pos.relative(Direction.UP));
+                BranchBlock branch = TreeHelper.getBranch(branchState);
+                if (branch != null)
+                    return MathHelper.clamp(branch.getRadius(branchState) - 1, 1, 8);
+                 else return 8;
+            }
+            return 0;
+        });
     }
 
     @SubscribeEvent
@@ -127,6 +153,11 @@ public class DTBYGRegistries {
         Species hollySpecies = Species.REGISTRY.get(new ResourceLocation("dtbyg","holly"));
         HOLLY_BERRIES_FRUIT.setDroppedItem(new ItemStack(hollyBerries));
         if (hollySpecies.isValid()) HOLLY_BERRIES_FRUIT.setSpecies(hollySpecies);
+
+        Item baobabFruit = ForgeRegistries.ITEMS.getValue(new ResourceLocation("byg","baobab_fruit"));
+        Species baobabSpecies = Species.REGISTRY.get(new ResourceLocation("dtbyg","baobab"));
+        BAOBAB_FRUIT.setDroppedItem(new ItemStack(baobabFruit));
+        if (baobabSpecies.isValid()) BAOBAB_FRUIT.setSpecies(baobabSpecies);
     }
 
     @SubscribeEvent

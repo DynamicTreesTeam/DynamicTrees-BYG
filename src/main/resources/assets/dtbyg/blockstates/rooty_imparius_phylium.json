@@ -1,6 +1,9 @@
 {
 	"multipart": [
-		{   "apply": { "model": "byg:block/imparius_phylium" }},
+		{   "apply": [
+			{ "model": "byg:block/imparius_phylium" },
+			{ "model": "byg:block/imparius_phylium2" }
+		]},
 		{	"apply": { "model": "dynamictrees:block/roots" }}
 	]
 }
