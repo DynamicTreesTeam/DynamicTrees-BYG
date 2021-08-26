@@ -23,7 +23,7 @@ public class SythianLogic extends GrowthLogicKit {
         probMap[0] = 0;//Down is always disallowed
         probMap[1] = signal.isInTrunk() ? species.getUpProbability() : 0;
         probMap[2] = probMap[3] = probMap[4] = probMap[5] = //Only allow turns when we aren't in the trunk(or the branch is not a twig and step is odd)
-                !signal.isInTrunk() || (signal.isInTrunk() && signal.numSteps % 2 == 0) ? 2 : 0;
+                !signal.isInTrunk() || (signal.isInTrunk() && signal.numSteps % 2 == 0) ? 1 : 0;
         probMap[originDir.ordinal()] = 0;//Disable the direction we came from
 
         return probMap;
@@ -34,7 +34,7 @@ public class SythianLogic extends GrowthLogicKit {
     public Direction newDirectionSelected(World world, BlockPos pos, Species species, Direction newDir, GrowSignal signal) {
         if (signal.isInTrunk() && newDir != Direction.UP) {//Turned out of trunk
             int y = signal.delta.getY();
-            boolean extra = y > threshold && y < getEnergy(world, pos, species, species.getSignalEnergy()) - threshold;
+            boolean extra = y > threshold && y < getEnergy(world, signal.rootPos, species, species.getSignalEnergy()) - threshold;
             signal.energy = 1.5f + (extra?1:0);
         }
         return newDir;
@@ -48,7 +48,9 @@ public class SythianLogic extends GrowthLogicKit {
 
     @Override
     public float getEnergy(World world, BlockPos pos, Species species, float signalEnergy) {
-        return (int) (signalEnergy + getHashedVariation(world, pos));
+        float energy = signalEnergy + getHashedVariation(world, pos);
+        if (((int)energy) % 2 == 1) return energy + 1;
+        return energy;
     }
 
     @Override

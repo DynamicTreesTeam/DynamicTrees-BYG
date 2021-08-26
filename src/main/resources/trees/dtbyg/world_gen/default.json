@@ -38,7 +38,7 @@
         }
       },
       "density": 1.0,
-      "chance": 0.5,
+      "chance": 0.2,
       "forestness": 0.5
     }
   },
@@ -49,8 +49,8 @@
     "apply": {
       "species": {
         "random": {
-          "dtbyg:oak_twiglet": 2,
-          "dtbyg:tapered_oak": 4,
+          "dtbyg:oak_twiglet": 4,
+          "dtbyg:tapered_oak": 8,
           "dtbyg:aspen": 1,
           "dtbyg:canopy_aspen": 1
         }
@@ -547,7 +547,7 @@
           "dtbyg:canopy_aspen": 1
         }
       },
-      "density": [ 0.8 ],
+      "density": [ 1.0 ],
       "chance": 1.0,
       "forestness": 1
     }
@@ -801,23 +801,23 @@
   {
     "select": {
       "name": "minecraft:.*",
-      "category": "beach"
+      "type": "beach"
     },
     "apply": {
       "species": "dtbyg:palm",
-      "density": [ 0.3 ],
-      "chance": 0.2
+      "density": [ 1.0 ],
+      "chance": 0.02
     }
   },
   {
     "select": {
       "name": "byg:.*",
-      "category": "beach"
+      "type": "beach"
     },
     "apply": {
       "species": "dtbyg:palm",
-      "density": [ 0.3 ],
-      "chance": 0.7
+      "density": [ 1.0 ],
+      "chance": 0.05
     }
   },
 

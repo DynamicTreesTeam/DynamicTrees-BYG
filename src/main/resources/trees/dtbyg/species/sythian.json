@@ -1,5 +1,5 @@
 {
-  "type": "nether_fungus",
+  "type": "dtbyg:sythian_fungus",
   "family": "dtbyg:sythian",
   "tapering": 0,
   "signal_energy": 7.0,
@@ -29,8 +29,7 @@
         "quantity": 4
       }
     },
-    "shroomlight",
-    "dtbyg:sythian_topper"
+    "shroomlight"
   ],
   "drop_creators": [
     "log",

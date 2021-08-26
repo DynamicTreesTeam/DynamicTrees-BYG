@@ -1,0 +1,30 @@
+{
+  "family": "dtbyg:jacaranda",
+  "tapering": 0.15,
+  "signal_energy": 16.0,
+  "up_probability": 2,
+  "lowest_branch_height": 6,
+  "growth_rate": 1.2,
+  "leaves_properties": "dtbyg:jacaranda",
+  "growth_logic_kit": "dtbyg:maple",
+  "environment_factors": {
+    "cold": 0.75,
+    "snowy": 0.5,
+    "dry": 0.66
+  },
+  "perfect_biomes": {
+    "name": ".*jacaranda.*"
+  },
+  "primitive_sapling": "byg:jacaranda_sapling",
+  "features": [
+    "bottom_flare",
+    {
+      "name": "roots",
+      "properties": {
+        "min_trunk_radius": 8,
+        "scale_factor": 24
+      }
+    },
+    "mound"
+  ]
+}

@@ -10,7 +10,7 @@ public class SythianWartCell extends MatrixCell {
 
     static final byte[] valMap = {
             0, 0, 0, 0, 0, 0, 0, 0, //D Maps
-            0, 0, 0, 0, 4, 0, 0, 0, //U Maps
+            0, 0, 0, 0, 4, 5, 0, 0, //U Maps
             0, 1, 2, 3, 3, 0, 0, 0, //N Maps
             0, 1, 2, 3, 3, 0, 0, 0, //S Maps
             0, 1, 2, 3, 3, 0, 0, 0, //W Maps
