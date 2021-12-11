@@ -24,6 +24,13 @@
   "features" : [
     "conifer_topper",
     {
+      "name": "alt_leaves",
+      "properties": {
+        "alternative_leaves": "dtbyg:holly_berry",
+        "place_chance": 0
+      }
+    },
+    {
       "name": "fruit",
       "properties": {
         "fruit_block": "dtbyg:holly_berries_fruit",

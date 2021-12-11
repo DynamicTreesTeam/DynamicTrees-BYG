@@ -14,7 +14,7 @@
     "wet": 1.1
   },
   "perfect_biomes": { "type": "jungle" },
-  "primitive_sapling": "dtbyg:rainbow_eucalyptus_sapling",
+  "primitive_sapling": "byg:rainbow_eucalyptus_sapling",
   "mega_species": "dtbyg:mega_rainbow_eucalyptus",
   "features" : [
     "bottom_flare"

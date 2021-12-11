@@ -37,7 +37,7 @@ version = "$mcVersion-$modVersion"
 group = property("group")
 
 minecraft {
-    mappings("parchment", "${property("mappingsVersion")}-$mcVersion")
+    mappings("official", mcVersion)
 
     runs {
         create("client") {
@@ -111,7 +111,7 @@ dependencies {
     minecraft("net.minecraftforge:forge:$mcVersion-${property("forgeVersion")}")
 
     // Compile BYG and DT, of course.
-    implementation(fg.deobf("curse.maven:BYG-247560:3419778"))
+    implementation(fg.deobf("curse.maven:BYG-247560:3485079"))
     implementation(fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-$mcVersion:${property("dynamicTreesVersion")}"))
 
     /////////////////////////////////////////

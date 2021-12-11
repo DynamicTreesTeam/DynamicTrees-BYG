@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "age=0": { "model": "dtbyg:block/fruit/holly_berries_age0" },
+    "age=1": { "model": "dtbyg:block/fruit/holly_berries_age1" },
+    "age=2": { "model": "dtbyg:block/fruit/holly_berries_age2" },
+    "age=3": { "model": "dtbyg:block/fruit/holly_berries_age3" }
+  }
+}

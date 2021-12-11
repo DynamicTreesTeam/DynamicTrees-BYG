@@ -1,0 +1,7 @@
+{
+    "parent": "dynamictrees:block/fruit/apple_age2",
+    "textures": {
+        "particle": "dynamictrees:block/apple",
+        "apple": "dynamictrees:block/apple"
+    }
+}

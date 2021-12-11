@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "age=0": { "model": "dtbyg:block/fruit/baobab_age0" },
+    "age=1": { "model": "dtbyg:block/fruit/baobab_age1" },
+    "age=2": { "model": "dtbyg:block/fruit/baobab_age2" },
+    "age=3": { "model": "dtbyg:block/fruit/baobab_age3" }
+  }
+}

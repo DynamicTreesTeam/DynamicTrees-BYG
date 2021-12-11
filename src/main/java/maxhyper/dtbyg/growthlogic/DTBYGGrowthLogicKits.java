@@ -17,6 +17,7 @@ public class DTBYGGrowthLogicKits {
     public static final GrowthLogicKit DIAGONAL_PALM = new DiagonalPalmLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "diagonal_palm"));
     public static final GrowthLogicKit TALL_CONIFER = new ConiferLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "tall_conifer"), 4);
     public static final GrowthLogicKit NORTHERN_CONIFER = new ConiferLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "northern_conifer"), 10).setHorizontalLimiter(2);
+    public static final GrowthLogicKit ZELKOVA = new ZelkovaLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "zelkova")).setHorizontalLimiter(2);
     public static final GrowthLogicKit THIN_CONIFER = new PineLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "thin_conifer"));
     public static final GrowthLogicKit BOREAL_CONIFER = new ConiferLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "boreal_conifer")).setHorizontalLimiter(3);
     public static final GrowthLogicKit MEGA_PINE = new MegaPineLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "mega_pine"));
@@ -31,7 +32,7 @@ public class DTBYGGrowthLogicKits {
 
     public static void register(final IRegistry<GrowthLogicKit> registry) {
         registry.registerAll(POPLAR, MEGA_PRAIRIE, MAPLE, ASPEN, TAPERED, DIAGONAL_PALM,
-                TALL_CONIFER, NORTHERN_CONIFER, THIN_CONIFER, BOREAL_CONIFER, MEGA_PINE,
+                TALL_CONIFER, NORTHERN_CONIFER, ZELKOVA, THIN_CONIFER, BOREAL_CONIFER, MEGA_PINE,
                 MEGA_FIR, MEGA_CIKA, EBONY, REDWOOD, SMALL_REDWOOD, BAOBAB, CHERRY, SYTHIAN_FUNGUS);
     }
 
