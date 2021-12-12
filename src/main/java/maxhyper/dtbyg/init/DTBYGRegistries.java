@@ -123,6 +123,7 @@ public class DTBYGRegistries {
         event.registerType(DynamicTreesBYG.resLoc("poplar"), PoplarSpecies.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("ether"), EtherSpecies.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("twiglet"), TwigletSpecies.TYPE);
+        event.registerType(DynamicTreesBYG.resLoc("cypress"), CypressSpecies.TYPE);
     }
     
     @SubscribeEvent

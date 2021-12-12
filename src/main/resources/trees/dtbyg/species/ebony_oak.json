@@ -1,0 +1,30 @@
+{
+  "family": "oak",
+  "tapering": 0.35,
+  "signal_energy": 20.0,
+  "up_probability": 5,
+  "lowest_branch_height": 7,
+  "growth_rate": 1.1,
+  "soil_longevity": 20,
+  "leaves_properties": "oak",
+  "growth_logic_kit": "dtbyg:ebony",
+  "environment_factors": {
+    "cold": 0.9,
+    "hot": 0.75,
+    "dry": 0.8
+  },
+  "perfect_biomes": {
+    "name": ".*woodlands"
+  },
+  "features": [
+    "dtbyg:big_bottom_flare",
+    {
+      "name": "roots",
+      "properties": {
+        "min_trunk_radius": 8,
+        "scale_factor": 24
+      }
+    },
+    "mound"
+  ]
+}

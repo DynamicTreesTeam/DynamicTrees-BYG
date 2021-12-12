@@ -13,6 +13,7 @@
     "dry": 0.4,
     "forest": 0.9
   },
+  "always_show_on_waila": false,
   "perfect_biomes": {
     "name": "byg:aspen.*"
   },

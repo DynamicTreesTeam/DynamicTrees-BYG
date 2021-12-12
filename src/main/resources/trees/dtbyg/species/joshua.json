@@ -21,6 +21,13 @@
   "acceptable_soils": ["dirt_like", "sand_like"],
   "features" : [
     {
+      "name": "alt_leaves",
+      "properties": {
+        "alternative_leaves": "dtbyg:ripe_joshua",
+        "place_chance": 0
+      }
+    },
+    {
       "name": "rot_soil",
       "properties": {
         "rotten_soil": "podzol"

@@ -20,11 +20,6 @@ public class EucalyptusLogic extends GrowthLogicKit {
     }
 
     @Override
-    public Direction newDirectionSelected(Species species, Direction newDir, GrowSignal signal) {
-        return null;
-    }
-
-    @Override
     public float getEnergy(World world, BlockPos pos, Species species, float signalEnergy) {
         return 0;
     }

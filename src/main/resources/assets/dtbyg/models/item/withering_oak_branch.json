@@ -1,0 +1,7 @@
+{
+  "parent": "dynamictrees:item/branch",
+  "textures": {
+    "bark": "byg:block/withering_oak_log",
+    "rings": "byg:block/withering_oak_log_top"
+  }
+}

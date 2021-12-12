@@ -29,11 +29,14 @@ public class DTBYGGrowthLogicKits {
     public static final GrowthLogicKit BAOBAB = new BaobabLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "baobab"));
     public static final GrowthLogicKit CHERRY = new VariateHeightLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "cherry")).setHeightVariation(6);
     public static final GrowthLogicKit SYTHIAN_FUNGUS = new SythianLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "sythian_fungus"));
+    public static final GrowthLogicKit CYPRESS = new CypressLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "cypress"));
+    public static final GrowthLogicKit MANGROVE = new MangroveLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "mangrove"));
 
     public static void register(final IRegistry<GrowthLogicKit> registry) {
         registry.registerAll(POPLAR, MEGA_PRAIRIE, MAPLE, ASPEN, TAPERED, DIAGONAL_PALM,
                 TALL_CONIFER, NORTHERN_CONIFER, ZELKOVA, THIN_CONIFER, BOREAL_CONIFER, MEGA_PINE,
-                MEGA_FIR, MEGA_CIKA, EBONY, REDWOOD, SMALL_REDWOOD, BAOBAB, CHERRY, SYTHIAN_FUNGUS);
+                MEGA_FIR, MEGA_CIKA, EBONY, REDWOOD, SMALL_REDWOOD, BAOBAB, CHERRY, SYTHIAN_FUNGUS,
+                CYPRESS, MANGROVE);
     }
 
 }

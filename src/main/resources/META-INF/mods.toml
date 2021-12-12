@@ -5,7 +5,7 @@ license="MIT"
 [[mods]]
 modId="dtbyg"
 version="${file.jarVersion}"
-displayName="Dynamic Trees for The Biomes You'll Go"
+displayName="Dynamic Trees for Oh The Biomes You'll Go"
 #updateJSONURL="https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-BYG/version_info.json?raw=true" #optional
 #displayURL="https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-byg" #optional
 logoFile=""

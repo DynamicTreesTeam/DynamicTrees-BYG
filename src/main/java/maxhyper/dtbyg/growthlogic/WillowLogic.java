@@ -31,7 +31,7 @@ public class WillowLogic extends GrowthLogicKit {
     }
 
     @Override
-    public Direction newDirectionSelected(Species species, Direction newDir, GrowSignal signal) {
+    public Direction newDirectionSelected(World world, BlockPos pos, Species species, Direction newDir, GrowSignal signal){
         if (!signal.isInTrunk()) {
             if (signal.energy >= 3.5f) {
                 // Reduce energy when not in the trunk, to prevent it from branching too much

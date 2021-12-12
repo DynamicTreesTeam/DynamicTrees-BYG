@@ -26,60 +26,6 @@ public class RedwoodLogic extends GrowthLogicKit {
         return getHashedVariation(world, pos, readyMade) % mod;//Vary the height energy by a psuedorandom hash function
     }
 
-//    @Override
-//    public Direction selectNewDirection(World world, BlockPos pos, Species species, BranchBlock branch, GrowSignal signal) {
-//        Direction originDir = signal.dir.getOpposite();
-//        int signalY = signal.delta.getY();
-//
-//        // prevent branches on the ground
-//        if(signal.numSteps + 1 <= species.getLowestBranchHeight(world, signal.rootPos)) {
-//            return Direction.UP;
-//        }
-//
-//        int[] probMap = new int[6]; // 6 directions possible DUNSWE
-//
-//        // Probability taking direction into account
-//        probMap[Direction.UP.ordinal()] = signal.dir != Direction.DOWN ? species.getUpProbability(): 0; // Favor up
-//        probMap[signal.dir.ordinal()] += species.getReinfTravel(); // Favor current direction
-//
-//        int radius = branch.getRadius(world.getBlockState(pos));
-//
-//        if (signal.delta.getY() < species.getLowestBranchHeight(world, pos) - 3) {
-//
-//            int treeHash = getHashedVariation(world, signal.rootPos, 2);
-//            int posHash = getHashedVariation(world, pos, 2);
-//
-//            int hashMod = signalY < 7 ? 3 : 11;
-//            boolean sideTurn = !signal.isInTrunk() || (signal.isInTrunk() && ((signal.numSteps + treeHash) % hashMod == 0) && (radius > 1)); // Only allow turns when we aren't in the trunk(or the branch is not a twig)
-//
-//            if (!sideTurn) return Direction.UP;
-//
-//            probMap[2 + (posHash % 4)] = 1;
-//        }
-//
-//        // Create probability map for direction change
-//        for (Direction dir: Direction.values()) {
-//            if (!dir.equals(originDir)) {
-//                BlockPos deltaPos = pos.offset(dir.getNormal());
-//                // Check probability for surrounding blocks
-//                // Typically Air:1, Leaves:2, Branches: 2+r
-//                if (signalY >= species.getLowestBranchHeight(world, pos)) {
-//                    BlockState deltaBlockState = world.getBlockState(deltaPos);
-//                    ITreePart treePart = TreeHelper.getTreePart(deltaBlockState);
-//
-//                    probMap[dir.ordinal()] += treePart.probabilityForBlock(deltaBlockState, world, deltaPos, branch);
-//                }
-//            }
-//        }
-//
-//        //Do custom stuff or override probability map for various species
-//        probMap = directionManipulation(world, pos, species, radius, signal, probMap);
-//
-//        //Select a direction from the probability map
-//        int choice = MathHelper.selectRandomFromDistribution(signal.rand, probMap); // Select a direction from the probability map.
-//        return newDirectionSelected(species, Direction.values()[choice != -1 ? choice : 1], signal); // Default to up if things are screwy
-//    }
-
     @Override
     public int[] directionManipulation(World world, BlockPos pos, Species species, int radius, GrowSignal signal, int[] probMap) {
 
@@ -116,7 +62,7 @@ public class RedwoodLogic extends GrowthLogicKit {
     }
 
     @Override
-    public Direction newDirectionSelected(Species species, Direction newDir, GrowSignal signal) {
+    public Direction newDirectionSelected(World world, BlockPos pos, Species species, Direction newDir, GrowSignal signal){
         int signalY = signal.delta.getY();
         int treeHash = CoordUtils.coordHashCode(signal.rootPos, 2);
         int canopyHeight = species.getLowestBranchHeight() + treeHash % 8 + heightOfCanopy;

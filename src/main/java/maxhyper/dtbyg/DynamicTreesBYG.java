@@ -1,6 +1,8 @@
 package maxhyper.dtbyg;
 
+import com.ferreusveritas.dynamictrees.DynamicTrees;
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
+import com.ferreusveritas.dynamictrees.init.DTConfigs;
 import corgiaoc.byg.BYG;
 import maxhyper.dtbyg.init.DTBYGRegistries;
 import net.minecraft.util.ResourceLocation;
@@ -24,15 +26,16 @@ public class DynamicTreesBYG
 
         RegistryHandler.setup(MOD_ID);
 
-//        BYG.ENABLE_OVERWORLD_TREES = false;
-//        if (ModList.get().isLoaded("dynamictreesplus")) {
-//            BYG.ENABLE_CACTI = false;
-//        }
-
         DTBYGRegistries.setup();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        if (DTConfigs.WORLD_GEN.get()){
+            BYG.ENABLE_OVERWORLD_TREES = false;
+            if (ModList.get().isLoaded("dynamictreesplus")) {
+                BYG.ENABLE_CACTI = false;
+            }
+        }
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {

@@ -30,7 +30,7 @@ public class PoplarLogic extends GrowthLogicKit {
     }
 
     @Override
-    public Direction newDirectionSelected(Species species, Direction newDir, GrowSignal signal) {
+    public Direction newDirectionSelected(World world, BlockPos pos, Species species, Direction newDir, GrowSignal signal){
         if (signal.isInTrunk() && newDir != Direction.UP) { // Turned out of trunk
             if (signal.energy >= 4f) {
                 signal.energy = 1.8f; // don't grow branches more than 1 block out from the trunk

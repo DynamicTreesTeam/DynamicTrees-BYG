@@ -1,0 +1,29 @@
+{
+  "type": "dtbyg:cypress",
+  "family": "dtbyg:cypress",
+  "tapering": 0.4,
+  "signal_energy": 6.0,
+  "up_probability": 5,
+  "lowest_branch_height": 3,
+  "growth_rate": 0.8,
+  "soil_longevity": 8,
+  "max_branch_radius": 16,
+  "growth_logic_kit": "dtbyg:cypress",
+  "leaves_properties": "dtbyg:cypress",
+  "environment_factors" : {
+    "hot": 0.7,
+    "dry": 0.5
+  },
+  "perfect_biomes": { "types": [ "swamp", "overworld" ] },
+  "primitive_sapling": "byg:cypress_sapling",
+  "acceptable_soils": [ "water_like", "dirt_like" ],
+  "features": [
+    "dtbyg:extra_bottom_flare",
+    {
+      "name": "mound",
+      "properties": {
+        "mound_cutoff_radius": 999
+      }
+    }
+  ]
+}

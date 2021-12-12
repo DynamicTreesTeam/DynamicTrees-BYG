@@ -34,16 +34,6 @@ public class EbonyLogic extends GrowthLogicKit {
         return probMap;
     }
 
-    @Override
-    public Direction newDirectionSelected(Species species, Direction newDir, GrowSignal signal) {
-//        //signal is about to branch out
-//        if (signal.isInTrunk() && newDir != Direction.UP && signal.energy > 2){
-//            // Increase energy, to encourage bigger branch-out.
-//            signal.energy = 8.2f;
-//        }
-
-        return newDir;
-    }
     private float getHashedVariation (World world, BlockPos pos){
         long day = world.getGameTime() / 24000L;
         int month = (int)day / 30;//Change the hashs every in-game month

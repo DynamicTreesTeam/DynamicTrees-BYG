@@ -52,7 +52,7 @@ public class AspenLogic extends GrowthLogicKit {
     }
 
     @Override
-    public Direction newDirectionSelected(Species species, Direction newDir, GrowSignal signal) {
+    public Direction newDirectionSelected(World world, BlockPos pos, Species species, Direction newDir, GrowSignal signal){
         // Turned out of trunk
         if (signal.isInTrunk() && newDir != Direction.UP) {
             // Reduce the energy so branches don't expand too much

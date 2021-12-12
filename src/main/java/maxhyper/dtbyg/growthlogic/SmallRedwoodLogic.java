@@ -50,7 +50,7 @@ public class SmallRedwoodLogic extends ConiferLogic {
     }
 
     @Override
-    public Direction newDirectionSelected(Species species, Direction newDir, GrowSignal signal) {
+    public Direction newDirectionSelected(World world, BlockPos pos, Species species, Direction newDir, GrowSignal signal){
         newDir = super.newDirectionSelected(species, newDir, signal);
         if (signal.isInTrunk() && newDir != Direction.UP && signal.delta.getY() < species.getLowestBranchHeight() + 3) {
             signal.energy = 2;

@@ -41,11 +41,6 @@ public class BaobabLogic extends GrowthLogicKit {
         return probMap;
     }
 
-    @Override
-    public Direction newDirectionSelected(Species species, Direction newDir, GrowSignal signal) {
-        return newDir;
-    }
-
     private float getHashedVariation (World world, BlockPos pos){
         long day = world.getGameTime() / 24000L;
         int month = (int)day / 30;//Change the hashs every in-game month
