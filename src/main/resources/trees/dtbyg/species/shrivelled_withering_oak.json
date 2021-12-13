@@ -1,0 +1,22 @@
+{
+  "family": "dtbyg:withering_oak",
+  "tapering": 0.3,
+  "signal_energy": 8.0,
+  "lowest_branch_height": 2,
+  "growth_rate": 0.6,
+  "leaves_properties": "dtbyg:sparse_withering_oak",
+  "environment_factors" : {
+    "cold": 0.5,
+    "wet": 0.5
+  },
+  "perfect_biomes": { "type": "nether" },
+  "acceptable_soils": [ "dirt_like", "nether_like" ],
+  "features": [
+    {
+      "name": "dtbyg:branch_sprouts",
+      "properties": {
+        "sprout_block": "dtbyg:arisian_bloom_branch"
+      }
+    }
+  ]
+}

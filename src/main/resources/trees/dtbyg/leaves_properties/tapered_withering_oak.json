@@ -1,0 +1,11 @@
+{
+  "type": "dtbyg:scruffy",
+  "scruffy_leaf_chance": 0.66,
+  "scruffy_max_hydro": 1,
+  "primitive_leaves": "byg:withering_oak_leaves",
+  "cell_kit": "dtbyg:round_conifer",
+  "smother": 9,
+  "light_requirement": 0,
+  "fire_spread": 0,
+  "flammability": 0
+}

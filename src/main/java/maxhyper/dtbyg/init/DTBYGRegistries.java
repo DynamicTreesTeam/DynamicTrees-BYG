@@ -17,23 +17,26 @@ import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
 import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.ShapeUtils;
+import corgiaoc.byg.common.properties.blocks.end.impariusgrove.ImpariusMushroomBranchBlock;
 import corgiaoc.byg.core.BYGBlocks;
 import maxhyper.dtbyg.DynamicTreesBYG;
 import maxhyper.dtbyg.blocks.BYGTintedSoilProperties;
+import maxhyper.dtbyg.blocks.DynamicArisianBloomBranch;
 import maxhyper.dtbyg.blocks.EtherBulbsFruitBlock;
 import maxhyper.dtbyg.blocks.ScruffyLeavesProperties;
 import maxhyper.dtbyg.cells.DTBYGCellKits;
 import maxhyper.dtbyg.genfeatures.DTBYGGenFeatures;
 import maxhyper.dtbyg.growthlogic.DTBYGGrowthLogicKits;
 import maxhyper.dtbyg.trees.*;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import net.minecraft.block.*;
+import net.minecraft.block.material.Material;
+import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -64,6 +67,8 @@ public class DTBYGRegistries {
             .setShape(2, ShapeUtils.createFruitShape(2.5f,4,2))
             .setShape(3, ShapeUtils.createFruitShape(3.5f,4,3))
             .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
+
+    public static Block ARISIAN_BLOOM_BRANCH;
 
     public static void setup() {
         RegistryHandler.addBlock(DynamicTreesBYG.resLoc("ether_bulbs_fruit"), ETHER_BULBS_FRUIT);
@@ -98,6 +103,13 @@ public class DTBYGRegistries {
                 if (branch != null)
                     return MathHelper.clamp(branch.getRadius(branchState) - 1, 1, 8);
                  else return 8;
+            }
+            return 0;
+        });
+
+        BranchConnectables.makeBlockConnectable(ARISIAN_BLOOM_BRANCH, (state, world, pos, side) -> {
+            if (state.hasProperty(HorizontalBlock.FACING)) {
+                return state.getValue(HorizontalBlock.FACING) == side ? 1:0;
             }
             return 0;
         });
@@ -172,8 +184,11 @@ public class DTBYGRegistries {
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
-        setupBlocks();
+        ARISIAN_BLOOM_BRANCH = new DynamicArisianBloomBranch(AbstractBlock.Properties.of(Material.PLANT, MaterialColor.COLOR_PURPLE).instabreak().sound(SoundType.GRASS).noOcclusion().noCollission().harvestTool(ToolType.HOE).lightLevel((state) -> 10));
+        ARISIAN_BLOOM_BRANCH.setRegistryName(DynamicTreesBYG.resLoc("arisian_bloom_branch"));
+        event.getRegistry().register(ARISIAN_BLOOM_BRANCH);
 
+        setupBlocks();
     }
 
 }

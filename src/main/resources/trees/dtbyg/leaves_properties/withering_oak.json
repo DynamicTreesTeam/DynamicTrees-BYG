@@ -1,0 +1,10 @@
+{
+  "type": "dtbyg:scruffy",
+  "scruffy_leaf_chance": 0.75,
+  "scruffy_max_hydro": 4,
+  "primitive_leaves": "byg:withering_oak_leaves",
+  "cell_kit": "dtbyg:willow",
+  "light_requirement": 0,
+  "fire_spread": 0,
+  "flammability": 0
+}

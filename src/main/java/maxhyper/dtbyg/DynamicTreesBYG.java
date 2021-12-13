@@ -4,6 +4,7 @@ import com.ferreusveritas.dynamictrees.DynamicTrees;
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.init.DTConfigs;
 import corgiaoc.byg.BYG;
+import maxhyper.dtbyg.init.DTBYGClient;
 import maxhyper.dtbyg.init.DTBYGRegistries;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
@@ -39,7 +40,7 @@ public class DynamicTreesBYG
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
-        //DTBYGClient.setup();
+        DTBYGClient.setup();
     }
 
     public static ResourceLocation resLoc (final String path) {
