@@ -27,6 +27,13 @@
         "scale_factor": 24
       }
     },
-    "mound"
+    "mound",
+    {
+      "name": "alt_leaves",
+      "properties": {
+        "alternative_leaves": "dtbyg:flowering_indigo_jacaranda",
+        "place_chance": 0.33
+      }
+    }
   ]
 }

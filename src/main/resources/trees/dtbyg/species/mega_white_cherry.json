@@ -1,6 +1,6 @@
 {
   "family": "dtbyg:cherry",
-  "tapering": 0.2,
+  "tapering": 0.3,
   "signal_energy": 25.0,
   "up_probability": 2,
   "lowest_branch_height": 8,

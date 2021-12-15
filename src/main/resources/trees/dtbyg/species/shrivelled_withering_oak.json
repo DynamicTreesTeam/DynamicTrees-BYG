@@ -4,6 +4,7 @@
   "signal_energy": 8.0,
   "lowest_branch_height": 2,
   "growth_rate": 0.6,
+  "soil_longevity": 3,
   "leaves_properties": "dtbyg:sparse_withering_oak",
   "environment_factors" : {
     "cold": 0.5,
@@ -15,7 +16,9 @@
     {
       "name": "dtbyg:branch_sprouts",
       "properties": {
-        "sprout_block": "dtbyg:arisian_bloom_branch"
+        "sprout_block": "dtbyg:arisian_bloom_branch",
+        "fruiting_radius": 4,
+        "place_chance": 0.01
       }
     }
   ]
