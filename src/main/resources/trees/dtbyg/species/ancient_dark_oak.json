@@ -1,0 +1,31 @@
+{
+  "family": "dark_oak",
+  "tapering": 0.15,
+  "signal_energy": 30.0,
+  "up_probability": 2,
+  "lowest_branch_height": 7,
+  "growth_rate": 0.8,
+  "max_branch_radius": 16,
+  "leaves_properties": "dark_oak",
+  "growth_logic_kit": "dtbyg:ancient",
+  "environment_factors": {
+    "cold": 0.9,
+    "hot": 0.9,
+    "dry": 0.8,
+    "magical": 1.1
+  },
+  "perfect_biomes": {
+    "name": ".*ancient.*"
+  },
+  "features": [
+    "bottom_flare",
+    "mound",
+    {
+      "name": "roots",
+      "properties": {
+        "min_trunk_radius": 8,
+        "scale_factor": 16
+      }
+    }
+  ]
+}

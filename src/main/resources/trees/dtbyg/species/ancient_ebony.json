@@ -1,0 +1,25 @@
+{
+  "family": "dtbyg:ebony",
+  "tapering": 0.4,
+  "signal_energy": 24.0,
+  "up_probability": 2,
+  "lowest_branch_height": 6,
+  "growth_rate": 0.8,
+  "max_branch_radius": 24,
+  "leaves_properties": "dtbyg:ancient_ebony",
+  "growth_logic_kit": "dtbyg:ancient",
+  "environment_factors": {
+    "cold": 0.9,
+    "hot": 0.9,
+    "dry": 0.8,
+    "magical": 1.1
+  },
+  "perfect_biomes": {
+    "name": ".*ancient.*"
+  },
+  "features": [
+    "bottom_flare",
+    "mound",
+    "roots"
+  ]
+}

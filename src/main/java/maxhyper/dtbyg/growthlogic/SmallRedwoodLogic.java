@@ -16,7 +16,7 @@ public class SmallRedwoodLogic extends ConiferLogic {
         setHeightVariation(6);
     }
 
-    // -*-*-*-*-*-*-*-* %2 ==0
+    // *-*-*-*-*-*-*-*- %2 < 1
     // **--**--**--**-- %4 < 2
     // ****----****---- %8 < 4
     // ********-------- %16< 8
