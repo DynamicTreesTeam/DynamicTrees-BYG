@@ -1,9 +1,9 @@
 {
   "family": "dark_oak",
   "tapering": 0.15,
-  "signal_energy": 30.0,
+  "signal_energy": 25.0,
   "up_probability": 2,
-  "lowest_branch_height": 7,
+  "lowest_branch_height": 5,
   "growth_rate": 0.8,
   "max_branch_radius": 16,
   "leaves_properties": "dark_oak",

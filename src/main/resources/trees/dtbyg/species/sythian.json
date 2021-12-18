@@ -6,7 +6,7 @@
   "up_probability": 4,
   "lowest_branch_height": 2,
   "growth_rate": 1,
-  "soil_longevity": 3,
+  "soil_longevity": 5,
   "growth_logic_kit": "dtbyg:sythian_fungus",
   "leaves_properties": "dtbyg:sythian",
   "environment_factors" : {

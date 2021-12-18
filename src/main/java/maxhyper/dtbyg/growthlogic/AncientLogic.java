@@ -1,6 +1,7 @@
 package maxhyper.dtbyg.growthlogic;
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
+import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
 import com.ferreusveritas.dynamictrees.growthlogic.PalmGrowthLogic;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Species;
@@ -10,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class AncientLogic extends PalmGrowthLogic {
+public class AncientLogic extends GrowthLogicKit {
 
     public AncientLogic(ResourceLocation registryName) {
         super(registryName);
@@ -51,17 +52,28 @@ public class AncientLogic extends PalmGrowthLogic {
     }
 
     @Override
-    public Direction newDirectionSelected(Species species, Direction newDir, GrowSignal signal) {
+    public Direction newDirectionSelected(World world, BlockPos pos, Species species, Direction newDir, GrowSignal signal) {
         if (signal.isInTrunk() && newDir != Direction.UP){
             signal.energy = Math.min(signal.energy, canopyEnergy + 3.5f);
         }
-        return super.newDirectionSelected(species, newDir, signal);
+        return newDir;
     }
 
-//    @Override
-//    public float getEnergy(World world, BlockPos pos, Species species, float signalEnergy) {
-//        return signalEnergy * species.biomeSuitability(world, pos);
-//    }
+    private float getHashedVariation (World world, BlockPos pos, int variation){
+        long day = world.getGameTime() / 24000L;
+        int month = (int)day / 30;//Change the hashs every in-game month
+        return (CoordUtils.coordHashCode(pos.above(month), 2) % variation);//Vary the height energy by a psuedorandom hash function
+    }
+
+    @Override
+    public float getEnergy(World world, BlockPos pos, Species species, float signalEnergy) {
+        return signalEnergy + getHashedVariation(world, pos, 5);
+    }
+
+    @Override
+    public int getLowestBranchHeight(World world, BlockPos pos, Species species, int lowestBranchHeight) {
+        return (int) (lowestBranchHeight + getHashedVariation(world, pos, 3));
+    }
 
     private void branchTwisting(World world, BlockPos pos, GrowSignal signal, int[] probMap){
         boolean allowUp = !(signal.numTurns == 1 && signal.delta.distSqr(0, signal.delta.getY(), 0, true) == 1.0);

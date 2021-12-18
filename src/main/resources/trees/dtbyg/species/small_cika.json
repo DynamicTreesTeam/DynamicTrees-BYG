@@ -5,6 +5,7 @@
   "up_probability": 4,
   "lowest_branch_height": 8,
   "growth_rate": 0.9,
+  "soil_longevity": 3,
   "growth_logic_kit": "conifer",
   "leaves_properties": "dtbyg:cika",
   "environment_factors" : {

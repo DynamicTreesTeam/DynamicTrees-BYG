@@ -1,5 +1,6 @@
 package maxhyper.dtbyg.growthlogic;
 
+import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.growthlogic.PalmGrowthLogic;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Species;
@@ -25,7 +26,7 @@ public class DiagonalPalmLogic extends PalmGrowthLogic {
 
         // Alter probability map for direction change
         probMap[0] = 0; // Down is always disallowed for palm
-        probMap[1] = 10;
+        probMap[1] = species.getUpProbability();
         // Start by disabling probability on the sides
         probMap[2] = probMap[3] = probMap[4] = probMap[5] =  0;
 
@@ -47,6 +48,29 @@ public class DiagonalPalmLogic extends PalmGrowthLogic {
                 probMap[1] = 0;
             }
         }
+
+//        boolean found = false;
+//        for (Direction dir : Direction.values()){
+//            if (dir != signal.dir.getOpposite()){
+//                if (TreeHelper.isBranch(world.getBlockState(pos.offset(dir.getNormal())))){
+//                    probMap[dir.ordinal()] = 1;
+//                    found = true;
+//                }
+//            }
+//        }
+//        if (!found){
+//            probMap[1] = species.getUpProbability();
+//            probMap[2] = probMap[3] = probMap[4] = probMap[5] = 1;
+//        }
+//
+//        int split = (int)(1/chanceToSplit);
+//        int randCoordCode = Math.abs(CoordUtils.coordHashCode(pos, 2));
+//
+//        int splitSelection = randCoordCode % split;
+//
+//        if (splitSelection == 0 && signal.energy > species.getEnergy(world, signal.rootPos) * (1-splitMaxHeightEnergyFactor)){
+//            probMap[selectedDir.getClockWise().ordinal()] = 1;
+//        }
 
         probMap[originDir.ordinal()] = 0; // Disable the direction we came from
 

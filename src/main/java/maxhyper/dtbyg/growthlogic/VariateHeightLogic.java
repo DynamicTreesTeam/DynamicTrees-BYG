@@ -26,9 +26,7 @@ public class VariateHeightLogic extends GrowthLogicKit {
     public int[] directionManipulation(World world, BlockPos pos, Species species, int radius, GrowSignal signal, int[] probMap) {return probMap;}
 
     @Override
-    public Direction newDirectionSelected(Species species, Direction newDir, GrowSignal signal) {
-        return newDir;
-    }
+    public Direction newDirectionSelected(World world, BlockPos pos, Species species, Direction newDir, GrowSignal signal) {return newDir;}
 
     private float getHashedVariation (World world, BlockPos pos){
         long day = world.getGameTime() / 24000L;

@@ -5,7 +5,7 @@
   "up_probability": 1,
   "lowest_branch_height": 15,
   "growth_rate": 0.4,
-  "soil_longevity": 40,
+  "soil_longevity": 20,
   "max_branch_radius": 24,
   "leaves_properties": "dtbyg:baobab",
   "environment_factors": {

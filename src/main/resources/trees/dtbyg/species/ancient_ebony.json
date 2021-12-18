@@ -1,9 +1,9 @@
 {
   "family": "dtbyg:ebony",
   "tapering": 0.4,
-  "signal_energy": 24.0,
+  "signal_energy": 20.0,
   "up_probability": 2,
-  "lowest_branch_height": 6,
+  "lowest_branch_height": 3,
   "growth_rate": 0.8,
   "max_branch_radius": 24,
   "leaves_properties": "dtbyg:ancient_ebony",

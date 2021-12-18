@@ -6,6 +6,7 @@
   "growth_rate": 0.8,
   "up_probability": 8,
   "max_branch_radius": 24,
+  "soil_longevity": 6,
   "growth_logic_kit": "dtbyg:tapered_withered",
   "leaves_properties": "dtbyg:tapered_withering_oak",
   "environment_factors" : {
