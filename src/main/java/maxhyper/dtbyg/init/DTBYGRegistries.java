@@ -211,12 +211,7 @@ public class DTBYGRegistries {
         setupBlocks();
     }
 
-    public static final FeatureCanceller BYG_FUNGUS_CANCELLER = new FungusFeatureCanceller<BYGMushroomConfig>(DynamicTreesBYG.resLoc("fungus"), BYGMushroomConfig.class){
-        @Override
-        public boolean shouldCancel(ConfiguredFeature<?, ?> configuredFeature, BiomePropertySelectors.FeatureCancellations featureCancellations) {
-            return super.shouldCancel(configuredFeature, featureCancellations);
-        }
-    };
+    public static final FeatureCanceller BYG_FUNGUS_CANCELLER = new FungusFeatureCanceller<>(DynamicTreesBYG.resLoc("fungus"), BYGMushroomConfig.class);
 
     @SubscribeEvent
     public static void onFeatureCancellerRegistry(final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<FeatureCanceller> event) {

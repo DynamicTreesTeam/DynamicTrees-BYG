@@ -42,7 +42,8 @@
       "name": "fruit",
       "properties":{
         "fruit_item": "byg:green_apple",
-        "quantity": 12
+        "quantity": 12,
+        "fruiting_radius": 6
       }
     }
   ]

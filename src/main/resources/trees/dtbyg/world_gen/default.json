@@ -28,7 +28,7 @@
   },
   {
     "select": {
-      "name": "byg:.*grove"
+      "names": ["byg:grove", "byg:flowering_grove"]
     },
     "apply": {
       "species": {
@@ -40,6 +40,38 @@
       "density": 1.0,
       "chance": 0.2,
       "forestness": 0.5
+    }
+  },
+  {
+    "select": {
+      "names": ["byg:enchanted_grove", "byg:flowering_enchanted_grove"]
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:green_enchanted_poplar": 1,
+          "dtbyg:blue_enchanted_poplar": 1
+        }
+      },
+      "density": 1.0,
+      "chance": 0.2,
+      "forestness": 0.5
+    }
+  },
+  {
+    "select": {
+      "name": "byg:enchanted_forest.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:green_enchanted": 1,
+          "dtbyg:blue_enchanted": 1
+        }
+      },
+      "density": 1.0,
+      "chance": 1.0,
+      "forestness": 1.0
     }
   },
   {
@@ -308,6 +340,48 @@
     }
   },
   {
+    "select": "byg:amaranth_fields",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:jacaranda": 1,
+          "dtbyg:indigo_jacaranda": 1
+        }
+      },
+      "density": [ 0.2 ],
+      "chance": 0.2
+    }
+  },
+  {
+    "select": {
+      "name": "byg:jacaranda_forest.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:jacaranda": 1,
+          "dtbyg:indigo_jacaranda": 1
+        }
+      },
+      "density": [ 1.2 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": "byg:jacaranda_clearing",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:jacaranda": 1,
+          "dtbyg:indigo_jacaranda": 1
+        }
+      },
+      "density": [ 0.6 ],
+      "chance": 0.2
+    }
+  },
+  {
     "select": {
       "name": "byg:red_oak_forest"
     },
@@ -409,12 +483,18 @@
       "name": "byg:sierra.*"
     },
     "apply": {
-      "species": {
-        "random": {
-          "dtbyg:palo_verde": 1
-        }
-      },
+      "species": "dtbyg:palo_verde",
       "density": 0.4,
+      "chance": 0.2
+    }
+  },
+  {
+    "select": {
+      "name": "byg:.*red_rock.*"
+    },
+    "apply": {
+      "species": "dtbyg:palo_verde",
+      "density": 0.1,
       "chance": 0.2
     }
   },
@@ -604,6 +684,16 @@
     }
   },
   {
+    "select": {
+      "name": "byg:shrublands"
+    },
+    "apply": {
+      "species": "dtbyg:oak_twiglet",
+      "density": [ 2 ],
+      "chance": 0.1
+    }
+  },
+  {
     "select": "byg:wooded_meadow",
     "cancellers": {
       "type": "tree",
@@ -667,7 +757,7 @@
           "dtbyg:mega_holly": 1
         }
       },
-      "density": [ 0.5 ],
+      "density": [ 1.3 ],
       "chance": 1.0,
       "forestness": 1
     }
@@ -724,8 +814,8 @@
           "dtbyg:small_redwood": 1
         }
       },
-      "density": [ 0.2 ],
-      "chance": 0.6,
+      "density": [ 0.5 ],
+      "chance": 0.8,
       "forestness": 1
     }
   },
@@ -733,8 +823,8 @@
     "select": "byg:redwood_mountains",
     "apply": {
       "species": "dtbyg:redwood",
-      "density": [ 0.2 ],
-      "chance": 0.8,
+      "density": [ 0.5 ],
+      "chance": 1.0,
       "forestness": 1
     }
   },
@@ -766,7 +856,9 @@
     }
   },
   {
-    "select": "byg:great_lake.*",
+    "select": {
+      "name": "byg:great_lake.*"
+    },
     "cancellers": {
       "type": "tree",
       "namespace": "minecraft"
@@ -829,7 +921,9 @@
     }
   },
   {
-    "select": "byg:cika.*",
+    "select": {
+      "name": "byg:cika.*"
+    },
     "apply": {
       "species": {
         "random": {
@@ -843,10 +937,12 @@
     }
   },
   {
-    "select": "byg:zelkova_forest.*",
+    "select": {
+      "name": "byg:zelkova_forest.*"
+    },
     "apply": {
       "species": "dtbyg:zelkova",
-      "density": [ 0.9 ],
+      "density": [ 1.5 ],
       "chance": 1.0,
       "forestness": 1
     }
@@ -856,16 +952,23 @@
     "apply": {
       "species": "dtbyg:zelkova",
       "density": [ 0.1 ],
-      "chance": 0.5
+      "chance": 0.4
     }
   },
   {
     "select": {
-      "name": "byg:woodedlands"
+      "name": "byg:twilight_valley.*"
     },
-    "cancellers": {
-      "type": "dtbyg:fungus",
-      "namespace": "minecraft"
+    "apply": {
+      "species": "dtbyg:brown_zelkova",
+      "density": [ 1 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:woodlands"
     },
     "apply": {
       "species": {
@@ -880,6 +983,80 @@
       "forestness": 1
     }
   },
+  {
+    "select": "byg:cherry_blossom_forest",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:white_cherry": 3,
+          "dtbyg:pink_cherry": 3,
+          "dtbyg:mega_white_cherry": 1,
+          "dtbyg:mega_pink_cherry": 1
+        }
+      },
+      "density": 1,
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": "byg:ancient_forest",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:ancient_dark_oak": 4,
+          "dtbyg:ancient_silver_maple": 3,
+          "dtbyg:ancient_ebony": 3,
+          "dtbyg:canopy_oak": 1,
+          "dtbyg:canopy_dark_oak": 1,
+          "dtbyg:dark_oak": 1
+        }
+      },
+      "density" : { "math": { "div" : [ "noise", 3.0 ] } },
+      "chance": 1,
+      "multipass" : true
+    }
+  },
+  {
+    "select": {
+      "names": [ "byg:skyris.*", "!byg:skyris_highlands_clearing" ]
+    },
+    "apply": {
+      "species": "dtbyg:skyris",
+      "density": [ 0.8 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": "byg:skyris_highlands_clearing",
+    "apply": {
+      "species": "dtbyg:skyris",
+      "density": [ 0.2 ],
+      "chance": 0.2
+    }
+  },
+  {
+    "select": {
+      "name": "byg:baobab_savanna"
+    },
+    "cancellers": {
+      "type": "tree",
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:baobab": 4,
+          "dynamictrees:acacia": 1
+        }
+      },
+      "density": [ 0.1 ],
+      "chance": 0.6
+    }
+  },
+
+
 
   {
     "__comment": "Flag nether as being subterranean.",
@@ -907,6 +1084,77 @@
       "species": "dtbyg:oddity_cactus",
       "density" : { "math": { "add" : [ { "mul" : [ "noise", 0.6 ] }, 0.6 ] } },
       "chance": 0.7
+    }
+  },
+  {
+    "select": "byg:mojave_desert",
+    "apply": {
+      "species": "dtbyg:joshua",
+      "density": [ 0.1 ],
+      "chance": 0.1
+    }
+  },
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "select": "byg:mojave_desert",
+    "cancellers": {
+      "type": "dynamictreesplus:cactus",
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:joshua": 1,
+          "dynamictreesplus:pipe_cactus": 2
+        }
+      },
+      "density": [ 0.2 ],
+      "chance": 0.5
+    }
+  },
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "select": "byg:red_desert",
+    "cancellers": {
+      "type": "dynamictreesplus:cactus",
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dynamictreesplus:saguaro_cactus": 1,
+          "dynamictreesplus:pillar_cactus": 1
+        }
+      },
+      "density": [ 0.6 ],
+      "chance": 0.6
+    }
+  },
+  {
+    "select": "byg:lush_red_desert",
+    "apply": {
+      "species": "dtbyg:palo_verde",
+      "density": [ 0.1 ],
+      "chance": 0.1
+    }
+  },
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "select": "byg:lush_red_desert",
+    "cancellers": {
+      "type": "dynamictreesplus:cactus",
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dynamictreesplus:saguaro_cactus": 2,
+          "dynamictreesplus:pillar_cactus": 2,
+          "dtbyg:palo_verde": 1
+        }
+      },
+      "density": [ 1.0 ],
+      "chance": 0.6
     }
   }
 ]

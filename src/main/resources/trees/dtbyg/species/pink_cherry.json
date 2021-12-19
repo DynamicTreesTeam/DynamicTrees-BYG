@@ -12,6 +12,7 @@
     "hot": 0.9,
     "dry": 0.5
   },
+  "always_show_on_waila": true,
   "perfect_biomes": {
     "name": ".*cherry.*"
   },
