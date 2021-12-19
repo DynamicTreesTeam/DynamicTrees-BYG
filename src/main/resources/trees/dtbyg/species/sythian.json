@@ -17,7 +17,7 @@
   "primitive_sapling": "byg:sythian_fungus",
   "acceptable_soils": ["nether_soil_like", "fungus_like", "dirt_like"],
   "acceptable_growth_blocks": ["byg:sythian_nylium", "dtbyg:rooty_sythian_nylium"],
-  "sapling_shape": "round_mushroom_rim",
+  "sapling_shape": "dtbyg:sythian",
   "features": [
     {
       "name": "vines",

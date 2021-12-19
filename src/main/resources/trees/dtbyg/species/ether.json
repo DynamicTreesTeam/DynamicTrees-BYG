@@ -17,7 +17,7 @@
   "primitive_saplings": [
     "byg:ether_sapling",
     {
-      "sapling_item": "byg:ether_bulbs_block",
+      "sapling_item": "byg:ether_bulbs",
       "can_craft_seed_to_sapling": false
     }
   ],

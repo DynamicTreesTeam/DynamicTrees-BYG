@@ -44,7 +44,7 @@
   },
   {
     "select": {
-      "name": "byg:deciduous_forest.*"
+      "names": ["byg:deciduous_forest.*", "byg:snowy_deciduous_forest.*"]
     },
     "apply": {
       "species": {
@@ -218,7 +218,7 @@
           "dtbyg:tall_red_spruce": 2
         }
       },
-      "density": [ 0.6 ],
+      "density": [ 0.8 ],
       "chance": 1,
       "forestness": 1
     }
@@ -236,7 +236,7 @@
           "dtbyg:tall_blue_spruce": 2
         }
       },
-      "density": [ 0.6 ],
+      "density": [ 0.8 ],
       "chance": 1,
       "forestness": 1
     }
@@ -422,6 +422,10 @@
     "select": {
       "name": "byg:grassland_plateau"
     },
+    "cancellers": {
+      "type": "tree",
+      "namespace": "minecraft"
+    },
     "apply": {
       "species": "oak",
       "density": 0.1,
@@ -431,6 +435,10 @@
   {
     "select": {
       "name": "byg:wooded_grassland_plateau"
+    },
+    "cancellers": {
+      "type": "tree",
+      "namespace": "minecraft"
     },
     "apply": {
       "species": {
@@ -655,7 +663,7 @@
     "apply": {
       "species": {
         "random": {
-          "dtbyg:holly": 6,
+          "dtbyg:holly": 9,
           "dtbyg:mega_holly": 1
         }
       },
@@ -758,7 +766,7 @@
     }
   },
   {
-    "select": "byg:great_lake_isles",
+    "select": "byg:great_lake.*",
     "cancellers": {
       "type": "tree",
       "namespace": "minecraft"
@@ -818,6 +826,58 @@
       "species": "dtbyg:palm",
       "density": [ 1.0 ],
       "chance": 0.05
+    }
+  },
+  {
+    "select": "byg:cika.*",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:cika": 6,
+          "dtbyg:small_cika": 1
+        }
+      },
+      "density": [ 0.9 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": "byg:zelkova_forest.*",
+    "apply": {
+      "species": "dtbyg:zelkova",
+      "density": [ 0.9 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": "byg:zelkova_clearing",
+    "apply": {
+      "species": "dtbyg:zelkova",
+      "density": [ 0.1 ],
+      "chance": 0.5
+    }
+  },
+  {
+    "select": {
+      "name": "byg:woodedlands"
+    },
+    "cancellers": {
+      "type": "dtbyg:fungus",
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:canopy_oak": 5,
+          "dtbyg:canopy_dark_oak": 3,
+          "dtbyg:ebony_oak": 1
+        }
+      },
+      "density": 0.8,
+      "chance": 0.9,
+      "forestness": 1
     }
   },
 
