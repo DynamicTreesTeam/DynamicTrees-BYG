@@ -9,6 +9,6 @@
   "lowest_branch_height": 4,
   "growth_rate": 0.85,
   "growth_logic_kit": "dtbyg:poplar",
-  "leaves_properties": "dtbyg:blue_enchanted_poplar",
+  "leaves_properties": "dtbyg:blue_enchanted",
   "perfect_biomes": { "name": "byg:.*grove" }
 }

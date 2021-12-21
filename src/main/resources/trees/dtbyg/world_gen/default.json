@@ -62,6 +62,10 @@
     "select": {
       "name": "byg:enchanted_forest.*"
     },
+    "cancellers": {
+      "type": "dtbyg:fungus",
+      "namespace": "minecraft"
+    },
     "apply": {
       "species": {
         "random": {
@@ -69,9 +73,10 @@
           "dtbyg:blue_enchanted": 1
         }
       },
-      "density": 1.0,
+      "density": 0.6,
       "chance": 1.0,
-      "forestness": 1.0
+      "forestness": 1.0,
+      "multipass": true
     }
   },
   {
@@ -87,9 +92,10 @@
           "dtbyg:canopy_aspen": 1
         }
       },
-      "density": [ 1.2 ],
+      "density": [ 1.5 ],
       "chance": 1,
-      "forestness": 1
+      "forestness": 1,
+      "multipass": true
     }
   },
   {
@@ -595,6 +601,10 @@
   },
   {
     "select": "byg:weeping_witch_forest",
+    "cancellers": {
+      "type": "dtbyg:fungus",
+      "namespace": "minecraft"
+    },
     "apply": {
       "species": {
         "random": {
@@ -725,7 +735,7 @@
           "dtbyg:mega_fir": 3
         }
       },
-      "density": [ 0.5 ],
+      "density": [ 0.8 ],
       "chance": 1.0,
       "forestness": 1
     }
@@ -781,6 +791,10 @@
   {
     "select": {
       "name": "byg:ebony.*"
+    },
+    "cancellers": {
+      "type": "dtbyg:fungus",
+      "namespace": "minecraft"
     },
     "apply": {
       "species": "dtbyg:ebony",
@@ -970,6 +984,10 @@
     "select": {
       "name": "byg:woodlands"
     },
+    "cancellers": {
+      "type": "dtbyg:fungus",
+      "namespace": "minecraft"
+    },
     "apply": {
       "species": {
         "random": {
@@ -994,13 +1012,17 @@
           "dtbyg:mega_pink_cherry": 1
         }
       },
-      "density": 1,
+      "density": 0.75,
       "chance": 1.0,
       "forestness": 1
     }
   },
   {
     "select": "byg:ancient_forest",
+    "cancellers": {
+      "types": [ "tree", "dtbyg:fungus" ],
+      "namespace": "minecraft"
+    },
     "apply": {
       "species": {
         "random": {
@@ -1012,8 +1034,8 @@
           "dtbyg:dark_oak": 1
         }
       },
-      "density" : { "math": { "div" : [ "noise", 3.0 ] } },
-      "chance": 1,
+      "density": [ 1.0 ],
+      "chance": 1.0,
       "multipass" : true
     }
   },
@@ -1052,7 +1074,7 @@
         }
       },
       "density": [ 0.1 ],
-      "chance": 0.6
+      "chance": 0.3
     }
   },
 

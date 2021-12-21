@@ -29,6 +29,7 @@ import maxhyper.dtbyg.blocks.BYGTintedSoilProperties;
 import maxhyper.dtbyg.blocks.DynamicArisianBloomBranch;
 import maxhyper.dtbyg.blocks.EtherBulbsFruitBlock;
 import maxhyper.dtbyg.blocks.ScruffyLeavesProperties;
+import maxhyper.dtbyg.cancellers.BYGFungusFeatureCanceller;
 import maxhyper.dtbyg.cells.DTBYGCellKits;
 import maxhyper.dtbyg.genfeatures.DTBYGGenFeatures;
 import maxhyper.dtbyg.growthlogic.DTBYGGrowthLogicKits;
@@ -211,7 +212,7 @@ public class DTBYGRegistries {
         setupBlocks();
     }
 
-    public static final FeatureCanceller BYG_FUNGUS_CANCELLER = new FungusFeatureCanceller<>(DynamicTreesBYG.resLoc("fungus"), BYGMushroomConfig.class);
+    public static final FeatureCanceller BYG_FUNGUS_CANCELLER = new BYGFungusFeatureCanceller<>(DynamicTreesBYG.resLoc("fungus"), BYGMushroomConfig.class);
 
     @SubscribeEvent
     public static void onFeatureCancellerRegistry(final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<FeatureCanceller> event) {

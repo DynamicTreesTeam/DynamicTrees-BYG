@@ -6,5 +6,22 @@
     "lowest_branch_height": 8,
     "leaves_properties": "dtbyg:green_enchanted",
     "perfect_biomes": { "types": [ "forest", "overworld" ] },
-    "primitive_sapling": "byg:green_enchanted_sapling"
+    "primitive_sapling": "byg:green_enchanted_sapling",
+    "features": [
+        {
+            "name": "biome_predicate",
+            "properties": {
+                "only_world_gen": true,
+                "gen_feature": {
+                    "name": "dtbyg:huge_mushrooms",
+                    "properties": {
+                        "place_chance": 0.4,
+                        "max_count": 2,
+                        "max_attempts": 3
+                    }
+                },
+                "biome_predicate": { "name": "byg:enchanted.*" }
+            }
+        }
+    ]
 }

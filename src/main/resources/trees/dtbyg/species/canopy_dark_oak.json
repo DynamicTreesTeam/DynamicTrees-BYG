@@ -16,5 +16,21 @@
   "perfect_biomes": {
     "name": ".*meadow.*"
   },
-  "features": []
+  "features": [
+    {
+      "name": "biome_predicate",
+      "properties": {
+        "only_world_gen": true,
+        "gen_feature": {
+          "name": "dtbyg:huge_mushrooms",
+          "properties": {
+            "place_chance": 0.6,
+            "max_count": 2,
+            "max_attempts": 2
+          }
+        },
+        "biome_predicate": { "names": ["byg:ebony_woods", "byg:.*ancient_forest"] }
+      }
+    }
+  ]
 }

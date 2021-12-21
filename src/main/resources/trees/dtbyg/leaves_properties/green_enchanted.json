@@ -1,4 +1,7 @@
 {
   "primitive_leaves": "byg:green_enchanted_leaves",
-  "light": 15
+  "cell_kit": "dtbyg:poplar",
+  "smother": 9,
+  "light": 15,
+  "light_requirement": 13
 }
