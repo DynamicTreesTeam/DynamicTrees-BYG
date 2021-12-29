@@ -24,10 +24,11 @@
     "mound",
     "roots",
     {
-      "name": "shroomlight",
+      "name": "dtbyg:huge_mushrooms",
       "properties": {
-        "shroomlight": "byg:pollen_block",
-        "vanilla_grow_chance": 0
+        "place_chance": 0.8,
+        "max_count": 2,
+        "max_attempts": 3
       }
     },
     {
@@ -35,14 +36,13 @@
       "properties": {
         "only_world_gen": true,
         "gen_feature": {
-          "name": "dtbyg:huge_mushrooms",
+          "name": "shroomlight",
           "properties": {
-            "place_chance": 0.8,
-            "max_count": 3,
-            "max_attempts": 3
+            "shroomlight": "byg:pollen_block",
+            "vanilla_grow_chance": 0
           }
         },
-        "biome_predicate": { "name": "byg:.*ancient_forest" }
+        "biome_predicate": { "name": ".*flowering.*" }
       }
     }
   ]

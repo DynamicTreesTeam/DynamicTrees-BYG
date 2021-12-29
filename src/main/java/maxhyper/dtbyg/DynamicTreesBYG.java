@@ -1,6 +1,5 @@
 package maxhyper.dtbyg;
 
-import com.ferreusveritas.dynamictrees.DynamicTrees;
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.init.DTConfigs;
 import corgiaoc.byg.BYG;

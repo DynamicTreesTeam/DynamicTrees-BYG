@@ -16,11 +16,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
-public class CypressSpecies extends Species {
+public class UnderwaterSpecies extends Species {
 
-    public static final TypedRegistry.EntryType<Species> TYPE = createDefaultType(CypressSpecies::new);
+    public static final TypedRegistry.EntryType<Species> TYPE = createDefaultType(UnderwaterSpecies::new);
 
-    public CypressSpecies(ResourceLocation name, Family family, LeavesProperties leavesProperties) {
+    public UnderwaterSpecies(ResourceLocation name, Family family, LeavesProperties leavesProperties) {
         super(name, family, leavesProperties);
     }
 

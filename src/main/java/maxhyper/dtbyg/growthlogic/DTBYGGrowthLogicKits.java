@@ -33,12 +33,13 @@ public class DTBYGGrowthLogicKits {
     public static final GrowthLogicKit MANGROVE = new MangroveLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "mangrove"));
     public static final GrowthLogicKit TAPERED_WITHERED = new TaperedWitheredOakLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "tapered_withered"));
     public static final GrowthLogicKit ANCIENT_LOGIC = new AncientLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "ancient"));
+    public static final GrowthLogicKit TALL_MAHOGANY = new VariateHeightLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "tall_mahogany")).setHeightVariation(4);
 
     public static void register(final IRegistry<GrowthLogicKit> registry) {
         registry.registerAll(POPLAR, MEGA_PRAIRIE, MAPLE, ASPEN, TAPERED, DIAGONAL_PALM,
                 TALL_CONIFER, NORTHERN_CONIFER, ZELKOVA, THIN_CONIFER, BOREAL_CONIFER, MEGA_PINE,
                 MEGA_FIR, CIKA, EBONY, REDWOOD, SMALL_REDWOOD, BAOBAB, CHERRY, SYTHIAN_FUNGUS,
-                CYPRESS, MANGROVE, TAPERED_WITHERED, ANCIENT_LOGIC);
+                CYPRESS, MANGROVE, TAPERED_WITHERED, ANCIENT_LOGIC, TALL_MAHOGANY);
     }
 
 }

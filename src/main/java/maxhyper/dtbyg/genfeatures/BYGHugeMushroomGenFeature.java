@@ -5,12 +5,8 @@ import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.config.ConfiguredGenFeature;
 import com.ferreusveritas.dynamictrees.trees.Species;
-import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
-import corgiaoc.byg.common.world.feature.config.BYGMushroomConfig;
-import corgiaoc.byg.common.world.feature.overworld.mushrooms.util.BYGAbstractMushroomFeature;
 import corgiaoc.byg.core.world.BYGConfiguredFeatures;
-import corgiaoc.byg.core.world.BYGFeatures;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.ResourceLocation;
@@ -20,11 +16,15 @@ import net.minecraft.util.math.vector.Vector2f;
 import net.minecraft.util.math.vector.Vector3i;
 import net.minecraft.world.ISeedReader;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
 
+import javax.xml.ws.Provider;
 import java.util.List;
 import java.util.Random;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 public class BYGHugeMushroomGenFeature extends GenFeature implements IPostGenFeature {
 
@@ -33,7 +33,27 @@ public class BYGHugeMushroomGenFeature extends GenFeature implements IPostGenFea
 
     private static final WeightedList<ConfiguredFeature<?, ?>> mushrooms = new WeightedList<>();
     private static final WeightedList<ConfiguredFeature<?, ?>> smallMushrooms = new WeightedList<>();
+    private static final WeightedList<ConfiguredFeature<?, ?>> glowshrooms = new WeightedList<>();
+    private static final WeightedList<ConfiguredFeature<?, ?>> flowers = new WeightedList<>();
 
+    private enum MushroomType {
+        MUSHROOM (1, (r,cf)-> r.nextFloat() < cf.get(CHANCE_FOR_MINI) ?
+                smallMushrooms.getOne(r) : mushrooms.getOne(r)),
+        GLOWSHROOM (1, (r,cf)-> r.nextBoolean() ? glowshrooms.getOne(r) : MUSHROOM.getFeature(r,cf)),
+        FLOWER (0.05, (r,cf)-> flowers.getOne(r));
+        double chanceMult;
+        BiFunction<Random, ConfiguredGenFeature<?>, ConfiguredFeature<?, ?>> feature;
+        MushroomType (double chanceMult, BiFunction<Random, ConfiguredGenFeature<?>, ConfiguredFeature<?, ?>> feature){
+            this.chanceMult = chanceMult;
+            this.feature = feature;
+        }
+        public double getChanceMult() {
+            return chanceMult;
+        }
+        public ConfiguredFeature<?, ?> getFeature(Random random, ConfiguredGenFeature<?> configuredGenFeature) {
+            return feature.apply(random, configuredGenFeature);
+        }
+    }
 
     public BYGHugeMushroomGenFeature(ResourceLocation registryName) {
         super(registryName);
@@ -51,6 +71,14 @@ public class BYGHugeMushroomGenFeature extends GenFeature implements IPostGenFea
                 .add(BYGConfiguredFeatures.WOOD_BLEWIT_MINI, 1)
                 .add(BYGConfiguredFeatures.WEEPING_MILKCAP_MINI, 1)
                 .add(BYGConfiguredFeatures.BLACK_PUFF_MINI, 1);
+        glowshrooms
+                .add(BYGConfiguredFeatures.PURPLE_GLOWSHROOM_HUGE, 9)
+                .add(BYGConfiguredFeatures.BLUE_GLOWSHROOM_HUGE, 1);
+        flowers
+                .add(BYGConfiguredFeatures.GIANT_ANGELICA_FLOWER, 2)
+                .add(BYGConfiguredFeatures.GIANT_DANDELION_FLOWER, 2)
+                .add(BYGConfiguredFeatures.GIANT_IRIS_FLOWER, 5)
+                .add(BYGConfiguredFeatures.GIANT_ROSE_FLOWER, 1);
     }
 
     @Override
@@ -81,33 +109,40 @@ public class BYGHugeMushroomGenFeature extends GenFeature implements IPostGenFea
 
     @Override
     public boolean postGeneration(ConfiguredGenFeature<?> configuredGenFeature, IWorld world, BlockPos rootPos, Species species, Biome biome, int radius, List<BlockPos> endPoints, SafeChunkBounds safeBounds, BlockState initialDirtState, Float seasonValue, Float seasonFruitProductionFactor) {
+        if (!(world instanceof ISeedReader)) return false;
         Random rand = world.getRandom();
+        MushroomType mushroomType = getType(world, rootPos, species, biome);
         int count = configuredGenFeature.get(MAX_COUNT);
         int magnitude = (int)(radius * 0.75);
         if (magnitude <= 2) return false;
+        magnitude++;
         for (int i=0; i<configuredGenFeature.get(MAX_ATTEMPTS); i++){
-            if (rand.nextFloat() < configuredGenFeature.get(PLACE_CHANCE)) {
+            if (rand.nextFloat() < configuredGenFeature.get(PLACE_CHANCE)* mushroomType.getChanceMult()) {
                 double angle = rand.nextFloat() * (2*Math.PI);
                 Vector2f offsetVec = new Vector2f((float)(magnitude * Math.cos(angle)), (float)(magnitude * Math.sin(angle)));
                 Vector3i offsetVecInt = new Vector3i(Math.ceil(offsetVec.x), 0, Math.ceil(offsetVec.y));
                 BlockPos shroomPos = findFloor(species, world, rootPos.offset(offsetVecInt));
                 if (shroomPos != BlockPos.ZERO){
-                    ConfiguredFeature<?, ?> shroom;
-                    if (rand.nextFloat() < configuredGenFeature.get(CHANCE_FOR_MINI)){
-                        shroom = smallMushrooms.getOne(rand);
-                    } else {
-                        shroom = mushrooms.getOne(rand);
-                    }
-                    if (world instanceof ISeedReader){
-                        shroom.place((ISeedReader) world, null, rand, shroomPos);
-                        count--;
-                        if (count == 0)
-                            return true;
-                    }
+                    ConfiguredFeature<?, ?> feature = mushroomType.getFeature(rand, configuredGenFeature);
+                    feature.place((ISeedReader) world, null, rand, shroomPos);
+                    count--;
+                    if (count == 0)
+                        return true;
                 }
             }
         }
         return count != configuredGenFeature.get(MAX_COUNT);
+    }
+
+    protected MushroomType getType (IWorld world, BlockPos rootPos, Species species, Biome biome){
+        MushroomType type;
+        String biomeName = biome.getRegistryName().toString();
+        if (biomeName.matches(".*glowing.*"))
+            type = MushroomType.GLOWSHROOM;
+        else if (biomeName.matches(".*flowering.*"))
+            type = MushroomType.FLOWER;
+        else type = MushroomType.MUSHROOM;
+        return type;
     }
 
 }

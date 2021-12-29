@@ -13,7 +13,6 @@ public class DTBYGGenFeatures {
     public static final GenFeature MANGROVELINGS = new MangrovelingsGenFeature(new ResourceLocation(DynamicTreesBYG.MOD_ID, "mangrovelings"));
     public static final GenFeature BRANCH_SPROUTS = new BranchSproutsGenFeature(new ResourceLocation(DynamicTreesBYG.MOD_ID, "branch_sprouts"));
     public static final GenFeature HUGE_MUSHROOMS = new BYGHugeMushroomGenFeature(new ResourceLocation(DynamicTreesBYG.MOD_ID, "huge_mushrooms"));
-
     public static void register(final IRegistry<GenFeature> registry) {
         registry.registerAll(BIG_BOTTOM_FLARE, EXTRA_BOTTOM_FLARE, MANGROVELINGS, BRANCH_SPROUTS, HUGE_MUSHROOMS);
     }

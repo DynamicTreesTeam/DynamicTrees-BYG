@@ -1,0 +1,27 @@
+{
+  "family": "dtbyg:mahogany",
+  "tapering": 0.30,
+  "signal_energy": 32.0,
+  "up_probability": 5,
+  "lowest_branch_height": 8,
+  "growth_rate": 1.2,
+  "soil_longevity": 20,
+  "max_branch_radius": 24,
+  "growth_logic_kit": "jungle",
+  "leaves_properties": "dtbyg:mahogany",
+  "environment_factors" : {
+    "cold": 0.75,
+    "dry": 0.5
+  },
+  "perfect_biomes": {
+    "type": "jungle"
+  },
+  "primitive_saplings": [
+    "byg:mahogany_sapling"
+  ],
+  "features": [
+    "roots",
+    "bottom_flare",
+    "mound"
+  ]
+}
