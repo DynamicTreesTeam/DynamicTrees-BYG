@@ -813,7 +813,7 @@
     "apply": {
       "species": {
         "random": {
-          "dtbyg:canopy_oak": 4,
+          "dtbyg:canopy_oak": 2,
           "dtbyg:canopy_dark_oak": 8,
           "oak": 1,
           "spruce": 1
@@ -1194,8 +1194,79 @@
       "chance": 0.3
     }
   },
-
-
+  {
+    "select": {
+      "name": "byg:crag_gardens"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:mahogany": 3,
+          "dtbyg:rainbow_eucalyptus": 2,
+          "dtbyg:mega_rainbow_eucalyptus": 1
+        }
+      },
+      "density": [ 1 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "names_or": [ "byg:tropical_rainforest.*", "byg:guiana_shield" ]
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:mahogany": 4,
+          "dtbyg:tall_mahogany": 4,
+          "dtbyg:mahogany_twiglet": 1,
+          "dtbyg:mega_mahogany": 2,
+          "dtbyg:rainbow_eucalyptus": 6,
+          "dtbyg:mega_rainbow_eucalyptus": 2
+        }
+      },
+      "density": [ 1.5 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "names_or": [ "byg:guiana_clearing", "byg:guiana_springs" ]
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:mahogany": 1,
+          "dtbyg:tall_mahogany": 1,
+          "dtbyg:mega_mahogany": 1,
+          "dtbyg:mahogany_twiglet": 1,
+          "dtbyg:rainbow_eucalyptus": 2,
+          "dtbyg:mega_rainbow_eucalyptus": 1
+        }
+      },
+      "density": [ 0.2 ],
+      "chance": 0.2
+    }
+  },
+  {
+    "select": {
+      "name": "byg:tropical_islands"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:mahogany": 3,
+          "dtbyg:rainbow_eucalyptus": 3,
+          "dtbyg:mega_rainbow_eucalyptus": 1
+        }
+      },
+      "density": [ 0.6 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
 
   {
     "__comment": "Flag nether as being subterranean.",

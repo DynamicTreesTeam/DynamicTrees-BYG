@@ -1,16 +1,17 @@
 {
-  "family": "dtbyg:mahogany",
+  "type": "dtbyg:generates_on_mossy_stone",
+  "family": "dtbyg:rainbow_eucalyptus",
   "tapering": 0.45,
   "signal_energy": 32.0,
   "up_probability": 5,
-  "lowest_branch_height": 8,
-  "growth_rate": 1.2,
+  "lowest_branch_height": 3,
+  "growth_rate": 1.5,
   "soil_longevity": 20,
   "max_branch_radius": 22,
-  "leaves_properties": "dtbyg:mahogany",
+  "leaves_properties": "dtbyg:rainbow_eucalyptus",
   "environment_factors" : {
-    "cold": 0.75,
-    "dry": 0.5
+    "snowy": 0.5,
+    "dry": 0.75
   },
   "perfect_biomes": {
     "type": "jungle"

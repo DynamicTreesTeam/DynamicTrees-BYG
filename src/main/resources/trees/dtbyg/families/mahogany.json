@@ -4,5 +4,6 @@
   "primitive_log": "byg:mahogany_log",
   "primitive_stripped_log": "byg:stripped_mahogany_log",
   "max_branch_radius": 24,
-  "generate_surface_root": true
+  "generate_surface_root": true,
+  "max_signal_depth": 64
 }

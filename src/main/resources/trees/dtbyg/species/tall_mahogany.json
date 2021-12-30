@@ -1,8 +1,8 @@
 {
   "family": "dtbyg:mahogany",
-  "tapering": 0.15,
-  "signal_energy": 26.0,
-  "up_probability": 5,
+  "tapering": 0.25,
+  "signal_energy": 28.0,
+  "up_probability": 3,
   "lowest_branch_height": 5,
   "growth_rate": 0.8,
   "growth_logic_kit": "dtbyg:tall_mahogany",
@@ -23,6 +23,7 @@
       }
     },
     "bottom_flare",
-    "mound"
+    "mound",
+    "bee_nest"
   ]
 }
