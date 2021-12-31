@@ -16,11 +16,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 
-public class UnderwaterSpecies extends Species {
+public class GenUnderwaterSpecies extends Species {
 
-    public static final TypedRegistry.EntryType<Species> TYPE = createDefaultType(UnderwaterSpecies::new);
+    public static final TypedRegistry.EntryType<Species> TYPE = createDefaultType(GenUnderwaterSpecies::new);
 
-    public UnderwaterSpecies(ResourceLocation name, Family family, LeavesProperties leavesProperties) {
+    public GenUnderwaterSpecies(ResourceLocation name, Family family, LeavesProperties leavesProperties) {
         super(name, family, leavesProperties);
     }
 
@@ -29,7 +29,7 @@ public class UnderwaterSpecies extends Species {
         return super.selectNewDirection(world, pos, branch, signal);
     }
 
-    private static final int maxDepth = 3;
+    private static final int maxDepth = 6;
     public boolean isAcceptableSoilForWorldgen(IWorld world, BlockPos pos, BlockState soilBlockState) {
         final boolean isAcceptableSoil = isAcceptableSoil(world, pos, soilBlockState);
 

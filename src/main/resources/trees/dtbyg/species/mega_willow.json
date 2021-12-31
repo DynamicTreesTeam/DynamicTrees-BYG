@@ -1,19 +1,34 @@
 {
+  "type": "dtbyg:generates_underwater",
   "family": "dtbyg:willow",
-  "tapering": 0.5,
-  "signal_energy": 22.0,
+  "tapering": 0.3,
+  "signal_energy": 24.0,
   "up_probability": 5,
-  "lowest_branch_height": 12,
+  "lowest_branch_height": 10,
   "growth_rate": 1.2,
-  "max_branch_radius": 24,
+  "max_branch_radius": 20,
+  "growth_logic_kit": "dtbyg:willow",
   "environment_factors" : {
-    "cold": 0.5,
+    "snowy": 0.75,
     "dry": 0.5
   },
   "perfect_biomes": { "type": "swamp" },
   "primitive_sapling": "byg:willow_sapling",
   "acceptable_soils": ["dirt_like", "water_like"],
   "features": [
-    "roots"
+    {
+      "name": "roots",
+      "properties": {
+        "level_limit": 6,
+        "scale_factor": 18
+      }
+    },
+    {
+      "name": "mound",
+      "properties": {
+        "mound_cutoff_radius": 999
+      }
+    },
+    "bottom_flare"
   ]
 }

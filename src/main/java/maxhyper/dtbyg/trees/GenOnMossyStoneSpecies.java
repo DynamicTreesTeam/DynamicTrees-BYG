@@ -23,7 +23,7 @@ public class GenOnMossyStoneSpecies extends Species {
 
     @Override
     public boolean isAcceptableSoilForWorldgen(IWorld world, BlockPos pos, BlockState soilBlockState) {
-        if (soilBlockState.is(Blocks.STONE))
+        if (soilBlockState.is(BYGBlocks.MOSSY_STONE))
             return true;
         return super.isAcceptableSoilForWorldgen(world, pos, soilBlockState);
     }

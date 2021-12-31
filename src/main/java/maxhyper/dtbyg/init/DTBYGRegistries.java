@@ -152,7 +152,7 @@ public class DTBYGRegistries {
         event.registerType(DynamicTreesBYG.resLoc("poplar"), PoplarSpecies.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("ether"), EtherSpecies.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("twiglet"), TwigletSpecies.TYPE);
-        event.registerType(DynamicTreesBYG.resLoc("underwater"), UnderwaterSpecies.TYPE);
+        event.registerType(DynamicTreesBYG.resLoc("generates_underwater"), GenUnderwaterSpecies.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("generates_on_mossy_stone"), GenOnMossyStoneSpecies.TYPE);
     }
     

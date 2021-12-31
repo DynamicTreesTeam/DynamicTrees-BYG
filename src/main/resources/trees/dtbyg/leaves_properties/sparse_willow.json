@@ -1,0 +1,6 @@
+{
+  "type": "dtbyg:scruffy",
+  "scruffy_leaf_chance": 0.33,
+  "primitive_leaves": "byg:willow_leaves",
+  "cell_kit": "dtbyg:sparse"
+}

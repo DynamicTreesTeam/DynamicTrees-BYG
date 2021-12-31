@@ -2,6 +2,7 @@ package maxhyper.dtbyg.genfeatures;
 
 import com.ferreusveritas.dynamictrees.api.IPostGenFeature;
 import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
+import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SoilHelper;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.config.ConfiguredGenFeature;
 import com.ferreusveritas.dynamictrees.trees.Species;
@@ -30,6 +31,8 @@ public class BYGHugeMushroomGenFeature extends GenFeature implements IPostGenFea
 
     public static final ConfigurationProperty<Integer> MAX_ATTEMPTS = ConfigurationProperty.integer("max_attempts");
     public static final ConfigurationProperty<Float> CHANCE_FOR_MINI = ConfigurationProperty.floatProperty("chance_for_mini");
+
+    private static final String[] fungusSoils = new String[]{"dirt_like","fungus_like"};
 
     private static final WeightedList<ConfiguredFeature<?, ?>> mushrooms = new WeightedList<>();
     private static final WeightedList<ConfiguredFeature<?, ?>> smallMushrooms = new WeightedList<>();
@@ -122,7 +125,7 @@ public class BYGHugeMushroomGenFeature extends GenFeature implements IPostGenFea
                 Vector2f offsetVec = new Vector2f((float)(magnitude * Math.cos(angle)), (float)(magnitude * Math.sin(angle)));
                 Vector3i offsetVecInt = new Vector3i(Math.ceil(offsetVec.x), 0, Math.ceil(offsetVec.y));
                 BlockPos shroomPos = findFloor(species, world, rootPos.offset(offsetVecInt));
-                if (shroomPos != BlockPos.ZERO){
+                if (shroomPos != BlockPos.ZERO && SoilHelper.isSoilAcceptable(world.getBlockState(shroomPos), SoilHelper.getSoilFlags(fungusSoils))){
                     ConfiguredFeature<?, ?> feature = mushroomType.getFeature(rand, configuredGenFeature);
                     feature.place((ISeedReader) world, null, rand, shroomPos);
                     count--;
@@ -137,9 +140,9 @@ public class BYGHugeMushroomGenFeature extends GenFeature implements IPostGenFea
     protected MushroomType getType (IWorld world, BlockPos rootPos, Species species, Biome biome){
         MushroomType type;
         String biomeName = biome.getRegistryName().toString();
-        if (biomeName.matches(".*glowing.*"))
+        if (biomeName.matches(".*glow.*"))
             type = MushroomType.GLOWSHROOM;
-        else if (biomeName.matches(".*flowering.*"))
+        else if (biomeName.matches(".*flower.*"))
             type = MushroomType.FLOWER;
         else type = MushroomType.MUSHROOM;
         return type;

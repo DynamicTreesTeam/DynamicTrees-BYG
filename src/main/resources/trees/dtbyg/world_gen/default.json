@@ -1196,19 +1196,48 @@
   },
   {
     "select": {
+      "name": "byg:araucaria.*"
+    },
+    "cancellers": {
+      "type": "tree",
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:araucaria": 8,
+          "dynamictrees:oak": 1,
+          "dynamictrees:acacia": 1
+        }
+      },
+      "density": [ 0.3 ],
+      "chance": 0.5
+    }
+  },
+  {
+    "select": {
+      "name": "byg:araucaria_forest"
+    },
+    "apply": {
+      "chance": 0.8
+    }
+  },
+  {
+    "select": {
       "name": "byg:crag_gardens"
     },
     "apply": {
       "species": {
         "random": {
-          "dtbyg:mahogany": 3,
+          "dtbyg:mahogany": 4,
           "dtbyg:rainbow_eucalyptus": 2,
           "dtbyg:mega_rainbow_eucalyptus": 1
         }
       },
-      "density": [ 1 ],
+      "density": [ 1.5 ],
       "chance": 1.0,
-      "forestness": 1
+      "forestness": 1,
+      "multipass" : true
     }
   },
   {
@@ -1218,17 +1247,18 @@
     "apply": {
       "species": {
         "random": {
-          "dtbyg:mahogany": 4,
+          "dtbyg:mahogany": 8,
           "dtbyg:tall_mahogany": 4,
-          "dtbyg:mahogany_twiglet": 1,
-          "dtbyg:mega_mahogany": 2,
-          "dtbyg:rainbow_eucalyptus": 6,
-          "dtbyg:mega_rainbow_eucalyptus": 2
+          "dtbyg:mega_mahogany": 1,
+          "dtbyg:mahogany_twiglet": 2,
+          "dtbyg:rainbow_eucalyptus": 8,
+          "dtbyg:mega_rainbow_eucalyptus": 1
         }
       },
       "density": [ 1.5 ],
       "chance": 1.0,
-      "forestness": 1
+      "forestness": 1,
+      "multipass" : true
     }
   },
   {
@@ -1238,11 +1268,11 @@
     "apply": {
       "species": {
         "random": {
-          "dtbyg:mahogany": 1,
-          "dtbyg:tall_mahogany": 1,
+          "dtbyg:mahogany": 8,
+          "dtbyg:tall_mahogany": 4,
           "dtbyg:mega_mahogany": 1,
-          "dtbyg:mahogany_twiglet": 1,
-          "dtbyg:rainbow_eucalyptus": 2,
+          "dtbyg:mahogany_twiglet": 2,
+          "dtbyg:rainbow_eucalyptus": 8,
           "dtbyg:mega_rainbow_eucalyptus": 1
         }
       },
@@ -1265,6 +1295,22 @@
       "density": [ 0.6 ],
       "chance": 1.0,
       "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:.*bayou"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:willow": 6,
+          "dtbyg:mega_willow": 3,
+          "dtbyg:sparse_willow": 1
+        }
+      },
+      "density": [ 1.0 ],
+      "chance": 1.0
     }
   },
 

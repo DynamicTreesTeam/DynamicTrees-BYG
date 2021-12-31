@@ -1,5 +1,5 @@
 {
-  "type": "dtbyg:cypress",
+  "type": "dtbyg:generates_underwater",
   "family": "dtbyg:cypress",
   "tapering": 0.4,
   "signal_energy": 6.0,
@@ -23,6 +23,14 @@
       "name": "mound",
       "properties": {
         "mound_cutoff_radius": 999
+      }
+    },
+    {
+      "name": "roots",
+      "properties": {
+        "min_trunk_radius": 6,
+        "level_limit": 4,
+        "scale_factor": 12
       }
     }
   ]
