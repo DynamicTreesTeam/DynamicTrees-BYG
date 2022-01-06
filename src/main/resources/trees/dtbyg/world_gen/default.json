@@ -1242,7 +1242,7 @@
   },
   {
     "select": {
-      "names_or": [ "byg:tropical_rainforest.*", "byg:guiana_shield" ]
+      "names_or": [ "byg:tropical.*forest.*", "byg:guiana_shield" ]
     },
     "apply": {
       "species": {
@@ -1259,6 +1259,15 @@
       "chance": 1.0,
       "forestness": 1,
       "multipass" : true
+    }
+  },
+  {
+    "select": {
+      "name": "byg:tropical_fungal.*forest.*"
+    },
+    "cancellers": {
+      "types": ["fungus", "dtbyg:fungus"],
+      "namespace": "minecraft"
     }
   },
   {

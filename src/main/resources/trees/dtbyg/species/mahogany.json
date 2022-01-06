@@ -19,6 +19,36 @@
     "byg:mahogany_sapling"
   ],
   "features": [
-    "bee_nest"
+    "bee_nest",
+    {
+      "name": "biome_predicate",
+      "properties": {
+        "only_world_gen": true,
+        "gen_feature": {
+          "name": "huge_mushrooms",
+          "properties": {
+            "place_chance": 0.8,
+            "max_count": 2,
+            "max_attempts": 3
+          }
+        },
+        "biome_predicate": { "name": "byg:tropical_fungal_rainforest.*" }
+      }
+    },
+    {
+      "name": "dtbyg:biome_predicate",
+      "properties": {
+        "only_world_gen": true,
+        "gen_feature": {
+          "name": "dtbyg:huge_mushrooms",
+          "properties": {
+            "place_chance": 0.8,
+            "max_count": 2,
+            "max_attempts": 3
+          }
+        },
+        "biome_predicate": { "name": "byg:tropical_fungal_forest.*" }
+      }
+    }
   ]
 }
