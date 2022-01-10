@@ -1,5 +1,8 @@
 package maxhyper.dtbyg.growthlogic;
 
+import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
+import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
+import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import net.minecraft.util.Direction;
@@ -9,27 +12,38 @@ import net.minecraft.world.World;
 
 public class WillowLogic extends VariateHeightLogic {
 
-    public WillowLogic(ResourceLocation registryName) {
-        super(registryName);
-        setHeightVariation(8);
-    }
+    public static final ConfigurationProperty<Integer> CANOPY_DEPTH = ConfigurationProperty.integer("canopy_depth");
 
-    private static final int canopyDepth = 4;
-    private static final int canopyDepthMega = 6;
+    public WillowLogic(ResourceLocation registryName) { super(registryName); }
 
     @Override
-    public int[] directionManipulation(World world, BlockPos pos, Species species, int radius, GrowSignal signal, int[] probMap) {
+    protected GrowthLogicKitConfiguration createDefaultConfiguration() {
+        return super.createDefaultConfiguration()
+                .with(CANOPY_DEPTH, 4)
+                .with(HEIGHT_VARIATION, 8);
+    }
+
+    @Override
+    protected void registerProperties() {
+        this.register(CANOPY_DEPTH, HEIGHT_VARIATION);
+    }
+
+
+    @Override
+    public int[] populateDirectionProbabilityMap(GrowthLogicKitConfiguration configuration, DirectionManipulationContext context) {
+        final GrowSignal signal = context.signal();
+        final int[] probMap = context.probMap();
+
         final Direction originDir = signal.dir.getOpposite();
 
         probMap[Direction.DOWN.ordinal()] = 2;
 
-        int lowestBranch = species.getLowestBranchHeight(world, signal.rootPos);
-        if (signal.delta.getY() >= lowestBranch + (species.isMegaSpecies()?canopyDepthMega:canopyDepth))
+        int lowestBranch = configuration.getLowestBranchHeight(context);
+        if (signal.delta.getY() >= lowestBranch + configuration.get(CANOPY_DEPTH))
             probMap[Direction.UP.ordinal()] = 0;
 
         probMap[originDir.ordinal()] = 0;
 
         return probMap;
     }
-
 }

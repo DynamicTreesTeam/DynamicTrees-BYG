@@ -154,6 +154,7 @@ public class DTBYGRegistries {
         event.registerType(DynamicTreesBYG.resLoc("twiglet"), TwigletSpecies.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("generates_underwater"), GenUnderwaterSpecies.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("generates_on_mossy_stone"), GenOnMossyStoneSpecies.TYPE);
+        event.registerType(DynamicTreesBYG.resLoc("mangrove"), MangroveSpecies.TYPE);
     }
     
     @SubscribeEvent

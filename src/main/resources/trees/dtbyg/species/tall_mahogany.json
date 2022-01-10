@@ -5,7 +5,12 @@
   "up_probability": 3,
   "lowest_branch_height": 5,
   "growth_rate": 0.8,
-  "growth_logic_kit": "dtbyg:tall_mahogany",
+  "growth_logic_kit": {
+    "name": "dtbyg:variate_height",
+    "properties": {
+      "height_variation": 4
+    }
+  },
   "leaves_properties": "dtbyg:mahogany",
   "environment_factors" : {
     "cold": 0.75,

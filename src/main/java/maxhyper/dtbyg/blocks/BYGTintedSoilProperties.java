@@ -22,7 +22,7 @@ public class BYGTintedSoilProperties extends SoilProperties {
     }
 
     @Override
-    protected RootyBlock createDynamicSoil(AbstractBlock.Properties blockProperties) {
+    protected RootyBlock createBlock(AbstractBlock.Properties blockProperties) {
         return new BYGTintedRootyBlock(this, blockProperties);
     }
 

@@ -1,6 +1,9 @@
 package maxhyper.dtbyg.growthlogic;
 
 import com.ferreusveritas.dynamictrees.growthlogic.ConiferLogic;
+import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
+import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
+import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionSelectionContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
@@ -11,9 +14,12 @@ import net.minecraft.world.World;
 
 public class SmallRedwoodLogic extends ConiferLogic {
 
-    public SmallRedwoodLogic(ResourceLocation registryName) {
-        super(registryName);
-        setHeightVariation(6);
+    public SmallRedwoodLogic(ResourceLocation registryName) { super(registryName); }
+
+    @Override
+    protected GrowthLogicKitConfiguration createDefaultConfiguration() {
+        return super.createDefaultConfiguration()
+                .with(HEIGHT_VARIATION, 6);
     }
 
     // *-*-*-*-*-*-*-*- %2 < 1
@@ -21,8 +27,12 @@ public class SmallRedwoodLogic extends ConiferLogic {
     // ****----****---- %8 < 4
     // ********-------- %16< 8
 
+
     @Override
-    public int[] directionManipulation(World world, BlockPos pos, Species species, int radius, GrowSignal signal, int[] probMap) {
+    public int[] populateDirectionProbabilityMap(GrowthLogicKitConfiguration configuration, DirectionManipulationContext context) {
+        final Species species = context.species();
+        final GrowSignal signal = context.signal();
+        final int[] probMap = context.probMap();
         Direction originDir = signal.dir.getOpposite();
         int treeHash = CoordUtils.coordHashCode(signal.rootPos, 2);
 
@@ -40,7 +50,7 @@ public class SmallRedwoodLogic extends ConiferLogic {
             probMap[2] = probMap[3] = probMap[4] = probMap[5] = 0;
         } else {
             probMap[2] = probMap[3] = probMap[4] = probMap[5] = //Only allow turns when we aren't in the trunk(or the branch is not a twig and step is odd)
-                    !signal.isInTrunk() || (signal.isInTrunk() && signal.numSteps % 2 == 1 && radius > 1) ? 2 : 0;
+                    !signal.isInTrunk() || (signal.isInTrunk() && signal.numSteps % 2 == 1 && context.radius() > 1) ? 2 : 0;
         }
 
         probMap[originDir.ordinal()] = 0;//Disable the direction we came from
@@ -50,11 +60,13 @@ public class SmallRedwoodLogic extends ConiferLogic {
     }
 
     @Override
-    public Direction newDirectionSelected(World world, BlockPos pos, Species species, Direction newDir, GrowSignal signal){
-        newDir = super.newDirectionSelected(species, newDir, signal);
-        if (signal.isInTrunk() && newDir != Direction.UP && signal.delta.getY() < species.getLowestBranchHeight() + 3) {
+    public Direction selectNewDirection(GrowthLogicKitConfiguration configuration, DirectionSelectionContext context) {
+        final GrowSignal signal = context.signal();
+        final Direction newDir = super.selectNewDirection(configuration, context);
+        if (signal.isInTrunk() && newDir != Direction.UP && signal.delta.getY() < configuration.getLowestBranchHeight(context) + 3) {
             signal.energy = 2;
         }
         return newDir;
     }
+
 }

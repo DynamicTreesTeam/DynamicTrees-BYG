@@ -31,11 +31,10 @@ public class GenOnMossyStoneSpecies extends Species {
     @Override
     public boolean placeRootyDirtBlock(IWorld world, BlockPos rootPos, int fertility) {
         if (world.getBlockState(rootPos).is(BYGBlocks.MOSSY_STONE)) {
-            RootyBlock rootyBlock = SoilHelper.getProperties(BYGBlocks.OVERGROWN_STONE).getDynamicSoilBlock();
-            if (rootyBlock != null)
-                world.setBlock(rootPos, rootyBlock.defaultBlockState(), 3);//the super does the rest of setting up the soil
+            SoilHelper.getProperties(BYGBlocks.OVERGROWN_STONE).getBlock().ifPresent(
+                    rootyBlock -> world.setBlock(rootPos, rootyBlock.defaultBlockState(), 3)
+            );
         }
         return super.placeRootyDirtBlock(world, rootPos, fertility);
     }
-
 }

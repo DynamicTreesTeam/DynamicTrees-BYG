@@ -1,18 +1,16 @@
 package maxhyper.dtbyg.genfeatures;
 
-import com.ferreusveritas.dynamictrees.api.IPostGenFeature;
-import com.ferreusveritas.dynamictrees.api.IPostGrowFeature;
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
-import com.ferreusveritas.dynamictrees.api.network.INodeInspector;
 import com.ferreusveritas.dynamictrees.api.network.MapSignal;
+import com.ferreusveritas.dynamictrees.api.network.NodeInspector;
 import com.ferreusveritas.dynamictrees.blocks.branches.BranchBlock;
 import com.ferreusveritas.dynamictrees.blocks.branches.TrunkShellBlock;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.config.ConfiguredGenFeature;
-import com.ferreusveritas.dynamictrees.trees.Species;
+import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeatureConfiguration;
+import com.ferreusveritas.dynamictrees.systems.genfeatures.context.PostGenerationContext;
+import com.ferreusveritas.dynamictrees.systems.genfeatures.context.PostGrowContext;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
-import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import javafx.util.Pair;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -24,13 +22,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.WeightedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 
-import java.util.LinkedList;
-import java.util.List;
-
-public class BranchSproutsGenFeature extends GenFeature implements IPostGenFeature, IPostGrowFeature {
+public class BranchSproutsGenFeature extends GenFeature {
 
     public static final ConfigurationProperty<Block> SPROUT_BLOCK = ConfigurationProperty.property("sprout_block", Block.class);
     public static final ConfigurationProperty<Integer> MIN_RADIUS = ConfigurationProperty.integer("min_radius");
@@ -45,7 +38,7 @@ public class BranchSproutsGenFeature extends GenFeature implements IPostGenFeatu
     }
 
     @Override
-    public ConfiguredGenFeature<GenFeature> createDefaultConfiguration() {
+    public GenFeatureConfiguration createDefaultConfiguration() {
         return super.createDefaultConfiguration()
                 .with(SPROUT_BLOCK, Blocks.AIR)
                 .with(FRUITING_RADIUS, 8)
@@ -55,32 +48,37 @@ public class BranchSproutsGenFeature extends GenFeature implements IPostGenFeatu
     }
 
     @Override
-    public boolean postGeneration(ConfiguredGenFeature<?> configuredGenFeature, IWorld world, BlockPos rootPos, Species species, Biome biome, int radius, List<BlockPos> endPoints, SafeChunkBounds safeBounds, BlockState initialDirtState, Float seasonValue, Float seasonFruitProductionFactor) {
+    protected boolean postGenerate(GenFeatureConfiguration configuration, PostGenerationContext context) {
+        IWorld world = context.world();
+        BlockPos rootPos = context.pos();
         final BlockState blockState = world.getBlockState(rootPos);
         final BranchBlock branch = TreeHelper.getBranch(blockState);
 
-        if (branch != null && branch.getRadius(blockState) >= configuredGenFeature.get(FRUITING_RADIUS)) {
-            int count = 1 + world.getRandom().nextInt(configuredGenFeature.get(MAX_COUNT));
-            placeSprouts(count, configuredGenFeature,world,rootPos);
+        if (branch != null && branch.getRadius(blockState) >= configuration.get(FRUITING_RADIUS)) {
+            int count = 1 + world.getRandom().nextInt(configuration.get(MAX_COUNT));
+            placeSprouts(count, configuration, world, rootPos);
         }
         return true;
     }
 
     @Override
-    public boolean postGrow(ConfiguredGenFeature<?> configuredGenFeature, World world, BlockPos rootPos, BlockPos treePos, Species species, int fertility, boolean natural) {
-        if (fertility == 0) return false;
-        final BlockState blockState = world.getBlockState(treePos);
+    protected boolean postGrow(GenFeatureConfiguration configuration, PostGrowContext context) {
+        if (context.fertility() == 0) return false;
+
+        IWorld world = context.world();
+        BlockPos rootPos = context.pos();
+        final BlockState blockState = world.getBlockState(rootPos);
         final BranchBlock branch = TreeHelper.getBranch(blockState);
 
-        if (branch != null && branch.getRadius(blockState) >= configuredGenFeature.get(FRUITING_RADIUS) && natural) {
-            if (world.getRandom().nextFloat() < configuredGenFeature.get(PLACE_CHANCE)) {
-                placeSprouts(1, configuredGenFeature,world,rootPos);
+        if (branch != null && branch.getRadius(blockState) >= configuration.get(FRUITING_RADIUS) && context.natural()) {
+            if (world.getRandom().nextFloat() < configuration.get(PLACE_CHANCE)) {
+                placeSprouts(1, configuration,world,rootPos);
             }
         }
         return true;
     }
 
-    private void placeSprouts (int count, ConfiguredGenFeature<?> configuredGenFeature, IWorld world, BlockPos rootPos){
+    private void placeSprouts (int count, GenFeatureConfiguration configuredGenFeature, IWorld world, BlockPos rootPos){
         WeightedList<Pair<BlockPos, Direction>> validSpots = new WeightedList<>();
         final FindSidedBlockNode sproutPlacer = new FindSidedBlockNode(validSpots, configuredGenFeature.get(MIN_RADIUS));
         TreeHelper.startAnalysisFromRoot(world, rootPos, new MapSignal(sproutPlacer));
@@ -92,7 +90,7 @@ public class BranchSproutsGenFeature extends GenFeature implements IPostGenFeatu
         }
     }
 
-    public static class FindSidedBlockNode implements INodeInspector {
+    public static class FindSidedBlockNode implements NodeInspector {
 
         private final WeightedList<Pair<BlockPos, Direction>> validSpots;
         private final int minRadius;

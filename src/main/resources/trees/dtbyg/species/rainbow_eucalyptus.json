@@ -6,7 +6,12 @@
   "up_probability": 3,
   "lowest_branch_height": 16,
   "growth_rate": 1.4,
-  "growth_logic_kit": "dtbyg:tall_mahogany",
+  "growth_logic_kit": {
+    "name": "dtbyg:variate_height",
+    "properties": {
+      "height_variation": 4
+    }
+  },
   "leaves_properties": "dtbyg:rainbow_eucalyptus",
   "environment_factors" : {
     "snowy": 0.5,

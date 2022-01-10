@@ -1,10 +1,13 @@
 package maxhyper.dtbyg.growthlogic;
 
-import com.ferreusveritas.dynamictrees.api.TreeHelper;
+import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
+import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
 import com.ferreusveritas.dynamictrees.growthlogic.PalmGrowthLogic;
+import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
+import com.ferreusveritas.dynamictrees.util.MathHelper;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
@@ -12,16 +15,34 @@ import net.minecraft.world.World;
 
 public class DiagonalPalmLogic extends PalmGrowthLogic {
 
+    public static final ConfigurationProperty<Float> CHANCE_TO_DIVERGE = ConfigurationProperty.floatProperty("chance_to_diverge");
+    public static final ConfigurationProperty<Float> CHANCE_TO_SPLIT = ConfigurationProperty.floatProperty("chance_to_split");
+    public static final ConfigurationProperty<Float> SPLIT_MAX_ENERGY_FACTOR = ConfigurationProperty.floatProperty("split_max_energy_factor");
+
     public DiagonalPalmLogic(ResourceLocation registryName) {
         super(registryName);
     }
 
-    private static final double chanceToDiverge = 0.8;
-    private static final double chanceToSplit = 0.06;
-    private static final double splitMaxHeightEnergyFactor = 0.5; //can only split under the bottom half
+    @Override
+    protected GrowthLogicKitConfiguration createDefaultConfiguration() {
+        return super.createDefaultConfiguration()
+                .with(CHANCE_TO_DIVERGE, 0.8f)
+                .with(CHANCE_TO_SPLIT, 0.06f)
+                .with(SPLIT_MAX_ENERGY_FACTOR, 0.5f); //can only split under the bottom half
+    }
 
     @Override
-    public int[] directionManipulation(World world, BlockPos pos, Species species, int radius, GrowSignal signal, int[] probMap) {
+    protected void registerProperties() {
+        this.register(CHANCE_TO_DIVERGE, CHANCE_TO_SPLIT, SPLIT_MAX_ENERGY_FACTOR);
+    }
+
+    @Override
+    public int[] populateDirectionProbabilityMap(GrowthLogicKitConfiguration configuration, DirectionManipulationContext context) {
+        final Species species = context.species();
+        final World world = context.world();
+        final GrowSignal signal = context.signal();
+        final int[] probMap = context.probMap();
+        final BlockPos pos = context.pos();
         Direction originDir = signal.dir.getOpposite();
 
         // Alter probability map for direction change
@@ -30,8 +51,8 @@ public class DiagonalPalmLogic extends PalmGrowthLogic {
         // Start by disabling probability on the sides
         probMap[2] = probMap[3] = probMap[4] = probMap[5] =  0;
 
-        int diverge = (int)(4/chanceToDiverge);
-        int split = (int)(1/chanceToSplit);
+        int diverge = (int)(4/configuration.get(CHANCE_TO_DIVERGE));
+        int split = (int)(1/configuration.get(CHANCE_TO_SPLIT));
         int randCoordCode = Math.abs(CoordUtils.coordHashCode(pos, 2));
 
         int directionSelection = randCoordCode % diverge;
@@ -42,35 +63,13 @@ public class DiagonalPalmLogic extends PalmGrowthLogic {
             if (originDir == Direction.DOWN){
                 probMap[selectedDir.ordinal()] = 10;
                 //if the chance to split is met, the clockwise direction is also enabled
-                if (splitSelection == 0 && signal.energy > species.getEnergy(world, signal.rootPos) * (1-splitMaxHeightEnergyFactor)){
+                if (splitSelection == 0 && signal.energy > species.getEnergy(world, signal.rootPos) *
+                        Math.max(0, Math.min(1, 1 - configuration.get(SPLIT_MAX_ENERGY_FACTOR)))){
                     probMap[selectedDir.getClockWise().ordinal()] = 10;
                 }
                 probMap[1] = 0;
             }
         }
-
-//        boolean found = false;
-//        for (Direction dir : Direction.values()){
-//            if (dir != signal.dir.getOpposite()){
-//                if (TreeHelper.isBranch(world.getBlockState(pos.offset(dir.getNormal())))){
-//                    probMap[dir.ordinal()] = 1;
-//                    found = true;
-//                }
-//            }
-//        }
-//        if (!found){
-//            probMap[1] = species.getUpProbability();
-//            probMap[2] = probMap[3] = probMap[4] = probMap[5] = 1;
-//        }
-//
-//        int split = (int)(1/chanceToSplit);
-//        int randCoordCode = Math.abs(CoordUtils.coordHashCode(pos, 2));
-//
-//        int splitSelection = randCoordCode % split;
-//
-//        if (splitSelection == 0 && signal.energy > species.getEnergy(world, signal.rootPos) * (1-splitMaxHeightEnergyFactor)){
-//            probMap[selectedDir.getClockWise().ordinal()] = 1;
-//        }
 
         probMap[originDir.ordinal()] = 0; // Disable the direction we came from
 

@@ -1,30 +1,49 @@
 package maxhyper.dtbyg.growthlogic;
 
-import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
+import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
+import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
+import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
+import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionSelectionContext;
+import com.ferreusveritas.dynamictrees.growthlogic.context.PositionalSpeciesContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Species;
-import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class AraucariaLogic extends GrowthLogicKit {
+public class AraucariaLogic extends VariateHeightLogic {
+
+    public static final ConfigurationProperty<Float> CANOPY_HEIGHT_FACTOR = ConfigurationProperty.floatProperty("canopy_height_factor");
+    public static final ConfigurationProperty<Float> SPLIT_HEIGHT_FACTOR = ConfigurationProperty.floatProperty("split_height_factor");
 
     public AraucariaLogic(ResourceLocation registryName) {
         super(registryName);
     }
 
-    private static final float canopyHeightFraction = 0.8f;
-    private static final float splitHeightFraction = 0.6f;
+    @Override
+    protected GrowthLogicKitConfiguration createDefaultConfiguration() {
+        return super.createDefaultConfiguration()
+                .with(CANOPY_HEIGHT_FACTOR, 0.8f)
+                .with(SPLIT_HEIGHT_FACTOR, 0.6f)
+                .with(HEIGHT_VARIATION, 13)
+                .with(LOWEST_BRANCH_VARIATION, 7);
+    }
 
     @Override
-    public int[] directionManipulation(World world, BlockPos pos, Species species, int radius, GrowSignal signal, int[] probMap) {
+    protected void registerProperties() {
+        this.register(CANOPY_HEIGHT_FACTOR, SPLIT_HEIGHT_FACTOR, HEIGHT_VARIATION, LOWEST_BRANCH_VARIATION);
+    }
+
+    @Override
+    public int[] populateDirectionProbabilityMap(GrowthLogicKitConfiguration configuration, DirectionManipulationContext context) {
+        final GrowSignal signal = context.signal();
+        final int[] probMap = context.probMap();
+
         //Alter probability map for direction change
-        float energy = species.getEnergy(world, signal.rootPos);
-        float splitCanopyHeight = energy * splitHeightFraction;
+        float energy = context.species().getEnergy(context.world(), signal.rootPos);
+        float splitCanopyHeight = energy * configuration.get(SPLIT_HEIGHT_FACTOR);
         if ((signal.delta.getY() > splitCanopyHeight && signal.isInTrunk()) ||
-                signal.delta.getY() > energy * canopyHeightFraction)
+                signal.delta.getY() > energy * configuration.get(CANOPY_HEIGHT_FACTOR))
             probMap[Direction.UP.ordinal()] = 0;
 
         if (signal.delta.getY() < splitCanopyHeight){
@@ -42,29 +61,21 @@ public class AraucariaLogic extends GrowthLogicKit {
     }
 
     @Override
-    public Direction newDirectionSelected(World world, BlockPos pos, Species species, Direction newDir, GrowSignal signal) {
-        float energy = species.getEnergy(world, signal.rootPos);
+    public Direction selectNewDirection(GrowthLogicKitConfiguration configuration, DirectionSelectionContext context) {
+        final GrowSignal signal = context.signal();
+        Direction newDir = super.selectNewDirection(configuration, context);
+
+        float energy = context.species().getEnergy(context.world(), signal.rootPos);
         // if signal just turned out of trunk under the split height
-        if (signal.isInTrunk() && newDir != Direction.UP && signal.delta.getY() < energy * splitHeightFraction) {
+        if (signal.isInTrunk() && newDir != Direction.UP && signal.delta.getY() < energy * configuration.get(SPLIT_HEIGHT_FACTOR)) {
             signal.energy = Math.min(2.5f, signal.energy);
         }
 
         return newDir;
     }
 
-    private float getHashedVariation (World world, BlockPos pos, int heightVariation){
-        long day = world.getGameTime() / 24000L;
-        int month = (int)day / 30;//Change the hashs every in-game month
-        return (CoordUtils.coordHashCode(pos.above(month), 2) % heightVariation);//Vary the height energy by a psuedorandom hash function
-    }
-
     @Override
-    public float getEnergy(World world, BlockPos pos, Species species, float signalEnergy) {
-        return signalEnergy + getHashedVariation(world, pos, 13);
-    }
-
-    @Override
-    public int getLowestBranchHeight(World world, BlockPos pos, Species species, int lowestBranchHeight) {
-        return (int) (lowestBranchHeight + getHashedVariation(world, pos, 7));
+    public int getLowestBranchHeight(GrowthLogicKitConfiguration configuration, PositionalSpeciesContext context) {
+        return super.getLowestBranchHeight(configuration, context) + (int)getHashedVariation(context.world(), context.pos(), configuration.get(LOWEST_BRANCH_VARIATION));
     }
 }

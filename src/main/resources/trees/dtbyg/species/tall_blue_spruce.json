@@ -6,7 +6,12 @@
   "lowest_branch_height": 8,
   "growth_rate": 0.9,
   "soil_longevity": 8,
-  "growth_logic_kit": "dtbyg:tall_conifer",
+  "growth_logic_kit": {
+    "name": "conifer",
+    "properties": {
+      "energy_divisor": 4
+    }
+  },
   "leaves_properties": "dtbyg:blue_spruce",
   "use_seed_of_other_species": "dtbyg:blue_spruce",
   "environment_factors": {

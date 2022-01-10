@@ -24,11 +24,6 @@ public class GenUnderwaterSpecies extends Species {
         super(name, family, leavesProperties);
     }
 
-    @Override
-    public Direction selectNewDirection(World world, BlockPos pos, BranchBlock branch, GrowSignal signal) {
-        return super.selectNewDirection(world, pos, branch, signal);
-    }
-
     private static final int maxDepth = 6;
     public boolean isAcceptableSoilForWorldgen(IWorld world, BlockPos pos, BlockState soilBlockState) {
         final boolean isAcceptableSoil = isAcceptableSoil(world, pos, soilBlockState);

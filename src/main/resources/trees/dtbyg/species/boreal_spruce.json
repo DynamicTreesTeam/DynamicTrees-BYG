@@ -5,7 +5,12 @@
   "up_probability": 4,
   "lowest_branch_height": 3,
   "growth_rate": 0.9,
-  "growth_logic_kit": "dtbyg:boreal_conifer",
+  "growth_logic_kit": {
+    "name": "conifer",
+    "properties": {
+      "horizontal_limiter": 3
+    }
+  },
   "leaves_properties": "dtbyg:boreal_spruce",
   "environment_factors" : {
     "hot": 0.50,

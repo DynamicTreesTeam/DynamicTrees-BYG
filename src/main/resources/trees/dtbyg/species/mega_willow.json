@@ -7,7 +7,12 @@
   "lowest_branch_height": 10,
   "growth_rate": 1.2,
   "max_branch_radius": 20,
-  "growth_logic_kit": "dtbyg:willow",
+  "growth_logic_kit": {
+    "name": "dtbyg:willow",
+    "properties": {
+      "canopy_depth": 6
+    }
+  },
   "environment_factors" : {
     "snowy": 0.75,
     "dry": 0.5

@@ -1,6 +1,8 @@
 package maxhyper.dtbyg.growthlogic;
 
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
+import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
+import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
@@ -15,13 +17,27 @@ public class EbonyLogic extends GrowthLogicKit {
     }
 
     @Override
-    public int[] directionManipulation(World world, BlockPos pos, Species species, int radius, GrowSignal signal, int[] probMap) {
+    protected GrowthLogicKitConfiguration createDefaultConfiguration() {
+        return super.createDefaultConfiguration()
+                .with(HEIGHT_VARIATION, 10);
+    }
+
+    @Override
+    protected void registerProperties() {
+        this.register(HEIGHT_VARIATION);
+    }
+
+    @Override
+    public int[] populateDirectionProbabilityMap(GrowthLogicKitConfiguration configuration, DirectionManipulationContext context) {
+        final Species species = context.species();
+        final GrowSignal signal = context.signal();
+        final int[] probMap = context.probMap();
         Direction originDir = signal.dir.getOpposite();
 
         probMap[0] = species.getUpProbability();
         probMap[1] = signal.isInTrunk() &&
-                signal.energy > species.getLowestBranchHeight(world, signal.rootPos) ?
-                0 : species.getUpProbability();
+                signal.energy > configuration.getLowestBranchHeight(context) ?
+                0 : probMap[0];
 
         probMap[2] = probMap[3] = probMap[4] = probMap[5] = 4;
 
@@ -34,19 +50,4 @@ public class EbonyLogic extends GrowthLogicKit {
         return probMap;
     }
 
-    private float getHashedVariation (World world, BlockPos pos){
-        long day = world.getGameTime() / 24000L;
-        int month = (int)day / 30;//Change the hashs every in-game month
-        return (CoordUtils.coordHashCode(pos.above(month), 2) % 10);//Vary the height energy by a psuedorandom hash function
-    }
-
-    @Override
-    public float getEnergy(World world, BlockPos pos, Species species, float signalEnergy) {
-        return signalEnergy + getHashedVariation(world, pos);
-    }
-
-    @Override
-    public int getLowestBranchHeight(World world, BlockPos pos, Species species, int lowestBranchHeight) {
-        return (int) (lowestBranchHeight + getHashedVariation(world, pos));
-    }
 }

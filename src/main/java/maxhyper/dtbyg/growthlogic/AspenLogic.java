@@ -1,6 +1,8 @@
 package maxhyper.dtbyg.growthlogic;
 
-import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
+import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
+import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
+import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionSelectionContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
@@ -9,14 +11,24 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class AspenLogic extends GrowthLogicKit {
+public class AspenLogic extends VariateHeightLogic {
 
     public AspenLogic(ResourceLocation registryName) {
         super(registryName);
     }
 
     @Override
-    public int[] directionManipulation(World world, BlockPos pos, Species species, int radius, GrowSignal signal, int[] probMap) {
+    protected GrowthLogicKitConfiguration createDefaultConfiguration() {
+        return super.createDefaultConfiguration()
+                .with(HEIGHT_VARIATION, 3);
+    }
+
+    @Override
+    public int[] populateDirectionProbabilityMap(GrowthLogicKitConfiguration configuration, DirectionManipulationContext context) {
+        final GrowSignal signal = context.signal();
+        final int[] probMap = context.probMap();
+        final int radius = context.radius();
+
         Direction originDir = signal.dir.getOpposite();
 
         // Alter probability map for direction change
@@ -31,7 +43,7 @@ public class AspenLogic extends GrowthLogicKit {
             // Make it so every 2 blocks the trunk has a higher chance of branching out, except at the tip
             if (radius > 1){
                 // Choose a random direction to do the branch
-                int directionSelection = Math.abs(CoordUtils.coordHashCode(pos, 2)) % 4;
+                int directionSelection = Math.abs(CoordUtils.coordHashCode(context.pos(), 2)) % 4;
                 probMap[2 + directionSelection] = (signal.numSteps % 2 == 0) ? 3 : 0;
             }
         } else {
@@ -51,8 +63,11 @@ public class AspenLogic extends GrowthLogicKit {
         return probMap;
     }
 
+
     @Override
-    public Direction newDirectionSelected(World world, BlockPos pos, Species species, Direction newDir, GrowSignal signal){
+    public Direction selectNewDirection(GrowthLogicKitConfiguration configuration, DirectionSelectionContext context) {
+        final GrowSignal signal = context.signal();
+        Direction newDir = super.selectNewDirection(configuration, context);
         // Turned out of trunk
         if (signal.isInTrunk() && newDir != Direction.UP) {
             // Reduce the energy so branches don't expand too much
@@ -65,19 +80,4 @@ public class AspenLogic extends GrowthLogicKit {
         return newDir;
     }
 
-    private float getHashedVariation (World world, BlockPos pos){
-        long day = world.getGameTime() / 24000L;
-        int month = (int)day / 30;//Change the hashs every in-game month
-        return (CoordUtils.coordHashCode(pos.above(month), 2) % 3);//Vary the height energy by a psuedorandom hash function
-    }
-
-    @Override
-    public float getEnergy(World world, BlockPos pos, Species species, float signalEnergy) {
-        return signalEnergy + getHashedVariation(world, pos); // Vary the height energy by a psuedorandom hash function
-    }
-
-    @Override
-    public int getLowestBranchHeight(World world, BlockPos pos, Species species, int lowestBranchHeight) {
-        return (int) (lowestBranchHeight + getHashedVariation(world, pos));
-    }
 }

@@ -1,22 +1,23 @@
 package maxhyper.dtbyg.growthlogic;
 
-import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
+import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
+import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
+import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionSelectionContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
-import com.ferreusveritas.dynamictrees.trees.Species;
-import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 
-public class PoplarLogic extends GrowthLogicKit {
+public class PoplarLogic extends VariateHeightLogic {
 
     public PoplarLogic(ResourceLocation registryName) {
         super(registryName);
     }
 
     @Override
-    public int[] directionManipulation(World world, BlockPos pos, Species species, int radius, GrowSignal signal, int[] probMap) {
+    public int[] populateDirectionProbabilityMap(GrowthLogicKitConfiguration configuration, DirectionManipulationContext context) {
+        final int[] probMap = context.probMap();
+        final GrowSignal signal = context.signal();
+
         Direction originDir = signal.dir.getOpposite();
 
         // Alter probability map for direction change
@@ -30,7 +31,10 @@ public class PoplarLogic extends GrowthLogicKit {
     }
 
     @Override
-    public Direction newDirectionSelected(World world, BlockPos pos, Species species, Direction newDir, GrowSignal signal){
+    public Direction selectNewDirection(GrowthLogicKitConfiguration configuration, DirectionSelectionContext context) {
+        final GrowSignal signal = context.signal();
+        final Direction newDir = super.selectNewDirection(configuration, context);
+
         if (signal.isInTrunk() && newDir != Direction.UP) { // Turned out of trunk
             if (signal.energy >= 4f) {
                 signal.energy = 1.8f; // don't grow branches more than 1 block out from the trunk
@@ -40,22 +44,8 @@ public class PoplarLogic extends GrowthLogicKit {
                 signal.energy = 0; // don't grow branches or leaves
             }
         }
+
         return newDir;
     }
 
-    private float getHashedVariation (World world, BlockPos pos){
-        long day = world.getGameTime() / 24000L;
-        int month = (int)day / 30;//Change the hashs every in-game month
-        return (CoordUtils.coordHashCode(pos.above(month), 2) % 6);//Vary the height energy by a psuedorandom hash function
-    }
-
-    @Override
-    public float getEnergy(World world, BlockPos pos, Species species, float signalEnergy) {
-        return signalEnergy + getHashedVariation(world, pos);
-    }
-
-    @Override
-    public int getLowestBranchHeight(World world, BlockPos pos, Species species, int lowestBranchHeight) {
-        return (int) (lowestBranchHeight + getHashedVariation(world, pos));
-    }
 }

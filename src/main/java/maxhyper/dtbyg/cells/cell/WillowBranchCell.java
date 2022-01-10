@@ -1,12 +1,12 @@
 package maxhyper.dtbyg.cells.cell;
 
-import com.ferreusveritas.dynamictrees.api.cells.ICell;
+import com.ferreusveritas.dynamictrees.api.cells.Cell;
 import net.minecraft.util.Direction;
 
 /**
  * @author Harley O'Connor
  */
-public final class WillowBranchCell implements ICell {
+public final class WillowBranchCell implements Cell {
 
     @Override
     public int getValue() {

@@ -7,7 +7,13 @@
   "growth_rate": 1.0,
   "soil_longevity": 14,
   "max_branch_radius": 24,
-  "growth_logic_kit": "dtbyg:mega_fir",
+  "growth_logic_kit": {
+    "name": "conifer",
+    "properties": {
+      "energy_divisor": 4.5,
+      "height_variation": 8
+    }
+  },
   "leaves_properties": "dtbyg:fir",
   "environment_factors" : {
     "hot": 0.50,

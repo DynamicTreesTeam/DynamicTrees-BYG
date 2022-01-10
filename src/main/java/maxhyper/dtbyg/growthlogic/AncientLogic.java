@@ -1,8 +1,13 @@
 package maxhyper.dtbyg.growthlogic;
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
+import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
+import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
 import com.ferreusveritas.dynamictrees.growthlogic.PalmGrowthLogic;
+import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
+import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionSelectionContext;
+import com.ferreusveritas.dynamictrees.growthlogic.context.PositionalSpeciesContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
@@ -11,68 +16,25 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class AncientLogic extends GrowthLogicKit {
+public class AncientLogic extends VariateHeightLogic {
+
+    public static final ConfigurationProperty<Float> CANOPY_ENERGY = ConfigurationProperty.floatProperty("canopy_energy");
 
     public AncientLogic(ResourceLocation registryName) {
         super(registryName);
     }
 
-    private static final int canopyEnergy = 8;
-
     @Override
-    public int[] directionManipulation(World world, BlockPos pos, Species species, int radius, GrowSignal signal, int[] probMap) {
-        Direction originDir = signal.dir.getOpposite();
-        int treeHash = CoordUtils.coordHashCode(signal.rootPos, 2);
-
-        probMap[0] = 0; // Down is always disallowed for palm
-
-        if (signal.energy > canopyEnergy){ //not canopy
-            // Alter probability map for direction change
-            probMap[1] = species.getUpProbability();
-            // Start by disabling probability on the sides
-            probMap[2] = probMap[3] = probMap[4] = probMap[5] =  0;
-
-            if (signal.isInTrunk()) {
-                if (signal.delta.getY() <= species.getLowestBranchHeight(world, pos) + 1) { //midway
-                    int sideHash = treeHash % 16;
-                    probMap[2] = sideHash % 2 < 1 ? 1 : 0;
-                    probMap[3] = sideHash % 4 < 2 ? 1 : 0;
-                    probMap[4] = sideHash % 8 < 4 ? 1 : 0;
-                    probMap[5] = sideHash < 8 ? 1 : 0;
-                }
-            } else {
-                branchTwisting(world, pos, signal, probMap);
-            }
-        } else // it is canopy so dark oak logic is used
-            darkOakCanopy(signal, probMap);
-
-        probMap[originDir.ordinal()] = 0; // Disable the direction we came from
-
-        return probMap;
+    protected GrowthLogicKitConfiguration createDefaultConfiguration() {
+        return super.createDefaultConfiguration()
+                .with(CANOPY_ENERGY, 8f)
+                .with(HEIGHT_VARIATION, 5)
+                .with(LOWEST_BRANCH_VARIATION, 3);
     }
 
     @Override
-    public Direction newDirectionSelected(World world, BlockPos pos, Species species, Direction newDir, GrowSignal signal) {
-        if (signal.isInTrunk() && newDir != Direction.UP){
-            signal.energy = Math.min(signal.energy, canopyEnergy + 3.5f);
-        }
-        return newDir;
-    }
-
-    private float getHashedVariation (World world, BlockPos pos, int variation){
-        long day = world.getGameTime() / 24000L;
-        int month = (int)day / 30;//Change the hashs every in-game month
-        return (CoordUtils.coordHashCode(pos.above(month), 2) % variation);//Vary the height energy by a psuedorandom hash function
-    }
-
-    @Override
-    public float getEnergy(World world, BlockPos pos, Species species, float signalEnergy) {
-        return signalEnergy + getHashedVariation(world, pos, 5);
-    }
-
-    @Override
-    public int getLowestBranchHeight(World world, BlockPos pos, Species species, int lowestBranchHeight) {
-        return (int) (lowestBranchHeight + getHashedVariation(world, pos, 3));
+    protected void registerProperties() {
+        this.register(CANOPY_ENERGY, HEIGHT_VARIATION, LOWEST_BRANCH_VARIATION);
     }
 
     private void branchTwisting(World world, BlockPos pos, GrowSignal signal, int[] probMap){
@@ -126,6 +88,58 @@ public class AncientLogic extends GrowthLogicKit {
                 }
             }
         }
+    }
+
+    @Override
+    public int[] populateDirectionProbabilityMap(GrowthLogicKitConfiguration configuration, DirectionManipulationContext context) {
+        final GrowSignal signal = context.signal();
+        final int[] probMap = context.probMap();
+        final World world = context.world();
+        final BlockPos pos = context.pos();
+        final Species species = context.species();
+        Direction originDir = signal.dir.getOpposite();
+        int treeHash = CoordUtils.coordHashCode(signal.rootPos, 2);
+
+        probMap[0] = 0; // Down is always disallowed for palm
+
+        if (signal.energy > configuration.get(CANOPY_ENERGY)){ //not canopy
+            // Alter probability map for direction change
+            probMap[1] = species.getUpProbability();
+            // Start by disabling probability on the sides
+            probMap[2] = probMap[3] = probMap[4] = probMap[5] =  0;
+
+            if (signal.isInTrunk()) {
+                if (signal.delta.getY() <= configuration.getLowestBranchHeight(context) + 1) { //midway
+                    int sideHash = treeHash % 16;
+                    probMap[2] = sideHash % 2 < 1 ? 1 : 0;
+                    probMap[3] = sideHash % 4 < 2 ? 1 : 0;
+                    probMap[4] = sideHash % 8 < 4 ? 1 : 0;
+                    probMap[5] = sideHash < 8 ? 1 : 0;
+                }
+            } else {
+                branchTwisting(world, pos, signal, probMap);
+            }
+        } else // it is canopy so dark oak logic is used
+            darkOakCanopy(signal, probMap);
+
+        probMap[originDir.ordinal()] = 0; // Disable the direction we came from
+
+        return probMap;
+    }
+
+    @Override
+    public Direction selectNewDirection(GrowthLogicKitConfiguration configuration, DirectionSelectionContext context) {
+        final Direction newDir = super.selectNewDirection(configuration, context);
+        final GrowSignal signal = context.signal();
+        if (signal.isInTrunk() && newDir != Direction.UP){
+            signal.energy = Math.min(signal.energy, configuration.get(CANOPY_ENERGY) + 3.5f);
+        }
+        return newDir;
+    }
+
+    @Override
+    public int getLowestBranchHeight(GrowthLogicKitConfiguration configuration, PositionalSpeciesContext context) {
+        return super.getLowestBranchHeight(configuration, context) + (int)getHashedVariation(context.world(), context.pos(), configuration.get(LOWEST_BRANCH_VARIATION));
     }
 
 }

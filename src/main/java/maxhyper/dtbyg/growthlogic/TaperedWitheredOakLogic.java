@@ -1,6 +1,9 @@
 package maxhyper.dtbyg.growthlogic;
 
 import com.ferreusveritas.dynamictrees.growthlogic.ConiferLogic;
+import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
+import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
+import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionSelectionContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
@@ -11,14 +14,24 @@ import net.minecraft.world.World;
 
 public class TaperedWitheredOakLogic extends ConiferLogic {
 
-    public TaperedWitheredOakLogic(ResourceLocation registryName) {
-        super(registryName, 6f);
-        setHorizontalLimiter(6);
-        setHeightVariation(7);
+    public TaperedWitheredOakLogic(ResourceLocation registryName) { super(registryName); }
+
+    @Override
+    protected GrowthLogicKitConfiguration createDefaultConfiguration() {
+        return super.createDefaultConfiguration()
+                .with(ENERGY_DIVISOR, 6F)
+                .with(HORIZONTAL_LIMITER, 6F)
+                .with(HEIGHT_VARIATION, 7);
     }
 
     @Override
-    public int[] directionManipulation(World world, BlockPos pos, Species species, int radius, GrowSignal signal, int[] probMap) {
+    public int[] populateDirectionProbabilityMap(GrowthLogicKitConfiguration configuration, DirectionManipulationContext context) {
+        final Species species = context.species();
+        final World world = context.world();
+        final GrowSignal signal = context.signal();
+        final int[] probMap = context.probMap();
+        final int radius = context.radius();
+        final BlockPos pos = context.pos();
 
         Direction originDir = signal.dir.getOpposite();
 
@@ -58,12 +71,15 @@ public class TaperedWitheredOakLogic extends ConiferLogic {
     }
 
     @Override
-    public Direction newDirectionSelected(Species species, Direction newDir, GrowSignal signal) {
-        if (signal.delta.getY() == species.getLowestBranchHeight()){
-            if (signal.isInTrunk() && newDir != Direction.UP)//Turned out of trunk
-                signal.energy = 5;
-            return newDir;
-        } else return super.newDirectionSelected(species, newDir, signal);
-    }
+    public Direction selectNewDirection(GrowthLogicKitConfiguration configuration, DirectionSelectionContext context) {
+        final Species species = context.species();
+        final GrowSignal signal = context.signal();
+        Direction newDir = super.selectNewDirection(configuration, context);
 
+        if (signal.delta.getY() == species.getLowestBranchHeight() &&
+                signal.isInTrunk() && newDir != Direction.UP) //Turned out of trunk
+                signal.energy = 5;
+
+        return newDir;
+    }
 }

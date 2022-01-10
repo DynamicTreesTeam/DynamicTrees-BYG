@@ -6,7 +6,7 @@
   "lowest_branch_height": 5,
   "growth_rate": 0.8,
   "leaves_properties": "dtbyg:pink_cherry",
-  "growth_logic_kit": "dtbyg:cherry",
+  "growth_logic_kit": "dtbyg:variate_height",
   "environment_factors": {
     "cold": 0.75,
     "hot": 0.9,
