@@ -31,6 +31,11 @@ public class RedwoodLogic extends VariateHeightLogic {
     }
 
     @Override
+    protected void registerProperties() {
+        this.register(HEIGHT_OF_CANOPY, HEIGHT_VARIATION, LOWEST_BRANCH_VARIATION);
+    }
+
+    @Override
     public int[] populateDirectionProbabilityMap(GrowthLogicKitConfiguration configuration, DirectionManipulationContext context) {
         final Species species = context.species();
         final World world = context.world();
