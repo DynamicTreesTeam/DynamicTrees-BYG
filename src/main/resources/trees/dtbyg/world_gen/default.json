@@ -1,16 +1,6 @@
 [
   {
-    "select": {
-      "name": "byg:.*",
-      "category": "forest"
-    },
-    "apply": {
-      "density": [ 1 ],
-      "chance": 1.0,
-      "forestness" : 1.0
-    }
-  },
-  {
+    "__comment": "{\n    \"select\": {\n      \"name\": \"byg:.*\",\n      \"type\": \"forest\"\n    },\n    \"apply\": {\n      \"density\": [ 1 ],\n      \"chance\": 1.0,\n      \"forestness\" : 1.0\n    }\n  },",
     "select": {
       "name": "byg:maple.*"
     },
@@ -1025,9 +1015,9 @@
   },
   {
     "select": {
-      "name": "byg:.*",
-      "type": "beach"
-    },
+      "names_or": [
+        "byg:rainbow_beach","byg:rocky_beach","byg:snowy_rock_black_beach","byg:snowy_black_beach","byg:white_beach"
+      ] },
     "apply": {
       "species": "dtbyg:palm",
       "density": [ 1.0 ],
@@ -1325,7 +1315,12 @@
 
   {
     "__comment": "Flag nether as being subterranean.",
-    "select": { "name": "byg:.*", "type": "nether" },
+    "select": {
+      "names_or": [
+        "byg:brimstone_caverns","byg:crimson_gardens","byg:embur_bog","byg:glowstone_gardens",
+      "byg:magma_wastes","byg:subzero_hypogeal","byg:sythian_torrids","byg:warped_desert","byg:wailing_garth",
+        "byg:withering_woods","byg:weeping_mire","byg:quartz_desert"
+      ] },
     "apply": {
       "subterranean": true
     }
