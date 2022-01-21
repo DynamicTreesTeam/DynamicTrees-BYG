@@ -1,20 +1,20 @@
 {
   "type": "dtbyg:mangrove",
   "family": "dtbyg:mangrove",
-  "tapering": 0.4,
-  "signal_energy": 6.0,
-  "up_probability": 5,
+  "tapering": 0.1,
+  "signal_energy": 9.0,
   "lowest_branch_height": 3,
-  "growth_rate": 0.8,
-  "soil_longevity": 8,
-  "max_branch_radius": 16,
+  "growth_rate": 0.6,
   "growth_logic_kit": "dtbyg:mangrove",
   "leaves_properties": "dtbyg:mangrove",
   "environment_factors" : {
-    "hot": 0.7,
+    "cold": 0.75,
     "dry": 0.5
   },
   "perfect_biomes": { "types": [ "swamp", "overworld" ] },
   "primitive_sapling": "byg:mangrove_sapling",
-  "acceptable_soils": [ "water_like", "dirt_like" ]
+  "acceptable_soils": [ "water_like", "dirt_like" ],
+  "features": [
+    "dtbyg:mangrovelings"
+  ]
 }

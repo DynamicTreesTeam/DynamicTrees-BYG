@@ -43,7 +43,7 @@ public class VariateHeightLogic extends GrowthLogicKit {
     @Override
     public int getLowestBranchHeight(GrowthLogicKitConfiguration configuration, PositionalSpeciesContext context) {
         return super.getLowestBranchHeight(configuration, context)
-                + (int)getHashedVariation(context.world(), context.pos(), configuration.get(HEIGHT_VARIATION));
+                + getHashedVariation(context.world(), context.pos(), configuration.get(HEIGHT_VARIATION));
     }
 
 }

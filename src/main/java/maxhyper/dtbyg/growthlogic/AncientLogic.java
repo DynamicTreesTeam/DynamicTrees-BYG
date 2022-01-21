@@ -100,7 +100,7 @@ public class AncientLogic extends VariateHeightLogic {
         Direction originDir = signal.dir.getOpposite();
         int treeHash = CoordUtils.coordHashCode(signal.rootPos, 2);
 
-        probMap[0] = 0; // Down is always disallowed for palm
+        probMap[0] = 0; // Down is always disallowed
 
         if (signal.energy > configuration.get(CANOPY_ENERGY)){ //not canopy
             // Alter probability map for direction change

@@ -4,9 +4,12 @@ import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
 import com.ferreusveritas.dynamictrees.blocks.DynamicSaplingBlock;
 import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
+import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SoilHelper;
 import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
+import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -18,6 +21,9 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.RayTraceContext;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
+
+import java.util.Random;
 
 public class MangroveSpecies extends Species {
 
@@ -57,4 +63,33 @@ public class MangroveSpecies extends Species {
         return super.plantSapling(world, pos, locationOverride);
     }
 
+    private static final int maxDepth = 5;
+    private static final int maxOffset = 4;
+    public boolean isAcceptableSoilForWorldgen(IWorld world, BlockPos pos, BlockState soilBlockState) {
+        final boolean isAcceptableSoil = isAcceptableSoil(world, pos, soilBlockState);
+
+        // If the block is water, check the block below it is valid soil (and not water).
+        if (isAcceptableSoil && isWater(soilBlockState)) {
+            for (int i=1; i<=maxDepth; i++){
+                final BlockPos down = pos.below(i);
+                final BlockState downState = world.getBlockState(down);
+
+                if (!isWater(downState) && this.isAcceptableSoil(world, down, downState))
+                    return true;
+            }
+            return false;
+        }
+
+
+        return isAcceptableSoil;
+    }
+
+    @Override
+    public boolean generate(World worldObj, IWorld world, BlockPos rootPos, Biome biome, Random random, int radius, SafeChunkBounds safeBounds) {
+        int i;
+        for (i=0; i<maxOffset; i++)
+            if (!isWater(world.getBlockState(rootPos.below(i))))
+                break;
+        return super.generate(worldObj, world, rootPos.below(Math.max(i-2, 0)), biome, random, radius, safeBounds);
+    }
 }

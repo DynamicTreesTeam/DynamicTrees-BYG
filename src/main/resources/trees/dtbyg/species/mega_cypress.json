@@ -1,24 +1,28 @@
 {
   "type": "dtbyg:generates_underwater",
   "family": "dtbyg:cypress",
-  "tapering": 0.2,
-  "signal_energy": 32.0,
-  "up_probability": 3,
-  "lowest_branch_height": 5,
-  "growth_rate": 1.1,
-  "soil_longevity": 12,
-  "max_branch_radius": 9,
-  "world_gen_leaf_map_height": 64,
-  "growth_logic_kit": "dtbyg:cypress",
+  "tapering": 0.45,
+  "signal_energy": 36.0,
+  "up_probability": 2,
+  "lowest_branch_height": 6,
+  "growth_rate": 1.3,
+  "soil_longevity": 18,
+  "max_branch_radius": 24,
+  "growth_logic_kit": {
+    "name": "dtbyg:cypress",
+    "properties": {
+      "canopy_energy": 18.5,
+      "height_variation": 5,
+      "bottom_branch_side_energy": 6.5
+    }
+  },
   "leaves_properties": "dtbyg:cypress",
   "environment_factors" : {
     "hot": 0.7,
     "dry": 0.5
   },
   "perfect_biomes": { "types": [ "swamp", "overworld" ] },
-  "primitive_sapling": "byg:cypress_sapling",
   "acceptable_soils": [ "water_like", "dirt_like" ],
-  "mega_species": "dtbyg:mega_cypress",
   "features": [
     "dtbyg:extra_bottom_flare",
     {
@@ -32,7 +36,7 @@
       "properties": {
         "min_trunk_radius": 6,
         "level_limit": 5,
-        "scale_factor": 19
+        "scale_factor": 25
       }
     }
   ]

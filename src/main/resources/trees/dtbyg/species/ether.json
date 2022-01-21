@@ -21,5 +21,6 @@
       "can_craft_seed_to_sapling": false
     }
   ],
-  "acceptable_soils": ["dirt_like", "end_soil_like"]
+  "acceptable_soils": ["dirt_like", "end_soil_like"],
+  "generate_seed": false
 }

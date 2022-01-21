@@ -3,5 +3,7 @@
   "common_species": "dtbyg:cypress",
   "primitive_log": "byg:cypress_log",
   "primitive_stripped_log": "byg:stripped_cypress_log",
-  "max_branch_radius": 24
+  "max_branch_radius": 24,
+  "max_signal_depth": 64,
+  "generate_surface_root": true
 }

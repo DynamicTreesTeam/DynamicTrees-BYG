@@ -24,7 +24,7 @@ public class GenUnderwaterSpecies extends Species {
         super(name, family, leavesProperties);
     }
 
-    private static final int maxDepth = 6;
+    private static final int maxDepth = 7;
     public boolean isAcceptableSoilForWorldgen(IWorld world, BlockPos pos, BlockState soilBlockState) {
         final boolean isAcceptableSoil = isAcceptableSoil(world, pos, soilBlockState);
 

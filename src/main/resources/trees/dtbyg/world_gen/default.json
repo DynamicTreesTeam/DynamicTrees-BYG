@@ -1312,6 +1312,31 @@
       "chance": 1.0
     }
   },
+  {
+    "select": {
+      "name": "byg:cypress.*"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:cypress": 6,
+          "dtbyg:mega_cypress": 3
+        }
+      },
+      "density": [ 1.3 ],
+      "chance": 0.8
+    }
+  },
+  {
+    "select": {
+      "name": "byg:mangrove.*"
+    },
+    "apply": {
+      "species": "dtbyg:mangrove",
+      "density": [ 1.0 ],
+      "chance": 1.0
+    }
+  },
 
   {
     "__comment": "Flag nether as being subterranean.",
