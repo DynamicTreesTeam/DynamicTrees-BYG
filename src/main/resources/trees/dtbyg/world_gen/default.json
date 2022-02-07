@@ -8,17 +8,7 @@
     }
   },
   {
-    "select": {
-      "name": "byg:.*",
-      "type": "forest"
-    },
-    "apply": {
-      "density": [ 1 ],
-      "chance": 1.0,
-      "forestness" : 1.0
-    }
-  },
-  {
+    "__comment": "{\n    \"select\": {\n      \"name\": \"byg:.*\",\n      \"type\": \"forest\"\n    },\n    \"apply\": {\n      \"density\": [ 1 ],\n      \"chance\": 1.0,\n      \"forestness\" : 1.0\n    }\n  },",
     "select": {
       "name": "byg:maple.*"
     },
@@ -1365,16 +1355,38 @@
     "select": {
       "names_or": [
         "byg:brimstone_caverns","byg:crimson_gardens","byg:embur_bog","byg:glowstone_gardens",
-      "byg:magma_wastes","byg:subzero_hypogeal","byg:sythian_torrids","byg:warped_desert","byg:wailing_garth",
+        "byg:magma_wastes","byg:subzero_hypogeal","byg:sythian_torrids","byg:warped_desert","byg:wailing_garth",
         "byg:withering_woods","byg:weeping_mire","byg:quartz_desert"
       ] },
     "apply": {
       "subterranean": true
     }
   },
+
+  {
+    "select": {
+      "name": "byg:sythian_torrids"
+    },
+    "cancellers": {
+      "types": ["tree", "dtbyg:tree", "dtbyg:fungus"],
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species": "dtbyg:sythian",
+      "density": [ 2.0 ],
+      "chance": 1.0
+    }
+  },
+
+
+
   {
     "only_if_loaded": "dynamictreesplus",
     "select": "byg:warped_desert",
+    "cancellers": {
+      "type": "dtbyg:warped_cactus",
+      "namespace": "minecraft"
+    },
     "apply": {
       "species": "dtbyg:warped_cactus",
       "density" : { "math": { "add" : [ { "mul" : [ "noise", 0.6 ] }, 0.4 ] } },
@@ -1386,6 +1398,10 @@
     "only_if_loaded": "dynamictreesplus",
     "select": {
       "name": "byg:shattered_desert.*"
+    },
+    "cancellers": {
+      "type": "dtbyg:oddity_cactus",
+      "namespace": "minecraft"
     },
     "apply": {
       "species": "dtbyg:oddity_cactus",

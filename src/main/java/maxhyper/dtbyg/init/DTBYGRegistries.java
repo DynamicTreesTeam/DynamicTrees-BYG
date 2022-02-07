@@ -20,16 +20,25 @@ import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CommonVoxelShapes;
 import com.ferreusveritas.dynamictrees.util.ShapeUtils;
+import com.google.common.collect.ImmutableList;
+import corgiaoc.byg.BYG;
+import corgiaoc.byg.common.properties.blocks.end.shattereddesert.OddityCactusBlock;
+import corgiaoc.byg.common.properties.blocks.nether.warped.WarpedCactusBlock;
+import corgiaoc.byg.common.world.biome.nether.WarpedDesert;
 import corgiaoc.byg.common.world.feature.config.BYGMushroomConfig;
 import corgiaoc.byg.common.world.feature.config.BYGTreeConfig;
 import corgiaoc.byg.common.world.feature.config.GiantFlowerConfig;
 import corgiaoc.byg.core.BYGBlocks;
+import corgiaoc.byg.core.world.BYGBiomes;
+import corgiaoc.byg.core.world.BYGConfiguredFeatures;
+import corgiaoc.byg.core.world.util.WorldGenRegistrationHelper;
 import maxhyper.dtbyg.DynamicTreesBYG;
 import maxhyper.dtbyg.blocks.BYGTintedSoilProperties;
 import maxhyper.dtbyg.blocks.DynamicArisianBloomBranch;
 import maxhyper.dtbyg.blocks.EtherBulbsFruitBlock;
 import maxhyper.dtbyg.blocks.ScruffyLeavesProperties;
 import maxhyper.dtbyg.cancellers.BYGFeatureCanceller;
+import maxhyper.dtbyg.cancellers.CactusFeatureCanceller;
 import maxhyper.dtbyg.cells.DTBYGCellKits;
 import maxhyper.dtbyg.genfeatures.DTBYGGenFeatures;
 import maxhyper.dtbyg.growthlogic.DTBYGGrowthLogicKits;
@@ -44,12 +53,21 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
-import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.BiomeGenerationSettings;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.*;
+import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.Objects;
 
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class DTBYGRegistries {
@@ -216,12 +234,29 @@ public class DTBYGRegistries {
     public static final FeatureCanceller BYG_TREE_CANCELLER = new BYGFeatureCanceller<>(DynamicTreesBYG.resLoc("tree"), BYGTreeConfig.class);
     public static final FeatureCanceller BYG_FUNGUS_CANCELLER = new BYGFeatureCanceller<>(DynamicTreesBYG.resLoc("fungus"), BYGMushroomConfig.class);
     public static final FeatureCanceller GIANT_FLOWER_CANCELLER = new BYGFeatureCanceller<>(DynamicTreesBYG.resLoc("giant_flower"), GiantFlowerConfig.class);
+    public static final FeatureCanceller WARPED_CACTUS_CANCELLER = new CactusFeatureCanceller<>(DynamicTreesBYG.resLoc("warped_cactus"), WarpedCactusBlock.class);
+    public static final FeatureCanceller ODDITY_CACTUS_CANCELLER = new CactusFeatureCanceller<>(DynamicTreesBYG.resLoc("oddity_cactus"), OddityCactusBlock.class);
 
     @SubscribeEvent
     public static void onFeatureCancellerRegistry(final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<FeatureCanceller> event) {
         event.getRegistry().registerAll(BYG_TREE_CANCELLER);
-//        event.getRegistry().registerAll(BYG_FUNGUS_CANCELLER);
-//        event.getRegistry().registerAll(GIANT_FLOWER_CANCELLER);
+        event.getRegistry().registerAll(BYG_FUNGUS_CANCELLER);
+        event.getRegistry().registerAll(GIANT_FLOWER_CANCELLER);
+        event.getRegistry().registerAll(WARPED_CACTUS_CANCELLER);
+        event.getRegistry().registerAll(ODDITY_CACTUS_CANCELLER);
+    }
+
+    public static final ConfiguredFeature<?, ?> RANDOM_WARPED_DESERT_VEGETATION_NO_CACTI = WorldGenRegistrationHelper.createConfiguredFeature("warped_desert_plants_no_cacti", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of(BYGConfiguredFeatures.WARPED_BUSH.weighted(0.25F), BYGConfiguredFeatures.WARPED_CORAL.weighted(0.25F), BYGConfiguredFeatures.WARPED_CORAL_FAN.weighted(0.25F)), Feature.NO_OP.configured(NoFeatureConfig.INSTANCE))).decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(16))));
+    public static final ConfiguredFeature<?, ?> RANDOM_ODDITY_PLANT_NO_CACTI = WorldGenRegistrationHelper.createConfiguredFeature("oddity_plants_no_cacti", Feature.RANDOM_SELECTOR.configured(new MultipleRandomFeatureConfig(ImmutableList.of((Feature.NO_OP.configured(NoFeatureConfig.INSTANCE)).weighted(0.5F)), BYGConfiguredFeatures.ODDITY_BUSH)).decorated(Placement.COUNT_MULTILAYER.configured(new FeatureSpreadConfig(16))));
+    public static void onBiomeLoading(final BiomeLoadingEvent event){
+        //The features for the warped desert need to be added back, as cancelling the cacti removes these too.
+        if (Objects.equals(BYGBiomes.WARPED_DESERT.getRegistryName(), event.getName())){
+            event.getGeneration().addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, RANDOM_WARPED_DESERT_VEGETATION_NO_CACTI);
+        }
+        //Same with the shattered desert in the end
+        if (Objects.equals(BYGBiomes.SHATTERED_DESERT.getRegistryName(), event.getName())){
+            event.getGeneration().addFeature(GenerationStage.Decoration.VEGETAL_DECORATION, RANDOM_ODDITY_PLANT_NO_CACTI);
+        }
     }
 
 }
