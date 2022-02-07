@@ -1,0 +1,30 @@
+{
+	"credit": "Made with Blockbench",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "dtbyg:block/joshua_fruit",
+		"apple": "dtbyg:block/joshua_fruit"
+	},
+	"elements": [
+		{
+			"from": [7, 15, 8],
+			"to": [9, 16, 8],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
+			"faces": {
+				"north": {"uv": [0, 15, 4, 16], "texture": "#apple"},
+				"south": {"uv": [0, 15, 4, 16], "texture": "#apple"}
+			}
+		},
+		{
+			"from": [8, 15, 7],
+			"to": [8, 16, 9],
+			"shade": false,
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 8, 8], "rescale": true},
+			"faces": {
+				"east": {"uv": [0, 15, 4, 16], "texture": "#apple"},
+				"west": {"uv": [0, 15, 4, 16], "texture": "#apple"}
+			}
+		}
+	]
+}

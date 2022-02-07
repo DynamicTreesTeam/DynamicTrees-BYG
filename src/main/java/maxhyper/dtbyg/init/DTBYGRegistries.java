@@ -54,9 +54,8 @@ public class DTBYGRegistries {
     public static FruitBlock GREEN_APPLE_FRUIT = new FruitBlock()
             .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
     public static FruitBlock JOSHUA_FRUIT = new FruitBlock()
-            .setShape(1, ShapeUtils.createFruitShape(2,3,0))
-            .setShape(2, ShapeUtils.createFruitShape(2.5f,4,2))
-            .setShape(3, ShapeUtils.createFruitShape(3.5f,4,3))
+            .setShape(2, ShapeUtils.createFruitShape(2f,5,1 * 1.25f))
+            .setShape(3, ShapeUtils.createFruitShape(2f,6,2 * 1.25f))
             .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
     public static FruitBlock ETHER_BULBS_FRUIT = new EtherBulbsFruitBlock()
             .setShape(1, ShapeUtils.createFruitShape(2,3,0))
@@ -65,13 +64,14 @@ public class DTBYGRegistries {
             .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
     public static FruitBlock HOLLY_BERRIES_FRUIT = new FruitBlock()
             .setShape(1, ShapeUtils.createFruitShape(2,3,0))
-            .setShape(2, ShapeUtils.createFruitShape(2.5f,4,2))
-            .setShape(3, ShapeUtils.createFruitShape(3.5f,4,3))
+            .setShape(2, ShapeUtils.createFruitShape(3f,4,1))
+            .setShape(3, ShapeUtils.createFruitShape(3.5f,4,2))
             .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
     public static FruitBlock BAOBAB_FRUIT = new FruitBlock()
-            .setShape(1, ShapeUtils.createFruitShape(2,3,0))
-            .setShape(2, ShapeUtils.createFruitShape(2.5f,4,2))
-            .setShape(3, ShapeUtils.createFruitShape(3.5f,4,3))
+            .setShape(0, ShapeUtils.createFruitShape(2.5f,2,6 * 1.25f))
+            .setShape(1, ShapeUtils.createFruitShape(1.5f,3,7 * 1.25f))
+            .setShape(2, ShapeUtils.createFruitShape(2f,5,8 * 1.25f))
+            .setShape(3, ShapeUtils.createFruitShape(2.5f,8,9 * 1.25f))
             .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
 
     public static Block ARISIAN_BLOOM_BRANCH;
