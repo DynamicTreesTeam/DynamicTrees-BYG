@@ -29,14 +29,7 @@ public class DynamicTreesBYG
         DTBYGRegistries.setup();
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {
-        if (DTConfigs.WORLD_GEN.get()){
-            BYG.ENABLE_OVERWORLD_TREES = false;
-            if (ModList.get().isLoaded("dynamictreesplus")) {
-                BYG.ENABLE_CACTI = false;
-            }
-        }
-    }
+    private void commonSetup(final FMLCommonSetupEvent event) { }
 
     private void clientSetup(final FMLClientSetupEvent event) {
         DTBYGClient.setup();

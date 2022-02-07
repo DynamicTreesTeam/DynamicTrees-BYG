@@ -4,6 +4,7 @@ import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.api.cells.CellKit;
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
+import com.ferreusveritas.dynamictrees.api.worldgen.BiomePropertySelectors;
 import com.ferreusveritas.dynamictrees.api.worldgen.FeatureCanceller;
 import com.ferreusveritas.dynamictrees.blocks.FruitBlock;
 import com.ferreusveritas.dynamictrees.blocks.branches.BranchBlock;
@@ -20,6 +21,7 @@ import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CommonVoxelShapes;
 import com.ferreusveritas.dynamictrees.util.ShapeUtils;
 import corgiaoc.byg.common.world.feature.config.BYGMushroomConfig;
+import corgiaoc.byg.common.world.feature.config.BYGTreeConfig;
 import corgiaoc.byg.common.world.feature.config.GiantFlowerConfig;
 import corgiaoc.byg.core.BYGBlocks;
 import maxhyper.dtbyg.DynamicTreesBYG;
@@ -27,7 +29,7 @@ import maxhyper.dtbyg.blocks.BYGTintedSoilProperties;
 import maxhyper.dtbyg.blocks.DynamicArisianBloomBranch;
 import maxhyper.dtbyg.blocks.EtherBulbsFruitBlock;
 import maxhyper.dtbyg.blocks.ScruffyLeavesProperties;
-import maxhyper.dtbyg.cancellers.BYGFungusFeatureCanceller;
+import maxhyper.dtbyg.cancellers.BYGFeatureCanceller;
 import maxhyper.dtbyg.cells.DTBYGCellKits;
 import maxhyper.dtbyg.genfeatures.DTBYGGenFeatures;
 import maxhyper.dtbyg.growthlogic.DTBYGGrowthLogicKits;
@@ -42,6 +44,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.world.gen.feature.ConfiguredFeature;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -210,13 +213,15 @@ public class DTBYGRegistries {
         setupBlocks();
     }
 
-    public static final FeatureCanceller BYG_FUNGUS_CANCELLER = new BYGFungusFeatureCanceller<>(DynamicTreesBYG.resLoc("fungus"), BYGMushroomConfig.class);
-    public static final FeatureCanceller GIANT_FLOWER_CANCELLER = new BYGFungusFeatureCanceller<>(DynamicTreesBYG.resLoc("giant_flower"), GiantFlowerConfig.class);
+    public static final FeatureCanceller BYG_TREE_CANCELLER = new BYGFeatureCanceller<>(DynamicTreesBYG.resLoc("tree"), BYGTreeConfig.class);
+    public static final FeatureCanceller BYG_FUNGUS_CANCELLER = new BYGFeatureCanceller<>(DynamicTreesBYG.resLoc("fungus"), BYGMushroomConfig.class);
+    public static final FeatureCanceller GIANT_FLOWER_CANCELLER = new BYGFeatureCanceller<>(DynamicTreesBYG.resLoc("giant_flower"), GiantFlowerConfig.class);
 
     @SubscribeEvent
     public static void onFeatureCancellerRegistry(final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<FeatureCanceller> event) {
-        event.getRegistry().registerAll(BYG_FUNGUS_CANCELLER);
-        event.getRegistry().registerAll(GIANT_FLOWER_CANCELLER);
+        event.getRegistry().registerAll(BYG_TREE_CANCELLER);
+//        event.getRegistry().registerAll(BYG_FUNGUS_CANCELLER);
+//        event.getRegistry().registerAll(GIANT_FLOWER_CANCELLER);
     }
 
 }
