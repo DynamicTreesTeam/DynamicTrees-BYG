@@ -239,9 +239,9 @@ public class DTBYGRegistries {
 
     @SubscribeEvent
     public static void onFeatureCancellerRegistry(final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<FeatureCanceller> event) {
-        event.getRegistry().registerAll(BYG_TREE_CANCELLER);
+        //event.getRegistry().registerAll(BYG_TREE_CANCELLER);
         event.getRegistry().registerAll(BYG_FUNGUS_CANCELLER);
-        event.getRegistry().registerAll(GIANT_FLOWER_CANCELLER);
+        //event.getRegistry().registerAll(GIANT_FLOWER_CANCELLER);
         event.getRegistry().registerAll(WARPED_CACTUS_CANCELLER);
         event.getRegistry().registerAll(ODDITY_CACTUS_CANCELLER);
     }

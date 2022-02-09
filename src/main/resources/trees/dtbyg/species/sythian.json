@@ -1,12 +1,12 @@
 {
-  "type": "dtbyg:sythian_fungus",
+  "type": "nether_fungus",
   "family": "dtbyg:sythian",
   "tapering": 0,
   "signal_energy": 7.0,
-  "up_probability": 4,
+  "up_probability": 6,
   "lowest_branch_height": 2,
-  "growth_rate": 1,
-  "soil_longevity": 5,
+  "growth_rate": 1.5,
+  "soil_longevity": 16,
   "growth_logic_kit": "dtbyg:sythian_fungus",
   "leaves_properties": "dtbyg:sythian",
   "environment_factors" : {
@@ -29,7 +29,8 @@
         "quantity": 4
       }
     },
-    "shroomlight"
+    "shroomlight",
+    "dtbyg:sythian_topper"
   ],
   "drop_creators": [
     "log",

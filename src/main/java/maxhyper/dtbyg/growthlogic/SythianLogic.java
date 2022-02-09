@@ -36,6 +36,8 @@ public class SythianLogic extends GrowthLogicKit {
 
     @Override
     public int[] populateDirectionProbabilityMap(GrowthLogicKitConfiguration configuration, DirectionManipulationContext context) {
+        System.out.println(configuration.getEnergy(context));
+
         final GrowSignal signal = context.signal();
         final int[] probMap = context.probMap();
         Direction originDir = signal.dir.getOpposite();
@@ -44,7 +46,7 @@ public class SythianLogic extends GrowthLogicKit {
         probMap[0] = 0;//Down is always disallowed
         probMap[1] = signal.isInTrunk() ? context.species().getUpProbability() : 0;
         probMap[2] = probMap[3] = probMap[4] = probMap[5] = //Only allow turns when we aren't in the trunk(or the branch is not a twig and step is odd)
-                !signal.isInTrunk() || (signal.isInTrunk() && signal.numSteps % 2 == 0) ? 1 : 0;
+                !signal.isInTrunk() || (signal.isInTrunk() && signal.numSteps % 2 == 0) ? 1+(signal.isInTrunk() ? (int)(signal.delta.getY()/(configuration.getEnergy(context)/4)) : 0) : 0;
         probMap[originDir.ordinal()] = 0;//Disable the direction we came from
 
         return probMap;
@@ -56,9 +58,10 @@ public class SythianLogic extends GrowthLogicKit {
         int threshold = configuration.get(THICKEN_THRESHOLD);
         Direction newDir = super.selectNewDirection(configuration, context);
         if (signal.isInTrunk() && newDir != Direction.UP) {//Turned out of trunk
-            int y = signal.delta.getY();
-            boolean extra = y > threshold && y < configuration.getEnergy(context) - threshold;
-            signal.energy = 1.5f + (extra?1:0);
+//            int y = signal.delta.getY();
+//            boolean extra = y > threshold && y < configuration.getEnergy(context) - threshold;
+//            signal.energy = 1.5f + (extra?1:0);
+            signal.energy = 0.5f;
         }
         return newDir;
     }
@@ -69,7 +72,7 @@ public class SythianLogic extends GrowthLogicKit {
         final World world = context.world();
         final BlockPos pos = context.pos();
         float energy = super.getEnergy(configuration, context) + VariateHeightLogic.getHashedVariation(world, pos, configuration.get(HEIGHT_VARIATION));
-        if (((int)energy) % 2 == 1) return energy + 1;
-        return energy;
+        if (((int)energy) % 2 == 0) return energy + 1f;
+        return energy + 0.5f;
     }
 }

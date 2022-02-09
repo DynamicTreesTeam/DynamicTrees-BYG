@@ -340,7 +340,7 @@ public class DTBYGCellKits {
     public static final CellKit SYTHIAN_FUNGUS = new CellKit(DynamicTreesBYG.resLoc("sythian_fungus")) {
 
         private final Cell sythianBranch = new SythianWartCell(3);
-        private final Cell sythianTopBranch = new SythianWartCell(5);
+        private final Cell sythianTopBranch = new SythianWartCell(4);
 
         private final Cell[] sythianLeafCells = {
                 CellNull.NULL_CELL,
@@ -348,12 +348,12 @@ public class DTBYGCellKits {
                 new SythianWartCell(2),
                 new SythianWartCell(3),
                 new SythianWartCell(4),
-                new SythianWartCell(4),
-                new SythianWartCell(4),
-                new SythianWartCell(4)
+                new SythianWartCell(5),
+                new SythianWartCell(6),
+                new SythianWartCell(7)
         };
 
-        private final CellKits.BasicSolver sythianSolver = new CellKits.BasicSolver(new short[]{0x0514, 0x0411, 0x0312, 0x0221});
+        private final CellKits.BasicSolver sythianSolver = new CellKits.BasicSolver(new short[]{0x0411, 0x0312, 0x0221});
 
         @Override
         public Cell getCellForLeaves(int hydro) {

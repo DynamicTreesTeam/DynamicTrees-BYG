@@ -1368,7 +1368,7 @@
       "name": "byg:sythian_torrids"
     },
     "cancellers": {
-      "types": ["tree", "dtbyg:tree", "dtbyg:fungus"],
+      "type": "dtbyg:fungus",
       "namespace": "minecraft"
     },
     "apply": {
