@@ -1,0 +1,5 @@
+{
+  "type": "dtbyg:lava",
+  "primitive_soil": "lava",
+  "acceptable_soils": [ "lava_like" ]
+}

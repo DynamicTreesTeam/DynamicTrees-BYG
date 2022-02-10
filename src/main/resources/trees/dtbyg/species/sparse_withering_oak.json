@@ -1,4 +1,5 @@
 {
+  "type": "dtbyg:generates_on_magmatic_stone",
   "family": "dtbyg:withering_oak",
   "tapering": 0.3,
   "signal_energy": 8.0,
@@ -6,6 +7,7 @@
   "growth_rate": 0.6,
   "soil_longevity": 3,
   "leaves_properties": "dtbyg:sparse_withering_oak",
+  "does_rot": false,
   "environment_factors" : {
     "cold": 0.5,
     "wet": 0.5

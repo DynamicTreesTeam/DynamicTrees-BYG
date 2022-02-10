@@ -42,16 +42,16 @@ public class BranchSproutsGenFeature extends GenFeature {
         return super.createDefaultConfiguration()
                 .with(SPROUT_BLOCK, Blocks.AIR)
                 .with(FRUITING_RADIUS, 8)
-                .with(PLACE_CHANCE, 0.02f)
+                .with(PLACE_CHANCE, 0.05f)
                 .with(MAX_COUNT, 16)
-                .with(MIN_RADIUS, 0);
+                .with(MIN_RADIUS, 3);
     }
 
     @Override
     protected boolean postGenerate(GenFeatureConfiguration configuration, PostGenerationContext context) {
         IWorld world = context.world();
         BlockPos rootPos = context.pos();
-        final BlockState blockState = world.getBlockState(rootPos);
+        final BlockState blockState = world.getBlockState(rootPos.above());
         final BranchBlock branch = TreeHelper.getBranch(blockState);
 
         if (branch != null && branch.getRadius(blockState) >= configuration.get(FRUITING_RADIUS)) {
@@ -67,12 +67,12 @@ public class BranchSproutsGenFeature extends GenFeature {
 
         IWorld world = context.world();
         BlockPos rootPos = context.pos();
-        final BlockState blockState = world.getBlockState(rootPos);
+        final BlockState blockState = world.getBlockState(rootPos.above());
         final BranchBlock branch = TreeHelper.getBranch(blockState);
 
         if (branch != null && branch.getRadius(blockState) >= configuration.get(FRUITING_RADIUS) && context.natural()) {
             if (world.getRandom().nextFloat() < configuration.get(PLACE_CHANCE)) {
-                placeSprouts(1, configuration,world,rootPos);
+                placeSprouts(1, configuration, world, rootPos);
             }
         }
         return true;
@@ -84,9 +84,15 @@ public class BranchSproutsGenFeature extends GenFeature {
         TreeHelper.startAnalysisFromRoot(world, rootPos, new MapSignal(sproutPlacer));
 
         if (!validSpots.isEmpty()){
-            Pair<BlockPos, Direction> selection = validSpots.getOne(world.getRandom());
-            for (int i=0; i<count; i++)
-                world.setBlock(selection.getKey(), configuredGenFeature.get(SPROUT_BLOCK).defaultBlockState().setValue(HorizontalBlock.FACING, selection.getValue()), 3);
+            for (int i=0; i<count; i++){
+                Pair<BlockPos, Direction> selection = validSpots.getOne(world.getRandom());
+                BlockPos pos = selection.getKey();
+                Block block = configuredGenFeature.get(SPROUT_BLOCK);
+                if (world.getBlockState(pos.below()).getBlock() == block)
+                    return;
+
+                world.setBlock(pos, block.defaultBlockState().setValue(HorizontalBlock.FACING, selection.getValue()), 3);
+            }
         }
     }
 
@@ -104,14 +110,16 @@ public class BranchSproutsGenFeature extends GenFeature {
         public boolean run(BlockState blockState, IWorld world, BlockPos pos, Direction fromDir) {
             int radius = TreeHelper.getRadius(world, pos);
                 if (TreeHelper.isBranch(blockState) && radius >= minRadius) {
+                    boolean found = false;
                     for (Direction dir : CoordUtils.HORIZONTALS){
                         BlockPos offsetPos = pos.offset(dir.getNormal());
                         BlockState offsetState = world.getBlockState(offsetPos);
                         if (offsetState.getMaterial() == Material.AIR || offsetState.getBlock() instanceof TrunkShellBlock){
                             validSpots.add(new Pair<>(offsetPos, dir), radius);
-                            return true;
+                            found = true;
                         }
                     }
+                    return found;
                 }
             return false;
         }

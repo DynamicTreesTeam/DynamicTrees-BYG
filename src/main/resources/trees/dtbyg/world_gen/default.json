@@ -1377,8 +1377,44 @@
       "chance": 1.0
     }
   },
-
-
+  {
+    "select": {
+      "name": "byg:withering_woods"
+    },
+    "cancellers": {
+      "type": "dtbyg:fungus",
+      "namespace": "minecraft"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:withering_oak": 3,
+          "dtbyg:sparse_withering_oak": 1,
+          "dtbyg:tapered_withering_oak": 2,
+          "dtbyg:sparse_tapered_withering_oak": 1
+        }
+      },
+      "density": [ 1.0 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:weeping_mire"
+    },
+    "cancellers": {
+      "types": [ "dtbyg:tree", "dtbyg:fungus" ],
+      "namespace": "minecraft",
+      "stages": ["vegetal_decoration", "underground_decoration"]
+    },
+    "apply": {
+      "species": "dtbyg:lament",
+      "density": [ 1.0 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
 
   {
     "only_if_loaded": "dynamictreesplus",

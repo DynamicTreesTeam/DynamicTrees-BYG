@@ -9,7 +9,8 @@
   "max_branch_radius": 24,
   "soil_longevity": 6,
   "growth_logic_kit": "dtbyg:tapered_withered",
-  "leaves_properties": "dtbyg:tapered_withering_oak",
+  "leaves_properties": "dtbyg:sparse_withering_oak",
+  "does_rot": false,
   "environment_factors" : {
     "cold": 0.5,
     "wet": 0.5

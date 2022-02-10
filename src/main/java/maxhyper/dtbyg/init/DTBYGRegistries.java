@@ -33,10 +33,7 @@ import corgiaoc.byg.core.world.BYGBiomes;
 import corgiaoc.byg.core.world.BYGConfiguredFeatures;
 import corgiaoc.byg.core.world.util.WorldGenRegistrationHelper;
 import maxhyper.dtbyg.DynamicTreesBYG;
-import maxhyper.dtbyg.blocks.BYGTintedSoilProperties;
-import maxhyper.dtbyg.blocks.DynamicArisianBloomBranch;
-import maxhyper.dtbyg.blocks.EtherBulbsFruitBlock;
-import maxhyper.dtbyg.blocks.ScruffyLeavesProperties;
+import maxhyper.dtbyg.blocks.*;
 import maxhyper.dtbyg.cancellers.BYGFeatureCanceller;
 import maxhyper.dtbyg.cancellers.CactusFeatureCanceller;
 import maxhyper.dtbyg.cells.DTBYGCellKits;
@@ -175,6 +172,7 @@ public class DTBYGRegistries {
         event.registerType(DynamicTreesBYG.resLoc("twiglet"), TwigletSpecies.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("generates_underwater"), GenUnderwaterSpecies.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("generates_on_mossy_stone"), GenOnMossyStoneSpecies.TYPE);
+        event.registerType(DynamicTreesBYG.resLoc("generates_on_magmatic_stone"), GenOnMagmaticStoneSpecies.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("mangrove"), MangroveSpecies.TYPE);
     }
     
@@ -191,7 +189,7 @@ public class DTBYGRegistries {
 
     @SubscribeEvent
     public static void registerSoilPropertiesTypes (final TypeRegistryEvent<SoilProperties> event) {
-        event.registerType(DynamicTreesBYG.resLoc( "offset_tint"), BYGTintedSoilProperties.TYPE);
+        event.registerType(DynamicTreesBYG.resLoc( "lava"), LavaSoilProperties.TYPE);
     }
 
     @SubscribeEvent
@@ -239,9 +237,9 @@ public class DTBYGRegistries {
 
     @SubscribeEvent
     public static void onFeatureCancellerRegistry(final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<FeatureCanceller> event) {
-        //event.getRegistry().registerAll(BYG_TREE_CANCELLER);
+        event.getRegistry().registerAll(BYG_TREE_CANCELLER);
         event.getRegistry().registerAll(BYG_FUNGUS_CANCELLER);
-        //event.getRegistry().registerAll(GIANT_FLOWER_CANCELLER);
+        event.getRegistry().registerAll(GIANT_FLOWER_CANCELLER);
         event.getRegistry().registerAll(WARPED_CACTUS_CANCELLER);
         event.getRegistry().registerAll(ODDITY_CACTUS_CANCELLER);
     }

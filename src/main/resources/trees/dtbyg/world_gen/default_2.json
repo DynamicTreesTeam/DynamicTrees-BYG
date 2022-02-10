@@ -1,0 +1,13 @@
+[
+  {
+    "select": {
+      "name": "byg:weeping_mire"
+    },
+    "cancellers": {
+      "types": ["dtbyg:tree", "dtbyg:fungus"],
+      "namespace": "minecraft",
+      "stages": ["vegetal_decoration", "underground_decoration"]
+    }
+
+  }
+]
