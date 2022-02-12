@@ -1,0 +1,26 @@
+{
+  "family": "dtbyg:lament",
+  "tapering": 0.8,
+  "signal_energy": 10.0,
+  "lowest_branch_height": 2,
+  "growth_rate": 0.8,
+  "growth_logic_kit": {
+    "name": "dtbyg:variate_height",
+    "properties": {
+      "height_variation": 6
+    }
+  },
+  "leaves_properties": "dtbyg:weeping_lament",
+  "environment_factors" : {
+    "snowy": 0.25,
+    "cold": 0.5,
+    "wet": 0.5,
+    "overworld": 0.9
+  },
+  "perfect_biomes": { "name": "byg:weeping_mire" },
+  "acceptable_soils": ["lava_like"],
+  "features": [
+    "dtbyg:extra_bottom_flare",
+    "shroomlight"
+  ]
+}

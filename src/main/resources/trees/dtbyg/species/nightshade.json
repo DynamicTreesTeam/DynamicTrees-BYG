@@ -1,0 +1,33 @@
+{
+  "family": "dtbyg:nightshade",
+  "tapering": 0.1,
+  "signal_energy": 26.0,
+  "up_probability": 5,
+  "lowest_branch_height": 3,
+  "growth_rate": 0.9,
+  "growth_logic_kit": {
+    "name": "dtbyg:twisting",
+    "properties": {
+      "down_probability": 6,
+      "chance_to_split": 0.002
+    }
+  },
+  "leaves_properties": "dtbyg:nightshade",
+  "environment_factors" : {
+    "snowy": 0.75,
+    "hot": 0.75,
+    "overworld": 0.9
+  },
+  "perfect_biomes": { "name": "byg:nightshade_forest" },
+  "acceptable_soils": [ "dirt_like", "end_soil_like" ],
+  "primitive_sapling": "byg:nightshade_sapling",
+  "features": [
+    {
+      "name": "alt_leaves",
+      "properties": {
+        "alternative_leaves": "dtbyg:flowering_nightshade",
+        "place_chance": 0.3
+      }
+    }
+  ]
+}

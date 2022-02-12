@@ -1,0 +1,8 @@
+{
+  "common_leaves": "dtbyg:lament",
+  "common_species": "dtbyg:lament",
+  "primitive_log": "byg:lament_log",
+  "primitive_stripped_log": "byg:stripped_lament_log",
+  "fire_proof": true,
+  "max_branch_radius": 24
+}

@@ -2,10 +2,16 @@
   "_comment": "DT will ignore (generate through) any blocks with this tag when generating trees.",
   "replace": false,
   "values": [
+    "nether_sprouts",
     "byg:leaf_pile",
     "byg:short_grass",
     "byg:wilted_grass",
     "byg:tiny_lilypads",
-    "byg:water_silk"
+    "byg:water_silk",
+    "byg:lament_sprouts",
+    "byg:scorched_grass",
+    "byg:scorched_bush",
+    "byg:nightshade_sprouts",
+    "byg:nightshade_roots"
   ]
 }

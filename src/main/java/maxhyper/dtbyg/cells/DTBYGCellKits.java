@@ -15,7 +15,7 @@ import net.minecraft.util.ResourceLocation;
 public class DTBYGCellKits {
 
     public static void register(final Registry<CellKit> registry) {
-        registry.registerAll(PALM, SPARSE, POPLAR, SMALL_DECIDUOUS, WILLOW, ROUND_CONIFER, SYTHIAN_FUNGUS);
+        registry.registerAll(PALM, SPARSE, POPLAR, SMALL_DECIDUOUS, WILLOW, ROUND_CONIFER, SYTHIAN_FUNGUS, LAMENT);
     }
 
     public static final CellKit PALM = new CellKit(new ResourceLocation(DynamicTreesBYG.MOD_ID, "palm")) {
@@ -384,6 +384,63 @@ public class DTBYGCellKits {
         @Override
         public int getDefaultHydration() {
             return 4;
+        }
+
+    };
+
+    public static final CellKit LAMENT = new CellKit(DynamicTreesBYG.resLoc("lament")) {
+
+        private final Cell lamentBranch = new Cell() {
+            @Override
+            public int getValue() {
+                return 5;
+            }
+
+            final int[] map = {0, 2, 4, 4, 4, 4};
+
+            @Override
+            public int getValueFromSide(Direction side) {
+                return map[side.ordinal()];
+            }
+
+        };
+
+        private final Cell[] lamentLeafCells = {
+                CellNull.NULL_CELL,
+                new LamentLeafCell(1),
+                new LamentLeafCell(2),
+                new LamentLeafCell(3),
+                new LamentLeafCell(4),
+                new LamentLeafCell(5),
+                new LamentLeafCell(6),
+                new LamentLeafCell(7)
+        };
+
+        private final CellKits.BasicSolver lamentSolver = new CellKits.BasicSolver(new short[]{0x0413, 0x0322, 0x0311, 0x0211});
+
+        @Override
+        public Cell getCellForLeaves(int hydro) {
+            return lamentLeafCells[hydro];
+        }
+
+        @Override
+        public Cell getCellForBranch(int radius, int meta) {
+            return radius == 1 ? lamentBranch : CellNull.NULL_CELL;
+        }
+
+        @Override
+        public SimpleVoxmap getLeafCluster() {
+            return DTBYGLeafClusters.LAMENT;
+        }
+
+        @Override
+        public CellSolver getCellSolver() {
+            return lamentSolver;
+        }
+
+        @Override
+        public int getDefaultHydration() {
+            return 3;
         }
 
     };

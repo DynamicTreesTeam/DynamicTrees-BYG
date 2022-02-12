@@ -1,5 +1,7 @@
 {
-  "type": "dtbyg:generates_on_magmatic_stone",
+  "type": "dtbyg:generates_on_extra_soil",
+  "extra_soil_for_worldgen": "byg:magmatic_stone",
+  "soil_replacement_for_worldgen": "byg:overgrown_netherrack",
   "family": "dtbyg:withering_oak",
   "tapering": 0.4,
   "signal_energy": 12.0,

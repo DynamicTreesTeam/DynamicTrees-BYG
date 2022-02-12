@@ -25,7 +25,6 @@
 
   "block.dtbyg.withering_oak_branch": "Withering Oak Tree",
   "block.dtbyg.lament_branch": "Lament Tree",
-  "block.dtbyg.willow_lament_branch": "Willowing Lament Tree",
   "block.dtbyg.sythian_branch": "Sythian Fungus",
   "block.dtbyg.warped_cactus_branch": "Warped Cactus",
   "block.dtbyg.ether_branch": "Ether Tree",
@@ -141,7 +140,7 @@
   "species.dtbyg.tapered_withering_oak": "Tapered Withering Oak",
   "species.dtbyg.sparse_tapered_withering_oak": "Sparse Tapered Withering Oak",
   "species.dtbyg.lament": "Lament",
-  "species.dtbyg.willow_lament": "Willowing Lament",
+  "species.dtbyg.weeping_lament": "Weeping Lament",
   "species.dtbyg.sythian": "Sythian",
   "species.dtbyg.warped_cactus": "Warped Cactus",
   "species.dtbyg.ether": "Ether",
@@ -149,6 +148,7 @@
   "species.dtbyg.bare_ether": "Bare Ether",
   "species.dtbyg.ether_twiglet": "Ether Twiglet",
   "species.dtbyg.nightshade": "Nightshade",
+  "species.dtbyg.small_nightshade": "Small Nightshade",
   "species.dtbyg.oddity_cactus": "Oddity Cactus",
 
   "item.dtbyg.maple_seed": "Maple Samara",

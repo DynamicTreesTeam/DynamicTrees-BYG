@@ -1417,6 +1417,23 @@
   },
 
   {
+    "select": {
+      "name": "byg:nightshade_forest"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:nightshade": 3,
+          "dtbyg:small_nightshade": 1
+        }
+      },
+      "density": [ 0.5 ],
+      "chance": 0.9,
+      "forestness": 0.8
+    }
+  },
+
+  {
     "only_if_loaded": "dynamictreesplus",
     "select": "byg:warped_desert",
     "cancellers": {

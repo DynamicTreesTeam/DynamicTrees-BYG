@@ -4,7 +4,6 @@ import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.api.cells.CellKit;
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
-import com.ferreusveritas.dynamictrees.api.worldgen.BiomePropertySelectors;
 import com.ferreusveritas.dynamictrees.api.worldgen.FeatureCanceller;
 import com.ferreusveritas.dynamictrees.blocks.FruitBlock;
 import com.ferreusveritas.dynamictrees.blocks.branches.BranchBlock;
@@ -21,10 +20,8 @@ import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CommonVoxelShapes;
 import com.ferreusveritas.dynamictrees.util.ShapeUtils;
 import com.google.common.collect.ImmutableList;
-import corgiaoc.byg.BYG;
 import corgiaoc.byg.common.properties.blocks.end.shattereddesert.OddityCactusBlock;
 import corgiaoc.byg.common.properties.blocks.nether.warped.WarpedCactusBlock;
-import corgiaoc.byg.common.world.biome.nether.WarpedDesert;
 import corgiaoc.byg.common.world.feature.config.BYGMushroomConfig;
 import corgiaoc.byg.common.world.feature.config.BYGTreeConfig;
 import corgiaoc.byg.common.world.feature.config.GiantFlowerConfig;
@@ -50,8 +47,6 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.BiomeGenerationSettings;
 import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.*;
 import net.minecraft.world.gen.placement.Placement;
@@ -62,8 +57,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.Objects;
 
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
@@ -168,12 +161,11 @@ public class DTBYGRegistries {
     @SubscribeEvent
     public static void registerSpeciesTypes (final TypeRegistryEvent<Species> event) {
         event.registerType(DynamicTreesBYG.resLoc("poplar"), PoplarSpecies.TYPE);
-        event.registerType(DynamicTreesBYG.resLoc("ether"), EtherSpecies.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("twiglet"), TwigletSpecies.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("generates_underwater"), GenUnderwaterSpecies.TYPE);
-        event.registerType(DynamicTreesBYG.resLoc("generates_on_mossy_stone"), GenOnMossyStoneSpecies.TYPE);
-        event.registerType(DynamicTreesBYG.resLoc("generates_on_magmatic_stone"), GenOnMagmaticStoneSpecies.TYPE);
+        event.registerType(DynamicTreesBYG.resLoc("generates_on_extra_soil"), GenOnExtraSoilSpecies.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("mangrove"), MangroveSpecies.TYPE);
+        event.registerType(DynamicTreesBYG.resLoc("lament"), LamentSpecies.TYPE);
     }
     
     @SubscribeEvent

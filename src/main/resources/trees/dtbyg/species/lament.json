@@ -1,0 +1,21 @@
+{
+  "type": "dtbyg:lament",
+  "alternative_species": "dtbyg:weeping_lament",
+  "family": "dtbyg:lament",
+  "tapering": 0.2,
+  "signal_energy": 18.0,
+  "up_probability": 3,
+  "lowest_branch_height": 2,
+  "growth_rate": 1.25,
+  "soil_longevity": 2,
+  "growth_logic_kit": "dtbyg:twisting",
+  "leaves_properties": "dtbyg:lament",
+  "environment_factors" : {
+    "snowy": 0.25,
+    "cold": 0.5,
+    "overworld": 0.9
+  },
+  "perfect_biomes": { "name": "byg:weeping_mire" },
+  "acceptable_soils": [ "dirt_like", "nether_soil_like" ],
+  "primitive_sapling": "byg:lament_sapling"
+}

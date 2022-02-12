@@ -1,4 +1,5 @@
 {
   "primitive_leaves": "byg:ether_leaves",
-  "cell_kit": "dtbyg:sparse"
+  "cell_kit": "dtbyg:sparse",
+  "light_requirement": 0
 }

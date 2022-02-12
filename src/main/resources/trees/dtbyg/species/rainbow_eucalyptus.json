@@ -1,5 +1,7 @@
 {
-  "type": "dtbyg:generates_on_mossy_stone",
+  "type": "dtbyg:generates_on_extra_soil",
+  "extra_soil_for_worldgen": "byg:mossy_stone",
+  "soil_replacement_for_worldgen": "byg:overgrown_stone",
   "family": "dtbyg:rainbow_eucalyptus",
   "tapering": 0.2,
   "signal_energy": 32.0,
