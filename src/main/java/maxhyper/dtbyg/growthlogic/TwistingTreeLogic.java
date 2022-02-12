@@ -28,12 +28,13 @@ public class TwistingTreeLogic extends GrowthLogicKit {
     protected GrowthLogicKitConfiguration createDefaultConfiguration() {
         return super.createDefaultConfiguration()
                 .with(CHANCE_TO_SPLIT, 0.01f)
-                .with(DOWN_PROBABILITY, 0);
+                .with(DOWN_PROBABILITY, 0)
+                .with(HEIGHT_VARIATION, 3);
     }
 
     @Override
     protected void registerProperties() {
-        this.register(CHANCE_TO_SPLIT, DOWN_PROBABILITY);
+        this.register(CHANCE_TO_SPLIT, DOWN_PROBABILITY, HEIGHT_VARIATION);
     }
 
     @Override
@@ -69,7 +70,7 @@ public class TwistingTreeLogic extends GrowthLogicKit {
         return super.getEnergy(configuration, context) *
                 context.species().biomeSuitability(context.world(), context.pos()) +
                 (CoordUtils.coordHashCode(context.pos().above(month), 3) %
-                        3); // Vary the height energy by a psuedorandom hash function
+                        configuration.get(HEIGHT_VARIATION)); // Vary the height energy by a psuedorandom hash function
 
     }
 
