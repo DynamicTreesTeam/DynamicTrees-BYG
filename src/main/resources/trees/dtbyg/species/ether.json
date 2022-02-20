@@ -1,19 +1,18 @@
 {
   "family": "dtbyg:ether",
-  "tapering": 0.125,
-  "signal_energy": 24.0,
-  "growth_rate": 0.8,
+  "tapering": 0.15,
+  "signal_energy": 20.0,
+  "up_probability": 4,
+  "growth_rate": 1.5,
+  "soil_longevity": 32,
   "leaves_properties": "dtbyg:ether",
   "growth_logic_kit": "dtbyg:ether",
+  "world_gen_leaf_map_height": 60,
   "environment_factors": {
-    "cold": 1.1,
-    "hot": 0.2,
-    "dry": 0.4,
-    "forest": 0.9
+    "hot": 0.8,
+    "overworld": 0.9
   },
-  "perfect_biomes": {
-    "name": "byg:ethereal.*"
-  },
+  "perfect_biomes": { "name": "byg:ethereal.*" },
   "primitive_saplings": [
     "byg:ether_sapling",
     {
@@ -21,5 +20,24 @@
       "can_craft_seed_to_sapling": false
     }
   ],
-  "acceptable_soils": ["dirt_like", "end_soil_like"]
+  "acceptable_soils": ["dirt_like", "end_soil_like"],
+  "features": [
+    {
+      "name": "fruit",
+      "properties": {
+        "fruit_block": "dtbyg:ether_bulbs_fruit",
+        "quantity": 12
+      }
+    }
+  ],
+  "drop_creators": [
+    "log",
+    "stick",
+    {
+      "name": "fruit",
+      "properties":{
+        "fruit_item": "byg:ether_bulbs"
+      }
+    }
+  ]
 }

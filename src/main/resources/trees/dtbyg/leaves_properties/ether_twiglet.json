@@ -1,5 +1,6 @@
 {
   "primitive_leaves": "byg:ether_leaves",
   "cell_kit": "dtbyg:sparse",
+  "can_grow_on_ground": true,
   "light_requirement": 0
 }

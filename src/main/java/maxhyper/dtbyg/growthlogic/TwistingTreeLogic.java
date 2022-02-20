@@ -4,11 +4,9 @@ import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
-import com.ferreusveritas.dynamictrees.growthlogic.PalmGrowthLogic;
 import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
 import com.ferreusveritas.dynamictrees.growthlogic.context.PositionalSpeciesContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
-import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import net.minecraft.util.Direction;
 import net.minecraft.util.ResourceLocation;
@@ -19,6 +17,7 @@ public class TwistingTreeLogic extends GrowthLogicKit {
 
     public static final ConfigurationProperty<Float> CHANCE_TO_SPLIT = ConfigurationProperty.floatProperty("chance_to_split");
     public static final ConfigurationProperty<Integer> DOWN_PROBABILITY = ConfigurationProperty.integer("down_probability");
+    public static final ConfigurationProperty<Boolean> SPLIT_ENDS = ConfigurationProperty.bool("split_ends");
 
     public TwistingTreeLogic(ResourceLocation registryName) {
         super(registryName);
@@ -29,12 +28,13 @@ public class TwistingTreeLogic extends GrowthLogicKit {
         return super.createDefaultConfiguration()
                 .with(CHANCE_TO_SPLIT, 0.01f)
                 .with(DOWN_PROBABILITY, 0)
-                .with(HEIGHT_VARIATION, 3);
+                .with(HEIGHT_VARIATION, 3)
+                .with(SPLIT_ENDS, true);
     }
 
     @Override
     protected void registerProperties() {
-        this.register(CHANCE_TO_SPLIT, DOWN_PROBABILITY, HEIGHT_VARIATION);
+        this.register(CHANCE_TO_SPLIT, DOWN_PROBABILITY, HEIGHT_VARIATION, SPLIT_ENDS);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class TwistingTreeLogic extends GrowthLogicKit {
             probMap[direction.ordinal()] = rad + (world.getRandom().nextFloat() < configuration.get(CHANCE_TO_SPLIT) ? 1 : 0);
         }
         //If there are not enough valid branches, just allow any direction except up
-        if (count <= 1 || signal.energy < 3){
+        if (count <= 1 || (configuration.get(SPLIT_ENDS) && signal.energy < 3)){
             probMap[0] = configuration.get(DOWN_PROBABILITY);
             probMap[1] = context.species().getUpProbability();
             probMap[2] = probMap[3] = probMap[4] = probMap[5] = 1;

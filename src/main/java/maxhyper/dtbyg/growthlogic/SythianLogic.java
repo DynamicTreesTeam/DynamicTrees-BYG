@@ -36,8 +36,6 @@ public class SythianLogic extends GrowthLogicKit {
 
     @Override
     public int[] populateDirectionProbabilityMap(GrowthLogicKitConfiguration configuration, DirectionManipulationContext context) {
-        System.out.println(configuration.getEnergy(context));
-
         final GrowSignal signal = context.signal();
         final int[] probMap = context.probMap();
         Direction originDir = signal.dir.getOpposite();
@@ -58,9 +56,9 @@ public class SythianLogic extends GrowthLogicKit {
         int threshold = configuration.get(THICKEN_THRESHOLD);
         Direction newDir = super.selectNewDirection(configuration, context);
         if (signal.isInTrunk() && newDir != Direction.UP) {//Turned out of trunk
-//            int y = signal.delta.getY();
-//            boolean extra = y > threshold && y < configuration.getEnergy(context) - threshold;
-//            signal.energy = 1.5f + (extra?1:0);
+            int y = signal.delta.getY();
+            boolean extra = y > threshold && y < configuration.getEnergy(context) - threshold;
+            signal.energy = 1.5f + (extra?1:0);
             signal.energy = 0.5f;
         }
         return newDir;

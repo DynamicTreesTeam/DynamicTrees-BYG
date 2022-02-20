@@ -1,18 +1,43 @@
 {
   "family": "dtbyg:ether",
-  "tapering": 0.125,
-  "signal_energy": 24.0,
-  "growth_rate": 0.8,
+  "tapering": 0.15,
+  "signal_energy": 8.0,
+  "up_probability": 3,
+  "lowest_branch_height": 0,
+  "growth_rate": 1.6,
+  "soil_longevity": 2,
   "leaves_properties": "dtbyg:ether",
-  "growth_logic_kit": "dtbyg:ether",
+  "growth_logic_kit": {
+    "name": "dtbyg:ether",
+    "properties": {
+      "height_variation": 9,
+      "height_between_canopy_layers": 5,
+      "canopy_side_energy": 6
+    }
+  },
   "environment_factors": {
-    "cold": 1.1,
-    "hot": 0.2,
-    "dry": 0.4,
-    "forest": 0.9
+    "hot": 0.8,
+    "overworld": 0.9
   },
-  "perfect_biomes": {
-    "name": "byg:ethereal.*"
-  },
-  "acceptable_soils": ["dirt_like", "end_soil_like"]
+  "perfect_biomes": { "name": "byg:ethereal.*" },
+  "acceptable_soils": [ "dirt_like", "end_soil_like" ],
+  "features": [
+    {
+      "name": "fruit",
+      "properties": {
+        "fruit_block": "dtbyg:ether_bulbs_fruit",
+        "quantity": 12
+      }
+    }
+  ],
+  "drop_creators": [
+    "log",
+    "stick",
+    {
+      "name": "fruit",
+      "properties":{
+        "fruit_item": "byg:ether_bulbs"
+      }
+    }
+  ]
 }

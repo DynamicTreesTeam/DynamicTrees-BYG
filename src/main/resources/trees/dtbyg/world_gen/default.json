@@ -1432,6 +1432,48 @@
       "forestness": 0.8
     }
   },
+  {
+    "select": {
+      "names_or": [ "byg:ethereal_islands", "byg:ethereal_forest" ]
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:ether": 3,
+          "dtbyg:small_ether": 1,
+          "dtbyg:ether_twiglet": 1
+        }
+      },
+      "density": [ 0.4 ],
+      "chance": 1.0,
+      "forestness": 0.9
+    }
+  },
+  {
+    "select": {
+      "name": "byg:ethereal_clearing"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:small_ether": 1,
+          "dtbyg:ether_twiglet": 6
+        }
+      },
+      "density": [ 2 ],
+      "chance": 0.1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:.*viscal_isles"
+    },
+    "apply": {
+      "species": "dtbyg:bare_ether",
+      "density": [ 0.2 ],
+      "chance": 0.75
+    }
+  },
 
   {
     "only_if_loaded": "dynamictreesplus",

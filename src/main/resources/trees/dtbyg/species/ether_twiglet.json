@@ -3,5 +3,16 @@
   "family": "dtbyg:ether",
   "leaves_properties": "dtbyg:ether_twiglet",
   "perfect_biomes": {"name": "byg:ethereal.*"},
-  "acceptable_soils": ["dirt_like", "end_soil_like"]
+  "acceptable_soils": ["dirt_like", "end_soil_like"],
+  "signal_energy": 1.5,
+  "lowest_branch_height": 0,
+  "soil_longevity": 1,
+  "growth_logic_kit": {
+    "name": "dtbyg:twisting",
+    "properties": {
+      "chance_to_split": 0,
+      "height_variation": 3,
+      "split_ends": false
+    }
+  }
 }
