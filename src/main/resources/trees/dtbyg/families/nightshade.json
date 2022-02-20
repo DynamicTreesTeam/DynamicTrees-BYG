@@ -1,7 +1,9 @@
 {
+  "type": "dtbyg:nightshade",
   "common_leaves": "dtbyg:nightshade",
   "common_species": "dtbyg:nightshade",
   "primitive_log": "byg:nightshade_log",
   "primitive_stripped_log": "byg:stripped_nightshade_log",
+  "primitive_imbued_log": "byg:imbued_nightshade_log",
   "max_branch_radius": 24
 }

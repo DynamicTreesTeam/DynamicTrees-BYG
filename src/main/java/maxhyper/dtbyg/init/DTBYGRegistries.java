@@ -172,6 +172,7 @@ public class DTBYGRegistries {
     public static void registerFamilyTypes (final TypeRegistryEvent<Family> event) {
         event.registerType(DynamicTreesBYG.resLoc("diagonal_palm"), DiagonalPalmFamily.TYPE);
         event.registerType(DynamicTreesBYG.resLoc("sythian_fungus"), SythianFungusFamily.TYPE);
+        event.registerType(DynamicTreesBYG.resLoc("nightshade"), NightshadeFamily.TYPE);
     }
 
     @SubscribeEvent

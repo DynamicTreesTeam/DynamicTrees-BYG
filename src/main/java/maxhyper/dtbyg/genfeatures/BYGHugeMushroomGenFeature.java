@@ -20,6 +20,9 @@ import net.minecraft.world.gen.feature.ConfiguredFeature;
 import java.util.Random;
 import java.util.function.BiFunction;
 
+/**
+ * @author Max Hyper
+ */
 public class BYGHugeMushroomGenFeature extends GenFeature {
 
     public static final ConfigurationProperty<Integer> MAX_ATTEMPTS = ConfigurationProperty.integer("max_attempts");

@@ -22,6 +22,12 @@
         "alternative_leaves": "dtbyg:flowering_nightshade",
         "place_chance": 0.3
       }
+    },
+    {
+      "name": "dtbyg:alt_branch",
+      "properties": {
+        "alternative_branch_block": "dtbyg:imbued_nightshade_branch"
+      }
     }
   ]
 }

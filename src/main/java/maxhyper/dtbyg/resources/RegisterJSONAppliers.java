@@ -2,11 +2,13 @@ package maxhyper.dtbyg.resources;
 
 import com.ferreusveritas.dynamictrees.api.treepacks.ApplierRegistryEvent;
 import com.ferreusveritas.dynamictrees.deserialisation.PropertyAppliers;
+import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.google.gson.JsonElement;
 import maxhyper.dtbyg.DynamicTreesBYG;
 import maxhyper.dtbyg.trees.GenOnExtraSoilSpecies;
 import maxhyper.dtbyg.trees.LamentSpecies;
+import maxhyper.dtbyg.trees.NightshadeFamily;
 import net.minecraft.block.Block;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -15,16 +17,17 @@ import net.minecraftforge.fml.common.Mod;
 public final class RegisterJSONAppliers {
 
     @SubscribeEvent
-    public static void registerAppliers(final ApplierRegistryEvent.Reload<Species, JsonElement> event) {
-        registerSpceiesAppliers(event.getAppliers());
+    public static void registerAppliersSpecies(final ApplierRegistryEvent.Reload<Species, JsonElement> event) {
+        registerSpeciesAppliers(event.getAppliers());
     }
+
 
     @SubscribeEvent
-    public static void registerAppliers(final ApplierRegistryEvent.GatherData<Species, JsonElement> event) {
-        registerSpceiesAppliers(event.getAppliers());
+    public static void registerAppliersFamily(final ApplierRegistryEvent.Reload<Family, JsonElement> event) {
+        registerFamilyAppliers(event.getAppliers());
     }
 
-    public static void registerSpceiesAppliers(PropertyAppliers<Species, JsonElement> appliers) {
+    public static void registerSpeciesAppliers(PropertyAppliers<Species, JsonElement> appliers) {
         appliers.register("alternative_species", LamentSpecies.class, Species.class,
                 LamentSpecies::setAltSpecies)
                 .register("extra_soil_for_worldgen", GenOnExtraSoilSpecies.class, Block.class,
@@ -33,19 +36,12 @@ public final class RegisterJSONAppliers {
                 GenOnExtraSoilSpecies::setSoilReplacement);
     }
 
-//    @SubscribeEvent
-//    public static void registerJsonDeserialisers(final JsonDeserialisers.RegistryEvent event) {
-//        // Register cactus thickness logic kits and lock it.
-//        CactusThicknessLogic.REGISTRY.postRegistryEvent();
-//        CactusThicknessLogic.REGISTRY.lock();
-//
-//        // Register getter for cactus thickness logic.
-//        JsonDeserialisers.register(CactusThicknessLogic.class,
-//                new RegistryEntryDeserialiser<>(CactusThicknessLogic.REGISTRY));
-//
-//        // Register getter for cactus thickness enum.
-//        JsonDeserialisers.register(CactusBranchBlock.CactusThickness.class,
-//                new EnumDeserialiser<>(CactusBranchBlock.CactusThickness.class));
-//    }
+    public static void registerFamilyAppliers(PropertyAppliers<Family, JsonElement> appliers) {
+        appliers.register("primitive_imbued_log", NightshadeFamily.class, Block.class,
+                NightshadeFamily::setPrimitiveImbuedLog);
+    }
+
+    @SubscribeEvent public static void registerAppliersSpecies(final ApplierRegistryEvent.GatherData<Species, JsonElement> event) { registerSpeciesAppliers(event.getAppliers()); }
+    @SubscribeEvent public static void registerAppliersFamily(final ApplierRegistryEvent.GatherData<Family, JsonElement> event) { registerFamilyAppliers(event.getAppliers()); }
 
 }

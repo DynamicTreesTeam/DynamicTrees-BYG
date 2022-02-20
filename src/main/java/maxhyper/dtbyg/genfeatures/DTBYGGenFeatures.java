@@ -15,10 +15,12 @@ public class DTBYGGenFeatures {
     public static final GenFeature HUGE_MUSHROOMS = new BYGHugeMushroomGenFeature(new ResourceLocation(DynamicTreesBYG.MOD_ID, "huge_mushrooms"));
     public static final GenFeature BIOME_PREDICATE_2 = new BiomePredicateGenFeature(new ResourceLocation(DynamicTreesBYG.MOD_ID, "biome_predicate"));
     public static final GenFeature SYTHIAN_TOPPER = new SythianTopperGenFeature(new ResourceLocation(DynamicTreesBYG.MOD_ID, "sythian_topper"));
+    public static final GenFeature ALTERNATIVE_BRANCH = new AlternativeBranchGenFeature(new ResourceLocation(DynamicTreesBYG.MOD_ID, "alt_branch"));
 
     public static void register(final Registry<GenFeature> registry) {
         registry.registerAll(BIG_BOTTOM_FLARE, EXTRA_BOTTOM_FLARE, MANGROVELINGS,
-                BRANCH_SPROUTS, HUGE_MUSHROOMS, BIOME_PREDICATE_2, SYTHIAN_TOPPER);
+                BRANCH_SPROUTS, HUGE_MUSHROOMS, BIOME_PREDICATE_2,
+                SYTHIAN_TOPPER, ALTERNATIVE_BRANCH);
     }
 
 }

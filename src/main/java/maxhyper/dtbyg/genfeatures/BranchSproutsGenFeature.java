@@ -23,6 +23,9 @@ import net.minecraft.util.WeightedList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 
+/**
+ * @author Max Hyper
+ */
 public class BranchSproutsGenFeature extends GenFeature {
 
     public static final ConfigurationProperty<Block> SPROUT_BLOCK = ConfigurationProperty.property("sprout_block", Block.class);
@@ -78,16 +81,16 @@ public class BranchSproutsGenFeature extends GenFeature {
         return true;
     }
 
-    private void placeSprouts (int count, GenFeatureConfiguration configuredGenFeature, IWorld world, BlockPos rootPos){
+    private void placeSprouts (int count, GenFeatureConfiguration configuration, IWorld world, BlockPos rootPos){
         WeightedList<Pair<BlockPos, Direction>> validSpots = new WeightedList<>();
-        final FindSidedBlockNode sproutPlacer = new FindSidedBlockNode(validSpots, configuredGenFeature.get(MIN_RADIUS));
+        final FindSidedBlockNode sproutPlacer = new FindSidedBlockNode(validSpots, configuration.get(MIN_RADIUS));
         TreeHelper.startAnalysisFromRoot(world, rootPos, new MapSignal(sproutPlacer));
 
         if (!validSpots.isEmpty()){
             for (int i=0; i<count; i++){
                 Pair<BlockPos, Direction> selection = validSpots.getOne(world.getRandom());
                 BlockPos pos = selection.getKey();
-                Block block = configuredGenFeature.get(SPROUT_BLOCK);
+                Block block = configuration.get(SPROUT_BLOCK);
                 if (world.getBlockState(pos.below()).getBlock() == block)
                     return;
 
