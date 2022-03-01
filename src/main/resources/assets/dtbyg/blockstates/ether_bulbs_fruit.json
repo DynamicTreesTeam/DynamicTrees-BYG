@@ -1,9 +1,6 @@
 {
     "multipart": [
         {
-            "apply": { "model": "byg:block/ether_bulbs_block_stage0" }
-        },
-        {
             "when": {"age": "0"},
             "apply": [
                 { "model": "dtbyg:block/fruit/ether_bulbs_age0" },

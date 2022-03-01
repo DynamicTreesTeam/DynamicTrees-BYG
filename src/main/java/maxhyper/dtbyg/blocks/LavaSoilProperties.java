@@ -89,7 +89,7 @@ public class LavaSoilProperties extends SoilProperties {
         }
 
         @Override
-        public float getHardness(IBlockReader worldIn, BlockPos pos) {
+        public float getHardness(BlockState state, IBlockReader worldIn, BlockPos pos) {
             return (float) (0.5 * DTConfigs.ROOTY_BLOCK_HARDNESS_MULTIPLIER.get());
         }
 
@@ -122,11 +122,11 @@ public class LavaSoilProperties extends SoilProperties {
         }
 
         @Override
-        public BlockState getDecayBlockState(BlockState state, IWorld access, BlockPos pos) {
+        public BlockState getDecayBlockState(BlockState state, IBlockReader world, BlockPos pos) {
             if (state.hasProperty(LAVALOGGED) && !state.getValue(LAVALOGGED)) {
                 return Blocks.AIR.defaultBlockState();
             }
-            return super.getDecayBlockState(state, access, pos);
+            return super.getDecayBlockState(state, world, pos);
         }
 
         ///////////////////////////////////////////

@@ -70,8 +70,8 @@ public class DTBYGRegistries {
             .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
     public static FruitBlock ETHER_BULBS_FRUIT = new EtherBulbsFruitBlock()
             .setShape(1, ShapeUtils.createFruitShape(2,3,0))
-            .setShape(2, ShapeUtils.createFruitShape(2.5f,4,2))
-            .setShape(3, ShapeUtils.createFruitShape(3.5f,4,3))
+            .setShape(2, ShapeUtils.createFruitShape(3f,4,1))
+            .setShape(3, ShapeUtils.createFruitShape(3.5f,4,2))
             .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
     public static FruitBlock HOLLY_BERRIES_FRUIT = new FruitBlock()
             .setShape(1, ShapeUtils.createFruitShape(2,3,0))

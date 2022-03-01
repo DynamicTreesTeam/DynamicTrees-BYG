@@ -21,7 +21,6 @@ public final class RegisterJSONAppliers {
         registerSpeciesAppliers(event.getAppliers());
     }
 
-
     @SubscribeEvent
     public static void registerAppliersFamily(final ApplierRegistryEvent.Reload<Family, JsonElement> event) {
         registerFamilyAppliers(event.getAppliers());
