@@ -11,7 +11,7 @@ import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeatureConfigurati
 import com.ferreusveritas.dynamictrees.systems.genfeatures.context.PostGenerationContext;
 import com.ferreusveritas.dynamictrees.systems.genfeatures.context.PostGrowContext;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
-import javafx.util.Pair;
+import com.mojang.datafixers.util.Pair;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -89,12 +89,12 @@ public class BranchSproutsGenFeature extends GenFeature {
         if (!validSpots.isEmpty()){
             for (int i=0; i<count; i++){
                 Pair<BlockPos, Direction> selection = validSpots.getOne(world.getRandom());
-                BlockPos pos = selection.getKey();
+                BlockPos pos = selection.getFirst();
                 Block block = configuration.get(SPROUT_BLOCK);
                 if (world.getBlockState(pos.below()).getBlock() == block)
                     return;
 
-                world.setBlock(pos, block.defaultBlockState().setValue(HorizontalBlock.FACING, selection.getValue()), 3);
+                world.setBlock(pos, block.defaultBlockState().setValue(HorizontalBlock.FACING, selection.getSecond()), 3);
             }
         }
     }
