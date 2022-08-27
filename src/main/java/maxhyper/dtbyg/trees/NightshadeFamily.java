@@ -23,7 +23,7 @@ public class NightshadeFamily extends Family {
         super.setupBlocks();
 
         this.altBranchBlock = setupBranch(
-                createBranch(getBranchRegName("imbued_")),
+                createBranch(getBranchName("imbued_")),
                 false
         );
     }

@@ -37,7 +37,7 @@ version = "$mcVersion-$modVersion"
 group = property("group")
 
 minecraft {
-    mappings("official", mcVersion)
+    mappings("parchment", "${property("mappingsVersion")}-$mcVersion")
 
     runs {
         create("client") {
@@ -91,7 +91,10 @@ minecraft {
             property("mixin.env.remapRefMap", "true")
             property("mixin.env.refMapRemappingFile", "${buildDir}/createSrgToMcp/output.srg")
 
-            args("--mod", modId, "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources"))
+            args("--mod", modId,
+                    "--all",
+                    "--output", file("src/generated/resources/"),
+                    "--existing", file("src/main/resources"))
 
             mods {
                 create(modId) {
@@ -107,33 +110,16 @@ sourceSets.main.get().resources {
 }
 
 dependencies {
-    // Not sure if we need this one, what is a "forge" anyway?
     minecraft("net.minecraftforge:forge:$mcVersion-${property("forgeVersion")}")
 
-    // Compile BYG and DT, of course.
     implementation(fg.deobf("curse.maven:BYG-247560:3485079"))
     implementation(fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-$mcVersion:${property("dynamicTreesVersion")}"))
 
-    /////////////////////////////////////////
-    /// Runtime Dependencies (optional)
-    /////////////////////////////////////////
-
-    // At runtime, use DT+ for BYG's cacti.
     runtimeOnly(fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-$mcVersion:${property("dynamicTreesPlusVersion")}"))
-
-    // At runtime, use the full Hwyla mod.
-    runtimeOnly(fg.deobf("mcp.mobius.waila:Hwyla:${property("hwylaVersion")}"))
-
-    // At runtime, use the full JEI mod.
+    runtimeOnly(fg.deobf("curse.maven:hwyla-253449:3033593"))
     runtimeOnly(fg.deobf("mezz.jei:jei-$mcVersion:${property("jeiVersion")}"))
-
-    // At runtime, use CC for creating growth chambers.
     runtimeOnly(fg.deobf("org.squiddev:cc-tweaked-$mcVersion:${property("ccVersion")}"))
-
-    // At runtime, get rid of experimental settings warning screen.
     runtimeOnly(fg.deobf("curse.maven:ShutUpExperimentalSettings-407174:3188120"))
-
-    // At runtime, use suggestion provider fix mod.
     runtimeOnly(fg.deobf("com.harleyoconnor.suggestionproviderfix:SuggestionProviderFix:$mcVersion-${property("suggestionProviderFixVersion")}"))
 }
 

@@ -1,0 +1,11 @@
+{
+  "_todo": "Remove block registry name in 1.18 so it is called `dtbyg:joshua`.",
+  "block_registry_name": "joshua_fruit",
+  "item_stack": "byg:joshua_fruit",
+  "block_shapes": [
+    { "function": "fruit", "parameters": { "radius": 1, "height": 1, "stem_length": 0, "fraction": 16 } },
+    { "function": "fruit", "parameters": { "radius": 1, "height": 2, "stem_length": 0, "fraction": 16 } },
+    { "function": "fruit", "parameters": { "radius": 2, "height": 5, "stem_length": 1.25 } },
+    { "function": "fruit", "parameters": { "radius": 2, "height": 6, "stem_length": 2.5 } }
+  ]
+}

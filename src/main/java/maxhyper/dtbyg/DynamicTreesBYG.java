@@ -1,31 +1,27 @@
 package maxhyper.dtbyg;
 
+import com.ferreusveritas.dynamictrees.api.GatherDataHelper;
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
-import com.ferreusveritas.dynamictrees.init.DTConfigs;
-import com.google.common.collect.ImmutableList;
-import corgiaoc.byg.BYG;
-import corgiaoc.byg.core.world.util.WorldGenRegistrationHelper;
 import maxhyper.dtbyg.init.DTBYGClient;
 import maxhyper.dtbyg.init.DTBYGRegistries;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.gen.feature.*;
-import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
-import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.GatherDataEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 @Mod(DynamicTreesBYG.MOD_ID)
-public class DynamicTreesBYG
-{
+public class DynamicTreesBYG {
+
     public static final String MOD_ID = "dtbyg";
 
     public DynamicTreesBYG() {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::commonSetup);
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::gatherData);
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -36,13 +32,19 @@ public class DynamicTreesBYG
         DTBYGRegistries.setup();
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) { }
+    private void commonSetup(final FMLCommonSetupEvent event) {
+    }
 
     private void clientSetup(final FMLClientSetupEvent event) {
         DTBYGClient.setup();
     }
 
-    public static ResourceLocation resLoc (final String path) {
+    public void gatherData(final GatherDataEvent event) {
+        GatherDataHelper.gatherTagData(MOD_ID, event);
+        GatherDataHelper.gatherLootData(MOD_ID, event);
+    }
+
+    public static ResourceLocation resLoc(final String path) {
         return new ResourceLocation(MOD_ID, path);
     }
 

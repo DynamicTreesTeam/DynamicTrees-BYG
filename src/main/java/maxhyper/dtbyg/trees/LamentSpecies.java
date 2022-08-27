@@ -4,12 +4,11 @@ import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
 import com.ferreusveritas.dynamictrees.blocks.DynamicSaplingBlock;
 import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
-import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SoilHelper;
 import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
-import corgiaoc.byg.core.BYGBlocks;
+import com.ferreusveritas.dynamictrees.util.WorldContext;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
@@ -49,10 +48,11 @@ public class LamentSpecies extends Species {
     }
 
     @Override
-    public boolean generate(World worldObj, IWorld world, BlockPos rootPos, Biome biome, Random random, int radius, SafeChunkBounds safeBounds) {
-        if (altSpecies.isAcceptableSoilForWorldgen(world, rootPos, world.getBlockState(rootPos)))
-            return altSpecies.generate(worldObj, world, rootPos, biome, random, radius, safeBounds);
-        return super.generate(worldObj, world, rootPos, biome, random, radius, safeBounds);
+    public boolean generate(WorldContext worldContext, BlockPos rootPos, Biome biome, Random random, int radius, SafeChunkBounds safeBounds) {
+        if (altSpecies.isAcceptableSoilForWorldgen(worldContext.level(), rootPos, worldContext.access().getBlockState(rootPos))) {
+            return altSpecies.generate(worldContext, rootPos, biome, random, radius, safeBounds);
+        }
+        return super.generate(worldContext, rootPos, biome, random, radius, safeBounds);
     }
 
     @Override
@@ -61,9 +61,10 @@ public class LamentSpecies extends Species {
     }
 
     @Override
-    public boolean transitionToTree(World world, BlockPos pos) {
-        if (altSpecies.isAcceptableSoil(world, pos.below(), world.getBlockState(pos.below())))
+    protected boolean transitionToTree(World world, BlockPos pos, Family family) {
+        if (altSpecies.isAcceptableSoil(world, pos.below(), world.getBlockState(pos.below()))) {
             return altSpecies.transitionToTree(world, pos);
+        }
         return super.transitionToTree(world, pos);
     }
 

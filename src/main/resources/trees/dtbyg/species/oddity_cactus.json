@@ -10,9 +10,5 @@
   "growth_logic_kit": "dynamictreesplus:saguaro_cactus",
   "cactus_thickness_logic": "dynamictreesplus:saguaro",
   "perfect_biomes": { "name": "byg:shattered_desert.*" },
-  "acceptable_soils": ["end_sand_like"],
-  "drop_creators": [
-    "log",
-    "dynamictreesplus:cactus_seeds"
-  ]
+  "acceptable_soils": ["end_sand_like"]
 }

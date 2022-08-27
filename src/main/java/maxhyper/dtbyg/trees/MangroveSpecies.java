@@ -4,11 +4,11 @@ import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
 import com.ferreusveritas.dynamictrees.blocks.DynamicSaplingBlock;
 import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
-import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SoilHelper;
 import com.ferreusveritas.dynamictrees.items.Seed;
 import com.ferreusveritas.dynamictrees.trees.Family;
 import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
+import com.ferreusveritas.dynamictrees.util.WorldContext;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
@@ -36,7 +36,7 @@ public class MangroveSpecies extends Species {
     @Override
     public Species generateSeed() {
         return !this.shouldGenerateSeed() || this.seed != null ? this :
-                this.setSeed(RegistryHandler.addItem(getSeedName(), new Seed(this){
+                this.setSeed(RegistryHandler.addItem(getSeedName(), new Seed(this) {
 
                     @Override
                     public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
@@ -55,7 +55,7 @@ public class MangroveSpecies extends Species {
 
         final DynamicSaplingBlock sapling = this.getSapling().orElse(null);
 
-        if (sapling != null && fluidState.getType() == Fluids.WATER && fluidStateUp.getType() == Fluids.EMPTY){
+        if (sapling != null && fluidState.getType() == Fluids.WATER && fluidStateUp.getType() == Fluids.EMPTY) {
             return super.plantSapling(world, pos.above(), locationOverride);
         }
 
@@ -64,12 +64,13 @@ public class MangroveSpecies extends Species {
 
     private static final int maxDepth = 5;
     private static final int maxOffset = 4;
+
     public boolean isAcceptableSoilForWorldgen(IWorld world, BlockPos pos, BlockState soilBlockState) {
         final boolean isAcceptableSoil = isAcceptableSoil(world, pos, soilBlockState);
 
         // If the block is water, check the block below it is valid soil (and not water).
         if (isAcceptableSoil && isWater(soilBlockState)) {
-            for (int i=1; i<=maxDepth; i++){
+            for (int i = 1; i <= maxDepth; i++) {
                 final BlockPos down = pos.below(i);
                 final BlockState downState = world.getBlockState(down);
 
@@ -84,11 +85,13 @@ public class MangroveSpecies extends Species {
     }
 
     @Override
-    public boolean generate(World worldObj, IWorld world, BlockPos rootPos, Biome biome, Random random, int radius, SafeChunkBounds safeBounds) {
+    public boolean generate(WorldContext worldContext, BlockPos rootPos, Biome biome, Random random, int radius, SafeChunkBounds safeBounds) {
         int i;
-        for (i=0; i<maxOffset; i++)
-            if (!isWater(world.getBlockState(rootPos.below(i))))
+        for (i = 0; i < maxOffset; i++) {
+            if (!isWater(worldContext.access().getBlockState(rootPos.below(i)))) {
                 break;
-        return super.generate(worldObj, world, rootPos.below(Math.max(i-2, 0)), biome, random, radius, safeBounds);
+            }
+        }
+        return super.generate(worldContext, rootPos.below(Math.max(i - 2, 0)), biome, random, radius, safeBounds);
     }
 }

@@ -29,7 +29,7 @@ public class SythianTopperGenFeature extends GenFeature {
     @Override
     public GenFeatureConfiguration createDefaultConfiguration() {
         return super.createDefaultConfiguration()
-                .with(LEAVES_PROPERTIES, LeavesProperties.NULL_PROPERTIES);
+                .with(LEAVES_PROPERTIES, LeavesProperties.NULL);
     }
 
     @Override
