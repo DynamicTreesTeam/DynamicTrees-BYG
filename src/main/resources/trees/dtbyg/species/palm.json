@@ -15,14 +15,5 @@
   "transformable": false,
   "perfect_biomes": { "category": "beach" },
   "primitive_sapling": "byg:palm_sapling",
-  "acceptable_soils": [ "dirt_like", "sand_like" ],
-  "drop_creators": [
-    "log",
-    {
-      "name": "seed",
-      "properties": {
-        "rarity": 6.0
-      }
-    }
-  ]
+  "acceptable_soils": [ "dirt_like", "sand_like" ]
 }

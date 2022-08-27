@@ -1,0 +1,11 @@
+{
+  "_todo": "Remove block registry name in 1.18 so it is called `dtbyg:baobab`.",
+  "block_registry_name": "baobab_fruit",
+  "item_stack": "byg:baobab_fruit",
+  "block_shapes": [
+    { "function": "fruit", "parameters": { "radius": 2.5, "height": 2, "stem_length": 7.5 } },
+    { "function": "fruit", "parameters": { "radius": 1.5, "height": 3, "stem_length": 8.75 } },
+    { "function": "fruit", "parameters": { "radius": 2, "height": 5, "stem_length": 10 } },
+    { "function": "fruit", "parameters": { "radius": 2.5, "height": 8, "stem_length": 11.25 } }
+  ]
+}

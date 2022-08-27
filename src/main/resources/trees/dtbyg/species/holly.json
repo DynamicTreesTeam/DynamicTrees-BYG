@@ -21,6 +21,9 @@
     }
   ],
   "mega_species": "dtbyg:mega_holly",
+  "fruits": [
+    "dtbyg:holly_berries"
+  ],
   "features" : [
     "conifer_topper",
     {
@@ -33,18 +36,8 @@
     {
       "name": "fruit",
       "properties": {
-        "fruit_block": "dtbyg:holly_berries_fruit",
+        "fruit": "dtbyg:holly_berries",
         "quantity": 6
-      }
-    }
-  ],
-  "drop_creators": [
-    "log",
-    "stick",
-    {
-      "name": "fruit",
-      "properties":{
-        "fruit_item": "byg:holly_berries"
       }
     }
   ]

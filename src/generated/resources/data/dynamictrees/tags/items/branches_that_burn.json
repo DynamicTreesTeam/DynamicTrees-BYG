@@ -1,0 +1,32 @@
+{
+  "replace": false,
+  "values": [
+    "dtbyg:pine_branch",
+    "dtbyg:cypress_branch",
+    "dtbyg:cherry_branch",
+    "dtbyg:fir_branch",
+    "dtbyg:holly_branch",
+    "dtbyg:skyris_branch",
+    "dtbyg:ebony_branch",
+    "dtbyg:nightshade_branch",
+    "dtbyg:blue_enchanted_branch",
+    "dtbyg:cika_branch",
+    "dtbyg:ether_branch",
+    "dtbyg:rainbow_eucalyptus_branch",
+    "dtbyg:oddity_cactus_branch",
+    "dtbyg:jacaranda_branch",
+    "dtbyg:palo_verde_branch",
+    "dtbyg:aspen_branch",
+    "dtbyg:mahogany_branch",
+    "dtbyg:maple_branch",
+    "dtbyg:green_enchanted_branch",
+    "dtbyg:witch_hazel_branch",
+    "dtbyg:redwood_branch",
+    "dtbyg:willow_branch",
+    "dtbyg:mangrove_branch",
+    "dtbyg:zelkova_branch",
+    "dtbyg:palm_branch",
+    "dtbyg:warped_cactus_branch",
+    "dtbyg:baobab_branch"
+  ]
+}

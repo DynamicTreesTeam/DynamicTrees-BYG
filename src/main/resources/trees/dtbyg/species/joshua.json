@@ -19,6 +19,9 @@
     }
   ],
   "acceptable_soils": ["dirt_like", "sand_like"],
+  "fruits": [
+    "dtbyg:joshua"
+  ],
   "features" : [
     {
       "name": "alt_leaves",
@@ -37,18 +40,8 @@
     {
       "name": "fruit",
       "properties": {
-        "fruit_block": "dtbyg:joshua_fruit",
+        "fruit": "dtbyg:joshua",
         "quantity": 8
-      }
-    }
-  ],
-  "drop_creators": [
-    "log",
-    "stick",
-    {
-      "name": "fruit",
-      "properties":{
-        "fruit_item": "byg:joshua_fruit"
       }
     }
   ]

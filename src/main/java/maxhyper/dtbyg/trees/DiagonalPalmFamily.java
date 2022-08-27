@@ -20,8 +20,8 @@ public class DiagonalPalmFamily extends Family {
     }
 
     @Override
-    protected BranchBlock createBranchBlock() {
-        final BasicBranchBlock branch = new BasicBranchBlock(this.getProperties()){
+    protected BranchBlock createBranchBlock(ResourceLocation name) {
+        final BasicBranchBlock branch = new BasicBranchBlock(name, this.getProperties()) {
             @Override
             public GrowSignal growIntoAir(World world, BlockPos pos, GrowSignal signal, int fromRadius) {
                 final Species species = signal.getSpecies();
@@ -29,7 +29,7 @@ public class DiagonalPalmFamily extends Family {
                 final DynamicLeavesBlock leaves = species.getLeavesBlock().orElse(null);
                 if (leaves != null) {
                     if (fromRadius == getFamily().getPrimaryThickness()) {// If we came from a twig (and we're not a stripped branch) then just make some leaves
-                        if (isNextToBranch(world, pos, signal.dir.getOpposite())){
+                        if (isNextToBranch(world, pos, signal.dir.getOpposite())) {
                             signal.success = false;
                             return signal;
                         }
@@ -41,7 +41,7 @@ public class DiagonalPalmFamily extends Family {
                     }
                 } else {
                     //If the leaves block is null, the branch grows directly without checking for leaves requirements
-                    if (isNextToBranch(world, pos, signal.dir.getOpposite())){
+                    if (isNextToBranch(world, pos, signal.dir.getOpposite())) {
                         signal.success = false;
                         return signal;
                     }

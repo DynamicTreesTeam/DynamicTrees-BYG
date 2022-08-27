@@ -1516,6 +1516,7 @@
     "only_if_loaded": "dynamictreesplus",
     "select": "byg:mojave_desert",
     "cancellers": {
+      "method": "splice_after",
       "type": "dynamictreesplus:cactus",
       "namespace": "minecraft"
     },
@@ -1560,6 +1561,7 @@
     "only_if_loaded": "dynamictreesplus",
     "select": "byg:lush_red_desert",
     "cancellers": {
+      "method": "splice_after",
       "types": [ "dtbyg:tree", "dynamictreesplus:cactus" ],
       "namespace": "minecraft"
     },
@@ -1571,8 +1573,8 @@
           "dtbyg:palo_verde": 1
         }
       },
-      "density": [ 1.0 ],
-      "chance": 0.6
+      "density": [ 0.4 ],
+      "chance": 0.3
     }
   }
 ]
