@@ -1,7 +1,8 @@
-import com.google.gson.Gson
-import com.google.gson.JsonObject
-import com.matthewprenger.cursegradle.*
-import java.io.InputStreamReader
+import com.matthewprenger.cursegradle.CurseArtifact
+import com.matthewprenger.cursegradle.CurseExtension
+import com.matthewprenger.cursegradle.CurseProject
+import com.matthewprenger.cursegradle.CurseRelation
+import net.minecraftforge.gradle.common.util.RunConfig
 import java.time.Instant
 import java.time.format.DateTimeFormatter
 
@@ -18,7 +19,6 @@ plugins {
 
 repositories {
     maven("https://ldtteam.jfrog.io/ldtteam/modding/")
-    maven("https://maven.tehnut.info")
     maven("https://www.cursemaven.com") {
         content {
             includeGroup("curse.maven")
@@ -41,13 +41,7 @@ minecraft {
 
     runs {
         create("client") {
-            workingDirectory = file("run").absolutePath
-
-            property("forge.logging.markers", "SCAN,REGISTRIES,REGISTRYDUMP")
-            property("forge.logging.console.level", "debug")
-
-            property("mixin.env.remapRefMap", "true")
-            property("mixin.env.refMapRemappingFile", "${buildDir}/createSrgToMcp/output.srg")
+            applyDefaultConfiguration()
 
             if (project.hasProperty("mcUuid")) {
                 args("--uuid", property("mcUuid"))
@@ -58,49 +52,22 @@ minecraft {
             if (project.hasProperty("mcAccessToken")) {
                 args("--accessToken", property("mcAccessToken"))
             }
-
-            mods {
-                create(modId) {
-                    source(sourceSets.main.get())
-                }
-            }
         }
 
         create("server") {
-            workingDirectory = file("run").absolutePath
-
-            property("forge.logging.markers", "SCAN,REGISTRIES,REGISTRYDUMP")
-            property("forge.logging.console.level", "debug")
-
-            property("mixin.env.remapRefMap", "true")
-            property("mixin.env.refMapRemappingFile", "${buildDir}/createSrgToMcp/output.srg")
-
-            mods {
-                create(modId) {
-                    source(sourceSets.main.get())
-                }
-            }
+            applyDefaultConfiguration("run-server")
         }
 
         create("data") {
-            workingDirectory = file("run").absolutePath
+            applyDefaultConfiguration()
 
-            property("forge.logging.markers", "SCAN,REGISTRIES,REGISTRYDUMP")
-            property("forge.logging.console.level", "debug")
-
-            property("mixin.env.remapRefMap", "true")
-            property("mixin.env.refMapRemappingFile", "${buildDir}/createSrgToMcp/output.srg")
-
-            args("--mod", modId,
-                    "--all",
-                    "--output", file("src/generated/resources/"),
-                    "--existing", file("src/main/resources"))
-
-            mods {
-                create(modId) {
-                    source(sourceSets.main.get())
-                }
-            }
+            args(
+                "--mod", modId,
+                "--all",
+                "--output", file("src/generated/resources/"),
+                "--existing", file("src/main/resources"),
+                "--existing-mod", "dynamictrees"
+            )
         }
     }
 }
@@ -146,51 +113,31 @@ java {
     }
 }
 
-fun readChangelog(): String? {
-    val versionInfoFile = file("version_info.json")
-    val jsonObject = Gson().fromJson(InputStreamReader(versionInfoFile.inputStream()), JsonObject::class.java)
-    return jsonObject
-        .get(mcVersion)?.asJsonObject
-        ?.get(project.version.toString())?.asString
-}
-
-fun enablePublishing() =
-    project.hasProperty("curseApiKey") && project.hasProperty("curseFileType") && project.hasProperty("projectId")
-
-tasks.withType(CurseUploadTask::class.java) {
-    onlyIf {
-        enablePublishing()
-    }
-}
-
 curseforge {
-    if (!enablePublishing()) {
-        project.logger.log(LogLevel.WARN, "API Key, file type, or project ID for CurseForge not detected; uploading " +
-                "will be disabled.")
-        return@curseforge
-    }
+    if (project.hasProperty("curseApiKey") && project.hasProperty("curseFileType")) {
+        apiKey = property("curseApiKey")
 
-    apiKey = property("curseApiKey")
+        project {
+            id = "562143"
 
-    project {
-        id = property("projectId")
+            addGameVersion(mcVersion)
 
-        addGameVersion("1.16.4")
-        addGameVersion(mcVersion)
+            changelog = "Changelog will be added shortly..."
+            changelogType = "markdown"
+            releaseType = property("curseFileType")
 
-        changelog = readChangelog() ?: "No changelog provided."
-        changelogType = "markdown"
-        releaseType = property("curseFileType")
+            addArtifact(tasks.findByName("sourcesJar"))
 
-        addArtifact(tasks.findByName("sourcesJar"))
-
-        mainArtifact(tasks.findByName("jar")) {
-            relations {
-                requiredDependency("dynamictrees")
-                requiredDependency("oh-the-biomes-youll-go")
-                optionalDependency("dynamictreesplus")
+            mainArtifact(tasks.findByName("jar")) {
+                relations {
+                    requiredDependency("dynamictrees")
+                    optionalDependency("dynamictreesplus")
+                    optionalDependency("chunk-saving-fix")
+                }
             }
         }
+    } else {
+        project.logger.log(LogLevel.WARN, "API Key and file type for CurseForge not detected; uploading will be disabled.")
     }
 }
 
@@ -201,59 +148,31 @@ tasks.withType<GenerateModuleMetadata> {
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
-            artifactId = "$modName-$mcVersion"
-            version = modVersion
-
             from(components["java"])
-
-            pom {
-                name.set(modName)
-                url.set("https://github.com/supermassimo/$modName")
-                licenses {
-                    license {
-                        name.set("MIT")
-                        url.set("https://mit-license.org")
-                    }
-                }
-                scm {
-                    connection.set("scm:git:git://github.com/supermassimo/$modName.git")
-                    developerConnection.set("scm:git:ssh://github.com/supermassimo/$modName.git")
-                    url.set("https://github.com/supermassimo/$modName")
-                }
-            }
-
-            pom.withXml {
-                val element = asElement()
-
-                // Clear dependencies.
-                for (i in 0 until element.childNodes.length) {
-                    val node = element.childNodes.item(i)
-                    if (node?.nodeName == "dependencies") {
-                        element.removeChild(node)
-                    }
-                }
-            }
         }
     }
     repositories {
         maven("file:///${project.projectDir}/mcmodsrepo")
-        if (hasProperty("harleyOConnorMavenUsername") && hasProperty("harleyOConnorMavenPassword")) {
-            maven("https://harleyoconnor.com/maven") {
-                name = "HarleyOConnor"
-                credentials {
-                    username = property("harleyOConnorMavenUsername")
-                    password = property("harleyOConnorMavenPassword")
-                }
-            }
-        } else {
-            logger.log(LogLevel.WARN, "Credentials for maven not detected; it will be disabled.")
+    }
+}
+
+fun RunConfig.applyDefaultConfiguration(runDirectory: String = "run") {
+    workingDirectory = file(runDirectory).absolutePath
+
+    property("forge.logging.markers", "SCAN,REGISTRIES,REGISTRYDUMP")
+    property("forge.logging.console.level", "debug")
+
+    property("mixin.env.remapRefMap", "true")
+    property("mixin.env.refMapRemappingFile", "${buildDir}/createSrgToMcp/output.srg")
+
+    mods {
+        create(modId) {
+            source(sourceSets.main.get())
         }
     }
 }
 
-// Extensions to make CurseGradle extension slightly neater.
-
-fun com.matthewprenger.cursegradle.CurseExtension.project(action: CurseProject.() -> Unit) {
+fun CurseExtension.project(action: CurseProject.() -> Unit) {
     this.project(closureOf(action))
 }
 
