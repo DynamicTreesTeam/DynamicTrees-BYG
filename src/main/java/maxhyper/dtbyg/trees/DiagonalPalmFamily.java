@@ -3,6 +3,7 @@ package maxhyper.dtbyg.trees;
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
 import com.ferreusveritas.dynamictrees.blocks.branches.BasicBranchBlock;
 import com.ferreusveritas.dynamictrees.blocks.branches.BranchBlock;
+import com.ferreusveritas.dynamictrees.blocks.branches.ThickBranchBlock;
 import com.ferreusveritas.dynamictrees.blocks.leaves.DynamicLeavesBlock;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.trees.Family;
@@ -21,7 +22,7 @@ public class DiagonalPalmFamily extends Family {
 
     @Override
     protected BranchBlock createBranchBlock(ResourceLocation name) {
-        final BasicBranchBlock branch = new BasicBranchBlock(name, this.getProperties()) {
+        final BasicBranchBlock branch = new ThickBranchBlock(name, this.getProperties()) {
             @Override
             public GrowSignal growIntoAir(World world, BlockPos pos, GrowSignal signal, int fromRadius) {
                 final Species species = signal.getSpecies();

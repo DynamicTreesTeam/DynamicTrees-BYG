@@ -38,6 +38,7 @@ group = property("group")
 
 minecraft {
     mappings("parchment", "${property("mappingsVersion")}-$mcVersion")
+    //accessTransformer(file("src/main/resources/META-INF/accesstransformer.cfg"))
 
     runs {
         create("client") {
@@ -79,11 +80,14 @@ sourceSets.main.get().resources {
 dependencies {
     minecraft("net.minecraftforge:forge:$mcVersion-${property("forgeVersion")}")
 
+    //compileOnly(fg.deobf("curse.maven:Jade-324717:3389760"))
+
     implementation(fg.deobf("curse.maven:BYG-247560:3485079"))
     implementation(fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-$mcVersion:${property("dynamicTreesVersion")}"))
 
     runtimeOnly(fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-$mcVersion:${property("dynamicTreesPlusVersion")}"))
-    runtimeOnly(fg.deobf("curse.maven:hwyla-253449:3033593"))
+    //runtimeOnly(fg.deobf("curse.maven:hwyla-253449:3033593"))
+    runtimeOnly(fg.deobf("curse.maven:Jade-324717:3389760"))
     runtimeOnly(fg.deobf("mezz.jei:jei-$mcVersion:${property("jeiVersion")}"))
     runtimeOnly(fg.deobf("org.squiddev:cc-tweaked-$mcVersion:${property("ccVersion")}"))
     runtimeOnly(fg.deobf("curse.maven:ShutUpExperimentalSettings-407174:3188120"))

@@ -2,6 +2,8 @@ package maxhyper.dtbyg;
 
 import com.ferreusveritas.dynamictrees.api.GatherDataHelper;
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
+import corgiaoc.byg.core.world.BYGConfiguredFeatures;
+import maxhyper.dtbyg.cancellers.ClearPalmTreeGeneration;
 import maxhyper.dtbyg.init.DTBYGClient;
 import maxhyper.dtbyg.init.DTBYGRegistries;
 import net.minecraft.util.ResourceLocation;
@@ -33,6 +35,7 @@ public class DynamicTreesBYG {
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        ClearPalmTreeGeneration.replacePalmFeature(BYGConfiguredFeatures.BEACH_GRASS);
     }
 
     private void clientSetup(final FMLClientSetupEvent event) {
