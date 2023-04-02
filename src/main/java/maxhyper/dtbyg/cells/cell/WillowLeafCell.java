@@ -1,6 +1,6 @@
 package maxhyper.dtbyg.cells.cell;
 
-import com.ferreusveritas.dynamictrees.cells.MatrixCell;
+import com.ferreusveritas.dynamictrees.cell.MatrixCell;
 
 /**
  * @author Harley O'Connor

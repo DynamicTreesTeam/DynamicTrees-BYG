@@ -1,15 +1,15 @@
 package maxhyper.dtbyg.resources;
 
-import com.ferreusveritas.dynamictrees.api.treepacks.ApplierRegistryEvent;
+import com.ferreusveritas.dynamictrees.api.applier.ApplierRegistryEvent;
 import com.ferreusveritas.dynamictrees.deserialisation.PropertyAppliers;
-import com.ferreusveritas.dynamictrees.trees.Family;
-import com.ferreusveritas.dynamictrees.trees.Species;
+import com.ferreusveritas.dynamictrees.tree.family.Family;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.google.gson.JsonElement;
 import maxhyper.dtbyg.DynamicTreesBYG;
 import maxhyper.dtbyg.trees.GenOnExtraSoilSpecies;
 import maxhyper.dtbyg.trees.LamentSpecies;
 import maxhyper.dtbyg.trees.NightshadeFamily;
-import net.minecraft.block.Block;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 

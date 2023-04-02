@@ -5,12 +5,10 @@ import com.ferreusveritas.dynamictrees.growthlogic.ConiferLogic;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
 import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
-import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 
 public class MegaPineLogic extends ConiferLogic {
 
@@ -42,7 +40,7 @@ public class MegaPineLogic extends ConiferLogic {
                 prob[signal.dir.ordinal()] = 1;
                 return prob;
             }
-            boolean isBranchAbove = TreeHelper.isBranch(context.world().getBlockState(pos.above()))
+            boolean isBranchAbove = TreeHelper.isBranch(context.level().getBlockState(pos.above()))
                     || Math.abs(CoordUtils.coordHashCode(pos, 2)) % 4 == 0;
             probMap[1] = 0;
             probMap[0] = !isBranchAbove ? 1 : 0;

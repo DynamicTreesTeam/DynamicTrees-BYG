@@ -1,15 +1,14 @@
 package maxhyper.dtbyg.growthlogic;
 
-import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
+import com.ferreusveritas.dynamictrees.api.configuration.ConfigurationProperty;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
 import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
 import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionSelectionContext;
 import com.ferreusveritas.dynamictrees.growthlogic.context.PositionalSpeciesContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
-import com.ferreusveritas.dynamictrees.trees.Species;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.World;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
+import net.minecraft.resources.ResourceLocation;
 
 public class AraucariaLogic extends VariateHeightLogic {
 
@@ -40,7 +39,7 @@ public class AraucariaLogic extends VariateHeightLogic {
         final int[] probMap = context.probMap();
 
         //Alter probability map for direction change
-        float energy = context.species().getEnergy(context.world(), signal.rootPos);
+        float energy = context.species().getEnergy(context.level(), signal.rootPos);
         float splitCanopyHeight = energy * configuration.get(SPLIT_HEIGHT_FACTOR);
         if ((signal.delta.getY() > splitCanopyHeight && signal.isInTrunk()) ||
                 signal.delta.getY() > energy * configuration.get(CANOPY_HEIGHT_FACTOR))
@@ -48,7 +47,7 @@ public class AraucariaLogic extends VariateHeightLogic {
 
         if (signal.delta.getY() < splitCanopyHeight){
             //Ensure that the branch doesn't go up after turning out of trunk so it won't interfere with it
-            if (signal.numTurns == 1 && signal.delta.distSqr(0, signal.delta.getY(), 0, true) <= 1.0) {
+            if (signal.numTurns == 1 && signal.delta.distSqr(new Vec3i(0, signal.delta.getY(), 0)) <= 1.0) {
                 probMap[Direction.UP.ordinal()] = 0;
             }
             if (signal.isInTrunk()){
@@ -65,7 +64,7 @@ public class AraucariaLogic extends VariateHeightLogic {
         final GrowSignal signal = context.signal();
         Direction newDir = super.selectNewDirection(configuration, context);
 
-        float energy = context.species().getEnergy(context.world(), signal.rootPos);
+        float energy = context.species().getEnergy(context.level(), signal.rootPos);
         // if signal just turned out of trunk under the split height
         if (signal.isInTrunk() && newDir != Direction.UP && signal.delta.getY() < energy * configuration.get(SPLIT_HEIGHT_FACTOR)) {
             signal.energy = Math.min(2.5f, signal.energy);
@@ -76,6 +75,6 @@ public class AraucariaLogic extends VariateHeightLogic {
 
     @Override
     public int getLowestBranchHeight(GrowthLogicKitConfiguration configuration, PositionalSpeciesContext context) {
-        return super.getLowestBranchHeight(configuration, context) + (int)getHashedVariation(context.world(), context.pos(), configuration.get(LOWEST_BRANCH_VARIATION));
+        return super.getLowestBranchHeight(configuration, context) + (int)getHashedVariation(context.level(), context.pos(), configuration.get(LOWEST_BRANCH_VARIATION));
     }
 }

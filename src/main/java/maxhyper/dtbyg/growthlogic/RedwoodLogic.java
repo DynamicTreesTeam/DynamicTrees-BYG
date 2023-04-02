@@ -1,18 +1,18 @@
 package maxhyper.dtbyg.growthlogic;
 
-import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
-import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
+import com.ferreusveritas.dynamictrees.api.configuration.ConfigurationProperty;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
 import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
 import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionSelectionContext;
 import com.ferreusveritas.dynamictrees.growthlogic.context.PositionalSpeciesContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
-import com.ferreusveritas.dynamictrees.trees.Species;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 
 public class RedwoodLogic extends VariateHeightLogic {
 
@@ -38,7 +38,7 @@ public class RedwoodLogic extends VariateHeightLogic {
     @Override
     public int[] populateDirectionProbabilityMap(GrowthLogicKitConfiguration configuration, DirectionManipulationContext context) {
         final Species species = context.species();
-        final World world = context.world();
+        final Level world = context.level();
         final GrowSignal signal = context.signal();
         final int[] probMap = context.probMap();
         final int radius = context.radius();
@@ -67,7 +67,7 @@ public class RedwoodLogic extends VariateHeightLogic {
         probMap[originDir.ordinal()] = 0;//Disable the direction we came from
         probMap[signal.dir.ordinal()] += signal.isInTrunk() ? 0 : signal.numTurns == 1 ? 2 : 1;//Favor current travel direction
 
-        if(!signal.isInTrunk() && signal.numTurns == 1 && signal.delta.distSqr(0, signal.delta.getY(), 0, false) <= 1.5 ) {
+        if(!signal.isInTrunk() && signal.numTurns == 1 && signal.delta.distSqr(new Vec3i(0, signal.delta.getY(), 0)) <= 1.5 ) {
             //disable left and right if we JUST turned out of the trunk, this is to prevent branches from interfering with the other sides
             probMap[signal.dir.getClockWise().ordinal()] = probMap[signal.dir.getCounterClockWise().ordinal()] = 0;
         }
@@ -102,7 +102,7 @@ public class RedwoodLogic extends VariateHeightLogic {
     @Override
     public int getLowestBranchHeight(GrowthLogicKitConfiguration configuration, PositionalSpeciesContext context) {
         return super.getLowestBranchHeight(configuration, context) +
-                (int)( getHashedVariation(context.world(),context.pos(),configuration.get(LOWEST_BRANCH_VARIATION)) * 0.5 );
+                (int)( getHashedVariation(context.level(),context.pos(),configuration.get(LOWEST_BRANCH_VARIATION)) * 0.5 );
     }
 
 }

@@ -1,14 +1,15 @@
 package maxhyper.dtbyg.blocks;
 
-import com.ferreusveritas.dynamictrees.blocks.FruitBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+import com.ferreusveritas.dynamictrees.block.FruitBlock;
+import com.ferreusveritas.dynamictrees.systems.fruit.Fruit;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -16,19 +17,28 @@ import java.util.Random;
 
 public class EtherBulbsFruitBlock extends FruitBlock {
 
-    public int getLightValue(BlockState state, IBlockReader world, BlockPos pos) {
-        return state.getValue(AGE) >= 2 ? 15 : 4;
+    public EtherBulbsFruitBlock(Properties properties, Fruit fruit) {
+        super(properties, fruit);
+    }
+
+    @Override
+    public int getLightEmission(BlockState state, BlockGetter level, BlockPos pos) {
+        return state.getValue(fruit.getAgeProperty()) >= 2 ? 15 : 4;
     }
 
     @OnlyIn(Dist.CLIENT)
-    public void animateTick(BlockState state, World world, BlockPos pos, Random rand) {
-        VoxelShape shape = this.getShape(state, world, pos, ISelectionContext.empty());
-        Vector3d shapeCenter = shape.bounds().getCenter();
+    public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random rand) {
+        VoxelShape shape = this.getShape(stateIn, worldIn, pos, CollisionContext.empty());
+        Vec3 shapeCenter = shape.bounds().getCenter();
         double centerX = (double)pos.getX() + shapeCenter.x;
         double centerZ = (double)pos.getZ() + shapeCenter.z;
-        for(int i = 0; i < 3; ++i)
-            if (rand.nextBoolean())
-                world.addParticle(ParticleTypes.REVERSE_PORTAL, centerX + (double)(rand.nextFloat() / 5.0F), (double)pos.getY() + (0.5D - (double)rand.nextFloat()), centerZ + (double)(rand.nextFloat() / 5.0F), 0.0D, 0.0D, 0.0D);
+
+        for(int i = 0; i < 3; ++i) {
+            if (rand.nextBoolean()) {
+                worldIn.addParticle(ParticleTypes.REVERSE_PORTAL, centerX + (double)(rand.nextFloat() / 5.0F), (double)pos.getY() + (0.5D - (double)rand.nextFloat()), centerZ + (double)(rand.nextFloat() / 5.0F), 0.0D, 0.0D, 0.0D);
+            }
+        }
+
     }
 
 }

@@ -1,20 +1,17 @@
 package maxhyper.dtbyg.trees;
 
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
-import com.ferreusveritas.dynamictrees.blocks.branches.BranchBlock;
-import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
-import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SoilHelper;
-import com.ferreusveritas.dynamictrees.systems.GrowSignal;
-import com.ferreusveritas.dynamictrees.trees.Family;
-import com.ferreusveritas.dynamictrees.trees.Species;
+import com.ferreusveritas.dynamictrees.block.leaves.LeavesProperties;
+import com.ferreusveritas.dynamictrees.block.rooty.SoilHelper;
+import com.ferreusveritas.dynamictrees.tree.family.Family;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
 import com.ferreusveritas.dynamictrees.worldgen.JoCode;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class GenUnderwaterSpecies extends Species {
 
@@ -25,7 +22,7 @@ public class GenUnderwaterSpecies extends Species {
     }
 
     private static final int maxDepth = 7;
-    public boolean isAcceptableSoilForWorldgen(IWorld world, BlockPos pos, BlockState soilBlockState) {
+    public boolean isAcceptableSoilForWorldgen(LevelAccessor world, BlockPos pos, BlockState soilBlockState) {
         final boolean isAcceptableSoil = isAcceptableSoil(world, pos, soilBlockState);
 
         // If the block is water, check the block below it is valid soil (and not water).
@@ -44,24 +41,24 @@ public class GenUnderwaterSpecies extends Species {
     }
 
     @Override
-    public BlockPos preGeneration(IWorld world, BlockPos rootPosition, int radius, Direction facing, SafeChunkBounds safeBounds, JoCode joCode) {
-        BlockPos root = rootPosition;
-        if (this.isWater(world.getBlockState(rootPosition))){
+    public BlockPos preGeneration(LevelAccessor world, BlockPos.MutableBlockPos rootPos, int radius, Direction facing, SafeChunkBounds safeBounds, JoCode joCode) {
+        BlockPos root = rootPos;
+        if (this.isWater(world.getBlockState(rootPos))){
             int i=1;
             for (; i<=maxDepth; i++){
-                final BlockPos down = rootPosition.below(i);
+                final BlockPos down = rootPos.below(i);
                 final BlockState downState = world.getBlockState(down);
 
                 if (!isWater(downState) && isAcceptableSoilUnderWater(downState))
                     break;
+                root = root.below(i);
             }
-            root = root.below(i);
         }
-        return super.preGeneration(world, root, radius, facing, safeBounds, joCode);
+        return super.preGeneration(world, rootPos, radius, facing, safeBounds, joCode);
     }
 
     public boolean isAcceptableSoilUnderWater(BlockState soilBlockState) {
-        return SoilHelper.isSoilAcceptable(soilBlockState.getBlockState(), this.soilTypeFlags | SoilHelper.getSoilFlags("sand_like", "mud_like"));
+        return SoilHelper.isSoilAcceptable(soilBlockState, this.soilTypeFlags | SoilHelper.getSoilFlags("sand_like", "mud_like"));
     }
 
 }

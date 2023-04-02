@@ -1,20 +1,19 @@
 package maxhyper.dtbyg.growthlogic;
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
-import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
-import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
+import com.ferreusveritas.dynamictrees.api.configuration.ConfigurationProperty;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
-import com.ferreusveritas.dynamictrees.growthlogic.PalmGrowthLogic;
 import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
 import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionSelectionContext;
 import com.ferreusveritas.dynamictrees.growthlogic.context.PositionalSpeciesContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
-import com.ferreusveritas.dynamictrees.trees.Species;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 
 public class AncientLogic extends VariateHeightLogic {
 
@@ -37,8 +36,8 @@ public class AncientLogic extends VariateHeightLogic {
         this.register(CANOPY_ENERGY, HEIGHT_VARIATION, LOWEST_BRANCH_VARIATION);
     }
 
-    private void branchTwisting(World world, BlockPos pos, GrowSignal signal, int[] probMap){
-        boolean allowUp = !(signal.numTurns == 1 && signal.delta.distSqr(0, signal.delta.getY(), 0, true) == 1.0);
+    private void branchTwisting(Level world, BlockPos pos, GrowSignal signal, int[] probMap){
+        boolean allowUp = !(signal.numTurns == 1 && signal.delta.distSqr(new Vec3i(0, signal.delta.getY(), 0)) == 1.0);
 
         boolean found = false;
         for (Direction dir : Direction.values()){
@@ -72,7 +71,7 @@ public class AncientLogic extends VariateHeightLogic {
         }
 
         //Ensure that the branch gets out of the trunk at least two blocks so it won't interfere with new side branches at the same level
-        if (signal.numTurns == 1 && signal.delta.distSqr(0, signal.delta.getY(), 0, true) == 1.0) {
+        if (signal.numTurns == 1 && signal.delta.distSqr(new Vec3i(0, signal.delta.getY(), 0)) == 1.0) {
             for (Direction dir : CoordUtils.HORIZONTALS) {
                 if (signal.dir != dir) {
                     probMap[dir.ordinal()] = 0;
@@ -94,7 +93,7 @@ public class AncientLogic extends VariateHeightLogic {
     public int[] populateDirectionProbabilityMap(GrowthLogicKitConfiguration configuration, DirectionManipulationContext context) {
         final GrowSignal signal = context.signal();
         final int[] probMap = context.probMap();
-        final World world = context.world();
+        final Level world = context.level();
         final BlockPos pos = context.pos();
         final Species species = context.species();
         Direction originDir = signal.dir.getOpposite();
@@ -139,7 +138,7 @@ public class AncientLogic extends VariateHeightLogic {
 
     @Override
     public int getLowestBranchHeight(GrowthLogicKitConfiguration configuration, PositionalSpeciesContext context) {
-        return super.getLowestBranchHeight(configuration, context) + (int)getHashedVariation(context.world(), context.pos(), configuration.get(LOWEST_BRANCH_VARIATION));
+        return super.getLowestBranchHeight(configuration, context) + (int)getHashedVariation(context.level(), context.pos(), configuration.get(LOWEST_BRANCH_VARIATION));
     }
 
 }

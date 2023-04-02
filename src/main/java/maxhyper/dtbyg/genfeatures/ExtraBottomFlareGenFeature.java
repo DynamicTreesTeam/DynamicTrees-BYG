@@ -1,17 +1,17 @@
 package maxhyper.dtbyg.genfeatures;
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
-import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeatureConfiguration;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.context.PostGenerationContext;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.context.PostGrowContext;
-import com.ferreusveritas.dynamictrees.trees.Family;
-import com.ferreusveritas.dynamictrees.trees.Species;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
+import com.ferreusveritas.dynamictrees.api.configuration.ConfigurationProperty;
+import com.ferreusveritas.dynamictrees.systems.genfeature.GenFeature;
+import com.ferreusveritas.dynamictrees.systems.genfeature.GenFeatureConfiguration;
+import com.ferreusveritas.dynamictrees.systems.genfeature.context.PostGenerationContext;
+import com.ferreusveritas.dynamictrees.systems.genfeature.context.PostGrowContext;
+import com.ferreusveritas.dynamictrees.tree.family.Family;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.LevelAccessor;
 
 public class ExtraBottomFlareGenFeature extends GenFeature {
 
@@ -38,14 +38,14 @@ public class ExtraBottomFlareGenFeature extends GenFeature {
 
 	@Override
 	protected boolean postGenerate(GenFeatureConfiguration configuration, PostGenerationContext context) {
-		this.flareBottom(configuration, context.world(), context.pos(), context.species());
+		this.flareBottom(configuration, context.level(), context.pos(), context.species());
 		return true;
 	}
 
 	@Override
 	protected boolean postGrow(GenFeatureConfiguration configuration, PostGrowContext context) {
 		if(context.fertility() > 0) {
-			this.flareBottom(configuration, context.world(), context.pos(), context.species());
+			this.flareBottom(configuration, context.level(), context.pos(), context.species());
 			return true;
 		}
 		return false;
@@ -54,25 +54,25 @@ public class ExtraBottomFlareGenFeature extends GenFeature {
 	/**
 	 * Put a cute little flare on the bottom of the dark oaks
 	 * 
-	 * @param world The world
+	 * @param level The level
 	 * @param rootPos The position of the rooty dirt block of the tree
 	 */
-	public void flareBottom(GenFeatureConfiguration configuration, IWorld world, BlockPos rootPos, Species species) {
+	public void flareBottom(GenFeatureConfiguration configuration, LevelAccessor level, BlockPos rootPos, Species species) {
 		Family family = species.getFamily();
 
-		int radius4 = TreeHelper.getRadius(world, rootPos.above(4));
+		int radius4 = TreeHelper.getRadius(level, rootPos.above(4));
 		if (radius4 > configuration.get(SECONDARY_MIN_RADIUS)) {
 			family.getBranch().ifPresent(branch -> {
-				branch.setRadius(world, rootPos.above(3), radius4 + 1, Direction.UP);
-				branch.setRadius(world, rootPos.above(2), radius4 + 3, Direction.UP);
-				branch.setRadius(world, rootPos.above(1), radius4 + 6, Direction.UP);
+				branch.setRadius(level, rootPos.above(3), radius4 + 1, Direction.UP);
+				branch.setRadius(level, rootPos.above(2), radius4 + 3, Direction.UP);
+				branch.setRadius(level, rootPos.above(1), radius4 + 6, Direction.UP);
 			});
 		} else {
-			int radius3 = TreeHelper.getRadius(world, rootPos.above(3));
+			int radius3 = TreeHelper.getRadius(level, rootPos.above(3));
 			if (radius3 > configuration.get(MIN_RADIUS)) {
 				family.getBranch().ifPresent(branch -> {
-					branch.setRadius(world, rootPos.above(2), radius3 + 1, Direction.UP);
-					branch.setRadius(world, rootPos.above(1), radius3 + 2, Direction.UP);
+					branch.setRadius(level, rootPos.above(2), radius3 + 1, Direction.UP);
+					branch.setRadius(level, rootPos.above(1), radius3 + 2, Direction.UP);
 				});
 			}
 		}

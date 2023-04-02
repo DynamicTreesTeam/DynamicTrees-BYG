@@ -1,11 +1,11 @@
 package maxhyper.dtbyg.trees;
 
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
-import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
-import com.ferreusveritas.dynamictrees.systems.nodemappers.NetVolumeNode;
-import com.ferreusveritas.dynamictrees.trees.Family;
-import com.ferreusveritas.dynamictrees.trees.Species;
-import net.minecraft.util.ResourceLocation;
+import com.ferreusveritas.dynamictrees.block.leaves.LeavesProperties;
+import com.ferreusveritas.dynamictrees.systems.nodemapper.NetVolumeNode;
+import com.ferreusveritas.dynamictrees.tree.family.Family;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
+import net.minecraft.resources.ResourceLocation;
 
 public class TwigletSpecies extends Species {
 
@@ -17,9 +17,15 @@ public class TwigletSpecies extends Species {
     }
 
     @Override
+    protected void processVolume(NetVolumeNode.Volume volume) {
+        volume.addVolume(NetVolumeNode.Volume.VOXELSPERLOG);
+        super.processVolume(volume);
+    }
+
+    @Override
     public LogsAndSticks getLogsAndSticks(NetVolumeNode.Volume volume) {
-        NetVolumeNode.Volume volume1 = new NetVolumeNode.Volume(volume.getRawVolumesArray());
-        volume1.addVolume(NetVolumeNode.Volume.VOXELSPERLOG);
-        return super.getLogsAndSticks(volume1);
+        NetVolumeNode.Volume modifiedVolume = new NetVolumeNode.Volume(volume.getRawVolumesArray());
+        modifiedVolume.addVolume(NetVolumeNode.Volume.VOXELSPERLOG);
+        return super.getLogsAndSticks(modifiedVolume);
     }
 }

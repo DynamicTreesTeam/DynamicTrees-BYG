@@ -1,7 +1,7 @@
 package maxhyper.dtbyg.cells.cell;
 
-import com.ferreusveritas.dynamictrees.api.cells.Cell;
-import net.minecraft.util.Direction;
+import com.ferreusveritas.dynamictrees.api.cell.Cell;
+import net.minecraft.core.Direction;
 
 public class PoplarBranchCell implements Cell {
 	

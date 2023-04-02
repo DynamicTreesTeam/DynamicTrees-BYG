@@ -2,30 +2,20 @@ package maxhyper.dtbyg.trees;
 
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
-import com.ferreusveritas.dynamictrees.blocks.DynamicSaplingBlock;
-import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
-import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SoilHelper;
-import com.ferreusveritas.dynamictrees.items.Seed;
-import com.ferreusveritas.dynamictrees.trees.Family;
-import com.ferreusveritas.dynamictrees.trees.Species;
-import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
-import corgiaoc.byg.core.BYGBlocks;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.RayTraceContext;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.IWorldReader;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-
-import java.util.Random;
+import com.ferreusveritas.dynamictrees.block.DynamicSaplingBlock;
+import com.ferreusveritas.dynamictrees.block.leaves.LeavesProperties;
+import com.ferreusveritas.dynamictrees.item.Seed;
+import com.ferreusveritas.dynamictrees.tree.family.Family;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
+import com.ferreusveritas.dynamictrees.worldgen.GenerationContext;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 
 /**
  * This species will place another alternative species,
@@ -49,52 +39,55 @@ public class LamentSpecies extends Species {
     }
 
     @Override
-    public boolean generate(World worldObj, IWorld world, BlockPos rootPos, Biome biome, Random random, int radius, SafeChunkBounds safeBounds) {
-        if (altSpecies.isAcceptableSoilForWorldgen(world, rootPos, world.getBlockState(rootPos)))
-            return altSpecies.generate(worldObj, world, rootPos, biome, random, radius, safeBounds);
-        return super.generate(worldObj, world, rootPos, biome, random, radius, safeBounds);
+    public boolean generate(GenerationContext context) {
+        LevelAccessor level = context.level();
+        BlockPos rootPos = context.rootPos();
+        if (altSpecies.isAcceptableSoilForWorldgen(level, rootPos, level.getBlockState(rootPos)))
+            return altSpecies.generate(context);
+        return super.generate(context);
     }
 
     @Override
-    public boolean isAcceptableSoil(IWorldReader world, BlockPos pos, BlockState soilBlockState) {
-        return super.isAcceptableSoil(world, pos, soilBlockState) || altSpecies.isAcceptableSoil(world, pos, soilBlockState);
+    public boolean isAcceptableSoil(LevelReader level, BlockPos pos, BlockState soilBlockState) {
+        return super.isAcceptableSoil(level, pos, soilBlockState) || altSpecies.isAcceptableSoil(level, pos, soilBlockState);
     }
 
     @Override
-    public boolean transitionToTree(World world, BlockPos pos) {
-        if (altSpecies.isAcceptableSoil(world, pos.below(), world.getBlockState(pos.below())))
-            return altSpecies.transitionToTree(world, pos);
-        return super.transitionToTree(world, pos);
+    protected boolean transitionToTree(Level level, BlockPos pos, Family family) {
+        if (altSpecies.isAcceptableSoil(level, pos.below(), level.getBlockState(pos.below())))
+            return altSpecies.transitionToTree(level, pos);
+        return super.transitionToTree(level, pos, family);
     }
 
     @Override
     public Species generateSeed() {
         return !this.shouldGenerateSeed() || this.seed != null ? this :
-                this.setSeed(RegistryHandler.addItem(getSeedName(), new Seed(this){
-                    @Override
-                    public boolean isFireResistant() { return true; }
-                    @Override
-                    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
-                        BlockRayTraceResult rayTraceResult = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
-                        BlockRayTraceResult rayTraceResultUp = rayTraceResult.withPosition(rayTraceResult.getBlockPos().above());
-                        ActionResultType actionresulttype = super.useOn(new ItemUseContext(player, hand, rayTraceResult.getDirection() == Direction.UP ? rayTraceResultUp : rayTraceResult));
-                        return new ActionResult<>(actionresulttype, player.getItemInHand(hand));
-                    }
-                }));
+                this.setSeed(RegistryHandler.addItem(getSeedName(), ()->new Seed(this)
+//                        {
+//                            @Override
+//                            public boolean isFireResistant() { return true; }
+//                            @Override
+//                            public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+//                                BlockRayTraceResult rayTraceResult = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
+//                                BlockRayTraceResult rayTraceResultUp = rayTraceResult.withPosition(rayTraceResult.getBlockPos().above());
+//                                ActionResultType actionresulttype = super.useOn(new ItemUseContext(player, hand, rayTraceResult.getDirection() == Direction.UP ? rayTraceResultUp : rayTraceResult));
+//                                return new ActionResult<>(actionresulttype, player.getItemInHand(hand));
+//                            }
+//                        }
+                ));
     }
 
     @Override
-    public boolean plantSapling(IWorld world, BlockPos pos, boolean locationOverride) {
-        FluidState fluidState = world.getFluidState(pos);
-        FluidState fluidStateUp = world.getFluidState(pos.above());
+    public boolean plantSapling(LevelAccessor level, BlockPos pos, boolean locationOverride) {
+        FluidState fluidState = level.getFluidState(pos);
+        FluidState fluidStateUp = level.getFluidState(pos.above());
 
         final DynamicSaplingBlock sapling = this.getSapling().orElse(null);
 
         if (sapling != null && fluidState.getType() == Fluids.LAVA && fluidStateUp.getType() == Fluids.EMPTY){
-            return super.plantSapling(world, pos.above(), locationOverride);
+            return super.plantSapling(level, pos.above(), locationOverride);
         }
-
-        return super.plantSapling(world, pos, locationOverride);
+        return super.plantSapling(level, pos, locationOverride);
     }
 
 }

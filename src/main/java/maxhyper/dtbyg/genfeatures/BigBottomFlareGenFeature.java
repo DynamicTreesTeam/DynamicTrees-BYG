@@ -1,14 +1,14 @@
 package maxhyper.dtbyg.genfeatures;
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.BottomFlareGenFeature;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeatureConfiguration;
-import com.ferreusveritas.dynamictrees.trees.Family;
-import com.ferreusveritas.dynamictrees.trees.Species;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
+import com.ferreusveritas.dynamictrees.systems.genfeature.BottomFlareGenFeature;
+import com.ferreusveritas.dynamictrees.systems.genfeature.GenFeatureConfiguration;
+import com.ferreusveritas.dynamictrees.tree.family.Family;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.LevelAccessor;
 
 import javax.annotation.Nonnull;
 
@@ -21,7 +21,7 @@ public class BigBottomFlareGenFeature extends BottomFlareGenFeature {
     private static final int[] curve = {0,9,8,6,4,2,1};
 
     @Override
-    public void flareBottom(@Nonnull GenFeatureConfiguration configuration, IWorld world, BlockPos rootPos, Species species) {
+    public void flareBottom(@Nonnull GenFeatureConfiguration configuration, LevelAccessor world, BlockPos rootPos, Species species) {
         Family family = species.getFamily();
 
         for (int i=curve.length; i>0;i--){

@@ -1,6 +1,6 @@
 package maxhyper.dtbyg.cells.cell;
 
-import com.ferreusveritas.dynamictrees.cells.MatrixCell;
+import com.ferreusveritas.dynamictrees.cell.MatrixCell;
 
 public class DeciduousOakCell extends MatrixCell {
 

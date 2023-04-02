@@ -1,15 +1,15 @@
 package maxhyper.dtbyg.trees;
 
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
-import com.ferreusveritas.dynamictrees.blocks.branches.BasicBranchBlock;
-import com.ferreusveritas.dynamictrees.blocks.branches.BranchBlock;
-import com.ferreusveritas.dynamictrees.blocks.leaves.DynamicLeavesBlock;
+import com.ferreusveritas.dynamictrees.block.branch.BasicBranchBlock;
+import com.ferreusveritas.dynamictrees.block.branch.BranchBlock;
+import com.ferreusveritas.dynamictrees.block.leaves.DynamicLeavesBlock;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
-import com.ferreusveritas.dynamictrees.trees.Family;
-import com.ferreusveritas.dynamictrees.trees.Species;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import com.ferreusveritas.dynamictrees.tree.family.Family;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 
 public class DiagonalPalmFamily extends Family {
 
@@ -18,12 +18,13 @@ public class DiagonalPalmFamily extends Family {
     public DiagonalPalmFamily(ResourceLocation name) {
         super(name);
     }
-
+    
     @Override
-    protected BranchBlock createBranchBlock() {
-        final BasicBranchBlock branch = new BasicBranchBlock(this.getProperties()){
+    protected BranchBlock createBranchBlock(ResourceLocation name) {
+        final BasicBranchBlock branch = new BasicBranchBlock(name, this.getProperties()){
+
             @Override
-            public GrowSignal growIntoAir(World world, BlockPos pos, GrowSignal signal, int fromRadius) {
+            public GrowSignal growIntoAir(Level world, BlockPos pos, GrowSignal signal, int fromRadius) {
                 final Species species = signal.getSpecies();
 
                 final DynamicLeavesBlock leaves = species.getLeavesBlock().orElse(null);

@@ -1,13 +1,13 @@
 package maxhyper.dtbyg.genfeatures;
 
-import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
-import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeatureConfiguration;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.context.PostGenerationContext;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.vector.Vector3i;
+import com.ferreusveritas.dynamictrees.api.configuration.ConfigurationProperty;
+import com.ferreusveritas.dynamictrees.block.leaves.LeavesProperties;
+import com.ferreusveritas.dynamictrees.systems.genfeature.GenFeature;
+import com.ferreusveritas.dynamictrees.systems.genfeature.GenFeatureConfiguration;
+import com.ferreusveritas.dynamictrees.systems.genfeature.context.PostGenerationContext;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Vec3i;
+import net.minecraft.resources.ResourceLocation;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -29,7 +29,7 @@ public class SythianTopperGenFeature extends GenFeature {
     @Override
     public GenFeatureConfiguration createDefaultConfiguration() {
         return super.createDefaultConfiguration()
-                .with(LEAVES_PROPERTIES, LeavesProperties.NULL_PROPERTIES);
+                .with(LEAVES_PROPERTIES, LeavesProperties.NULL);
     }
 
     @Override
@@ -40,12 +40,12 @@ public class SythianTopperGenFeature extends GenFeature {
         }
 
         // Manually place the highest few blocks of the conifer since the leafCluster voxmap won't handle it
-        final BlockPos highest = Collections.max(endPoints, Comparator.comparingInt(Vector3i::getY));
+        final BlockPos highest = Collections.max(endPoints, Comparator.comparingInt(Vec3i::getY));
         // Fetch leaves properties property set or the default for the Species.
         final LeavesProperties leavesProperties = configuration.get(LEAVES_PROPERTIES)
                 .elseIfInvalid(context.species().getLeavesProperties());
 
-        context.world().setBlock(highest.above(1), leavesProperties.getDynamicLeavesState(1), 3);
+        context.level().setBlock(highest.above(1), leavesProperties.getDynamicLeavesState(1), 3);
 
         return true;
     }

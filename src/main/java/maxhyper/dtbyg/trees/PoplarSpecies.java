@@ -4,17 +4,17 @@ import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.api.network.NodeInspector;
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
 import com.ferreusveritas.dynamictrees.api.treedata.TreePart;
-import com.ferreusveritas.dynamictrees.blocks.branches.BranchBlock;
-import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
-import com.ferreusveritas.dynamictrees.trees.Family;
-import com.ferreusveritas.dynamictrees.trees.Species;
+import com.ferreusveritas.dynamictrees.block.branch.BranchBlock;
+import com.ferreusveritas.dynamictrees.block.leaves.LeavesProperties;
+import com.ferreusveritas.dynamictrees.tree.family.Family;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.ferreusveritas.dynamictrees.util.SimpleVoxmap;
 import maxhyper.dtbyg.cells.DTBYGLeafClusters;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class PoplarSpecies extends Species {
 
@@ -44,8 +44,8 @@ public class PoplarSpecies extends Species {
         }
 
         @Override
-        public boolean run(BlockState blockState, IWorld world, BlockPos pos, Direction fromDir) {
-            BranchBlock branch = TreeHelper.getBranch(blockState);
+        public boolean run(BlockState state, LevelAccessor level, BlockPos pos, Direction fromDir) {
+            BranchBlock branch = TreeHelper.getBranch(state);
 
             if (branch != null) {
                 radius = species.getFamily().getPrimaryThickness();
@@ -54,17 +54,17 @@ public class PoplarSpecies extends Species {
         }
 
         @Override
-        public boolean returnRun(BlockState blockState, IWorld world, BlockPos pos, Direction fromDir) {
+        public boolean returnRun(BlockState state, LevelAccessor level, BlockPos pos, Direction fromDir) {
             // Calculate Branch Thickness based on neighboring branches
-            BranchBlock branch = TreeHelper.getBranch(blockState);
+            BranchBlock branch = TreeHelper.getBranch(state);
 
             if (branch != null) {
                 float areaAccum = radius * radius; // Start by accumulating the branch we just came from
                 boolean isTwig = true;
-                boolean isTop = (world.getBlockState(pos.below()).getBlock() == branch);
+                boolean isTop = (level.getBlockState(pos.below()).getBlock() == branch);
 
-                for (Direction dir: Direction.values()) {
-                    if(!dir.equals(fromDir)) { // Don't count where the signal originated from
+                for (Direction dir : Direction.values()) {
+                    if (!dir.equals(fromDir)) { // Don't count where the signal originated from
 
                         BlockPos dPos = pos.offset(dir.getNormal());
 
@@ -74,7 +74,7 @@ public class PoplarSpecies extends Species {
                             continue;
                         }
 
-                        BlockState deltaBlockState = world.getBlockState(dPos);
+                        BlockState deltaBlockState = level.getBlockState(dPos);
                         TreePart treepart = TreeHelper.getTreePart(deltaBlockState);
                         if (branch.isSameTree(treepart)) {
                             int branchRadius = treepart.getRadius(deltaBlockState);
@@ -99,7 +99,7 @@ public class PoplarSpecies extends Species {
 
                     //Ensure the branch is never inflated past it's species maximum
                     int maxRadius = species.getMaxBranchRadius();
-                    if(radius > maxRadius) {
+                    if (radius > maxRadius) {
                         radius = maxRadius;
                     }
 
@@ -109,7 +109,7 @@ public class PoplarSpecies extends Species {
                         radius = secondaryThickness;
                     }
 
-                    branch.setRadius(world, pos, (int) Math.floor(radius), null);
+                    branch.setRadius(level, pos, (int) Math.floor(radius), null);
                     leafMap.setVoxel(pos, (byte) 32); // 32(bit 6) is code for a branch
                     if (Math.floor(radius) < 3) {
                         SimpleVoxmap leafCluster = species.getLeavesProperties().getCellKit().getLeafCluster();

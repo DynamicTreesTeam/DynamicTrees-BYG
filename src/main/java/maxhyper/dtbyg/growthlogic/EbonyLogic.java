@@ -4,12 +4,9 @@ import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
 import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
-import com.ferreusveritas.dynamictrees.trees.Species;
-import com.ferreusveritas.dynamictrees.util.CoordUtils;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 
 public class EbonyLogic extends GrowthLogicKit {
     public EbonyLogic(ResourceLocation registryName) {

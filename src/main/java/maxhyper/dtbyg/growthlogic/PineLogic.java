@@ -1,17 +1,13 @@
 package maxhyper.dtbyg.growthlogic;
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
-import com.ferreusveritas.dynamictrees.blocks.branches.BranchBlock;
 import com.ferreusveritas.dynamictrees.growthlogic.ConiferLogic;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
 import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
-import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 
 public class PineLogic extends ConiferLogic {
 
@@ -39,7 +35,7 @@ public class PineLogic extends ConiferLogic {
 
         if (signal.isInTrunk())
             for (Direction dir : CoordUtils.HORIZONTALS)
-                if (TreeHelper.isBranch(context.world().getBlockState(context.pos().offset(dir.getNormal())))){
+                if (TreeHelper.isBranch(context.level().getBlockState(context.pos().offset(dir.getNormal())))){
                     probMap[2] = probMap[3] = probMap[4] = probMap[5] = 0;
                     probMap[dir.ordinal()] = 2;
                     break;

@@ -1,16 +1,15 @@
 package maxhyper.dtbyg.trees;
 
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
-import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
-import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SoilHelper;
-import com.ferreusveritas.dynamictrees.trees.Family;
-import com.ferreusveritas.dynamictrees.trees.Species;
-import corgiaoc.byg.core.BYGBlocks;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
+import com.ferreusveritas.dynamictrees.block.leaves.LeavesProperties;
+import com.ferreusveritas.dynamictrees.block.rooty.SoilHelper;
+import com.ferreusveritas.dynamictrees.tree.family.Family;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class GenOnExtraSoilSpecies extends Species {
 
@@ -32,14 +31,14 @@ public class GenOnExtraSoilSpecies extends Species {
     }
 
     @Override
-    public boolean isAcceptableSoilForWorldgen(IWorld world, BlockPos pos, BlockState soilBlockState) {
+    public boolean isAcceptableSoilForWorldgen(LevelAccessor world, BlockPos pos, BlockState soilBlockState) {
         if (soilBlockState.is(extraSoil))
             return true;
         return super.isAcceptableSoilForWorldgen(world, pos, soilBlockState);
     }
 
     @Override
-    public boolean placeRootyDirtBlock(IWorld world, BlockPos rootPos, int fertility) {
+    public boolean placeRootyDirtBlock(LevelAccessor world, BlockPos rootPos, int fertility) {
         if (world.getBlockState(rootPos).is(extraSoil)) {
             SoilHelper.getProperties(soilReplacement).getBlock().ifPresent(
                     rootyBlock -> world.setBlock(rootPos, rootyBlock.defaultBlockState(), 3)
@@ -47,4 +46,5 @@ public class GenOnExtraSoilSpecies extends Species {
         }
         return super.placeRootyDirtBlock(world, rootPos, fertility);
     }
+
 }

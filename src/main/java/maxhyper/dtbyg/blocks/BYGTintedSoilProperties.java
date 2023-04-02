@@ -1,17 +1,14 @@
 package maxhyper.dtbyg.blocks;
 
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
-import com.ferreusveritas.dynamictrees.blocks.rootyblocks.RootyBlock;
-import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SoilProperties;
-import com.ferreusveritas.dynamictrees.blocks.rootyblocks.WaterSoilProperties;
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.BlockState;
-import net.minecraft.client.renderer.color.BlockColors;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockDisplayReader;
-
-import javax.annotation.Nullable;
+import com.ferreusveritas.dynamictrees.block.rooty.RootyBlock;
+import com.ferreusveritas.dynamictrees.block.rooty.SoilProperties;
+import net.minecraft.client.color.block.BlockColors;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.BlockAndTintGetter;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class BYGTintedSoilProperties extends SoilProperties {
 
@@ -22,7 +19,7 @@ public class BYGTintedSoilProperties extends SoilProperties {
     }
 
     @Override
-    protected RootyBlock createBlock(AbstractBlock.Properties blockProperties) {
+    protected RootyBlock createBlock(Block.Properties blockProperties) {
         return new BYGTintedRootyBlock(this, blockProperties);
     }
 
@@ -37,11 +34,11 @@ public class BYGTintedSoilProperties extends SoilProperties {
         }
 
         @Override
-        public int colorMultiplier (BlockColors blockColors, BlockState state, @Nullable IBlockDisplayReader world, @Nullable BlockPos pos, int tintIndex){
+        public int colorMultiplier(BlockColors blockColors, BlockState state, @org.jetbrains.annotations.Nullable BlockAndTintGetter level, @org.jetbrains.annotations.Nullable BlockPos pos, int tintIndex) {
             final int white = 0xFFFFFFFF;
             switch(tintIndex) {
-                case 1: return blockColors.getColor(getSoilProperties().getPrimitiveSoilBlock().defaultBlockState(), world, pos, tintIndex);
-                case 2: return state.getBlock() instanceof RootyBlock ? rootColor(state, world, pos) : white;
+                case 1: return blockColors.getColor(getSoilProperties().getPrimitiveSoilBlock().defaultBlockState(), level, pos, tintIndex);
+                case 2: return state.getBlock() instanceof RootyBlock ? rootColor(state, level, pos) : white;
                 default: return white;
             }
         }

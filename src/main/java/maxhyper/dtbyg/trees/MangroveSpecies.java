@@ -2,28 +2,18 @@ package maxhyper.dtbyg.trees;
 
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
-import com.ferreusveritas.dynamictrees.blocks.DynamicSaplingBlock;
-import com.ferreusveritas.dynamictrees.blocks.leaves.LeavesProperties;
-import com.ferreusveritas.dynamictrees.blocks.rootyblocks.SoilHelper;
-import com.ferreusveritas.dynamictrees.items.Seed;
-import com.ferreusveritas.dynamictrees.trees.Family;
-import com.ferreusveritas.dynamictrees.trees.Species;
-import com.ferreusveritas.dynamictrees.util.SafeChunkBounds;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
-import net.minecraft.util.*;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.RayTraceContext;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-
-import java.util.Random;
+import com.ferreusveritas.dynamictrees.block.DynamicSaplingBlock;
+import com.ferreusveritas.dynamictrees.block.leaves.LeavesProperties;
+import com.ferreusveritas.dynamictrees.item.Seed;
+import com.ferreusveritas.dynamictrees.tree.family.Family;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
+import com.ferreusveritas.dynamictrees.worldgen.GenerationContext;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.FluidState;
+import net.minecraft.world.level.material.Fluids;
 
 public class MangroveSpecies extends Species {
 
@@ -36,20 +26,22 @@ public class MangroveSpecies extends Species {
     @Override
     public Species generateSeed() {
         return !this.shouldGenerateSeed() || this.seed != null ? this :
-                this.setSeed(RegistryHandler.addItem(getSeedName(), new Seed(this){
-
-                    @Override
-                    public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
-                        BlockRayTraceResult rayTraceResult = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
-                        BlockRayTraceResult rayTraceResultUp = rayTraceResult.withPosition(rayTraceResult.getBlockPos().above());
-                        ActionResultType actionresulttype = super.useOn(new ItemUseContext(player, hand, rayTraceResult.getDirection() == Direction.UP ? rayTraceResultUp : rayTraceResult));
-                        return new ActionResult<>(actionresulttype, player.getItemInHand(hand));
-                    }
-                }));
+                this.setSeed(RegistryHandler.addItem(getSeedName(), ()->new Seed(this)
+//                        {
+//
+//                            @Override
+//                            public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
+//                                BlockRayTraceResult rayTraceResult = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
+//                                BlockRayTraceResult rayTraceResultUp = rayTraceResult.withPosition(rayTraceResult.getBlockPos().above());
+//                                ActionResultType actionresulttype = super.useOn(new ItemUseContext(player, hand, rayTraceResult.getDirection() == Direction.UP ? rayTraceResultUp : rayTraceResult));
+//                                return new ActionResult<>(actionresulttype, player.getItemInHand(hand));
+//                            }
+//                        }
+                ));
     }
 
     @Override
-    public boolean plantSapling(IWorld world, BlockPos pos, boolean locationOverride) {
+    public boolean plantSapling(LevelAccessor world, BlockPos pos, boolean locationOverride) {
         FluidState fluidState = world.getFluidState(pos);
         FluidState fluidStateUp = world.getFluidState(pos.above());
 
@@ -64,7 +56,9 @@ public class MangroveSpecies extends Species {
 
     private static final int maxDepth = 5;
     private static final int maxOffset = 4;
-    public boolean isAcceptableSoilForWorldgen(IWorld world, BlockPos pos, BlockState soilBlockState) {
+
+    @Override
+    public boolean isAcceptableSoilForWorldgen(LevelAccessor world, BlockPos pos, BlockState soilBlockState) {
         final boolean isAcceptableSoil = isAcceptableSoil(world, pos, soilBlockState);
 
         // If the block is water, check the block below it is valid soil (and not water).
@@ -84,11 +78,12 @@ public class MangroveSpecies extends Species {
     }
 
     @Override
-    public boolean generate(World worldObj, IWorld world, BlockPos rootPos, Biome biome, Random random, int radius, SafeChunkBounds safeBounds) {
+    public boolean generate(GenerationContext context) {
         int i;
         for (i=0; i<maxOffset; i++)
-            if (!isWater(world.getBlockState(rootPos.below(i))))
+            if (!isWater(context.level().getBlockState(context.rootPos().below(i))))
                 break;
-        return super.generate(worldObj, world, rootPos.below(Math.max(i-2, 0)), biome, random, radius, safeBounds);
+        return super.generate(context);
     }
+
 }

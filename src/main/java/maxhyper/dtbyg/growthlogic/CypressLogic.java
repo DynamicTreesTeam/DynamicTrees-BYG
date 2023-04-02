@@ -1,16 +1,15 @@
 package maxhyper.dtbyg.growthlogic;
 
-import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
-import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
+import com.ferreusveritas.dynamictrees.api.configuration.ConfigurationProperty;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
 import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
 import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionSelectionContext;
 import com.ferreusveritas.dynamictrees.growthlogic.context.PositionalSpeciesContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
-import com.ferreusveritas.dynamictrees.trees.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Vec3i;
+import net.minecraft.resources.ResourceLocation;
 
 public class CypressLogic extends VariateHeightLogic {
 
@@ -65,7 +64,7 @@ public class CypressLogic extends VariateHeightLogic {
             //incentivize travelling up in trunk
             if (signal.isInTrunk())
                 probMap[1] += 1;
-            else if (context.signal().numTurns == 1 && context.signal().delta.distSqr(0, context.signal().delta.getY(), 0, true) <= 1.0)
+            else if (context.signal().numTurns == 1 && context.signal().delta.distSqr(new Vec3i(0, context.signal().delta.getY(), 0)) <= 1.0)
                 probMap[1] = 0;
             //Ensure that the branch gets out of the trunk at least two blocks so it won't interfere with the main trunk branch
         }

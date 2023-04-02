@@ -1,21 +1,21 @@
 package maxhyper.dtbyg.blocks;
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
-import corgiaoc.byg.common.properties.blocks.end.impariusgrove.ImpariusMushroomBranchBlock;
-import corgiaoc.byg.core.BYGBlocks;
-import net.minecraft.block.BlockState;
-import net.minecraft.item.Item;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorldReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.state.BlockState;
+import potionstudios.byg.common.block.BYGBlocks;
+import potionstudios.byg.common.block.end.impariusgrove.TreeBranchBlock;
 
-public class DynamicArisianBloomBranch extends ImpariusMushroomBranchBlock {
+public class DynamicArisianBloomBranch extends TreeBranchBlock {
 
     public DynamicArisianBloomBranch(Properties builder) {
         super(builder);
     }
 
-    public boolean canSurvive(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        return super.canSurvive(state, worldIn, pos) || TreeHelper.isBranch(worldIn.getBlockState(pos.relative(state.getValue(FACING).getOpposite())));
+    public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+        return super.canSurvive(state, level, pos) || TreeHelper.isBranch(level.getBlockState(pos.relative(state.getValue(FACING).getOpposite())));
     }
 
     @Override

@@ -3,7 +3,7 @@ package maxhyper.dtbyg.growthlogic;
 import com.ferreusveritas.dynamictrees.api.registry.Registry;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
 import maxhyper.dtbyg.DynamicTreesBYG;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.resources.ResourceLocation;
 
 public class DTBYGGrowthLogicKits {
 

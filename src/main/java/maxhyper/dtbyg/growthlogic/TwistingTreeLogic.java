@@ -1,17 +1,17 @@
 package maxhyper.dtbyg.growthlogic;
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
-import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
+import com.ferreusveritas.dynamictrees.api.configuration.ConfigurationProperty;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
 import com.ferreusveritas.dynamictrees.growthlogic.context.DirectionManipulationContext;
 import com.ferreusveritas.dynamictrees.growthlogic.context.PositionalSpeciesContext;
 import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.LevelAccessor;
 
 public class TwistingTreeLogic extends GrowthLogicKit {
 
@@ -39,7 +39,7 @@ public class TwistingTreeLogic extends GrowthLogicKit {
 
     @Override
     public int[] populateDirectionProbabilityMap(GrowthLogicKitConfiguration configuration, DirectionManipulationContext context) {
-        final World world = context.world();
+        final LevelAccessor level = context.level();
         final GrowSignal signal = context.signal();
         final int[] probMap = context.probMap();
         final BlockPos pos = context.pos();
@@ -47,9 +47,9 @@ public class TwistingTreeLogic extends GrowthLogicKit {
 
         int count = 0;
         for (Direction direction : Direction.values()){
-            int rad = TreeHelper.getRadius(world,pos.offset(direction.getNormal()));
+            int rad = TreeHelper.getRadius(level,pos.offset(direction.getNormal()));
             if (rad > 0) count++;
-            probMap[direction.ordinal()] = rad + (world.getRandom().nextFloat() < configuration.get(CHANCE_TO_SPLIT) ? 1 : 0);
+            probMap[direction.ordinal()] = rad + (level.getRandom().nextFloat() < configuration.get(CHANCE_TO_SPLIT) ? 1 : 0);
         }
         //If there are not enough valid branches, just allow any direction except up
         if (count <= 1 || (configuration.get(SPLIT_ENDS) && signal.energy < 3)){
@@ -65,10 +65,10 @@ public class TwistingTreeLogic extends GrowthLogicKit {
 
     @Override
     public float getEnergy(GrowthLogicKitConfiguration configuration, PositionalSpeciesContext context) {
-        long day = context.world().getGameTime() / 24000L;
+        long day = context.level().getGameTime() / 24000L;
         int month = (int) day / 30; // Change the hashs every in-game month
         return super.getEnergy(configuration, context) *
-                context.species().biomeSuitability(context.world(), context.pos()) +
+                context.species().biomeSuitability(context.level(), context.pos()) +
                 (CoordUtils.coordHashCode(context.pos().above(month), 3) %
                         configuration.get(HEIGHT_VARIATION)); // Vary the height energy by a psuedorandom hash function
 

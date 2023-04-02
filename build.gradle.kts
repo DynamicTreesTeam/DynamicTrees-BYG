@@ -13,12 +13,13 @@ plugins {
     id("org.parchmentmc.librarian.forgegradle")
     id("idea")
     id("maven-publish")
+    id("com.harleyoconnor.translationsheet") version "0.1.1"
     id("com.matthewprenger.cursegradle") version "1.4.0"
+    id("com.harleyoconnor.autoupdatetool") version "1.0.0"
 }
 
 repositories {
     maven("https://ldtteam.jfrog.io/ldtteam/modding/")
-    maven("https://maven.tehnut.info")
     maven("https://www.cursemaven.com") {
         content {
             includeGroup("curse.maven")
@@ -37,17 +38,11 @@ version = "$mcVersion-$modVersion"
 group = property("group")
 
 minecraft {
-    mappings("official", mcVersion)
+    mappings("parchment", "${property("mappingsVersion")}-$mcVersion")
 
     runs {
         create("client") {
-            workingDirectory = file("run").absolutePath
-
-            property("forge.logging.markers", "SCAN,REGISTRIES,REGISTRYDUMP")
-            property("forge.logging.console.level", "debug")
-
-            property("mixin.env.remapRefMap", "true")
-            property("mixin.env.refMapRemappingFile", "${buildDir}/createSrgToMcp/output.srg")
+            applyDefaultConfiguration()
 
             if (project.hasProperty("mcUuid")) {
                 args("--uuid", property("mcUuid"))
@@ -58,46 +53,21 @@ minecraft {
             if (project.hasProperty("mcAccessToken")) {
                 args("--accessToken", property("mcAccessToken"))
             }
-
-            mods {
-                create(modId) {
-                    source(sourceSets.main.get())
-                }
-            }
         }
 
         create("server") {
-            workingDirectory = file("run").absolutePath
-
-            property("forge.logging.markers", "SCAN,REGISTRIES,REGISTRYDUMP")
-            property("forge.logging.console.level", "debug")
-
-            property("mixin.env.remapRefMap", "true")
-            property("mixin.env.refMapRemappingFile", "${buildDir}/createSrgToMcp/output.srg")
-
-            mods {
-                create(modId) {
-                    source(sourceSets.main.get())
-                }
-            }
+            applyDefaultConfiguration()
         }
 
         create("data") {
-            workingDirectory = file("run").absolutePath
+            applyDefaultConfiguration()
 
-            property("forge.logging.markers", "SCAN,REGISTRIES,REGISTRYDUMP")
-            property("forge.logging.console.level", "debug")
-
-            property("mixin.env.remapRefMap", "true")
-            property("mixin.env.refMapRemappingFile", "${buildDir}/createSrgToMcp/output.srg")
-
-            args("--mod", modId, "--all", "--output", file("src/generated/resources/"), "--existing", file("src/main/resources"))
-
-            mods {
-                create(modId) {
-                    source(sourceSets.main.get())
-                }
-            }
+            args(
+                "--mod", modId,
+                "--all",
+                "--output", file("src/generated/resources/"),
+                "--existing", file("src/main/resources")
+            )
         }
     }
 }
@@ -109,9 +79,11 @@ sourceSets.main.get().resources {
 dependencies {
     // Not sure if we need this one, what is a "forge" anyway?
     minecraft("net.minecraftforge:forge:$mcVersion-${property("forgeVersion")}")
-
+    // BYG requires this
+    runtimeOnly(fg.deobf("curse.maven:terrablender-563928:3957976"))
     // Compile BYG and DT, of course.
-    implementation(fg.deobf("curse.maven:BYG-247560:3485079"))
+    implementation(fg.deobf("curse.maven:BYG-247560:4036050"))
+    //implementation(fg.deobf("curse.maven:dynamictrees-252818:4458396"))
     implementation(fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-$mcVersion:${property("dynamicTreesVersion")}"))
 
     /////////////////////////////////////////
@@ -119,10 +91,11 @@ dependencies {
     /////////////////////////////////////////
 
     // At runtime, use DT+ for BYG's cacti.
+    //implementation(fg.deobf("curse.maven:dynamictreesplus-478155:4458646"))
     runtimeOnly(fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-$mcVersion:${property("dynamicTreesPlusVersion")}"))
 
     // At runtime, use the full Hwyla mod.
-    runtimeOnly(fg.deobf("mcp.mobius.waila:Hwyla:${property("hwylaVersion")}"))
+    runtimeOnly(fg.deobf("curse.maven:jade-324717:3970956"))
 
     // At runtime, use the full JEI mod.
     runtimeOnly(fg.deobf("mezz.jei:jei-$mcVersion:${property("jeiVersion")}"))
@@ -134,7 +107,7 @@ dependencies {
     runtimeOnly(fg.deobf("curse.maven:ShutUpExperimentalSettings-407174:3188120"))
 
     // At runtime, use suggestion provider fix mod.
-    runtimeOnly(fg.deobf("com.harleyoconnor.suggestionproviderfix:SuggestionProviderFix:$mcVersion-${property("suggestionProviderFixVersion")}"))
+    //runtimeOnly(fg.deobf("com.harleyoconnor.suggestionproviderfix:SuggestionProviderFix:$mcVersion-${property("suggestionProviderFixVersion")}"))
 }
 
 tasks.jar {
@@ -156,55 +129,40 @@ java {
     withSourcesJar()
 
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
+        languageVersion.set(JavaLanguageVersion.of(17))
     }
-}
-
-fun readChangelog(): String? {
-    val versionInfoFile = file("version_info.json")
-    val jsonObject = Gson().fromJson(InputStreamReader(versionInfoFile.inputStream()), JsonObject::class.java)
-    return jsonObject
-        .get(mcVersion)?.asJsonObject
-        ?.get(project.version.toString())?.asString
 }
 
 fun enablePublishing() =
     project.hasProperty("curseApiKey") && project.hasProperty("curseFileType") && project.hasProperty("projectId")
 
-tasks.withType(CurseUploadTask::class.java) {
-    onlyIf {
-        enablePublishing()
-    }
-}
-
 curseforge {
-    if (!enablePublishing()) {
-        project.logger.log(LogLevel.WARN, "API Key, file type, or project ID for CurseForge not detected; uploading " +
-                "will be disabled.")
-        return@curseforge
-    }
+    if (project.hasProperty("curseApiKey") && project.hasProperty("curseFileType")) {
+        apiKey = property("curseApiKey")
 
-    apiKey = property("curseApiKey")
+        project {
+            id = "562143"
 
-    project {
-        id = property("projectId")
+            addGameVersion(mcVersion)
 
-        addGameVersion("1.16.4")
-        addGameVersion(mcVersion)
+            changelog = file("changelog.txt")
+            changelogType = "markdown"
+            releaseType = property("curseFileType")
 
-        changelog = readChangelog() ?: "No changelog provided."
-        changelogType = "markdown"
-        releaseType = property("curseFileType")
+            addArtifact(tasks.findByName("sourcesJar"))
 
-        addArtifact(tasks.findByName("sourcesJar"))
-
-        mainArtifact(tasks.findByName("jar")) {
-            relations {
-                requiredDependency("dynamictrees")
-                requiredDependency("oh-the-biomes-youll-go")
-                optionalDependency("dynamictreesplus")
+            mainArtifact(tasks.findByName("jar")) {
+                relations {
+                    optionalDependency("dynamictreesplus")
+                    optionalDependency("chunk-saving-fix")
+                }
             }
         }
+    } else {
+        project.logger.log(
+            LogLevel.WARN,
+            "API Key and file type for CurseForge not detected; uploading will be disabled."
+        )
     }
 }
 
@@ -265,7 +223,21 @@ publishing {
     }
 }
 
-// Extensions to make CurseGradle extension slightly neater.
+fun net.minecraftforge.gradle.common.util.RunConfig.applyDefaultConfiguration(runDirectory: String = "run") {
+    workingDirectory = file(runDirectory).absolutePath
+
+    property("forge.logging.markers", "SCAN,REGISTRIES,REGISTRYDUMP")
+    property("forge.logging.console.level", "debug")
+
+    property("mixin.env.remapRefMap", "true")
+    property("mixin.env.refMapRemappingFile", "${buildDir}/createSrgToMcp/output.srg")
+
+    mods {
+        create(modId) {
+            source(sourceSets.main.get())
+        }
+    }
+}
 
 fun com.matthewprenger.cursegradle.CurseExtension.project(action: CurseProject.() -> Unit) {
     this.project(closureOf(action))

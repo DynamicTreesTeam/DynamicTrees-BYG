@@ -1,27 +1,26 @@
 package maxhyper.dtbyg.genfeatures;
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
-import com.ferreusveritas.dynamictrees.api.configurations.ConfigurationProperty;
+import com.ferreusveritas.dynamictrees.api.configuration.ConfigurationProperty;
 import com.ferreusveritas.dynamictrees.api.network.MapSignal;
 import com.ferreusveritas.dynamictrees.api.network.NodeInspector;
-import com.ferreusveritas.dynamictrees.blocks.branches.BranchBlock;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeature;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.GenFeatureConfiguration;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.context.PostGenerationContext;
-import com.ferreusveritas.dynamictrees.systems.genfeatures.context.PostGrowContext;
-import com.ferreusveritas.dynamictrees.trees.Family;
-import com.ferreusveritas.dynamictrees.trees.Species;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.WeightedList;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
+import com.ferreusveritas.dynamictrees.block.branch.BranchBlock;
+import com.ferreusveritas.dynamictrees.systems.genfeature.GenFeature;
+import com.ferreusveritas.dynamictrees.systems.genfeature.GenFeatureConfiguration;
+import com.ferreusveritas.dynamictrees.systems.genfeature.context.PostGenerationContext;
+import com.ferreusveritas.dynamictrees.systems.genfeature.context.PostGrowContext;
+import com.ferreusveritas.dynamictrees.tree.family.Family;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.random.SimpleWeightedRandomList;
+import net.minecraft.util.random.WeightedEntry;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 import org.apache.logging.log4j.LogManager;
-
-import java.util.stream.Collectors;
 
 /**
  * @author Max Hyper
@@ -62,13 +61,13 @@ public class AlternativeBranchGenFeature extends GenFeature {
 
     @Override
     protected boolean postGenerate(GenFeatureConfiguration configuration, PostGenerationContext context) {
-        IWorld world = context.world();
+        LevelAccessor level = context.level();
         BlockPos rootPos = context.pos();
-        final BlockState blockState = world.getBlockState(rootPos.above());
+        final BlockState blockState = level.getBlockState(rootPos.above());
         final BranchBlock branch = TreeHelper.getBranch(blockState);
 
         if (branch != null && branch.getRadius(blockState) >= configuration.get(FRUITING_RADIUS)) {
-            placeAltBranches(true, configuration, world, rootPos, context.species().getFamily());
+            placeAltBranches(true, configuration, level, rootPos, context.species().getFamily());
         }
         return true;
     }
@@ -77,36 +76,41 @@ public class AlternativeBranchGenFeature extends GenFeature {
     protected boolean postGrow(GenFeatureConfiguration configuration, PostGrowContext context) {
         if (context.fertility() == 0) return false;
 
-        IWorld world = context.world();
+        LevelAccessor level = context.level();
         BlockPos rootPos = context.pos();
-        final BlockState blockState = world.getBlockState(rootPos.above());
+        final BlockState blockState = level.getBlockState(rootPos.above());
         final BranchBlock branch = TreeHelper.getBranch(blockState);
 
         if (branch != null && branch.getRadius(blockState) >= configuration.get(FRUITING_RADIUS) && context.natural()) {
-            if (world.getRandom().nextFloat() < configuration.get(PLACE_CHANCE)) {
-                placeAltBranches(false, configuration, world, rootPos, context.species().getFamily());
+            if (level.getRandom().nextFloat() < configuration.get(PLACE_CHANCE)) {
+                placeAltBranches(false, configuration, level, rootPos, context.species().getFamily());
             }
         }
         return true;
     }
 
-    private void placeAltBranches(boolean isWorldgen, GenFeatureConfiguration configuration, IWorld world, BlockPos rootPos, Family family){
-        WeightedList<BlockPos> validSpots = new WeightedList<>();
-        final FindValidBranchesNode altBranchPlacer = new FindValidBranchesNode(validSpots, configuration.get(MIN_RADIUS), family);
+    private void placeAltBranches(boolean isWorldgen, GenFeatureConfiguration configuration, LevelAccessor world, BlockPos rootPos, Family family){
+        SimpleWeightedRandomList.Builder<BlockPos> listBuilder = new SimpleWeightedRandomList.Builder<>();
+        final FindValidBranchesNode altBranchPlacer = new FindValidBranchesNode(listBuilder, configuration.get(MIN_RADIUS), family);
         TreeHelper.startAnalysisFromRoot(world, rootPos, new MapSignal(altBranchPlacer));
+        SimpleWeightedRandomList<BlockPos> validSpots = listBuilder.build();
 
         if (!validSpots.isEmpty()) {
             if (isWorldgen){
-                for (BlockPos listPos : validSpots.stream().collect(Collectors.toSet()))
+                for (BlockPos listPos : validSpots.unwrap().stream().map(WeightedEntry.Wrapper::getData).toList())
                     if (world.getRandom().nextFloat() < configuration.get(WORLDGEN_PLACE_CHANCE))
                         placeBranch(configuration, world, listPos);
-            } else
-                placeBranch(configuration, world, validSpots.getOne(world.getRandom()));
+            } else {
+                WeightedEntry.Wrapper<BlockPos> posWrapper = validSpots.getRandom(world.getRandom()).orElse(null);
+                if (posWrapper == null) return;
+                placeBranch(configuration, world, posWrapper.getData());
+            }
+
         }
 
     }
 
-    private void placeBranch (GenFeatureConfiguration configuration, IWorld world, BlockPos pos){
+    private void placeBranch (GenFeatureConfiguration configuration, LevelAccessor world, BlockPos pos){
         BranchBlock branchToPlace = (BranchBlock) configuration.get(ALT_BRANCH_BLOCK);
         int radius = TreeHelper.getRadius(world, pos);
 
@@ -115,26 +119,28 @@ public class AlternativeBranchGenFeature extends GenFeature {
 
     public static class FindValidBranchesNode implements NodeInspector {
 
-        private final WeightedList<BlockPos> validSpots;
+        private final SimpleWeightedRandomList.Builder<BlockPos> validSpots;
         private final int minRadius;
         private final Family family;
 
-        public FindValidBranchesNode(WeightedList<BlockPos> validSpots, int minRadius, Family family) {
+        public FindValidBranchesNode(SimpleWeightedRandomList.Builder<BlockPos> validSpots, int minRadius, Family family) {
             this.validSpots = validSpots;
             this.minRadius = minRadius;
             this.family = family;
         }
 
         @Override
-        public boolean run(BlockState blockState, IWorld world, BlockPos pos, Direction fromDir) {
-            int radius = TreeHelper.getRadius(world, pos);
-            boolean valid = radius >= minRadius && blockState.getBlock() == family.getValidBranchBlock(0);
+        public boolean run(BlockState state, LevelAccessor level, BlockPos pos, Direction fromDir) {
+            int radius = TreeHelper.getRadius(level, pos);
+            boolean valid = radius >= minRadius && state.getBlock() == family.getValidBranchBlock(0);
             if (valid) validSpots.add(pos, radius);
             return valid;
         }
 
         @Override
-        public boolean returnRun(BlockState blockState, IWorld world, BlockPos pos, Direction fromDir) { return false; }
+        public boolean returnRun(BlockState state, LevelAccessor level, BlockPos pos, Direction fromDir) {
+            return false;
+        }
     }
 
 }

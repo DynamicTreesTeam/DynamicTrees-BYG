@@ -3,10 +3,10 @@ package maxhyper.dtbyg.growthlogic;
 import com.ferreusveritas.dynamictrees.growthlogic.ConiferLogic;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKitConfiguration;
 import com.ferreusveritas.dynamictrees.growthlogic.context.PositionalSpeciesContext;
-import com.ferreusveritas.dynamictrees.trees.Species;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
+import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
 
 public class ZelkovaLogic extends ConiferLogic {
 
@@ -29,10 +29,10 @@ public class ZelkovaLogic extends ConiferLogic {
     public int getLowestBranchHeight(GrowthLogicKitConfiguration configuration, PositionalSpeciesContext context) {
         Species species = context.species();
         BlockPos pos = context.pos();
-        long day = context.world().getGameTime() / 24000L;
+        long day = context.level().getGameTime() / 24000L;
         int month = (int) day / 30;//Change the hashs every in-game month
 
-        return (int)(super.getLowestBranchHeight(configuration, context) * species.biomeSuitability(context.world(), pos) +
+        return (int)(super.getLowestBranchHeight(configuration, context) * species.biomeSuitability(context.level(), pos) +
                 (CoordUtils.coordHashCode(pos.above(month), 2) % configuration.get(VariateHeightLogic.LOWEST_BRANCH_VARIATION)));//Vary the height energy by a psuedorandom hash function
     }
 
