@@ -1,6 +1,0 @@
-{
-	"multipart": [
-		{   "apply": { "model": "byg:block/mossy_netherrack" }},
-		{	"apply": { "model": "dynamictrees:block/roots" }}
-	]
-}

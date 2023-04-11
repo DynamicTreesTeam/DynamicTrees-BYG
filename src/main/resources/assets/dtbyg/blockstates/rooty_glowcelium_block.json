@@ -1,6 +1,0 @@
-{
-	"multipart": [
-		{   "apply": { "model": "byg:block/glowcelium_block" }},
-		{	"apply": { "model": "dynamictrees:block/roots" }}
-	]
-}

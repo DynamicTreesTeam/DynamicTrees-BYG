@@ -1,0 +1,38 @@
+{
+  "type": "dynamictrees:branches",
+  "pools": [
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "function": "dynamictrees:multiply_logs_count"
+            },
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ],
+          "name": "byg:oddity_cactus"
+        }
+      ]
+    },
+    {
+      "rolls": 1,
+      "entries": [
+        {
+          "type": "dynamictrees:seed_item",
+          "functions": [
+            {
+              "function": "dynamictrees:multiply_sticks_count"
+            },
+            {
+              "function": "minecraft:explosion_decay"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

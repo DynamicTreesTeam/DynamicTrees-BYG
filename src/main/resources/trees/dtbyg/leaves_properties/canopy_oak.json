@@ -1,5 +1,5 @@
 {
-  "type": "dtbyg:scruffy",
+  "type": "scruffy",
   "primitive_leaves": "oak_leaves",
 
   "scruffy_leaf_chance": 0.66,

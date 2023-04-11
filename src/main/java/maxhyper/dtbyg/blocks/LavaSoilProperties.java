@@ -112,7 +112,7 @@ public class LavaSoilProperties extends SoilProperties {
         @NotNull
         @Override
         public BlockState updateShape(BlockState pState, Direction pDirection, BlockState pNeighborState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pNeighborPos) {
-            if (pNeighborState.getValue(LAVALOGGED)) {
+            if (pState.getValue(LAVALOGGED)) {
                 pLevel.scheduleTick(pCurrentPos, Fluids.LAVA, Fluids.LAVA.getTickDelay(pLevel));
             }
             return super.updateShape(pState, pDirection, pNeighborState, pLevel, pCurrentPos, pNeighborPos);

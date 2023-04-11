@@ -1,5 +1,5 @@
 {
-  "type": "dtbyg:scruffy",
+  "type": "scruffy",
   "scruffy_leaf_chance": 0.66,
   "scruffy_max_hydro": 1,
   "primitive_leaves": "byg:witch_hazel_leaves",

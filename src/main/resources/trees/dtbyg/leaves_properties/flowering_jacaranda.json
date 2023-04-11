@@ -2,7 +2,7 @@
   "primitive_leaves": "byg:flowering_jacaranda_leaves",
   "cell_kit": "dtbyg:willow",
 
-  "type": "dtbyg:scruffy",
+  "type": "scruffy",
   "scruffy_leaf_chance": 0.5,
   "scruffy_max_hydro": 2
 }

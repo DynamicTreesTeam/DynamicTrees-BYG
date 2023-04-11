@@ -21,22 +21,15 @@
     }
   ],
   "acceptable_soils": ["dirt_like", "end_soil_like"],
+  "fruits": [
+    "dtbyg:ether_bulbs"
+  ],
   "features": [
     {
       "name": "fruit",
       "properties": {
-        "fruit_block": "dtbyg:ether_bulbs_fruit",
+        "fruit": "dtbyg:ether_bulbs",
         "quantity": 12
-      }
-    }
-  ],
-  "drop_creators": [
-    "log",
-    "stick",
-    {
-      "name": "fruit",
-      "properties":{
-        "fruit_item": "byg:ether_bulbs"
       }
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "type": "dtbyg:scruffy",
+  "type": "scruffy",
   "primitive_leaves": "byg:silver_maple_leaves",
 
   "scruffy_leaf_chance": 0.66,

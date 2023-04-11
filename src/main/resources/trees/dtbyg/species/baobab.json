@@ -22,22 +22,15 @@
       "can_craft_seed_to_sapling": false
     }
   ],
+  "fruits": [
+    "dtbyg:baobab"
+  ],
   "features" : [
     "mound",
     {
       "name": "fruit",
       "properties": {
-        "fruit_block": "dtbyg:baobab_fruit"
-      }
-    }
-  ],
-  "drop_creators": [
-    "log",
-    "stick",
-    {
-      "name": "fruit",
-      "properties":{
-        "fruit_item": "byg:baobab_fruit"
+        "fruit": "dtbyg:baobab"
       }
     }
   ]

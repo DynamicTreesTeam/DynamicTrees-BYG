@@ -1,8 +1,0 @@
-{
-  "type": "spreadable",
-  "primitive_soil": "byg:meadow_dirt",
-  "acceptable_soils": [ "dirt_like" ],
-
-  "required_light": 9,
-  "spreadable_soils": [ "dtbyg:meadow_grass_block" ]
-}

@@ -20,6 +20,9 @@
       "can_craft_seed_to_sapling": false
     }
   ],
+  "fruits": [
+    "dtbyg:green_apple"
+  ],
   "features" : [
     {
       "name": "alt_leaves",
@@ -31,19 +34,7 @@
     {
       "name": "fruit",
       "properties": {
-        "fruit_block": "dtbyg:green_apple_fruit"
-      }
-    }
-  ],
-  "drop_creators": [
-    "log",
-    "stick",
-    {
-      "name": "fruit",
-      "properties":{
-        "fruit_item": "byg:green_apple",
-        "quantity": 12,
-        "fruiting_radius": 6
+        "fruit": "dtbyg:green_apple"
       }
     }
   ]

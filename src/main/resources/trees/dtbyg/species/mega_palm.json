@@ -1,0 +1,20 @@
+{
+  "type": "palm",
+  "family": "dtbyg:palm",
+  "tapering": 0.4,
+  "signal_energy": 20.0,
+  "growth_rate": 1.2,
+  "soil_longevity": 4,
+  "lowest_branch_height": 5,
+  "max_branch_radius": 12,
+  "growth_logic_kit": "dtbyg:diagonal_palm",
+  "leaves_properties": "dtbyg:palm",
+  "environment_factors" : {
+    "cold": 0.75,
+    "hot": 1.1,
+    "dry": 1.1
+  },
+  "transformable": false,
+  "perfect_biomes": { "type": "beach" },
+  "acceptable_soils": [ "dirt_like", "sand_like" ]
+}

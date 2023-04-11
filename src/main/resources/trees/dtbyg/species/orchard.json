@@ -25,6 +25,9 @@
     }
   ],
   "mega_species": "dtbyg:mega_orchard",
+  "fruits": [
+    "apple"
+  ],
   "features" : [
     {
       "name": "random_predicate",
@@ -48,23 +51,17 @@
         "place_chance": 0.33
       }
     },
-    "fruit",
+    {
+      "name": "fruit",
+      "properties": {
+        "fruit": "apple"
+      }
+    },
     "mushroom_rot",
     {
       "name": "rot_soil",
       "properties": {
         "rotted_soil": "podzol"
-      }
-    }
-  ],
-  "drop_creators": [
-    "log",
-    "stick",
-    {
-      "name": "fruit",
-      "properties":{
-        "fruit_item": "apple",
-        "quantity": 12
       }
     }
   ]

@@ -21,6 +21,9 @@
     "wet": 0.75
   },
   "perfect_biomes": { "name": ".*evergreen.*" },
+  "fruits": [
+    "dtbyg:holly_berries"
+  ],
   "features" : [
     "conifer_topper",
     {
@@ -35,17 +38,7 @@
     {
       "name": "fruit",
       "properties": {
-        "fruit_block": "dtbyg:holly_berries_fruit"
-      }
-    }
-  ],
-  "drop_creators": [
-    "log",
-    "stick",
-    {
-      "name": "fruit",
-      "properties":{
-        "fruit_item": "byg:holly_berries"
+        "fruit": "dtbyg:holly_berries"
       }
     }
   ]

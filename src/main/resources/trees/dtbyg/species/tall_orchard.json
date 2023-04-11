@@ -17,6 +17,9 @@
   },
   "primitive_sapling": "byg:orchard_sapling",
   "mega_species": "dtbyg:mega_orchard",
+  "fruits": [
+    "apple"
+  ],
   "features" : [
     {
       "name": "rot_soil",
@@ -42,16 +45,10 @@
         "place_chance": 0.33
       }
     },
-    "fruit"
-  ],
-  "drop_creators": [
-    "log",
-    "stick",
     {
       "name": "fruit",
-      "properties":{
-        "fruit_item": "apple",
-        "quantity": 12
+      "properties": {
+        "fruit": "apple"
       }
     }
   ]

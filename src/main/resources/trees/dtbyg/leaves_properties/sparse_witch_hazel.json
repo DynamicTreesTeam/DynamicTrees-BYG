@@ -1,5 +1,5 @@
 {
-  "type": "dtbyg:scruffy",
+  "type": "scruffy",
   "scruffy_leaf_chance": 0.33,
   "primitive_leaves": "byg:witch_hazel_leaves",
   "cell_kit": "dtbyg:sparse"

@@ -5,6 +5,7 @@
   "signal_energy": 10.0,
   "growth_rate": 0.8,
   "soil_longevity": 2,
+  "max_branch_radius": 8,
   "growth_logic_kit": "dtbyg:diagonal_palm",
   "leaves_properties": "dtbyg:palm",
   "environment_factors" : {
@@ -12,17 +13,9 @@
     "hot": 1.1,
     "dry": 1.1
   },
+  "mega_species": "dtbyg:mega_palm",
   "transformable": false,
-  "perfect_biomes": { "category": "beach" },
+  "perfect_biomes": { "type": "beach" },
   "primitive_sapling": "byg:palm_sapling",
-  "acceptable_soils": [ "dirt_like", "sand_like" ],
-  "drop_creators": [
-    "log",
-    {
-      "name": "seed",
-      "properties": {
-        "rarity": 6.0
-      }
-    }
-  ]
+  "acceptable_soils": [ "dirt_like", "sand_like" ]
 }
