@@ -25,6 +25,14 @@
     "dtbyg:mangrove_branch",
     "dtbyg:zelkova_branch",
     "dtbyg:palm_branch",
-    "dtbyg:baobab_branch"
+    "dtbyg:baobab_branch",
+    {
+      "id": "dtbyg:oddity_cactus_branch",
+      "required": false
+    },
+    {
+      "id": "dtbyg:warped_cactus_branch",
+      "required": false
+    }
   ]
 }

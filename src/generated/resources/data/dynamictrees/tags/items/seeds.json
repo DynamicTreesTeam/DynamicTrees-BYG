@@ -50,6 +50,14 @@
     "dtbyg:redwood_seed",
     "dtbyg:baobab_seed",
     "dtbyg:brown_zelkova_seed",
-    "dtbyg:orange_birch_seed"
+    "dtbyg:orange_birch_seed",
+    {
+      "id": "dtbyg:oddity_cactus_seed",
+      "required": false
+    },
+    {
+      "id": "dtbyg:warped_cactus_seed",
+      "required": false
+    }
   ]
 }
