@@ -1,29 +1,25 @@
 package maxhyper.dtbyg.init;
 
 import com.ferreusveritas.dynamictrees.api.cell.CellKit;
-import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
 import com.ferreusveritas.dynamictrees.api.worldgen.FeatureCanceller;
 import com.ferreusveritas.dynamictrees.block.rooty.SoilProperties;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
+import com.ferreusveritas.dynamictrees.systems.fruit.Fruit;
 import com.ferreusveritas.dynamictrees.systems.genfeature.GenFeature;
 import com.ferreusveritas.dynamictrees.tree.family.Family;
 import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.ferreusveritas.dynamictrees.util.CommonVoxelShapes;
+import com.ferreusveritas.dynamictrees.worldgen.featurecancellation.TreeFeatureCanceller;
 import maxhyper.dtbyg.DynamicTreesBYG;
-import maxhyper.dtbyg.blocks.DynamicArisianBloomBranch;
 import maxhyper.dtbyg.blocks.LavaSoilProperties;
-import maxhyper.dtbyg.cancellers.BYGFeatureCanceller;
 import maxhyper.dtbyg.cancellers.CactusFeatureCanceller;
 import maxhyper.dtbyg.cells.DTBYGCellKits;
+import maxhyper.dtbyg.fruits.EtherBulbsFruit;
 import maxhyper.dtbyg.genfeatures.DTBYGGenFeatures;
 import maxhyper.dtbyg.growthlogic.DTBYGGrowthLogicKits;
 import maxhyper.dtbyg.trees.*;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.event.RegistryEvent;
@@ -36,35 +32,8 @@ import potionstudios.byg.common.world.feature.config.BYGMushroomConfig;
 import potionstudios.byg.common.world.feature.config.BYGTreeConfig;
 import potionstudios.byg.common.world.feature.config.GiantFlowerConfig;
 
-import java.util.function.Supplier;
-
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class DTBYGRegistries {
-
-//    public static FruitBlock GREEN_APPLE_FRUIT = new FruitBlock()
-//            .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
-//    public static FruitBlock JOSHUA_FRUIT = new FruitBlock()
-//            .setShape(2, ShapeUtils.createFruitShape(2f,5,1 * 1.25f))
-//            .setShape(3, ShapeUtils.createFruitShape(2f,6,2 * 1.25f))
-//            .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
-//    public static FruitBlock ETHER_BULBS_FRUIT = new EtherBulbsFruitBlock()
-//            .setShape(1, ShapeUtils.createFruitShape(2,3,0))
-//            .setShape(2, ShapeUtils.createFruitShape(3f,4,1))
-//            .setShape(3, ShapeUtils.createFruitShape(3.5f,4,2))
-//            .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
-//    public static FruitBlock HOLLY_BERRIES_FRUIT = new FruitBlock()
-//            .setShape(1, ShapeUtils.createFruitShape(2,3,0))
-//            .setShape(2, ShapeUtils.createFruitShape(3f,4,1))
-//            .setShape(3, ShapeUtils.createFruitShape(3.5f,4,2))
-//            .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
-//    public static FruitBlock BAOBAB_FRUIT = new FruitBlock()
-//            .setShape(0, ShapeUtils.createFruitShape(2.5f,2,6 * 1.25f))
-//            .setShape(1, ShapeUtils.createFruitShape(1.5f,3,7 * 1.25f))
-//            .setShape(2, ShapeUtils.createFruitShape(2f,5,8 * 1.25f))
-//            .setShape(3, ShapeUtils.createFruitShape(2.5f,8,9 * 1.25f))
-//            .setCanBoneMeal(DTConfigs.CAN_BONE_MEAL_APPLE::get);
-//
-//    public static Supplier<Block> ARISIAN_BLOOM_BRANCH = new DynamicArisianBloomBranch(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT).instabreak().sound(SoundType.TWISTING_VINES).noOcclusion().noCollission().lightLevel((state) -> 10));
 
     public static final VoxelShape MUSHROOM_STEM_LONG = Block.box(7D, 0D, 7D, 9D, 10D, 9D);
     public static final VoxelShape SYTHIAN_CAP_A = Block.box(4D, 6D, 4D, 12D, 8D, 12D);
@@ -74,8 +43,6 @@ public class DTBYGRegistries {
     public static final VoxelShape SYTHIAN_MUSHROOM = Shapes.or(MUSHROOM_STEM_LONG, SYTHIAN_CAP_A, SYTHIAN_CAP_B, SYTHIAN_CAP_C);
 
     public static void setup() {
-//        RegistryHandler.addBlock(DynamicTreesBYG.resLoc("arisian_bloom_branch"), ARISIAN_BLOOM_BRANCH);
-
         CommonVoxelShapes.SHAPES.put(DynamicTreesBYG.resLoc("sythian").toString(), SYTHIAN_MUSHROOM);
     }
 
@@ -103,14 +70,14 @@ public class DTBYGRegistries {
 //                BranchBlock branch = TreeHelper.getBranch(branchState);
 //                if (branch != null)
 //                    return MathHelper.clamp(branch.getRadius(branchState) - 1, 1, 8);
-//                 else return 8;
+//                else return 8;
 //            }
 //            return 0;
 //        });
 //
 //        BranchConnectables.makeBlockConnectable(ARISIAN_BLOOM_BRANCH, (state, world, pos, side) -> {
 //            if (state.hasProperty(HorizontalBlock.FACING)) {
-//                return state.getValue(HorizontalBlock.FACING) == side ? 1:0;
+//                return state.getValue(HorizontalBlock.FACING) == side ? 1 : 0;
 //            }
 //            return 0;
 //        });
@@ -156,31 +123,8 @@ public class DTBYGRegistries {
     }
 
     @SubscribeEvent
-    public static void onItemsRegistry (final RegistryEvent.Register<Item> event) {
-//        Item etherBulbs = ForgeRegistries.ITEMS.getValue(new ResourceLocation("byg","ether_bulbs"));
-//        Species etherSpecies = Species.REGISTRY.get(new ResourceLocation("dtbyg","ether"));
-//        ETHER_BULBS_FRUIT.setDroppedItem(new ItemStack(etherBulbs));
-//        if (etherSpecies.isValid()) ETHER_BULBS_FRUIT.setSpecies(etherSpecies);
-//
-//        Item greenApple = ForgeRegistries.ITEMS.getValue(new ResourceLocation("byg","green_apple"));
-//        Species skyrisSpecies = Species.REGISTRY.get(new ResourceLocation("dtbyg","skyris"));
-//        GREEN_APPLE_FRUIT.setDroppedItem(new ItemStack(greenApple));
-//        if (skyrisSpecies.isValid()) GREEN_APPLE_FRUIT.setSpecies(skyrisSpecies);
-//
-//        Item joshuaFruit = ForgeRegistries.ITEMS.getValue(new ResourceLocation("byg","joshua_fruit"));
-//        Species joshuaSpecies = Species.REGISTRY.get(new ResourceLocation("dtbyg","joshua"));
-//        JOSHUA_FRUIT.setDroppedItem(new ItemStack(joshuaFruit));
-//        if (joshuaSpecies.isValid()) JOSHUA_FRUIT.setSpecies(joshuaSpecies);
-//
-//        Item hollyBerries = ForgeRegistries.ITEMS.getValue(new ResourceLocation("byg","holly_berries"));
-//        Species hollySpecies = Species.REGISTRY.get(new ResourceLocation("dtbyg","holly"));
-//        HOLLY_BERRIES_FRUIT.setDroppedItem(new ItemStack(hollyBerries));
-//        if (hollySpecies.isValid()) HOLLY_BERRIES_FRUIT.setSpecies(hollySpecies);
-//
-//        Item baobabFruit = ForgeRegistries.ITEMS.getValue(new ResourceLocation("byg","baobab_fruit"));
-//        Species baobabSpecies = Species.REGISTRY.get(new ResourceLocation("dtbyg","baobab"));
-//        BAOBAB_FRUIT.setDroppedItem(new ItemStack(baobabFruit));
-//        if (baobabSpecies.isValid()) BAOBAB_FRUIT.setSpecies(baobabSpecies);
+    public static void registerFruitTypes(final TypeRegistryEvent<Fruit> event) {
+        event.registerType(DynamicTreesBYG.resLoc("ether_bulbs"), EtherBulbsFruit.TYPE);
     }
 
     @SubscribeEvent
@@ -192,9 +136,9 @@ public class DTBYGRegistries {
         setupBlocks();
     }
 
-    public static final FeatureCanceller BYG_TREE_CANCELLER = new BYGFeatureCanceller<>(DynamicTreesBYG.resLoc("tree"), BYGTreeConfig.class);
-    public static final FeatureCanceller BYG_FUNGUS_CANCELLER = new BYGFeatureCanceller<>(DynamicTreesBYG.resLoc("fungus"), BYGMushroomConfig.class);
-    public static final FeatureCanceller GIANT_FLOWER_CANCELLER = new BYGFeatureCanceller<>(DynamicTreesBYG.resLoc("giant_flower"), GiantFlowerConfig.class);
+    public static final FeatureCanceller BYG_TREE_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.resLoc("tree"), BYGTreeConfig.class);
+    public static final FeatureCanceller BYG_FUNGUS_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.resLoc("fungus"), BYGMushroomConfig.class);
+    public static final FeatureCanceller GIANT_FLOWER_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.resLoc("giant_flower"), GiantFlowerConfig.class);
     public static final FeatureCanceller WARPED_CACTUS_CANCELLER = new CactusFeatureCanceller<>(DynamicTreesBYG.resLoc("warped_cactus"), WarpedCactusBlock.class);
     public static final FeatureCanceller ODDITY_CACTUS_CANCELLER = new CactusFeatureCanceller<>(DynamicTreesBYG.resLoc("oddity_cactus"), OddityCactusBlock.class);
 

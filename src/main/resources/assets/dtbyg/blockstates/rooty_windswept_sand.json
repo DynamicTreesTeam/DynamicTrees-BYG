@@ -1,0 +1,6 @@
+{
+	"multipart": [
+		{   "apply": { "model": "byg:block/windswept_sand" }},
+		{	"apply": { "model": "dynamictrees:block/roots" }}
+	]
+}

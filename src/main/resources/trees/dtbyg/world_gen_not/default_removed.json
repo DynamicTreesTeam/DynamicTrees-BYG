@@ -1,0 +1,101 @@
+[
+  {
+    "select": "byg:cold_swamplands",
+    "apply": {
+      "species" : "swamp_oak",
+      "density": [ 0.2 ],
+      "chance": 0.75
+    }
+  },
+  {
+    "select": "byg:vibrant_swamplands",
+    "apply": {
+      "species": {
+        "random": {
+          "swamp_oak": 4,
+          "dtbyg:willow": 2,
+          "dtbyg:mega_willow": 1
+        }
+      },
+      "density": [ 0.2 ],
+      "chance": 0.75
+    }
+  },
+  {
+    "select": "byg:wooded_meadow",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:canopy_oak": 2,
+          "dtbyg:canopy_dark_oak": 8,
+          "oak": 1,
+          "spruce": 1
+        }
+      },
+      "density": [ 0.8 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+
+  {
+    "select": "byg:dover_mountains",
+    "apply": {
+      "species": {
+        "random": {
+          "spruce": 1,
+          "dtbyg:tall_spruce": 1,
+          "dtbyg:giga_spruce": 1,
+          "dtbyg:pine": 1,
+          "dtbyg:mega_pine": 1,
+          "dtbyg:aspen": 1,
+          "dtbyg:canopy_aspen": 1
+        }
+      },
+      "density": [ 0.6 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+
+
+
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "select": "byg:red_desert",
+    "apply": {
+      "species": {
+        "random": {
+          "dynamictreesplus:saguaro_cactus": 1,
+          "dynamictreesplus:pillar_cactus": 1
+        }
+      },
+      "density": [ 0.6 ],
+      "chance": 0.6
+    }
+  },
+
+  {
+    "select": "byg:lush_red_desert",
+    "apply": {
+      "species": "dtbyg:palo_verde",
+      "density": [ 0.1 ],
+      "chance": 0.1
+    }
+  },
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "select": "byg:lush_red_desert",
+    "apply": {
+      "species": {
+        "random": {
+          "dynamictreesplus:saguaro_cactus": 2,
+          "dynamictreesplus:pillar_cactus": 2,
+          "dtbyg:palo_verde": 1
+        }
+      },
+      "density": [ 0.4 ],
+      "chance": 0.3
+    }
+  }
+]

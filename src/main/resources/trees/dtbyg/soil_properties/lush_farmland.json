@@ -1,0 +1,5 @@
+{
+  "primitive_soil": "byg:lush_farmland",
+  "acceptable_soils": [ "dirt_like" ],
+  "substitute_soil" : "dtbyg:lush_dirt"
+}

@@ -32,33 +32,33 @@ public class CactusFeatureCanceller<T extends Block> extends FeatureCanceller {
 
     @Override
     public boolean shouldCancel(ConfiguredFeature<?, ?> configuredFeature, Set<String> namespaces) {
-//        ResourceLocation featureResLoc = configuredFeature.feature().getRegistryName();
-//        if (featureResLoc == null)
-//            return false;
-//
-//        FeatureConfiguration featureConfig = configuredFeature.config();
-//
-//        if (!(featureConfig instanceof DecoratedFeatureConfigu)){
-//            if (featureConfig instanceof MultipleRandomFeatureConfig) {
-//                MultipleRandomFeatureConfig config = (MultipleRandomFeatureConfig)featureConfig;
-//                List<ConfiguredFeature<?, ?>> list = config.features.stream().map((a) -> a.feature.get()).distinct().collect(Collectors.toCollection(LinkedList::new));
-//                list.add(config.defaultFeature.get());
-//                for (ConfiguredFeature<?,?> conFeat : list){
-//                    if (conFeat.config instanceof BlockClusterFeatureConfig){
-//                        final ResourceLocation featureResLoc = conFeat.feature.getRegistryName();
-//                        final BlockClusterFeatureConfig blockClusterFeatureConfig = ((BlockClusterFeatureConfig) conFeat.config);
-//                        final BlockStateProvider stateProvider = blockClusterFeatureConfig.stateProvider;
-//
-//                        if (!(stateProvider instanceof SimpleBlockStateProvider))
-//                            return false;
-//
-//                        // SimpleBlockStateProvider does not use random or BlockPos in getBlockState, so giving null is safe.
-//                        return this.cactusBlockClass.isInstance(stateProvider.getState(PLACEHOLDER_RAND, BlockPos.ZERO).getBlock())
-//                                && featureResLoc != null && featureCancellations.shouldCancelNamespace(featureResLoc.getNamespace());
-//                    }
-//                }
-//            } else return false;
-//        }
+        ResourceLocation featureResLoc = configuredFeature.feature().getRegistryName();
+        if (featureResLoc == null)
+            return false;
+
+        FeatureConfiguration featureConfig = configuredFeature.config();
+
+        if (featureConfig instanceof RandomPatchConfiguration randomPatchConfiguration) {
+            PlacedFeature placedFeature = randomPatchConfiguration.feature().value();
+            featureConfig = placedFeature.feature().value().config();
+        }
+
+        if (!(featureConfig instanceof BlockColumnConfiguration blockColumnConfiguration) || !namespaces.contains(featureResLoc.getNamespace())) {
+            return false;
+        }
+
+        for (BlockColumnConfiguration.Layer layer : blockColumnConfiguration.layers()) {
+            final BlockStateProvider stateProvider = layer.state();
+            if (!(stateProvider instanceof SimpleStateProvider)) {
+                continue;
+            }
+
+            // SimpleStateProvider does not use Random or BlockPos in getState, but we still provide non-null values just to be safe
+            if (this.cactusBlockClass.isInstance(stateProvider.getState(PLACEHOLDER_RAND, BlockPos.ZERO).getBlock())) {
+                return true;
+            }
+        }
+
         return false;
     }
 

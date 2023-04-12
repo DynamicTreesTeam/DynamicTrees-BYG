@@ -1,13 +1,5 @@
 [
   {
-    "__comment": "Cancel standard tree features from the overworld.",
-    "select": { "name": "byg.*" },
-    "cancellers": {
-      "type": "dtbyg:tree",
-      "namespace": "minecraft"
-    }
-  },
-  {
     "__comment": "{\n    \"select\": {\n      \"name\": \"byg:.*\",\n      \"type\": \"forest\"\n    },\n    \"apply\": {\n      \"density\": [ 1 ],\n      \"chance\": 1.0,\n      \"forestness\" : 1.0\n    }\n  },",
     "select": {
       "name": "byg:maple.*"
@@ -60,10 +52,6 @@
     "select": {
       "name": "byg:enchanted_forest.*"
     },
-    "cancellers": {
-      "types": [ "dtbyg:tree", "dtbyg:fungus" ],
-      "namespace": "minecraft"
-    },
     "apply": {
       "species": {
         "random": {
@@ -115,10 +103,6 @@
     "select": {
       "name": "byg:seasonal_forest.*"
     },
-    "cancellers": {
-      "types": [ "dtbyg:tree", "tree" ],
-      "namespace": "minecraft"
-    },
     "apply": {
       "species": {
         "random": {
@@ -142,10 +126,6 @@
   {
     "select": {
       "name": "byg:seasonal_birch_forest.*"
-    },
-    "cancellers": {
-      "types": [ "dtbyg:tree", "tree" ],
-      "namespace": "minecraft"
     },
     "apply": {
       "species": {
@@ -459,10 +439,6 @@
     "select": {
       "name": "byg:red_oak_forest"
     },
-    "cancellers": {
-      "types": [ "dtbyg:tree", "tree" ],
-      "namespace": "minecraft"
-    },
     "apply": {
       "species": {
         "random": {
@@ -480,10 +456,6 @@
   {
     "select": {
       "name": "byg:red_oak_forest_hills"
-    },
-    "cancellers": {
-      "types": [ "dtbyg:tree", "tree" ],
-      "namespace": "minecraft"
     },
     "apply": {
       "species": {
@@ -591,10 +563,6 @@
     "select": {
       "name": "byg:grassland_plateau"
     },
-    "cancellers": {
-      "types": [ "dtbyg:tree", "tree" ],
-      "namespace": "minecraft"
-    },
     "apply": {
       "species": "oak",
       "density": 0.1,
@@ -604,10 +572,6 @@
   {
     "select": {
       "name": "byg:wooded_grassland_plateau"
-    },
-    "cancellers": {
-      "types": [ "dtbyg:tree", "tree" ],
-      "namespace": "minecraft"
     },
     "apply": {
       "species": {
@@ -655,36 +619,6 @@
     }
   },
   {
-    "select": "byg:cold_swamplands",
-    "cancellers": {
-      "types": [ "dtbyg:tree", "tree" ],
-      "namespace": "minecraft"
-    },
-    "apply": {
-      "species" : "swamp_oak",
-      "density": [ 0.2 ],
-      "chance": 0.75
-    }
-  },
-  {
-    "select": "byg:vibrant_swamplands",
-    "cancellers": {
-      "types": [ "dtbyg:tree", "tree" ],
-      "namespace": "minecraft"
-    },
-    "apply": {
-      "species": {
-        "random": {
-          "swamp_oak": 4,
-          "dtbyg:willow": 2,
-          "dtbyg:mega_willow": 1
-        }
-      },
-      "density": [ 0.2 ],
-      "chance": 0.75
-    }
-  },
-  {
     "select": "byg:pumpkin_forest",
     "apply": {
       "species": {
@@ -700,10 +634,6 @@
   },
   {
     "select": "byg:weeping_witch_forest",
-    "cancellers": {
-      "types": [ "dtbyg:tree", "dtbyg:fungus" ],
-      "namespace": "minecraft"
-    },
     "apply": {
       "species": {
         "random": {
@@ -803,26 +733,6 @@
     }
   },
   {
-    "select": "byg:wooded_meadow",
-    "cancellers": {
-      "types": [ "dtbyg:tree", "tree" ],
-      "namespace": "minecraft"
-    },
-    "apply": {
-      "species": {
-        "random": {
-          "dtbyg:canopy_oak": 2,
-          "dtbyg:canopy_dark_oak": 8,
-          "oak": 1,
-          "spruce": 1
-        }
-      },
-      "density": [ 0.8 ],
-      "chance": 1.0,
-      "forestness": 1
-    }
-  },
-  {
     "select": {
       "name": "byg:.*coniferous_forest.*"
     },
@@ -889,10 +799,6 @@
   {
     "select": {
       "name": "byg:ebony.*"
-    },
-    "cancellers": {
-      "types": [ "dtbyg:tree", "dtbyg:fungus" ],
-      "namespace": "minecraft"
     },
     "apply": {
       "species": "dtbyg:ebony",
@@ -971,10 +877,6 @@
     "select": {
       "name": "byg:great_lake.*"
     },
-    "cancellers": {
-      "types": [ "dtbyg:tree", "tree" ],
-      "namespace": "minecraft"
-    },
     "apply": {
       "species": {
         "random": {
@@ -988,36 +890,9 @@
     }
   },
   {
-    "select": "byg:dover_mountains",
-    "cancellers": {
-      "types": [ "dtbyg:tree", "tree" ],
-      "namespace": "minecraft"
-    },
-    "apply": {
-      "species": {
-        "random": {
-          "spruce": 1,
-          "dtbyg:tall_spruce": 1,
-          "dtbyg:giga_spruce": 1,
-          "dtbyg:pine": 1,
-          "dtbyg:mega_pine": 1,
-          "dtbyg:aspen": 1,
-          "dtbyg:canopy_aspen": 1
-        }
-      },
-      "density": [ 0.6 ],
-      "chance": 1.0,
-      "forestness": 1
-    }
-  },
-  {
     "select": {
       "name": "minecraft:.*",
       "type": "beach"
-    },
-    "cancellers": {
-      "type": "dtbyg:tree",
-      "namespace": "minecraft"
     },
     "apply": {
       "species": {
@@ -1096,10 +971,6 @@
     "select": {
       "name": "byg:woodlands"
     },
-    "cancellers": {
-      "types": [ "dtbyg:tree", "dtbyg:fungus" ],
-      "namespace": "minecraft"
-    },
     "apply": {
       "species": {
         "random": {
@@ -1148,10 +1019,6 @@
     "select": {
       "name": "byg:.*ancient_forest"
     },
-    "cancellers": {
-      "types": [ "tree", "dtbyg:tree", "dtbyg:fungus", "dtbyg:giant_flower" ],
-      "namespace": "minecraft"
-    },
     "apply": {
       "species": {
         "random": {
@@ -1191,10 +1058,6 @@
     "select": {
       "name": "byg:baobab_savanna"
     },
-    "cancellers": {
-      "types": [ "dtbyg:tree", "tree" ],
-      "namespace": "minecraft"
-    },
     "apply": {
       "species": {
         "random": {
@@ -1209,10 +1072,6 @@
   {
     "select": {
       "name": "byg:araucaria.*"
-    },
-    "cancellers": {
-      "types": [ "dtbyg:tree", "tree" ],
-      "namespace": "minecraft"
     },
     "apply": {
       "species": {
@@ -1271,15 +1130,6 @@
       "chance": 1.0,
       "forestness": 1,
       "multipass" : true
-    }
-  },
-  {
-    "select": {
-      "name": "byg:tropical_fungal.*forest.*"
-    },
-    "cancellers": {
-      "types": ["fungus", "dtbyg:tree", "dtbyg:fungus"],
-      "namespace": "minecraft"
     }
   },
   {
@@ -1377,10 +1227,6 @@
     "select": {
       "name": "byg:sythian_torrids"
     },
-    "cancellers": {
-      "type": "dtbyg:fungus",
-      "namespace": "minecraft"
-    },
     "apply": {
       "species": "dtbyg:sythian",
       "density": [ 2.0 ],
@@ -1390,10 +1236,6 @@
   {
     "select": {
       "name": "byg:withering_woods"
-    },
-    "cancellers": {
-      "type": "dtbyg:fungus",
-      "namespace": "minecraft"
     },
     "apply": {
       "species": {
@@ -1412,11 +1254,6 @@
   {
     "select": {
       "name": "byg:weeping_mire"
-    },
-    "cancellers": {
-      "types": [ "dtbyg:tree", "dtbyg:fungus" ],
-      "namespace": "minecraft",
-      "stages": ["vegetal_decoration", "underground_decoration"]
     },
     "apply": {
       "species": "dtbyg:lament",
@@ -1488,10 +1325,6 @@
   {
     "only_if_loaded": "dynamictreesplus",
     "select": "byg:warped_desert",
-    "cancellers": {
-      "type": "dtbyg:warped_cactus",
-      "namespace": "minecraft"
-    },
     "apply": {
       "species": "dtbyg:warped_cactus",
       "density" : { "math": { "add" : [ { "mul" : [ "noise", 0.6 ] }, 0.4 ] } },
@@ -1503,10 +1336,6 @@
     "only_if_loaded": "dynamictreesplus",
     "select": {
       "name": "byg:shattered_desert.*"
-    },
-    "cancellers": {
-      "type": "dtbyg:oddity_cactus",
-      "namespace": "minecraft"
     },
     "apply": {
       "species": "dtbyg:oddity_cactus",
@@ -1525,11 +1354,6 @@
   {
     "only_if_loaded": "dynamictreesplus",
     "select": "byg:mojave_desert",
-    "cancellers": {
-      "method": "splice_after",
-      "type": "dynamictreesplus:cactus",
-      "namespace": "minecraft"
-    },
     "apply": {
       "species": {
         "random": {
@@ -1539,52 +1363,6 @@
       },
       "density": [ 0.2 ],
       "chance": 0.5
-    }
-  },
-  {
-    "only_if_loaded": "dynamictreesplus",
-    "select": "byg:red_desert",
-    "cancellers": {
-      "type": "dynamictreesplus:cactus",
-      "namespace": "minecraft"
-    },
-    "apply": {
-      "species": {
-        "random": {
-          "dynamictreesplus:saguaro_cactus": 1,
-          "dynamictreesplus:pillar_cactus": 1
-        }
-      },
-      "density": [ 0.6 ],
-      "chance": 0.6
-    }
-  },
-  {
-    "select": "byg:lush_red_desert",
-    "apply": {
-      "species": "dtbyg:palo_verde",
-      "density": [ 0.1 ],
-      "chance": 0.1
-    }
-  },
-  {
-    "only_if_loaded": "dynamictreesplus",
-    "select": "byg:lush_red_desert",
-    "cancellers": {
-      "method": "splice_after",
-      "types": [ "dtbyg:tree", "dynamictreesplus:cactus" ],
-      "namespace": "minecraft"
-    },
-    "apply": {
-      "species": {
-        "random": {
-          "dynamictreesplus:saguaro_cactus": 2,
-          "dynamictreesplus:pillar_cactus": 2,
-          "dtbyg:palo_verde": 1
-        }
-      },
-      "density": [ 0.4 ],
-      "chance": 0.3
     }
   }
 ]
