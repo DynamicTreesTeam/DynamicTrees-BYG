@@ -23,14 +23,14 @@
     }
   ],
   "fruits": [
-    "dtbyg:baobab"
+    "dtbyg:baobab_fruit"
   ],
   "features" : [
     "mound",
     {
       "name": "fruit",
       "properties": {
-        "fruit": "dtbyg:baobab"
+        "fruit": "dtbyg:baobab_fruit"
       }
     }
   ]

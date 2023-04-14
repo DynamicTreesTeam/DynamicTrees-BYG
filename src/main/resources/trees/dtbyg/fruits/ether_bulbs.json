@@ -1,6 +1,4 @@
 {
-  "_todo": "Remove block registry name in 1.18 so it is called `dtbyg:green_apple`.",
-  "block_registry_name": "ether_bulbs_fruit",
   "item_stack": "byg:ether_bulbs",
   "block_shapes": [
     { "function": "fruit", "parameters": { "radius": 1, "height": 1, "stem_length": 0, "fraction": 16 } },

@@ -3,53 +3,7 @@
     "__comment": "Cancel standard tree features from the overworld.",
     "select": { "name": "byg.*" },
     "cancellers": {
-      "types": [ "dtbyg:tree", "tree" ],
-      "namespaces": ["byg", "minecraft"]
-    }
-  },
-  {
-    "select": {
-      "name": "byg:enchanted_forest.*"
-    },
-    "cancellers": {
-      "types": [
-        "dtbyg:tree",
-        "dtbyg:fungus"
-      ],
-      "namespaces": ["byg", "minecraft"]
-    }
-  },
-  {
-    "select": "byg:weeping_witch_forest",
-    "cancellers": {
-      "types": [
-        "dtbyg:tree",
-        "dtbyg:fungus"
-      ],
-      "namespaces": ["byg", "minecraft"]
-    }
-  },
-  {
-    "select": {
-      "name": "byg:ebony.*"
-    },
-    "cancellers": {
-      "types": [
-        "dtbyg:tree",
-        "dtbyg:fungus"
-      ],
-      "namespaces": ["byg", "minecraft"]
-    }
-  },
-  {
-    "select": {
-      "name": "byg:woodlands"
-    },
-    "cancellers": {
-      "types": [
-        "dtbyg:tree",
-        "dtbyg:fungus"
-      ],
+      "types": [ "dtbyg:tree", "tree", "dtbyg:fungus" ],
       "namespaces": ["byg", "minecraft"]
     }
   },
@@ -67,54 +21,6 @@
       "namespaces": ["byg", "minecraft"]
     }
   },
-  {
-    "select": {
-      "name": "byg:tropical_fungal.*forest.*"
-    },
-    "cancellers": {
-      "types": [
-        "fungus",
-        "dtbyg:tree",
-        "dtbyg:fungus"
-      ],
-      "namespaces": ["byg", "minecraft"]
-    }
-  },
-  {
-    "select": {
-      "name": "byg:sythian_torrids"
-    },
-    "cancellers": {
-      "type": "dtbyg:fungus",
-      "namespaces": ["byg", "minecraft"]
-    }
-  },
-  {
-    "select": {
-      "name": "byg:withering_woods"
-    },
-    "cancellers": {
-      "type": "dtbyg:fungus",
-      "namespaces": ["byg", "minecraft"]
-    }
-  },
-  {
-    "select": {
-      "name": "byg:weeping_mire"
-    },
-    "cancellers": {
-      "types": [
-        "dtbyg:tree",
-        "dtbyg:fungus"
-      ],
-      "namespaces": ["byg", "minecraft"],
-      "stages": [
-        "vegetal_decoration",
-        "underground_decoration"
-      ]
-    }
-  },
-
 
   {
     "only_if_loaded": "dynamictreesplus",
@@ -137,6 +43,15 @@
   {
     "only_if_loaded": "dynamictreesplus",
     "select": "byg:mojave_desert",
+    "cancellers": {
+      "method": "splice_after",
+      "type": "dynamictreesplus:cactus",
+      "namespace": "minecraft"
+    }
+  },
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "select": "byg:windswept_desert",
     "cancellers": {
       "method": "splice_after",
       "type": "dynamictreesplus:cactus",

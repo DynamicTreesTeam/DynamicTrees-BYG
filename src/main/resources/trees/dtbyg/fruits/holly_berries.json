@@ -1,6 +1,4 @@
 {
-  "_todo": "Remove block registry name in 1.18 so it is called `dtbyg:holly_berries`.",
-  "block_registry_name": "holly_berries_fruit",
   "item_stack": "byg:holly_berries",
   "block_shapes": [
     { "function": "fruit", "parameters": { "radius": 1, "height": 1, "stem_length": 0, "fraction": 16 } },

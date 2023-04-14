@@ -18,7 +18,7 @@
     {
       "name": "roots",
       "properties": {
-        "min_trunk_radius": 6,
+        "min_trunk_radius": 8,
         "level_limit": 4,
         "scale_factor": 14
       }

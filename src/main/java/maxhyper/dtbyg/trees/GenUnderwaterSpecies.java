@@ -31,7 +31,7 @@ public class GenUnderwaterSpecies extends Species {
                 final BlockPos down = pos.below(i);
                 final BlockState downState = world.getBlockState(down);
 
-                if (!isWater(downState) && isAcceptableSoilUnderWater(downState))
+                if (!isWater(downState) && isAcceptableSoilForWorldgen(downState))
                     return true;
             }
             return false;
@@ -42,23 +42,16 @@ public class GenUnderwaterSpecies extends Species {
 
     @Override
     public BlockPos preGeneration(LevelAccessor world, BlockPos.MutableBlockPos rootPos, int radius, Direction facing, SafeChunkBounds safeBounds, JoCode joCode) {
-        BlockPos root = rootPos;
         if (this.isWater(world.getBlockState(rootPos))){
-            int i=1;
-            for (; i<=maxDepth; i++){
-                final BlockPos down = rootPos.below(i);
-                final BlockState downState = world.getBlockState(down);
+            for (int i=1; i<=maxDepth; i++){
+                rootPos.move(Direction.DOWN);
+                final BlockState downState = world.getBlockState(rootPos);
 
-                if (!isWater(downState) && isAcceptableSoilUnderWater(downState))
+                if (!isWater(downState) && isAcceptableSoilForWorldgen(downState))
                     break;
-                root = root.below(i);
             }
         }
         return super.preGeneration(world, rootPos, radius, facing, safeBounds, joCode);
-    }
-
-    public boolean isAcceptableSoilUnderWater(BlockState soilBlockState) {
-        return SoilHelper.isSoilAcceptable(soilBlockState, this.soilTypeFlags | SoilHelper.getSoilFlags("sand_like", "mud_like"));
     }
 
 }

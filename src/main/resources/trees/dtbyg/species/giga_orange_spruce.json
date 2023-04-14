@@ -7,7 +7,12 @@
   "growth_rate": 1.5,
   "soil_longevity": 32,
   "max_branch_radius": 24,
-  "growth_logic_kit": "mega_conifer",
+  "growth_logic_kit": {
+        "name": "conifer",
+        "properties": {
+            "energy_divisor": 5
+        }
+    },
   "leaves_properties": "dtbyg:orange_spruce",
   "environment_factors" : {
     "hot": 0.50,

@@ -1,0 +1,40 @@
+{
+  "multipart": [
+    {
+      "when": {"age": "0"},
+      "apply": [
+        { "model": "dtbyg:block/fruit/holly_berries_age0" },
+        { "model": "dtbyg:block/fruit/holly_berries_age0", "y": 90 },
+        { "model": "dtbyg:block/fruit/holly_berries_age0", "y": 180 },
+        { "model": "dtbyg:block/fruit/holly_berries_age0", "y": 270 }
+      ]
+    },
+    {
+      "when": {"age": "1"},
+      "apply": [
+        { "model": "dtbyg:block/fruit/holly_berries_age1" },
+        { "model": "dtbyg:block/fruit/holly_berries_age1", "y": 90 },
+        { "model": "dtbyg:block/fruit/holly_berries_age1", "y": 180 },
+        { "model": "dtbyg:block/fruit/holly_berries_age1", "y": 270 }
+      ]
+    },
+    {
+      "when": {"age": "2"},
+      "apply": [
+        { "model": "dtbyg:block/fruit/holly_berries_age2" },
+        { "model": "dtbyg:block/fruit/holly_berries_age2", "y": 90 },
+        { "model": "dtbyg:block/fruit/holly_berries_age2", "y": 180 },
+        { "model": "dtbyg:block/fruit/holly_berries_age2", "y": 270 }
+      ]
+    },
+    {
+      "when": {"age": "3"},
+      "apply": [
+        { "model": "dtbyg:block/fruit/holly_berries_age3" },
+        { "model": "dtbyg:block/fruit/holly_berries_age3", "y": 90 },
+        { "model": "dtbyg:block/fruit/holly_berries_age3", "y": 180 },
+        { "model": "dtbyg:block/fruit/holly_berries_age3", "y": 270 }
+      ]
+    }
+  ]
+}

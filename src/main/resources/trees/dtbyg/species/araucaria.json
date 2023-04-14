@@ -19,6 +19,14 @@
   "perfect_biomes": { "name": "byg:.*araucaria.*" },
   "features": [
     "mound",
-    "bottom_flare"
+    "bottom_flare",
+    {
+      "name": "roots",
+      "properties": {
+        "min_trunk_radius": 8,
+        "levels": 3,
+        "scale_factor": 14
+      }
+    }
   ]
 }

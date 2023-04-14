@@ -21,6 +21,7 @@
 //import net.minecraft.world.biome.Biome;
 //import net.minecraft.world.gen.feature.ConfiguredFeature;
 //import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+//import potionstudios.byg.common.world.feature.BYGFeatures;
 //
 //import java.util.Random;
 //import java.util.function.BiFunction;
@@ -66,7 +67,7 @@
 //
 //    protected void setMushrooms (){
 //        mushrooms
-//                .add(BYGConfiguredFeatures.GREEN_MUSHROOM_HUGE, 1)
+//                .add(BYGFeatures.GREEN_MUSHROOM_HUGE, 1)
 //                .add(BYGConfiguredFeatures.WOOD_BLEWIT_HUGE, 1)
 //                .add(BYGConfiguredFeatures.WEEPING_MILKCAP_HUGE, 1)
 //                .add(BYGConfiguredFeatures.BLACK_PUFF_HUGE, 1);

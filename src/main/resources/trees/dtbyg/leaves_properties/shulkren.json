@@ -1,7 +1,6 @@
 {
   "type": "dynamictrees:wart",
   "primitive_leaves": "byg:shulkren_wart_block",
-  "cell_kit": "dtbyg:shulkren_fungus",
   "smother": 8,
   "light_requirement": 0,
   "fire_spread": 0,

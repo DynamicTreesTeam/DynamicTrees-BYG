@@ -9,7 +9,7 @@
           "conditions": [
             {
               "condition": "minecraft:block_state_property",
-              "block": "dtbyg:holly_berries_fruit",
+              "block": "dtbyg:holly_berries",
               "properties": {
                 "age": "3"
               }

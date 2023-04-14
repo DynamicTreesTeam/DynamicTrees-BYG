@@ -20,16 +20,9 @@
   ],
   "acceptable_soils": ["dirt_like", "sand_like"],
   "fruits": [
-    "dtbyg:joshua"
+    "dtbyg:joshua_fruit"
   ],
   "features" : [
-    {
-      "name": "alt_leaves",
-      "properties": {
-        "alternative_leaves": "dtbyg:ripe_joshua",
-        "place_chance": 0
-      }
-    },
     {
       "name": "rot_soil",
       "properties": {
@@ -40,7 +33,7 @@
     {
       "name": "fruit",
       "properties": {
-        "fruit": "dtbyg:joshua",
+        "fruit": "dtbyg:joshua_fruit",
         "quantity": 8
       }
     }

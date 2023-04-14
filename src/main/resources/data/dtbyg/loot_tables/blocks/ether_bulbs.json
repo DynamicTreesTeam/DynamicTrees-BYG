@@ -9,13 +9,13 @@
           "conditions": [
             {
               "condition": "minecraft:block_state_property",
-              "block": "dtbyg:green_apple_fruit",
+              "block": "dtbyg:ether_bulbs",
               "properties": {
                 "age": "3"
               }
             }
           ],
-          "name": "byg:green_apple"
+          "name": "byg:ether_bulbs"
         }
       ]
     }
