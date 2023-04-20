@@ -17,7 +17,7 @@
     "dry": 0.25,
     "wet": 0.75
   },
-  "common_override": { "name": "byg:.*boreal.*" },
+  "common_override": { "name": "byg:borealis_grove" },
   "perfect_biomes": { "type": "coniferous" },
   "mega_species": "mega_spruce",
   "features" : [

@@ -512,22 +512,7 @@
       "density": [ 0.2 ],
       "chance": 0.2
     }
-  },
-  {
-    "select": {
-      "name": "byg:baobab_savanna"
-    },
-    "apply": {
-      "species": {
-        "random": {
-          "dtbyg:baobab": 4,
-          "dynamictrees:acacia": 1
-        }
-      },
-      "density": [ 0.1 ],
-      "chance": 0.3
-    }
-  },
+  }
 
   {
     "select": {

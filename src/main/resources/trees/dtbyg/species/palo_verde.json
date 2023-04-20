@@ -1,6 +1,6 @@
 {
   "family": "dtbyg:palo_verde",
-  "tapering": 0.1,
+  "tapering": 0.2,
   "signal_energy": 10.0,
   "up_probability": 2,
   "lowest_branch_height": 2,

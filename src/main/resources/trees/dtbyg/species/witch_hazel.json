@@ -45,7 +45,7 @@
             "max_attempts": 2
           }
         },
-        "biome_predicate": { "names": ["byg:ebony_woods", "byg:.*ancient_forest"] }
+        "biome_predicate": { "name": "byg:weeping_witch_forest" }
       }
     }
   ]
