@@ -1,0 +1,7 @@
+{
+  "parent": "dynamictrees:item/branch",
+  "textures": {
+    "bark": "byg:block/fungal_imparius_stem",
+    "rings": "byg:block/fungal_imparius_stem_top"
+  }
+}

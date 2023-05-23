@@ -1,7 +1,0 @@
-{
-  "loader": "dynamictrees:branch",
-  "textures": {
-    "bark": "byg:block/stripped_redwood_log",
-    "rings": "byg:block/stripped_redwood_top"
-  }
-}

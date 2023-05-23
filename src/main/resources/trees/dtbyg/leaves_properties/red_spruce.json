@@ -1,5 +1,6 @@
 {
   "primitive_leaves": "byg:red_spruce_leaves",
   "smother": 3,
-  "cell_kit": "dynamictrees:conifer"
+  "cell_kit": "dynamictrees:conifer",
+  "leaves_texture": "byg:block/spruce_leaves_red"
 }

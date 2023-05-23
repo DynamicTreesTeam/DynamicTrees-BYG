@@ -2,5 +2,6 @@
   "type": "scruffy",
   "scruffy_leaf_chance": 0.66,
   "scruffy_max_hydro": 1,
-  "primitive_leaves": "byg:brown_oak_leaves"
+  "primitive_leaves": "byg:brown_oak_leaves",
+  "leaves_texture": "byg:block/oak_leaves_dry_brown"
 }

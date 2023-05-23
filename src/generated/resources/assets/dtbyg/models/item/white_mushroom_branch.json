@@ -1,0 +1,7 @@
+{
+  "parent": "dynamictrees:item/branch",
+  "textures": {
+    "bark": "byg:block/white_mushroom_stem",
+    "rings": "minecraft:block/mushroom_block_inside"
+  }
+}

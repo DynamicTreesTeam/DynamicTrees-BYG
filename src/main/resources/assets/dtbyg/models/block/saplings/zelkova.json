@@ -1,8 +1,0 @@
-{
-    "parent": "dynamictrees:block/smartmodel/sapling",
-    "textures": {
-        "particle": "byg:block/zelkova_leaves",
-        "log": "byg:block/zelkova_log",
-        "leaves": "byg:block/zelkova_leaves"
-    }
-}

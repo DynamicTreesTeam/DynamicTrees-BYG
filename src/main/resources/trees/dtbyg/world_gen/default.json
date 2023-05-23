@@ -643,7 +643,16 @@
       "forestness": 1
     }
   },
-
+  {
+    "select": {
+      "name": "byg:white_mangrove_marshes"
+    },
+    "apply": {
+      "species": "dtbyg:mangrove",
+      "density": [ 1.0 ],
+      "chance": 1.0
+    }
+  },
 
 
 

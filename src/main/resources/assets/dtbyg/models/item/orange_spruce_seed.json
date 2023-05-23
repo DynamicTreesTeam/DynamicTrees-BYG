@@ -1,6 +1,0 @@
-{
-    "parent":"dynamictrees:item/standard_seed",
-    "textures": {
-        "layer0":"dtbyg:item/orange_spruce_seed"
-    }
-}

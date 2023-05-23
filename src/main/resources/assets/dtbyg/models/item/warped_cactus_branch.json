@@ -1,7 +1,0 @@
-{
-    "parent": "dynamictrees:item/branch",
-    "textures": {
-        "bark": "byg:block/warped_cactus_side",
-        "rings": "byg:block/warped_cactus_top"
-    }
-}

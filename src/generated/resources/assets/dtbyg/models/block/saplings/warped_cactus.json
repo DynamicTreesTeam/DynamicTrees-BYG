@@ -1,0 +1,9 @@
+{
+  "parent": "dynamictreesplus:block/smart_model/saguaro_cactus",
+  "textures": {
+    "particle": "byg:block/warped_cactus_side",
+    "side": "byg:block/warped_cactus_side",
+    "top": "byg:block/warped_cactus_top",
+    "bottom": "byg:block/warped_cactus_bottom"
+  }
+}

@@ -1,6 +1,0 @@
-{
-	"multipart": [
-		{   "apply": { "model": "byg:block/overgrown_crimson_blackstone" }},
-		{	"apply": { "model": "dynamictrees:block/roots" }}
-	]
-}

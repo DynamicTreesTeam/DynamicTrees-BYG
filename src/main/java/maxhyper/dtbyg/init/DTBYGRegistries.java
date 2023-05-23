@@ -1,16 +1,21 @@
 package maxhyper.dtbyg.init;
 
+import com.ferreusveritas.dynamictrees.DynamicTrees;
+import com.ferreusveritas.dynamictrees.api.applier.ApplierRegistryEvent;
 import com.ferreusveritas.dynamictrees.api.cell.CellKit;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
 import com.ferreusveritas.dynamictrees.api.worldgen.FeatureCanceller;
 import com.ferreusveritas.dynamictrees.block.rooty.SoilProperties;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
+import com.ferreusveritas.dynamictrees.resources.Resources;
 import com.ferreusveritas.dynamictrees.systems.fruit.Fruit;
 import com.ferreusveritas.dynamictrees.systems.genfeature.GenFeature;
 import com.ferreusveritas.dynamictrees.tree.family.Family;
+import com.ferreusveritas.dynamictrees.tree.species.Mushroom;
 import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.ferreusveritas.dynamictrees.util.CommonVoxelShapes;
 import com.ferreusveritas.dynamictrees.worldgen.featurecancellation.TreeFeatureCanceller;
+import com.google.gson.JsonElement;
 import maxhyper.dtbyg.DynamicTreesBYG;
 import maxhyper.dtbyg.blocks.LavaSoilProperties;
 import maxhyper.dtbyg.cancellers.VegetationReplacement;
@@ -19,17 +24,27 @@ import maxhyper.dtbyg.fruits.EtherBulbsFruit;
 import maxhyper.dtbyg.genfeatures.DTBYGGenFeatures;
 import maxhyper.dtbyg.growthlogic.DTBYGGrowthLogicKits;
 import maxhyper.dtbyg.trees.*;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.packs.resources.PreparableReloadListener;
+import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.ForgeRegistries;
 import potionstudios.byg.BYGConstants;
 import potionstudios.byg.common.world.feature.config.BYGMushroomConfig;
 import potionstudios.byg.common.world.feature.config.BYGTreeConfig;
 import potionstudios.byg.common.world.feature.config.GiantFlowerConfig;
+import potionstudios.byg.common.world.feature.gen.overworld.trees.structure.TreeFromStructureNBTConfig;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
 
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class DTBYGRegistries {
@@ -44,7 +59,7 @@ public class DTBYGRegistries {
     public static void setup() {
         BYGConstants.ENABLE_CACTI = false;
 
-        CommonVoxelShapes.SHAPES.put(DynamicTreesBYG.resLoc("sythian").toString(), SYTHIAN_MUSHROOM);
+        CommonVoxelShapes.SHAPES.put(DynamicTreesBYG.location("sythian").toString(), SYTHIAN_MUSHROOM);
     }
 
     public static void setupBlocks() {
@@ -103,33 +118,33 @@ public class DTBYGRegistries {
 
     @SubscribeEvent
     public static void registerSpeciesTypes (final TypeRegistryEvent<Species> event) {
-        event.registerType(DynamicTreesBYG.resLoc("poplar"), PoplarSpecies.TYPE);
-        event.registerType(DynamicTreesBYG.resLoc("twiglet"), TwigletSpecies.TYPE);
-        event.registerType(DynamicTreesBYG.resLoc("generates_underwater"), GenUnderwaterSpecies.TYPE);
-        event.registerType(DynamicTreesBYG.resLoc("generates_on_extra_soil"), GenOnExtraSoilSpecies.TYPE);
-        event.registerType(DynamicTreesBYG.resLoc("mangrove"), MangroveSpecies.TYPE);
-        event.registerType(DynamicTreesBYG.resLoc("lament"), LamentSpecies.TYPE);
+        event.registerType(DynamicTreesBYG.location("poplar"), PoplarSpecies.TYPE);
+        event.registerType(DynamicTreesBYG.location("twiglet"), TwigletSpecies.TYPE);
+        event.registerType(DynamicTreesBYG.location("generates_underwater"), GenUnderwaterSpecies.TYPE);
+        event.registerType(DynamicTreesBYG.location("generates_on_extra_soil"), GenOnExtraSoilSpecies.TYPE);
+        event.registerType(DynamicTreesBYG.location("mangrove"), MangroveSpecies.TYPE);
+        event.registerType(DynamicTreesBYG.location("lament"), LamentSpecies.TYPE);
     }
     
     @SubscribeEvent
     public static void registerFamilyTypes (final TypeRegistryEvent<Family> event) {
-        event.registerType(DynamicTreesBYG.resLoc("diagonal_palm"), DiagonalPalmFamily.TYPE);
-        event.registerType(DynamicTreesBYG.resLoc("sythian_fungus"), SythianFungusFamily.TYPE);
-        event.registerType(DynamicTreesBYG.resLoc("nightshade"), NightshadeFamily.TYPE);
+        event.registerType(DynamicTreesBYG.location("diagonal_palm"), DiagonalPalmFamily.TYPE);
+        event.registerType(DynamicTreesBYG.location("sythian_fungus"), SythianFungusFamily.TYPE);
+        event.registerType(DynamicTreesBYG.location("nightshade"), NightshadeFamily.TYPE);
     }
 
     @SubscribeEvent
     public static void registerSoilPropertiesTypes (final TypeRegistryEvent<SoilProperties> event) {
-        event.registerType(DynamicTreesBYG.resLoc( "lava"), LavaSoilProperties.TYPE);
+        event.registerType(DynamicTreesBYG.location( "lava"), LavaSoilProperties.TYPE);
     }
 
     @SubscribeEvent
     public static void registerFruitTypes(final TypeRegistryEvent<Fruit> event) {
-        event.registerType(DynamicTreesBYG.resLoc("ether_bulbs"), EtherBulbsFruit.TYPE);
+        event.registerType(DynamicTreesBYG.location("ether_bulbs"), EtherBulbsFruit.TYPE);
     }
 
     @SubscribeEvent
-    public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
+    public static void onReloadApplierRegistry(final ApplierRegistryEvent.Reload<Family, JsonElement> event) {
 //        ARISIAN_BLOOM_BRANCH = new DynamicArisianBloomBranch(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT, color).instabreak().sound(SoundType.TWISTING_VINES).noOcclusion().noCollission().lightLevel((state) -> 10));
 //        ARISIAN_BLOOM_BRANCH.setRegistryName(DynamicTreesBYG.resLoc("arisian_bloom_branch"));
 //        event.getRegistry().register(ARISIAN_BLOOM_BRANCH);
@@ -137,13 +152,15 @@ public class DTBYGRegistries {
         setupBlocks();
     }
 
-    public static final FeatureCanceller BYG_TREE_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.resLoc("tree"), BYGTreeConfig.class);
-    public static final FeatureCanceller BYG_FUNGUS_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.resLoc("fungus"), BYGMushroomConfig.class);
-    public static final FeatureCanceller GIANT_FLOWER_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.resLoc("giant_flower"), GiantFlowerConfig.class);
+    public static final FeatureCanceller BYG_TREE_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("tree"), BYGTreeConfig.class);
+    public static final FeatureCanceller BYG_TREE_STRUCTURE_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("tree_structure"), TreeFromStructureNBTConfig.class);
+    public static final FeatureCanceller BYG_FUNGUS_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("fungus"), BYGMushroomConfig.class);
+    public static final FeatureCanceller GIANT_FLOWER_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("giant_flower"), GiantFlowerConfig.class);
 
     @SubscribeEvent
     public static void onFeatureCancellerRegistry(final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<FeatureCanceller> event) {
         event.getRegistry().registerAll(BYG_TREE_CANCELLER);
+        event.getRegistry().registerAll(BYG_TREE_STRUCTURE_CANCELLER);
         event.getRegistry().registerAll(BYG_FUNGUS_CANCELLER);
         event.getRegistry().registerAll(GIANT_FLOWER_CANCELLER);
     }

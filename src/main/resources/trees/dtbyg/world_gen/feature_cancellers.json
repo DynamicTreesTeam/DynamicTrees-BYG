@@ -9,6 +9,15 @@
   },
   {
     "select": {
+      "name": "byg:white_mangrove_marshes"
+    },
+    "cancellers": {
+      "types": [ "dtbyg:tree_structure" ],
+      "namespaces": ["byg", "minecraft"]
+    }
+  },
+  {
+    "select": {
       "name": "byg:.*ancient_forest"
     },
     "cancellers": {

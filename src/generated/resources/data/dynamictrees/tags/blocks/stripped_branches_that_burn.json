@@ -1,0 +1,30 @@
+{
+  "replace": false,
+  "values": [
+    "dtbyg:stripped_aspen_branch",
+    "dtbyg:stripped_baobab_branch",
+    "dtbyg:stripped_blue_enchanted_branch",
+    "dtbyg:stripped_cherry_branch",
+    "dtbyg:stripped_cika_branch",
+    "dtbyg:stripped_cypress_branch",
+    "dtbyg:stripped_ebony_branch",
+    "dtbyg:stripped_ether_branch",
+    "dtbyg:stripped_fir_branch",
+    "dtbyg:stripped_green_enchanted_branch",
+    "dtbyg:stripped_holly_branch",
+    "dtbyg:stripped_jacaranda_branch",
+    "dtbyg:stripped_mahogany_branch",
+    "dtbyg:stripped_mangrove_branch",
+    "dtbyg:stripped_maple_branch",
+    "dtbyg:stripped_nightshade_branch",
+    "dtbyg:stripped_palm_branch",
+    "dtbyg:stripped_palo_verde_branch",
+    "dtbyg:stripped_pine_branch",
+    "dtbyg:stripped_rainbow_eucalyptus_branch",
+    "dtbyg:stripped_redwood_branch",
+    "dtbyg:stripped_skyris_branch",
+    "dtbyg:stripped_willow_branch",
+    "dtbyg:stripped_witch_hazel_branch",
+    "dtbyg:stripped_zelkova_branch"
+  ]
+}

@@ -1,7 +1,5 @@
 {
   "type": "scruffy",
   "primitive_leaves": "byg:red_maple_leaves",
-
-  "scruffy_leaf_chance": 0.66,
-  "scruffy_max_hydro": 1
+  "leaves_texture": "byg:block/maple_leaves_red"
 }

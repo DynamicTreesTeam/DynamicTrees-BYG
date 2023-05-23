@@ -1,6 +1,0 @@
-{
-	"multipart": [
-		{   "apply": { "model": "byg:block/overgrown_netherrack" }},
-		{	"apply": { "model": "dynamictrees:block/roots" }}
-	]
-}

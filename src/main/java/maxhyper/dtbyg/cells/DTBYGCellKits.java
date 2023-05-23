@@ -132,7 +132,7 @@ public class DTBYGCellKits {
 
         @Override
         public Cell getCellForBranch(int radius, int meta) {
-            if (meta == MetadataCell.CONIFERTOP) return poplarTopBranch;
+            if (meta == MetadataCell.TOP_BRANCH) return poplarTopBranch;
             if (radius == 1) return poplarBranch;
             if (radius < 4) return poplarUpperTrunk;
             return CellNull.NULL_CELL;
@@ -190,7 +190,7 @@ public class DTBYGCellKits {
     };
 
     // TODO: Still needs some work.
-    public static final CellKit WILLOW = new CellKit(DynamicTreesBYG.resLoc("willow")) {
+    public static final CellKit WILLOW = new CellKit(DynamicTreesBYG.location("willow")) {
 
         private final Cell branch = new WillowBranchCell();
 
@@ -234,7 +234,7 @@ public class DTBYGCellKits {
         }
     };
 
-    public static final CellKit ROUND_CONIFER = new CellKit(DynamicTreesBYG.resLoc("round_conifer")) {
+    public static final CellKit ROUND_CONIFER = new CellKit(DynamicTreesBYG.location("round_conifer")) {
 
         private final Cell coniferBranch = new NormalCell(3);
         private final Cell coniferTopBranch = new ConiferTopBranchCell();
@@ -260,7 +260,7 @@ public class DTBYGCellKits {
 
         @Override
         public Cell getCellForBranch(int radius, int meta) {
-            if (meta == MetadataCell.CONIFERTOP) {
+            if (meta == MetadataCell.TOP_BRANCH) {
                 return coniferTopBranch;
             } else if (radius == 1) {
                 return coniferBranch;
@@ -286,7 +286,7 @@ public class DTBYGCellKits {
 
     };
 
-    public static final CellKit BUSHY = new CellKit(DynamicTreesBYG.resLoc("bushy")) {
+    public static final CellKit BUSHY = new CellKit(DynamicTreesBYG.location("bushy")) {
 
         private final Cell branchCell = new BushyBranchCell();
         private final Cell coniferTopBranch = new ConiferTopBranchCell();
@@ -311,7 +311,7 @@ public class DTBYGCellKits {
 
         @Override
         public Cell getCellForBranch(int radius, int meta) {
-            if (meta == MetadataCell.CONIFERTOP) {
+            if (meta == MetadataCell.TOP_BRANCH) {
                 return coniferTopBranch;
             } else if (radius == 1) {
                 return branchCell;
@@ -337,7 +337,7 @@ public class DTBYGCellKits {
 
     };
 
-    public static final CellKit SYTHIAN_FUNGUS = new CellKit(DynamicTreesBYG.resLoc("sythian_fungus")) {
+    public static final CellKit SYTHIAN_FUNGUS = new CellKit(DynamicTreesBYG.location("sythian_fungus")) {
 
         private final Cell sythianBranch = new SythianWartCell(3);
         private final Cell sythianTopBranch = new SythianWartCell(4);
@@ -362,7 +362,7 @@ public class DTBYGCellKits {
 
         @Override
         public Cell getCellForBranch(int radius, int meta) {
-            if (meta == MetadataCell.CONIFERTOP) {
+            if (meta == MetadataCell.TOP_BRANCH) {
                 return sythianTopBranch;
             } else if (radius == 3){
                 return sythianBranch;
@@ -388,7 +388,7 @@ public class DTBYGCellKits {
 
     };
 
-    public static final CellKit LAMENT = new CellKit(DynamicTreesBYG.resLoc("lament")) {
+    public static final CellKit LAMENT = new CellKit(DynamicTreesBYG.location("lament")) {
 
         private final Cell lamentBranch = new Cell() {
             @Override

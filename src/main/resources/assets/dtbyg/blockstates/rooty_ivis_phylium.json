@@ -1,6 +1,0 @@
-{
-	"multipart": [
-		{   "apply": { "model": "dtbyg:block/replacement/ivis_phylium" }},
-		{	"apply": { "model": "dynamictrees:block/roots" }}
-	]
-}

@@ -57,7 +57,6 @@ public class SythianLogic extends GrowthLogicKit {
             int y = signal.delta.getY();
             boolean extra = y > threshold && y < configuration.getEnergy(context) - threshold;
             signal.energy = 1.5f + (extra?1:0);
-            signal.energy = 0.5f;
         }
         return newDir;
     }

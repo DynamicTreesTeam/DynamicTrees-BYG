@@ -22,7 +22,7 @@ public class ZelkovaLogic extends ConiferLogic {
 
     @Override
     protected void registerProperties() {
-        this.register(ENERGY_DIVISOR, HORIZONTAL_LIMITER, HEIGHT_VARIATION, VariateHeightLogic.LOWEST_BRANCH_VARIATION);
+        this.register(ENERGY_DIVISOR, HORIZONTAL_LIMITER, HEIGHT_VARIATION, VariateHeightLogic.LOWEST_BRANCH_VARIATION, VARIATE_LOWEST_BRANCH);
     }
 
     @Override
