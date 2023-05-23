@@ -1,0 +1,8 @@
+{
+  "parent": "dynamictrees:block/smartmodel/mushroom_round",
+  "textures": {
+    "particle": "dtbyg:block/fungal_imparius_cap",
+    "stem": "dtbyg:block/fungal_imparius_cap",
+    "cap": "dtbyg:block/fungal_imparius_cap"
+  }
+}

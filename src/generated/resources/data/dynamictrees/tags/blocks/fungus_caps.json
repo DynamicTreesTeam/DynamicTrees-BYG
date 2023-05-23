@@ -1,7 +1,11 @@
 {
   "replace": false,
   "values": [
+    "dtbyg:fungal_imparius_sapling",
+    "dtbyg:green_mushroom_sapling",
+    "dtbyg:imparius_mushroom_sapling",
     "dtbyg:soul_shroom_sapling",
-    "dtbyg:sythian_sapling"
+    "dtbyg:sythian_sapling",
+    "dtbyg:wood_blewit_sapling"
   ]
 }

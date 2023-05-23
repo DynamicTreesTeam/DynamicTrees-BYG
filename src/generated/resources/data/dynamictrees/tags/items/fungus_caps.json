@@ -1,7 +1,11 @@
 {
   "replace": false,
   "values": [
+    "dtbyg:fungal_imparius_seed",
+    "dtbyg:green_mushroom_seed",
+    "dtbyg:imparius_mushroom_seed",
     "dtbyg:soul_shroom_seed",
-    "dtbyg:sythian_seed"
+    "dtbyg:sythian_seed",
+    "dtbyg:wood_blewit_seed"
   ]
 }

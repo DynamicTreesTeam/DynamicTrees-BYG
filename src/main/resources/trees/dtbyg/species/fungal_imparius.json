@@ -1,0 +1,21 @@
+{
+  "type": "dynamictreesplus:mushroom",
+  "family": "dtbyg:fungal_imparius",
+  "tapering": 0,
+  "signal_energy": 6,
+  "growth_rate": 1.2,
+  "soil_longevity": 3,
+  "cap_properties": "dtbyg:fungal_imparius",
+  "mushroom_shape_kit": {
+    "name": "dynamictreesplus:bell",
+    "properties": {
+      "max_age_curve_factor": 0.1,
+      "min_age_curve_factor": 0.4
+    }
+  },
+  "primitive_sapling": "byg:fungal_imparius",
+  "acceptable_soils": ["fungus_like"],
+  "features" : [
+    "bottom_flare"
+  ]
+}

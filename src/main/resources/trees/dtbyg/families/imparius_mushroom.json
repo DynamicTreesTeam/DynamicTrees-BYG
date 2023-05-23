@@ -1,8 +1,8 @@
 {
   "only_if_loaded": "dynamictreesplus",
   "type": "dynamictreesplus:mushroom",
-  "common_cap": "dtbyg:imparius",
-  "common_species": "dtbyg:imparius",
+  "common_cap": "dtbyg:imparius_mushroom",
+  "common_species": "dtbyg:imparius_mushroom",
   "primitive_log": "byg:imparius_stem",
   "outside_branch_texture": "byg:block/imparius_stem",
   "inside_branch_texture": "byg:block/imparius_stem_top",
