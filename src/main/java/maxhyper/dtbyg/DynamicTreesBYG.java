@@ -58,6 +58,8 @@ public class DynamicTreesBYG
                 Family.REGISTRY,
                 Species.REGISTRY,
                 LeavesProperties.REGISTRY,
+                Fruit.REGISTRY,
+                Pod.REGISTRY,
                 CapProperties.REGISTRY
         );
     }

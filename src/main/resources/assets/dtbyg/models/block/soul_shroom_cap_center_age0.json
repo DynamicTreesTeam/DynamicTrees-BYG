@@ -1,0 +1,23 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"side": "byg:block/soul_shroom_block",
+		"bottom": "byg:block/soul_shroom_block_inside",
+		"particle": "byg:block/soul_shroom_block"
+	},
+	"elements": [
+		{
+			"from": [2, 0, 2],
+			"to": [14, 16, 14],
+			"faces": {
+				"north": {"uv": [2, 0, 14, 16], "texture": "#side", "cullface": "north"},
+				"east": {"uv": [2, 0, 14, 16], "texture": "#side", "cullface": "east"},
+				"south": {"uv": [2, 0, 14, 16], "texture": "#side", "cullface": "south"},
+				"west": {"uv": [2, 0, 14, 16], "texture": "#side", "cullface": "west"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#side"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#bottom", "cullface": "down"}
+			}
+		}
+	]
+}

@@ -67,7 +67,7 @@ fa7ae3c3abe0e3195155c4bc1a8828afc8bb201e assets/dtbyg/blockstates/holly_berry_le
 fa7ae3c3abe0e3195155c4bc1a8828afc8bb201e assets/dtbyg/blockstates/holly_leaves.json
 c7e0697452cc46dff007780f6dc4b22d460e4fda assets/dtbyg/blockstates/holly_sapling.json
 cfbab8e6a230c711496e96753f98f3bcb78e6665 assets/dtbyg/blockstates/imparius_branch.json
-83ccbcedc6300b75ccc06ebe26a3111be4a7f1dc assets/dtbyg/blockstates/imparius_cap.json
+83ccbcedc6300b75ccc06ebe26a3111be4a7f1dc assets/dtbyg/blockstates/imparius_mushroom_cap.json
 d1ccf004d35cbf7c5e55511a5f3438e965b79b9c assets/dtbyg/blockstates/indigo_jacaranda_leaves.json
 e02adcdf56e1ea1463cf1a11551b0ff872dca073 assets/dtbyg/blockstates/indigo_jacaranda_sapling.json
 fa5545e3632e613c30977d850b0c5fe0ebc34ab3 assets/dtbyg/blockstates/jacaranda_branch.json
@@ -187,6 +187,7 @@ a69baf6679babd7c53fde4e9697ba73eae45fd48 assets/dtbyg/blockstates/skyris_branch.
 672c43414bb25193e2b177f763d79a662213aa1a assets/dtbyg/blockstates/skyris_sapling.json
 1cd5ebde70cc1e9a29e8422d18c17d08b4a5dfb5 assets/dtbyg/blockstates/soul_shroom_branch.json
 8363263b6b4ebcb607ad36e0d7ae82ce9968df61 assets/dtbyg/blockstates/soul_shroom_cap.json
+4dd6f2ce8e4528e5825843c8efb01896ea42b18b assets/dtbyg/blockstates/soul_shroom_sapling.json
 97666c8f0f9c3b6951efc9db9a689008a00620e9 assets/dtbyg/blockstates/sparse_willow_leaves.json
 ed80d8f453073a17deeeb6dcd032ba541ecc83dc assets/dtbyg/blockstates/sparse_witch_hazel_leaves.json
 d736ded08f622fd5e91075e192a591a1910efd0e assets/dtbyg/blockstates/sparse_withering_oak_leaves.json
@@ -330,6 +331,7 @@ b302af40422e87781292b91c9bdd6cb5513ee66a assets/dtbyg/models/block/saplings/red_
 08d226f3fcafcb7aaf85079082cf7d8faff21cdc assets/dtbyg/models/block/saplings/skyris.json
 f0e014b0d474647a7dc877cc57a79bbe5b87f399 assets/dtbyg/models/block/saplings/small_cika.json
 fe749731e73148cbb52440f791b09aba10660856 assets/dtbyg/models/block/saplings/small_redwood.json
+a7442c741af1717ff1fa7aae571d9d00473e40a1 assets/dtbyg/models/block/saplings/soul_shroom.json
 dd97b1a56d6ca02bfa26bdff563ed6dadcaea15c assets/dtbyg/models/block/saplings/sythian.json
 2d963b356b7197b1846cf76e4cf6f3bfa121ca31 assets/dtbyg/models/block/saplings/warped_cactus.json
 b6c4d1b2a682d2c2516b388956c484e37fc4c253 assets/dtbyg/models/block/saplings/white_cherry.json
@@ -451,6 +453,7 @@ bbe5a25a3d628723e055a6a82d606704854a1294 assets/dtbyg/models/item/redwood_seed.j
 4cbc5b8f49a8b407d11832f7df1258f1d8047e35 assets/dtbyg/models/item/skyris_branch.json
 80e69412fd3211fd7c1b13462c580bf064f39980 assets/dtbyg/models/item/skyris_seed.json
 defc3d1414f9da2d046c1bbc2e8f32fae1874b67 assets/dtbyg/models/item/soul_shroom_branch.json
+e7c75d0eeeba9cf42a4ace9d81d51e0821e4d65f assets/dtbyg/models/item/soul_shroom_seed.json
 50578952fb542478c906bfb49024f6b280df98e0 assets/dtbyg/models/item/sythian_branch.json
 3e5acd3b6f6e80a8a1a3fe4c7053c2862c9fbede assets/dtbyg/models/item/sythian_seed.json
 0aeff36ca54813c17e1a1a24c7c99386c89bd41b assets/dtbyg/models/item/warped_cactus_branch.json
@@ -747,6 +750,7 @@ ee5b27b0a12b34f48c11a282616f5ee6bac67284 data/dtbyg/loot_tables/trees/voluntary/
 7257657582ba7aeb67acbc1f98b92a38f1a9d6ff data/dtbyg/loot_tables/trees/voluntary/skyris.json
 f4d5b7e6615f9aa98d3a08004862f3d44575f70c data/dtbyg/loot_tables/trees/voluntary/small_cika.json
 72474d2ffd4c0a5ce46380f923750d6204ae3255 data/dtbyg/loot_tables/trees/voluntary/small_redwood.json
+347fc4575c529dbb902c971d09c18d70f20319c7 data/dtbyg/loot_tables/trees/voluntary/soul_shroom.json
 96cb7f51b6a8a083bd2c74b62515185a20ae292a data/dtbyg/loot_tables/trees/voluntary/sythian.json
 9d05b36f53a6815406efd4a22ffa3e6216d638e6 data/dtbyg/loot_tables/trees/voluntary/white_cherry.json
 4e627dcfe47e7dbc0d19d55686fb47c1e6ef502b data/dtbyg/loot_tables/trees/voluntary/willow.json
@@ -759,7 +763,7 @@ ad0a75410b70b55b30cffb383ccdd797fbd74605 data/dtbyg/loot_tables/trees/voluntary/
 23d43f0e8020d0a89f83e8daa52f8569cf7e1d68 data/dynamictrees/tags/blocks/branches.json
 5003ae4f693ac6fdb8f682673b3e5c523dfd6eb4 data/dynamictrees/tags/blocks/branches_that_burn.json
 bbfe079be14c7c39dcb70344492a497b844704b1 data/dynamictrees/tags/blocks/fungus_branches.json
-c19fba0e4cd3743db8fe85fa0e16c26d78e6b2d1 data/dynamictrees/tags/blocks/fungus_caps.json
+9a34af5623b11df6180d427e9e4082b985ef4145 data/dynamictrees/tags/blocks/fungus_caps.json
 9f6d100db59c363028ee592926a39fbf81a9069b data/dynamictrees/tags/blocks/leaves.json
 a643c0b2258d3e7209c2c16db4035c2afdfef797 data/dynamictrees/tags/blocks/saplings.json
 ad2f96ae66d5d52f4a2d12ca49ba058295dc7fa7 data/dynamictrees/tags/blocks/stripped_branches.json
@@ -769,5 +773,5 @@ d8229adff6250e5f2221e517339e641a5f045d5b data/dynamictrees/tags/blocks/wart_bloc
 23d43f0e8020d0a89f83e8daa52f8569cf7e1d68 data/dynamictrees/tags/items/branches.json
 5003ae4f693ac6fdb8f682673b3e5c523dfd6eb4 data/dynamictrees/tags/items/branches_that_burn.json
 bbfe079be14c7c39dcb70344492a497b844704b1 data/dynamictrees/tags/items/fungus_branches.json
-8bf5b9dee262c78b21b70c0e68e1c731146d1929 data/dynamictrees/tags/items/fungus_caps.json
+52f30836ff76e972b35a3effd08c8ac72ae7efe5 data/dynamictrees/tags/items/fungus_caps.json
 d6283507193093e905ea058d8ae92d169e888e75 data/dynamictrees/tags/items/seeds.json
