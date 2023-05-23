@@ -37,6 +37,7 @@ ae226d4b8099c46e0a8f03c64ae40439f4038fd6 assets/dtbyg/blockstates/cypress_leaves
 e02e2f29fed233530c8727c5af4edadc6ef85d88 assets/dtbyg/blockstates/cypress_sapling.json
 eddd8e8a41a7699b9b277a0323f18cae9037927b assets/dtbyg/blockstates/dark_oak_twiglet_leaves.json
 a0dc9e70a262bdb1d6e4b40c67d430e49dd7316c assets/dtbyg/blockstates/death_cap_cap.json
+7cdcacc2fb56dd14c4afed6a681956300bbcf8b0 assets/dtbyg/blockstates/death_cap_sapling.json
 cfd1c74266faecb7c168c67f95f5013d291010a1 assets/dtbyg/blockstates/ebony_branch.json
 3dfd4bc215eeee6d013cbc41011a51824ba501bd assets/dtbyg/blockstates/ebony_leaves.json
 9ea28301777d69f949deec166e7b4be3c7208e11 assets/dtbyg/blockstates/ebony_root.json
@@ -182,6 +183,7 @@ c5d940bd412e13b7ab97d27ee61e39edcc27c8e6 assets/dtbyg/blockstates/rooty_quartzit
 8ffcb8a760419e805506a0786d10cd35fc8d2ffb assets/dtbyg/blockstates/rooty_white_sand.json
 ca7ab73cd4c6608a1a5f5406a3aa7d24992dd773 assets/dtbyg/blockstates/rooty_windswept_sand.json
 3fafdd94644834d21e2db3ca8b3dd99cb7e5a51f assets/dtbyg/blockstates/shulkren_fungus_cap.json
+6c807d1df20a139a49340eb94dc8198d333d5f1c assets/dtbyg/blockstates/shulkren_sapling.json
 3fafdd94644834d21e2db3ca8b3dd99cb7e5a51f assets/dtbyg/blockstates/shulkren_wart.json
 dcef9f5b4671a53af409bcccc1d8efeca4875e18 assets/dtbyg/blockstates/silver_maple_leaves.json
 0c76fb79c3bc3596329f1e6792cb2f4c3f4a8cb1 assets/dtbyg/blockstates/silver_maple_sapling.json
@@ -231,6 +233,7 @@ ff210a29ab8147d9ec849e559dacb8e262f0f794 assets/dtbyg/blockstates/warped_cactus_
 b1a468ec30082b122de8f4c6f94a665ef666baf0 assets/dtbyg/blockstates/warped_cactus_sapling.json
 982f287d94498dae9e44a8c8e98f247ce05e9a3e assets/dtbyg/blockstates/weeping_lament_leaves.json
 442a9ba4362f735d4d23c4d0130fc774162d9256 assets/dtbyg/blockstates/weeping_milkcap_cap.json
+3ad253dfdcf15244e482b764c3a5a7c600442733 assets/dtbyg/blockstates/weeping_milkcap_sapling.json
 553ad5aa50598093ed1697dc28a41a22563cd506 assets/dtbyg/blockstates/white_cherry_leaves.json
 4f3720da16c55bcfc24173836c3d2e70e5db05bf assets/dtbyg/blockstates/white_cherry_sapling.json
 90bcfdabfbfef7b048aa131524df2f33706c5e80 assets/dtbyg/blockstates/white_mushroom_branch.json
@@ -302,6 +305,7 @@ d4b8e8166179442bcfa25c5861e1083465956525 assets/dtbyg/models/block/saplings/brow
 1fd1037b848574092803eef71a7623e517b5b7ca assets/dtbyg/models/block/saplings/brown_oak.json
 f3b2d98077b8bab2d19a6674277c708d1d41d5d7 assets/dtbyg/models/block/saplings/brown_zelkova.json
 a6e779c2186f1f63f7495da4444ac76c8c8c4ab6 assets/dtbyg/models/block/saplings/cypress.json
+c15b5dedccdbed290a9690918b7a51029266893b assets/dtbyg/models/block/saplings/death_cap.json
 c994cf9a793bb86350bdb2290c71fa6f385f145f assets/dtbyg/models/block/saplings/ebony.json
 bc6c9e289eafde92fa4afe62dba4de37da4dd8a6 assets/dtbyg/models/block/saplings/ether.json
 9166ea755d0f8678766e118b1f0ac4e828eaa423 assets/dtbyg/models/block/saplings/fir.json
@@ -334,6 +338,7 @@ d48eeb483c0ed14fa783361246c51be016c16ab2 assets/dtbyg/models/block/saplings/red_
 0b518ad3b0cc7d03224abe5fd47c4f2fb7b56b48 assets/dtbyg/models/block/saplings/red_maple.json
 17ab3456431c5b5e041eb94314c6e8c87a40af0d assets/dtbyg/models/block/saplings/red_oak.json
 b302af40422e87781292b91c9bdd6cb5513ee66a assets/dtbyg/models/block/saplings/red_spruce.json
+eae3190d4273304d308c959a5f2a6b44f7185fc8 assets/dtbyg/models/block/saplings/shulkren.json
 5de7cf66090d732ed793eb9961183c60e6911841 assets/dtbyg/models/block/saplings/silver_maple.json
 08d226f3fcafcb7aaf85079082cf7d8faff21cdc assets/dtbyg/models/block/saplings/skyris.json
 f0e014b0d474647a7dc877cc57a79bbe5b87f399 assets/dtbyg/models/block/saplings/small_cika.json
@@ -341,6 +346,7 @@ fe749731e73148cbb52440f791b09aba10660856 assets/dtbyg/models/block/saplings/smal
 a7442c741af1717ff1fa7aae571d9d00473e40a1 assets/dtbyg/models/block/saplings/soul_shroom.json
 dd97b1a56d6ca02bfa26bdff563ed6dadcaea15c assets/dtbyg/models/block/saplings/sythian.json
 2d963b356b7197b1846cf76e4cf6f3bfa121ca31 assets/dtbyg/models/block/saplings/warped_cactus.json
+3c44fdbbc51fdeb37d2532ccfde0997a2f2ed583 assets/dtbyg/models/block/saplings/weeping_milkcap.json
 b6c4d1b2a682d2c2516b388956c484e37fc4c253 assets/dtbyg/models/block/saplings/white_cherry.json
 00660beef03e7fc903b2ca6a1aec407f659ce5f3 assets/dtbyg/models/block/saplings/willow.json
 45efe65aea5ff62c326e00cf10352de871be11ab assets/dtbyg/models/block/saplings/witch_hazel.json
@@ -408,6 +414,7 @@ af727b660010d5d9489f33f0b45f7915bd2c304c assets/dtbyg/models/item/cherry_branch.
 4c62e466f0ad30f94e429331884e1059a55f955e assets/dtbyg/models/item/cika_seed.json
 03b03624aa6b3331fca32dbce3d06f4249e03253 assets/dtbyg/models/item/cypress_branch.json
 e093fc18c5415e1a5fee178468deaae860172ebf assets/dtbyg/models/item/cypress_seed.json
+ceae13bc2d067bf03975275032740192e024b262 assets/dtbyg/models/item/death_cap_seed.json
 7b5abdc55c851658b7f4abf6feb49c925ae56597 assets/dtbyg/models/item/ebony_branch.json
 1b6390c90ae916b85a19ba40c5379821fffd23c0 assets/dtbyg/models/item/ebony_seed.json
 3a4ae7b47ff2264fdca7811e7d5a699962921490 assets/dtbyg/models/item/ether_branch.json
@@ -460,6 +467,7 @@ e48ca81a6b45935b284a65331df7fca3bcd57ba9 assets/dtbyg/models/item/red_birch_seed
 c5e3d8db559c53968a92dffbc03893fd4d52925f assets/dtbyg/models/item/red_spruce_seed.json
 7e5169921a229f66a883261b18dd9881ad30b982 assets/dtbyg/models/item/redwood_branch.json
 bbe5a25a3d628723e055a6a82d606704854a1294 assets/dtbyg/models/item/redwood_seed.json
+1186062f620a0d6de80bc8f53d5000c08515f033 assets/dtbyg/models/item/shulkren_seed.json
 5b6df7450ee19ddfdbde4cc3db79e8ff99dc117a assets/dtbyg/models/item/silver_maple_seed.json
 4cbc5b8f49a8b407d11832f7df1258f1d8047e35 assets/dtbyg/models/item/skyris_branch.json
 80e69412fd3211fd7c1b13462c580bf064f39980 assets/dtbyg/models/item/skyris_seed.json
@@ -469,6 +477,7 @@ e7c75d0eeeba9cf42a4ace9d81d51e0821e4d65f assets/dtbyg/models/item/soul_shroom_se
 3e5acd3b6f6e80a8a1a3fe4c7053c2862c9fbede assets/dtbyg/models/item/sythian_seed.json
 0aeff36ca54813c17e1a1a24c7c99386c89bd41b assets/dtbyg/models/item/warped_cactus_branch.json
 8d545807f4f3fda8f603c04386bd0ed7a597585a assets/dtbyg/models/item/warped_cactus_seed.json
+074c114ee7d93330cc0ba72fe441119effdf0193 assets/dtbyg/models/item/weeping_milkcap_seed.json
 089b446439a4a26a22bf7434f81183d32b945ab2 assets/dtbyg/models/item/white_cherry_seed.json
 b03032594125110d00ec86e997fadf0f9c5d8965 assets/dtbyg/models/item/white_mushroom_branch.json
 8dfb18a96afb8f21c82492d8be9d334f3eb9d1ae assets/dtbyg/models/item/willow_branch.json
@@ -730,6 +739,7 @@ f1ac8b4c1d8bcc10269fb1134ca940cad8e024b0 data/dtbyg/loot_tables/trees/voluntary/
 7ff46951e1f971a38bde35042f502b6370c1a30c data/dtbyg/loot_tables/trees/voluntary/brown_oak.json
 b702bfdf578eb8c938d32f242bab8a77a0de8e55 data/dtbyg/loot_tables/trees/voluntary/brown_zelkova.json
 5b585242292095a76fd355ef0b2343f3a1685239 data/dtbyg/loot_tables/trees/voluntary/cypress.json
+b06cfef87b19c7e81d15ceda72edf151090ed74a data/dtbyg/loot_tables/trees/voluntary/death_cap.json
 b5038b51a42b3521e3188b468b39d357a8847d12 data/dtbyg/loot_tables/trees/voluntary/ebony.json
 89612992f71c8e7c8dcb331767f92e272d222a38 data/dtbyg/loot_tables/trees/voluntary/ether.json
 fa53142530dabb0762e16950b14b4583f91b73a7 data/dtbyg/loot_tables/trees/voluntary/fir.json
@@ -761,12 +771,14 @@ ee5b27b0a12b34f48c11a282616f5ee6bac67284 data/dtbyg/loot_tables/trees/voluntary/
 58cc930ddb66667568e5e89d1ca96592038322b9 data/dtbyg/loot_tables/trees/voluntary/red_maple.json
 429811e2d38e5cdcaee527d446abbb6b9786ce47 data/dtbyg/loot_tables/trees/voluntary/red_oak.json
 15be577d384743bc2eb2bbbaad601cbb4292cff0 data/dtbyg/loot_tables/trees/voluntary/red_spruce.json
+78ff874578042ad94a1ea5593e43df5cfc88f76c data/dtbyg/loot_tables/trees/voluntary/shulkren.json
 0a8949336f442c1e0ae0743b18c48c393da7f1ff data/dtbyg/loot_tables/trees/voluntary/silver_maple.json
 7257657582ba7aeb67acbc1f98b92a38f1a9d6ff data/dtbyg/loot_tables/trees/voluntary/skyris.json
 f4d5b7e6615f9aa98d3a08004862f3d44575f70c data/dtbyg/loot_tables/trees/voluntary/small_cika.json
 72474d2ffd4c0a5ce46380f923750d6204ae3255 data/dtbyg/loot_tables/trees/voluntary/small_redwood.json
 347fc4575c529dbb902c971d09c18d70f20319c7 data/dtbyg/loot_tables/trees/voluntary/soul_shroom.json
 96cb7f51b6a8a083bd2c74b62515185a20ae292a data/dtbyg/loot_tables/trees/voluntary/sythian.json
+eb380cf5b8399a14fd2317443d0430d25e0bab6d data/dtbyg/loot_tables/trees/voluntary/weeping_milkcap.json
 9d05b36f53a6815406efd4a22ffa3e6216d638e6 data/dtbyg/loot_tables/trees/voluntary/white_cherry.json
 4e627dcfe47e7dbc0d19d55686fb47c1e6ef502b data/dtbyg/loot_tables/trees/voluntary/willow.json
 bd481d22236f6258f771e7d19dc3291af5a36769 data/dtbyg/loot_tables/trees/voluntary/witch_hazel.json
@@ -779,7 +791,7 @@ ad0a75410b70b55b30cffb383ccdd797fbd74605 data/dtbyg/loot_tables/trees/voluntary/
 23d43f0e8020d0a89f83e8daa52f8569cf7e1d68 data/dynamictrees/tags/blocks/branches.json
 5003ae4f693ac6fdb8f682673b3e5c523dfd6eb4 data/dynamictrees/tags/blocks/branches_that_burn.json
 d95f5d4e31581cffc57acdfafd0c052b81961436 data/dynamictrees/tags/blocks/fungus_branches.json
-ae819e039713b72f00a028ed5eeb544d1cf4bf0d data/dynamictrees/tags/blocks/fungus_caps.json
+ec3ecda9a67a538073ffb389f588820d4957ddaf data/dynamictrees/tags/blocks/fungus_caps.json
 9f6d100db59c363028ee592926a39fbf81a9069b data/dynamictrees/tags/blocks/leaves.json
 a643c0b2258d3e7209c2c16db4035c2afdfef797 data/dynamictrees/tags/blocks/saplings.json
 ad2f96ae66d5d52f4a2d12ca49ba058295dc7fa7 data/dynamictrees/tags/blocks/stripped_branches.json
@@ -789,5 +801,5 @@ d8229adff6250e5f2221e517339e641a5f045d5b data/dynamictrees/tags/blocks/wart_bloc
 23d43f0e8020d0a89f83e8daa52f8569cf7e1d68 data/dynamictrees/tags/items/branches.json
 5003ae4f693ac6fdb8f682673b3e5c523dfd6eb4 data/dynamictrees/tags/items/branches_that_burn.json
 d95f5d4e31581cffc57acdfafd0c052b81961436 data/dynamictrees/tags/items/fungus_branches.json
-7ec8c5344ced843470cf6cea07aaa627db61d4da data/dynamictrees/tags/items/fungus_caps.json
+825f81bd5084cd139fe039a33faabdbd53c0f480 data/dynamictrees/tags/items/fungus_caps.json
 d6283507193093e905ea058d8ae92d169e888e75 data/dynamictrees/tags/items/seeds.json
