@@ -1,8 +1,7 @@
 {
-  "parent": "dtbyg:block/smartmodel/mushroom_flat_tall",
+  "parent": "dtbyg:block/saplings/mushroom_flat_tall",
   "textures": {
     "particle": "dtbyg:block/green_mushroom_cap",
-    "stem": "dtbyg:block/green_mushroom_cap",
     "cap": "dtbyg:block/green_mushroom_cap"
   }
 }
