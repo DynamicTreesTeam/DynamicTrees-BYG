@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
+    "dtbyg:stripped_embur_branch",
     "dtbyg:stripped_fungal_imparius_branch",
     "dtbyg:stripped_sythian_branch"
   ]

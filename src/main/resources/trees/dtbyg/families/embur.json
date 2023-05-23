@@ -5,6 +5,8 @@
   "common_species": "dtbyg:embur",
   "primitive_log": "byg:embur_pedu",
   "primitive_stripped_log": "byg:stripped_embur_pedu",
+  "outside_branch_texture": "byg:block/embur_pedu",
+  "inside_branch_texture": "byg:block/embur_pedu_top",
   "stick": "stick",
   "max_branch_radius": 24
 }

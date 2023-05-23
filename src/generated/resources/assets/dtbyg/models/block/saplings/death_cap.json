@@ -2,8 +2,8 @@
   "credit": "Made with Blockbench",
   "parent": "block/block",
   "textures": {
-    "particle": "dtbyg:block/death_cap_mushroom_cap",
-    "cap": "dtbyg:block/death_cap_mushroom_cap"
+    "particle": "dtbyg:block/death_cap_cap",
+    "cap": "dtbyg:block/death_cap_cap"
   },
   "elements": [
     {
