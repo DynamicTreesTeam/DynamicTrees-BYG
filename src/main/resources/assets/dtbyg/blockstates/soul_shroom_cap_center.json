@@ -2,7 +2,7 @@
   "multipart": [
     {
       "when": {
-        "north": true
+        "age": "0"
       },
       "apply": {
         "model": "byg:block/soul_shroom_block"
@@ -10,57 +10,37 @@
     },
     {
       "when": {
-        "east": true
+        "age": "0"
       },
       "apply": {
         "model": "byg:block/soul_shroom_block",
         "y": 90,
-        "uvlock": true
+        "uvlock": false
       }
     },
     {
       "when": {
-        "south": true
+        "age": "0"
       },
       "apply": {
         "model": "byg:block/soul_shroom_block",
         "y": 180,
-        "uvlock": true
+        "uvlock": false
       }
     },
     {
       "when": {
-        "west": true
+        "age": "0"
       },
       "apply": {
         "model": "byg:block/soul_shroom_block",
         "y": 270,
-        "uvlock": true
+        "uvlock": false
       }
     },
     {
       "when": {
-        "up": true
-      },
-      "apply": {
-        "model": "byg:block/soul_shroom_block",
-        "x": 270,
-        "uvlock": true
-      }
-    },
-    {
-      "when": {
-        "down": true
-      },
-      "apply": {
-        "model": "byg:block/soul_shroom_block",
-        "x": 90,
-        "uvlock": true
-      }
-    },
-    {
-      "when": {
-        "north": false
+        "age": "1|2|3|4|5|6|7|8"
       },
       "apply": {
         "model": "byg:block/soul_shroom_block_inside"
@@ -68,7 +48,7 @@
     },
     {
       "when": {
-        "east": false
+        "age": "1|2|3|4|5|6|7|8"
       },
       "apply": {
         "model": "byg:block/soul_shroom_block_inside",
@@ -78,7 +58,7 @@
     },
     {
       "when": {
-        "south": false
+        "age": "1|2|3|4|5|6|7|8"
       },
       "apply": {
         "model": "byg:block/soul_shroom_block_inside",
@@ -88,7 +68,7 @@
     },
     {
       "when": {
-        "west": false
+        "age": "1|2|3|4|5|6|7|8"
       },
       "apply": {
         "model": "byg:block/soul_shroom_block_inside",
@@ -97,19 +77,13 @@
       }
     },
     {
-      "when": {
-        "up": false
-      },
       "apply": {
-        "model": "byg:block/soul_shroom_block_inside",
+        "model": "byg:block/soul_shroom_block",
         "x": 270,
-        "uvlock": false
+        "uvlock": true
       }
     },
     {
-      "when": {
-        "down": false
-      },
       "apply": {
         "model": "byg:block/soul_shroom_block_inside",
         "x": 90,

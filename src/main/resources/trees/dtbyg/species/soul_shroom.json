@@ -1,0 +1,22 @@
+{
+  "type": "dynamictreesplus:mushroom",
+  "family": "dtbyg:soul_shroom",
+  "tapering": 0,
+  "signal_energy": 6,
+  "growth_rate": 1.2,
+  "soil_longevity": 3,
+  "cap_properties": "dtbyg:soul_shroom",
+  "mushroom_shape_kit": {
+    "name": "dynamictreesplus:bell",
+    "properties": {
+      "max_age_curve_factor": 1,
+      "min_age_curve_factor": 4.0,
+      "pointed_tip_max_age": 8
+    }
+  },
+  "primitive_sapling": "byg:soul_shroom",
+  "acceptable_soils": ["fungus_like"],
+  "features" : [
+    "bottom_flare"
+  ]
+}
