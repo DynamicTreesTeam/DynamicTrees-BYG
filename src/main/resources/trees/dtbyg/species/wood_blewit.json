@@ -7,10 +7,11 @@
   "soil_longevity": 3,
   "cap_properties": "dtbyg:wood_blewit",
   "mushroom_shape_kit": {
-    "name": "dynamictreesplus:bell",
+    "name": "dtbyg:linear",
     "properties": {
-      "max_age_curve_factor": 0.1,
-      "min_age_curve_factor": 0.4
+      "max_cap_age": 5,
+      "chance_to_age": 0.66,
+      "factor": 0.5
     }
   },
   "primitive_sapling": "byg:wood_blewit",

@@ -13,6 +13,7 @@ import com.ferreusveritas.dynamictreesplus.block.mushroom.CapProperties;
 import maxhyper.dtbyg.cancellers.VegetationReplacement;
 import maxhyper.dtbyg.init.DTBYGClient;
 import maxhyper.dtbyg.init.DTBYGRegistries;
+import maxhyper.dtbyg.init.SideBranchPlaceEventHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -36,6 +37,7 @@ public class DynamicTreesBYG
         VegetationReplacement.register(eventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(SideBranchPlaceEventHandler.class);
 
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, DTBYGRegistries::onBiomeLoading);
 
@@ -43,7 +45,9 @@ public class DynamicTreesBYG
         DTBYGRegistries.setup();
     }
 
-    private void commonSetup(final FMLCommonSetupEvent event) {}
+    private void commonSetup(final FMLCommonSetupEvent event) {
+        DTBYGRegistries.setupBlocks();
+    }
 
     private void clientSetup(final FMLClientSetupEvent event) {
         DTBYGClient.setup();

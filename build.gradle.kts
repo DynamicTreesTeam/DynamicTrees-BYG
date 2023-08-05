@@ -13,7 +13,7 @@ plugins {
     id("org.parchmentmc.librarian.forgegradle")
     id("idea")
     id("maven-publish")
-    id("com.harleyoconnor.translationsheet") version "0.1.1"
+    //id("com.harleyoconnor.translationsheet") version "0.1.1"
     id("com.matthewprenger.cursegradle") version "1.4.0"
     id("com.harleyoconnor.autoupdatetool") version "1.0.0"
 }
@@ -112,6 +112,9 @@ dependencies {
 
     // At runtime, use suggestion provider fix mod.
     runtimeOnly(fg.deobf("com.harleyoconnor.suggestionproviderfix:SuggestionProviderFix-1.18.1:${property("suggestionProviderFixVersion")}"))
+
+    // At runtime, use snow coated to allow snow and vines on leaves
+    runtimeOnly(fg.deobf("curse.maven:snow-coated-843893:4626429"))
 }
 
 tasks.jar {
@@ -226,6 +229,15 @@ publishing {
         }
     }
 }
+
+//translationSheet {
+//    this.sheetId.set("1xjxEh2NdbeV_tQc6fDHPgcRmtchqCZJKt--6oifq1qc")
+//    this.sectionColour.set(0xF9CB9C)
+//    this.sectionPattern.set("Dynamic Trees")
+//    this.outputDir("src/localization/resources/assets/dynamictrees/lang/")
+//
+//    this.useJson()
+//}
 
 fun net.minecraftforge.gradle.common.util.RunConfig.applyDefaultConfiguration(runDirectory: String = "run") {
     workingDirectory = file(runDirectory).absolutePath

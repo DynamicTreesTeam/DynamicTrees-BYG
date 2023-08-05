@@ -2,17 +2,17 @@
   "type": "dynamictreesplus:mushroom",
   "family": "dtbyg:white_mushroom",
   "tapering": 0,
-  "signal_energy": 6,
+  "signal_energy": 10,
   "growth_rate": 1.2,
   "soil_longevity": 3,
   "cap_properties": "dtbyg:green_mushroom",
   "generate_seed": true,
   "generate_sapling": true,
   "mushroom_shape_kit": {
-    "name": "dynamictreesplus:bell",
+    "name": "dtbyg:linear",
     "properties": {
-      "max_age_curve_factor": 0.1,
-      "min_age_curve_factor": 0.4
+      "max_cap_age": 4,
+      "chance_to_age": 0.6
     }
   },
   "primitive_sapling": "byg:green_mushroom",

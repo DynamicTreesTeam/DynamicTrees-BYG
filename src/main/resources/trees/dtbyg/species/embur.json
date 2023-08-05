@@ -7,10 +7,12 @@
   "soil_longevity": 3,
   "cap_properties": "dtbyg:embur",
   "mushroom_shape_kit": {
-    "name": "dynamictreesplus:bell",
+    "name": "dtbyg:linear",
     "properties": {
-      "max_age_curve_factor": 0.1,
-      "min_age_curve_factor": 0.4
+      "max_cap_age": 4,
+      "chance_to_age": 0.5,
+      "pointed_tip_max_age": 6,
+      "factor": 2
     }
   },
   "primitive_sapling": "byg:embur_wart",

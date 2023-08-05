@@ -9,8 +9,8 @@
   "mushroom_shape_kit": {
     "name": "dynamictreesplus:bell",
     "properties": {
-      "max_age_curve_factor": 0.1,
-      "min_age_curve_factor": 0.4
+      "max_age_curve_factor": 0.3,
+      "min_age_curve_factor": 0.6
     }
   },
   "primitive_sapling": "byg:fungal_imparius",

@@ -31,6 +31,13 @@
   "block.dtbyg.nightshade_branch": "Nightshade Tree",
   "block.dtbyg.oddity_cactus_branch": "Oddity Cactus",
 
+  "block.dtbyg.white_mushroom_branch": "Mushroom",
+  "block.dtbyg.brown_mushroom_branch": "Mushroom",
+  "block.dtbyg.embur_branch": "Embur Fungus",
+  "block.dtbyg.fungal_imparius_branch": "Imparuius Fungus",
+  "block.dtbyg.imparius_mushroom_branch": "Imparius Mushroom",
+  "block.dtbyg.soul_shroom_branch": "Soul Shroom",
+
   "species.dtbyg.maple": "Maple",
   "species.dtbyg.maple_twiglet": "Maple Twiglet",
   "species.dtbyg.red_maple": "Red Maple",
@@ -153,6 +160,13 @@
   "species.dtbyg.nightshade": "Nightshade",
   "species.dtbyg.small_nightshade": "Small Nightshade",
   "species.dtbyg.oddity_cactus": "Oddity Cactus",
+
+  "block.dtbyg.white_mushroom_branch": "Mushroom",
+  "block.dtbyg.brown_mushroom_branch": "Mushroom",
+  "block.dtbyg.embur_branch": "Embur Fungus",
+  "block.dtbyg.fungal_imparius_branch": "Imparuius Fungus",
+  "block.dtbyg.imparius_mushroom_branch": "Imparius Mushroom",
+  "block.dtbyg.soul_shroom_branch": "Soul Shroom",
 
   "item.dtbyg.maple_seed": "Maple Samara",
   "item.dtbyg.red_maple_seed": "Red Maple Samara",

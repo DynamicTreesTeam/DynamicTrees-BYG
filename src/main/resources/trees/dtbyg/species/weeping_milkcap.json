@@ -11,8 +11,10 @@
   "mushroom_shape_kit": {
     "name": "dynamictreesplus:bell",
     "properties": {
-      "max_age_curve_factor": 0.1,
-      "min_age_curve_factor": 0.4
+      "max_age_curve_factor": 0.25,
+      "min_age_curve_factor": 0.3,
+      "pointed_tip_max_age": 6,
+      "max_cap_age": 4
     }
   },
   "primitive_sapling": "byg:weeping_milkcap",

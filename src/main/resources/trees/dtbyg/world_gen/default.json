@@ -469,7 +469,8 @@
       },
       "density": [ 1.0 ],
       "chance": 1.0,
-      "forestness": 1
+      "forestness": 1,
+      "heightmap": "ocean_floor"
     }
   },
   {
@@ -554,7 +555,8 @@
       },
       "density": [ 1.5 ],
       "chance": 1.0,
-      "forestness": 1
+      "forestness": 1,
+      "heightmap": "ocean_floor"
     }
   },
   {
@@ -639,7 +641,7 @@
         }
       },
       "density": [ 1 ],
-      "chance": 1.0,
+      "chance": 0.8,
       "forestness": 1
     }
   },

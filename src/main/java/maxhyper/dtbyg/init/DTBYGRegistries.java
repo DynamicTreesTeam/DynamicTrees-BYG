@@ -1,50 +1,57 @@
 package maxhyper.dtbyg.init;
 
-import com.ferreusveritas.dynamictrees.DynamicTrees;
+import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import com.ferreusveritas.dynamictrees.api.applier.ApplierRegistryEvent;
 import com.ferreusveritas.dynamictrees.api.cell.CellKit;
+import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
 import com.ferreusveritas.dynamictrees.api.worldgen.FeatureCanceller;
+import com.ferreusveritas.dynamictrees.block.branch.BranchBlock;
+import com.ferreusveritas.dynamictrees.block.rooty.SoilHelper;
 import com.ferreusveritas.dynamictrees.block.rooty.SoilProperties;
+import com.ferreusveritas.dynamictrees.block.rooty.SpreadableSoilProperties;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
-import com.ferreusveritas.dynamictrees.resources.Resources;
+import com.ferreusveritas.dynamictrees.systems.BranchConnectables;
 import com.ferreusveritas.dynamictrees.systems.fruit.Fruit;
 import com.ferreusveritas.dynamictrees.systems.genfeature.GenFeature;
 import com.ferreusveritas.dynamictrees.tree.family.Family;
-import com.ferreusveritas.dynamictrees.tree.species.Mushroom;
 import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.ferreusveritas.dynamictrees.util.CommonVoxelShapes;
+import com.ferreusveritas.dynamictrees.util.MathHelper;
 import com.ferreusveritas.dynamictrees.worldgen.featurecancellation.TreeFeatureCanceller;
+import com.ferreusveritas.dynamictreesplus.systems.mushroomlogic.shapekits.MushroomShapeKit;
 import com.google.gson.JsonElement;
 import maxhyper.dtbyg.DynamicTreesBYG;
+import maxhyper.dtbyg.blocks.DynamicArisianBloomBranch;
 import maxhyper.dtbyg.blocks.LavaSoilProperties;
 import maxhyper.dtbyg.cancellers.VegetationReplacement;
 import maxhyper.dtbyg.cells.DTBYGCellKits;
 import maxhyper.dtbyg.fruits.EtherBulbsFruit;
 import maxhyper.dtbyg.genfeatures.DTBYGGenFeatures;
 import maxhyper.dtbyg.growthlogic.DTBYGGrowthLogicKits;
+import maxhyper.dtbyg.mushroomshape.BYGMushroomShapeKits;
 import maxhyper.dtbyg.trees.*;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.packs.resources.PreparableReloadListener;
-import net.minecraft.server.packs.resources.ResourceManager;
-import net.minecraft.util.profiling.ProfilerFiller;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.event.AddReloadListenerEvent;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.ForgeRegistries;
 import potionstudios.byg.BYGConstants;
+import potionstudios.byg.common.block.BYGBlocks;
 import potionstudios.byg.common.world.feature.config.BYGMushroomConfig;
 import potionstudios.byg.common.world.feature.config.BYGTreeConfig;
 import potionstudios.byg.common.world.feature.config.GiantFlowerConfig;
 import potionstudios.byg.common.world.feature.gen.overworld.trees.structure.TreeFromStructureNBTConfig;
 
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.function.Supplier;
 
 @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
 public class DTBYGRegistries {
@@ -55,11 +62,16 @@ public class DTBYGRegistries {
     public static final VoxelShape SYTHIAN_CAP_C = Block.box(5D, 9D, 5D, 11D, 11D, 11D);
 
     public static final VoxelShape SYTHIAN_MUSHROOM = Shapes.or(MUSHROOM_STEM_LONG, SYTHIAN_CAP_A, SYTHIAN_CAP_B, SYTHIAN_CAP_C);
+    public static Supplier<DynamicArisianBloomBranch> ARISIAN_BLOOM_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("arisian_bloom_branch"), ()->new DynamicArisianBloomBranch(BlockBehaviour.Properties.copy(BYGBlocks.ARISIAN_BLOOM_BRANCH.get())));
+    public static Supplier<DynamicArisianBloomBranch> EMBUR_GEL_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("embur_gel_branch"), ()->new DynamicArisianBloomBranch(BlockBehaviour.Properties.copy(BYGBlocks.EMBUR_GEL_BRANCH.get())));
+    public static Supplier<DynamicArisianBloomBranch> WITCH_HAZEL_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("witch_hazel_side_branch"), ()->new DynamicArisianBloomBranch(BlockBehaviour.Properties.copy(BYGBlocks.WITCH_HAZEL_BRANCH.get())));
+    public static Supplier<DynamicArisianBloomBranch> IMPARIUS_MUSHROOM_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("imparius_mushroom_side_branch"), ()->new DynamicArisianBloomBranch(BlockBehaviour.Properties.copy(BYGBlocks.IMPARIUS_MUSHROOM_BRANCH.get())));
 
     public static void setup() {
         BYGConstants.ENABLE_CACTI = false;
 
         CommonVoxelShapes.SHAPES.put(DynamicTreesBYG.location("sythian").toString(), SYTHIAN_MUSHROOM);
+
     }
 
     public static void setupBlocks() {
@@ -68,35 +80,37 @@ public class DTBYGRegistries {
     }
 
     private static void setUpSoils() {
-//        SoilProperties netherrackProperties = SoilHelper.getProperties(Blocks.NETHERRACK);
-//        if (netherrackProperties instanceof SpreadableSoilProperties)
-//            ((SpreadableSoilProperties) netherrackProperties).addSpreadableSoils(
-//                    BYGBlocks.SYTHIAN_NYLIUM, BYGBlocks.OVERGROWN_NETHERRACK, BYGBlocks.MYCELIUM_NETHERRACK);
+        SoilProperties netherrackProperties = SoilHelper.getProperties(Blocks.NETHERRACK);
+        if (netherrackProperties instanceof SpreadableSoilProperties)
+            ((SpreadableSoilProperties) netherrackProperties).addSpreadableSoils(
+                    BYGBlocks.SYTHIAN_NYLIUM.get(), BYGBlocks.OVERGROWN_NETHERRACK.get(), BYGBlocks.MYCELIUM_NETHERRACK.get());
     }
 
     private static void setupConnectables() {
-//        BranchConnectables.makeBlockConnectable(BYGBlocks.POLLEN_BLOCK, (state, world, pos, side) -> {
-//            if (side == Direction.DOWN) return 1;
-//            return 0;
-//        });
-//
-//        BranchConnectables.makeBlockConnectable(BYGBlocks.PURPLE_SHROOMLIGHT, (state, world, pos, side) -> {
-//            if (side == Direction.DOWN) {
-//                BlockState branchState = world.getBlockState(pos.relative(Direction.UP));
-//                BranchBlock branch = TreeHelper.getBranch(branchState);
-//                if (branch != null)
-//                    return MathHelper.clamp(branch.getRadius(branchState) - 1, 1, 8);
-//                else return 8;
-//            }
-//            return 0;
-//        });
-//
-//        BranchConnectables.makeBlockConnectable(ARISIAN_BLOOM_BRANCH, (state, world, pos, side) -> {
-//            if (state.hasProperty(HorizontalBlock.FACING)) {
-//                return state.getValue(HorizontalBlock.FACING) == side ? 1 : 0;
-//            }
-//            return 0;
-//        });
+        BranchConnectables.makeBlockConnectable(BYGBlocks.POLLEN_BLOCK.get(), (state, world, pos, side) -> {
+            if (side == Direction.DOWN) return 1;
+            return 0;
+        });
+
+        BranchConnectables.makeBlockConnectable(BYGBlocks.PURPLE_SHROOMLIGHT.get(), (state, world, pos, side) -> {
+            if (side == Direction.DOWN) {
+                BlockState branchState = world.getBlockState(pos.relative(Direction.UP));
+                BranchBlock branch = TreeHelper.getBranch(branchState);
+                if (branch != null)
+                    return Math.min(Math.max(branch.getRadius(branchState) - 1, 1), 8);
+                else return 8;
+            }
+            return 0;
+        });
+
+        for (Block block : new Block[]{ARISIAN_BLOOM_BRANCH.get(), EMBUR_GEL_BRANCH.get(), WITCH_HAZEL_BRANCH.get(), IMPARIUS_MUSHROOM_BRANCH.get()}){
+            BranchConnectables.makeBlockConnectable(block, (state, world, pos, side) -> {
+                if (state.hasProperty(HorizontalDirectionalBlock.FACING)) {
+                    return state.getValue(HorizontalDirectionalBlock.FACING) == side ? 1 : 0;
+                }
+                return 0;
+            });
+        }
     }
 
     @SubscribeEvent
@@ -144,12 +158,8 @@ public class DTBYGRegistries {
     }
 
     @SubscribeEvent
-    public static void onReloadApplierRegistry(final ApplierRegistryEvent.Reload<Family, JsonElement> event) {
-//        ARISIAN_BLOOM_BRANCH = new DynamicArisianBloomBranch(BlockBehaviour.Properties.of(Material.REPLACEABLE_PLANT, color).instabreak().sound(SoundType.TWISTING_VINES).noOcclusion().noCollission().lightLevel((state) -> 10));
-//        ARISIAN_BLOOM_BRANCH.setRegistryName(DynamicTreesBYG.resLoc("arisian_bloom_branch"));
-//        event.getRegistry().register(ARISIAN_BLOOM_BRANCH);
-
-        setupBlocks();
+    public static void onMushroomShapeKitRegistry(final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<MushroomShapeKit> event) {
+        BYGMushroomShapeKits.register(event.getRegistry());
     }
 
     public static final FeatureCanceller BYG_TREE_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("tree"), BYGTreeConfig.class);
