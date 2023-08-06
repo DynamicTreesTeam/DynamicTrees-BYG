@@ -161,12 +161,15 @@
   "species.dtbyg.small_nightshade": "Small Nightshade",
   "species.dtbyg.oddity_cactus": "Oddity Cactus",
 
-  "block.dtbyg.white_mushroom_branch": "Mushroom",
-  "block.dtbyg.brown_mushroom_branch": "Mushroom",
-  "block.dtbyg.embur_branch": "Embur Fungus",
-  "block.dtbyg.fungal_imparius_branch": "Imparuius Fungus",
-  "block.dtbyg.imparius_mushroom_branch": "Imparius Mushroom",
-  "block.dtbyg.soul_shroom_branch": "Soul Shroom",
+  "species.dtbyg.death_cap": "Death Cap Mushroom",
+  "species.dtbyg.green_mushroom": "Green Mushroom",
+  "species.dtbyg.weeping_milkcap": "Weeping Milkcap Mushroom",
+  "species.dtbyg.wood_blewit": "Wood Blewit Mushroom",
+  "species.dtbyg.soul_shroom": "Soul Shroom",
+  "species.dtbyg.imparius_mushroom": "Imparius Mushroom",
+  "species.dtbyg.fungal_imparius": "Imparuius Fungus",
+  "species.dtbyg.shulkren": "Shulkren Fungus",
+  "species.dtbyg.embur": "Embur Fungus",
 
   "item.dtbyg.maple_seed": "Maple Samara",
   "item.dtbyg.red_maple_seed": "Red Maple Samara",
@@ -221,5 +224,15 @@
   "item.dtbyg.warped_cactus_seed": "Warped Cactus Seed",
   "item.dtbyg.ether_seed": "Ether Seeds",
   "item.dtbyg.nightshade_seed": "Nightshade Seeds",
-  "item.dtbyg.oddity_cactus_seed": "Oddity Cactus Seed"
+  "item.dtbyg.oddity_cactus_seed": "Oddity Cactus Seed",
+
+  "item.dtbyg.death_cap_seed": "Death Cap Mushroom Cap",
+  "item.dtbyg.green_mushroom_seed": "Green Mushroom Cap",
+  "item.dtbyg.weeping_milkcap_seed": "Weeping Milkcap Mushroom Cap",
+  "item.dtbyg.wood_blewit_seed": "Wood Blewit Mushroom Cap",
+  "item.dtbyg.soul_shroom_seed": "Soul Shroom Cap",
+  "item.dtbyg.imparius_mushroom_seed": "Imparius Mushroom Cap",
+  "item.dtbyg.fungal_imparius_seed": "Imparuius Cap",
+  "item.dtbyg.shulkren_seed": "Shulkren Cap",
+  "item.dtbyg.embur_seed": "Embur Cap"
 }
