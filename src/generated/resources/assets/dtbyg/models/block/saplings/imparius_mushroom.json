@@ -1,7 +1,6 @@
 {
-  "parent": "dtbyg:block/saplings/mushroom_flat_tall",
+  "parent": "dtbyg:block/saplings/mushroom_flat_small",
   "textures": {
-    "particle": "dtbyg:block/imparius_mushroom_cap",
     "cap": "dtbyg:block/imparius_mushroom_cap"
   }
 }

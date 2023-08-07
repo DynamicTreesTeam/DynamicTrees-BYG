@@ -6,7 +6,6 @@
   "growth_rate": 1.2,
   "soil_longevity": 3,
   "cap_properties": "dtbyg:embur",
-  "generate_seed": false,
   "mushroom_shape_kit": {
     "name": "dtbyg:linear",
     "properties": {

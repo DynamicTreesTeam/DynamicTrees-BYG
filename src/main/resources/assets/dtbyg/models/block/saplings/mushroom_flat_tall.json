@@ -2,15 +2,13 @@
   "credit": "Made with Blockbench",
   "parent": "block/block",
   "textures": {
-    "particle": "block/stone",
-    "cap": "block/stone"
+    "particle": "#cap"
   },
   "elements": [
     {
       "name": "Cap",
       "from": [4, 8, 4],
       "to": [12, 11, 12],
-      "rotation": {"angle": 0, "axis": "y", "origin": [8, 11, 8]},
       "faces": {
         "north": {"uv": [0, 8, 8, 11], "texture": "#cap"},
         "east": {"uv": [0, 13, 8, 16], "texture": "#cap"},

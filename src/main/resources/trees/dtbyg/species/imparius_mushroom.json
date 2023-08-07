@@ -6,7 +6,6 @@
   "growth_rate": 1.2,
   "soil_longevity": 3,
   "cap_properties": "dtbyg:imparius_mushroom",
-  "generate_seed": false,
   "mushroom_shape_kit": {
     "name": "dynamictreesplus:bell",
     "properties": {

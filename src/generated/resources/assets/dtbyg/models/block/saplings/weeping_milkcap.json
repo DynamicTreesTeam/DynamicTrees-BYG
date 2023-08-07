@@ -1,8 +1,6 @@
 {
-  "parent": "dynamictrees:block/smartmodel/mushroom_round",
+  "parent": "dtbyg:block/saplings/mushroom_round_short",
   "textures": {
-    "particle": "dtbyg:block/weeping_milkcap_cap",
-    "stem": "dtbyg:block/weeping_milkcap_cap",
     "cap": "dtbyg:block/weeping_milkcap_cap"
   }
 }
