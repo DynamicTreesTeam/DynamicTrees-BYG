@@ -87,12 +87,13 @@ dependencies {
     runtimeOnly(fg.deobf("curse.maven:terrablender-563928:3957976"))
     // Compile BYG and DT, of course.
     implementation(fg.deobf("curse.maven:BYG-247560:4036050"))
-    //implementation(fg.deobf("curse.maven:dynamictrees-252818:4458396"))
-    implementation(fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-$mcVersion:${property("dynamicTreesVersion")}"))
+
+    implementation(fg.deobf("curse.maven:dynamictrees-252818:4674900"))
+    //implementation(fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-$mcVersion:${property("dynamicTreesVersion")}"))
 
     // At runtime, use DT+ for BYG's cacti.
-    //implementation(fg.deobf("curse.maven:dynamictreesplus-478155:4458646"))
-    implementation(fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-$mcVersion:${property("dynamicTreesPlusVersion")}"))
+    implementation(fg.deobf("curse.maven:dynamictreesplus-478155:4720556"))
+    //implementation(fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-$mcVersion:${property("dynamicTreesPlusVersion")}"))
 
     /////////////////////////////////////////
     /// Runtime Dependencies (optional)
@@ -111,7 +112,8 @@ dependencies {
     runtimeOnly(fg.deobf("curse.maven:ShutUpExperimentalSettings-407174:3188120"))
 
     // At runtime, use suggestion provider fix mod.
-    runtimeOnly(fg.deobf("com.harleyoconnor.suggestionproviderfix:SuggestionProviderFix-1.18.1:${property("suggestionProviderFixVersion")}"))
+    runtimeOnly(fg.deobf("curse.maven:suggestion-provider-fix-469647:3623382"))
+    //runtimeOnly(fg.deobf("com.harleyoconnor.suggestionproviderfix:SuggestionProviderFix-1.18.1:${property("suggestionProviderFixVersion")}"))
 
     // At runtime, use snow coated to allow snow and vines on leaves
     runtimeOnly(fg.deobf("curse.maven:snow-coated-843893:4626429"))

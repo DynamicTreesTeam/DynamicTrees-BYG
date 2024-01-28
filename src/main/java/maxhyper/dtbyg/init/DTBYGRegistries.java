@@ -62,10 +62,10 @@ public class DTBYGRegistries {
     public static final VoxelShape SYTHIAN_CAP_C = Block.box(5D, 9D, 5D, 11D, 11D, 11D);
 
     public static final VoxelShape SYTHIAN_MUSHROOM = Shapes.or(MUSHROOM_STEM_LONG, SYTHIAN_CAP_A, SYTHIAN_CAP_B, SYTHIAN_CAP_C);
-    public static Supplier<DynamicArisianBloomBranch> ARISIAN_BLOOM_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("arisian_bloom_branch"), ()->new DynamicArisianBloomBranch(BlockBehaviour.Properties.copy(BYGBlocks.ARISIAN_BLOOM_BRANCH.get())));
-    public static Supplier<DynamicArisianBloomBranch> EMBUR_GEL_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("embur_gel_branch"), ()->new DynamicArisianBloomBranch(BlockBehaviour.Properties.copy(BYGBlocks.EMBUR_GEL_BRANCH.get())));
-    public static Supplier<DynamicArisianBloomBranch> WITCH_HAZEL_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("witch_hazel_side_branch"), ()->new DynamicArisianBloomBranch(BlockBehaviour.Properties.copy(BYGBlocks.WITCH_HAZEL_BRANCH.get())));
-    public static Supplier<DynamicArisianBloomBranch> IMPARIUS_MUSHROOM_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("imparius_mushroom_side_branch"), ()->new DynamicArisianBloomBranch(BlockBehaviour.Properties.copy(BYGBlocks.IMPARIUS_MUSHROOM_BRANCH.get())));
+    public static Supplier<DynamicArisianBloomBranch> ARISIAN_BLOOM_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("arisian_bloom_branch"), ()->new DynamicArisianBloomBranch(BYGBlocks.ARISIAN_BLOOM_BRANCH.get()));
+    public static Supplier<DynamicArisianBloomBranch> EMBUR_GEL_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("embur_gel_branch"), ()->new DynamicArisianBloomBranch(BYGBlocks.EMBUR_GEL_BRANCH.get()));
+    public static Supplier<DynamicArisianBloomBranch> WITCH_HAZEL_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("witch_hazel_side_branch"), ()->new DynamicArisianBloomBranch(BYGBlocks.WITCH_HAZEL_BRANCH.get()));
+    public static Supplier<DynamicArisianBloomBranch> IMPARIUS_MUSHROOM_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("imparius_mushroom_side_branch"), ()->new DynamicArisianBloomBranch(BYGBlocks.IMPARIUS_MUSHROOM_BRANCH.get()));
 
     public static void setup() {
         BYGConstants.ENABLE_CACTI = false;

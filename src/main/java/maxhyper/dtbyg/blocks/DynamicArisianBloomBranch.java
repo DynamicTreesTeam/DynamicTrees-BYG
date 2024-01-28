@@ -4,14 +4,18 @@ import com.ferreusveritas.dynamictrees.api.TreeHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.LevelReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import potionstudios.byg.common.block.BYGBlocks;
 import potionstudios.byg.common.block.end.impariusgrove.TreeBranchBlock;
 
 public class DynamicArisianBloomBranch extends TreeBranchBlock {
 
-    public DynamicArisianBloomBranch(Properties builder) {
-        super(builder);
+    private final Block baseBlock;
+    public DynamicArisianBloomBranch(Block baseBlock) {
+        super(BlockBehaviour.Properties.copy(baseBlock));
+        this.baseBlock = baseBlock;
     }
 
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
@@ -20,7 +24,7 @@ public class DynamicArisianBloomBranch extends TreeBranchBlock {
 
     @Override
     public Item asItem() {
-        return BYGBlocks.ARISIAN_BLOOM_BRANCH.asItem();
+        return baseBlock.asItem();
     }
 
 }

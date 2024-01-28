@@ -25,6 +25,20 @@
         "y": 270,
         "uvlock": false
       }
+    },
+    {
+      "apply": {
+        "model": "byg:block/weeping_milkcap_mushroom_block",
+        "x": 270,
+        "uvlock": true
+      }
+    },
+    {
+      "apply": {
+        "model": "minecraft:block/mushroom_block_inside",
+        "x": 90,
+        "uvlock": false
+      }
     }
   ]
 }

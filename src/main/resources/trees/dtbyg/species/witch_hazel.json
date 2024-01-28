@@ -47,6 +47,12 @@
         },
         "biome_predicate": { "name": "byg:weeping_witch_forest" }
       }
+    },
+    {
+      "name": "dtbyg:branch_sprouts",
+      "properties": {
+        "sprout_block": "dtbyg:witch_hazel_side_branch"
+      }
     }
   ]
 }

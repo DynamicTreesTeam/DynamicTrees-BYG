@@ -18,5 +18,11 @@
   "primitive_sapling": "byg:embur_wart",
   "acceptable_soils": ["fungus_like"],
   "features" : [
+    {
+      "name": "dtbyg:branch_sprouts",
+      "properties": {
+        "sprout_block": "dtbyg:embur_gel_branch"
+      }
+    }
   ]
 }
