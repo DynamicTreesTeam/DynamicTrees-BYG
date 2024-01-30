@@ -12,7 +12,7 @@
     "name": "dtbyg:linear",
     "properties": {
       "max_cap_age": 4,
-      "chance_to_age": 0.6
+      "chance_to_age": 0.3
     }
   },
   "primitive_sapling": "byg:green_mushroom",

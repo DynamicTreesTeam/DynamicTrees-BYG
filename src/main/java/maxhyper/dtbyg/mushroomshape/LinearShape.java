@@ -84,14 +84,15 @@ public class LinearShape extends MushroomShapeKit {
         for (int i=1; i<=age; i++){
 
             boolean tip = i == 1 && age > configuration.get(POINTED_TIP_AGE);
-            if (!tip && (factor < 1 || i % factor == 0)) y+= 1;
+            boolean moveY = !tip && (factor < 1 || i % factor == 0);
+            if (moveY) y+= 1;
 
             BlockPos pos = context.pos().below(y);
             if (action == ringAction.CLEAR)
                 centerBlock.clearRing(context.level(), pos, radius);
             else if (action == ringAction.PLACE){
                 // if the ring failed to generate then don't bother with the next rings
-                if (!centerBlock.placeRing(context.level(), pos, radius, i, tip, false)) break;
+                if (!centerBlock.placeRing(context.level(), pos, radius, i, i>1 || moveY, factor < 0.0F)) break;
             }
             else if (action == ringAction.GET)
                 ringPositions.addAll(centerBlock.getRing(context.level(), pos, radius));

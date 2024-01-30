@@ -655,19 +655,28 @@
       "chance": 1.0
     }
   },
-
-
-
-
-
-
-
   {
     "select": "byg:mojave_desert",
     "apply": {
       "species": "dtbyg:joshua",
       "density": [ 0.5 ],
       "chance": 0.2
+    }
+  },
+
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "select": { "names_or" : ["byg:weeping_witch_forest", "byg:ebony_woods","byg:temperate_rainforest","byg:forgotten_forest"] },
+    "apply": {
+      "species": {
+        "method": "splice_before",
+        "random": {
+          "...": 24,
+          "dtbyg:green_mushroom": 4,
+          "dtbyg:wood_blewit": 1,
+          "dtbyg:weeping_milkcap": 1
+        }
+      }
     }
   },
   {

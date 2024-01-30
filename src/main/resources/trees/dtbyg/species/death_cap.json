@@ -2,7 +2,7 @@
   "type": "dynamictreesplus:mushroom",
   "family": "dynamictreesplus:mushroom",
   "tapering": 0,
-  "signal_energy": 4,
+  "signal_energy": 16,
   "growth_rate": 1,
   "soil_longevity": 3,
   "cap_properties": "dtbyg:death_cap",
@@ -13,7 +13,7 @@
     "properties": {
       "max_age_curve_factor": -0.2,
       "min_age_curve_factor": 0,
-      "max_cap_age": 4,
+      "max_cap_age": 3,
       "chance_to_age": 0.6
     }
   },
