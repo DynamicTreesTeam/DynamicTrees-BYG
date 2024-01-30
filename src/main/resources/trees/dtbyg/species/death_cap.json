@@ -19,6 +19,7 @@
   },
   "primitive_sapling": "byg:death_cap",
   "acceptable_soils": ["fungus_like"],
+  "sapling_shape": "dtbyg:small_flat_mushroom",
   "features" : [
     "bottom_flare"
   ]

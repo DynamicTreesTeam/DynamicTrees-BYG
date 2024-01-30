@@ -19,6 +19,7 @@
   },
   "primitive_sapling": "byg:weeping_milkcap",
   "acceptable_soils": ["fungus_like"],
+  "sapling_shape": "dtbyg:short_round_mushroom",
   "features" : [
     "bottom_flare"
   ]

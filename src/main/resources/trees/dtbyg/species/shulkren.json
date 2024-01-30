@@ -17,6 +17,7 @@
   },
   "primitive_sapling": "byg:shulkren_fungus",
   "acceptable_soils": ["fungus_like"],
+  "sapling_shape": "dtbyg:shulkren_mushroom",
   "features" : [
     "bottom_flare"
   ]

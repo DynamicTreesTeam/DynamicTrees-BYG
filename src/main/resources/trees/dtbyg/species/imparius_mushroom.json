@@ -16,12 +16,13 @@
   },
   "primitive_sapling": "byg:imparius_mushroom",
   "acceptable_soils": ["fungus_like"],
+  "sapling_shape": "dtbyg:small_flat_mushroom",
   "features" : [
     "bottom_flare",
     {
       "name": "dtbyg:branch_sprouts",
       "properties": {
-        "sprout_block": "dtbyg:imparius_mushroom_branch"
+        "sprout_block": "dtbyg:imparius_mushroom_side_branch"
       }
     }
   ]

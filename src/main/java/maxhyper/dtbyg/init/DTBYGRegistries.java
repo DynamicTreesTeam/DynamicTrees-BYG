@@ -1,7 +1,6 @@
 package maxhyper.dtbyg.init;
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
-import com.ferreusveritas.dynamictrees.api.applier.ApplierRegistryEvent;
 import com.ferreusveritas.dynamictrees.api.cell.CellKit;
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
@@ -17,10 +16,8 @@ import com.ferreusveritas.dynamictrees.systems.genfeature.GenFeature;
 import com.ferreusveritas.dynamictrees.tree.family.Family;
 import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.ferreusveritas.dynamictrees.util.CommonVoxelShapes;
-import com.ferreusveritas.dynamictrees.util.MathHelper;
 import com.ferreusveritas.dynamictrees.worldgen.featurecancellation.TreeFeatureCanceller;
 import com.ferreusveritas.dynamictreesplus.systems.mushroomlogic.shapekits.MushroomShapeKit;
-import com.google.gson.JsonElement;
 import maxhyper.dtbyg.DynamicTreesBYG;
 import maxhyper.dtbyg.blocks.DynamicArisianBloomBranch;
 import maxhyper.dtbyg.blocks.LavaSoilProperties;
@@ -35,10 +32,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
-import net.minecraft.world.level.block.SoundType;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -57,11 +51,25 @@ import java.util.function.Supplier;
 public class DTBYGRegistries {
 
     public static final VoxelShape MUSHROOM_STEM_LONG = Block.box(7D, 0D, 7D, 9D, 10D, 9D);
-    public static final VoxelShape SYTHIAN_CAP_A = Block.box(4D, 6D, 4D, 12D, 8D, 12D);
-    public static final VoxelShape SYTHIAN_CAP_B = Block.box(5D, 3D, 5D, 11D, 5D, 11D);
+    public static final VoxelShape TALL_MUSHROOM_CAP_FLAT = Block.box(4.0D, 8.0D, 4.0D, 12.0D, 11.0D, 12.0D);
+    public static final VoxelShape SMALL_MUSHROOM_CAP_FLAT = Block.box(5.0D, 5.0D, 5.0D, 11.0D, 7.0D, 11.0D);
+    public static final VoxelShape MUSHROOM_CAP_SHORT_ROUND = Block.box(5.0D, 3.0D, 5.0D, 11.0D, 7.0D, 11.0D);
+    public static final VoxelShape SOUL_SHROOM_CAP = Block.box(5.5D, 3.0D, 5.5D, 10.5D, 10.0D, 10.5D);
+    public static final VoxelShape SYTHIAN_CAP_A = Block.box(5D, 3D, 5D, 11D, 5D, 11D);
+    public static final VoxelShape SYTHIAN_CAP_B = Block.box(4D, 6D, 4D, 12D, 8D, 12D);
     public static final VoxelShape SYTHIAN_CAP_C = Block.box(5D, 9D, 5D, 11D, 11D, 11D);
+    public static final VoxelShape SHULKREN_CAP_A = Block.box(4D, 3D, 4D, 12D, 6D, 12D);
+    public static final VoxelShape SHULKREN_CAP_B = Block.box(5D, 6D, 5D, 11D, 9D, 11D);
+    public static final VoxelShape SHULKREN_CAP_C = Block.box(6D, 9D, 6D, 10D, 11D, 10D);
 
+    public static final VoxelShape TALL_FLAT_MUSHROOM = Shapes.or(MUSHROOM_STEM_LONG, TALL_MUSHROOM_CAP_FLAT);
+    public static final VoxelShape SMALL_FLAT_MUSHROOM = Shapes.or(CommonVoxelShapes.MUSHROOM_STEM, SMALL_MUSHROOM_CAP_FLAT);
+    public static final VoxelShape SHORT_ROUND_MUSHROOM = Shapes.or(CommonVoxelShapes.MUSHROOM_STEM, MUSHROOM_CAP_SHORT_ROUND);
+    public static final VoxelShape SOUL_SHROOM = Shapes.or(CommonVoxelShapes.MUSHROOM_STEM, SOUL_SHROOM_CAP);
     public static final VoxelShape SYTHIAN_MUSHROOM = Shapes.or(MUSHROOM_STEM_LONG, SYTHIAN_CAP_A, SYTHIAN_CAP_B, SYTHIAN_CAP_C);
+    public static final VoxelShape SHULKREN_MUSHROOM = Shapes.or(CommonVoxelShapes.MUSHROOM_STEM, SHULKREN_CAP_A, SHULKREN_CAP_B, SHULKREN_CAP_C);
+
+
     public static Supplier<DynamicArisianBloomBranch> ARISIAN_BLOOM_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("arisian_bloom_branch"), ()->new DynamicArisianBloomBranch(BYGBlocks.ARISIAN_BLOOM_BRANCH.get()));
     public static Supplier<DynamicArisianBloomBranch> EMBUR_GEL_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("embur_gel_branch"), ()->new DynamicArisianBloomBranch(BYGBlocks.EMBUR_GEL_BRANCH.get()));
     public static Supplier<DynamicArisianBloomBranch> WITCH_HAZEL_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("witch_hazel_side_branch"), ()->new DynamicArisianBloomBranch(BYGBlocks.WITCH_HAZEL_BRANCH.get()));
@@ -70,7 +78,12 @@ public class DTBYGRegistries {
     public static void setup() {
         BYGConstants.ENABLE_CACTI = false;
 
-        CommonVoxelShapes.SHAPES.put(DynamicTreesBYG.location("sythian").toString(), SYTHIAN_MUSHROOM);
+        CommonVoxelShapes.SHAPES.put(DynamicTreesBYG.location("tall_flat_mushroom").toString(), TALL_FLAT_MUSHROOM);
+        CommonVoxelShapes.SHAPES.put(DynamicTreesBYG.location("small_flat_mushroom").toString(), SMALL_FLAT_MUSHROOM);
+        CommonVoxelShapes.SHAPES.put(DynamicTreesBYG.location("short_round_mushroom").toString(), SHORT_ROUND_MUSHROOM);
+        CommonVoxelShapes.SHAPES.put(DynamicTreesBYG.location("soul_shroom").toString(), SOUL_SHROOM);
+        CommonVoxelShapes.SHAPES.put(DynamicTreesBYG.location("sythian_mushroom").toString(), SYTHIAN_MUSHROOM);
+        CommonVoxelShapes.SHAPES.put(DynamicTreesBYG.location("shulkren_mushroom").toString(), SHULKREN_MUSHROOM);
 
     }
 

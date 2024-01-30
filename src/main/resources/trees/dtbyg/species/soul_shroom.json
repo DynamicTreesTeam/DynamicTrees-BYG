@@ -16,6 +16,7 @@
   },
   "primitive_sapling": "byg:soul_shroom",
   "acceptable_soils": ["fungus_like"],
+  "sapling_shape": "dtbyg:soul_shroom",
   "features" : [
     "bottom_flare"
   ]
