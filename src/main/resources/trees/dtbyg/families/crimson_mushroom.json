@@ -1,0 +1,11 @@
+{
+  "only_if_loaded": "dynamictreesplus",
+  "type": "dynamictreesplus:mushroom",
+  "common_cap": "dtbyg:crimson_mushroom",
+  "common_species": "dtbyg:crimson_mushroom",
+  "primitive_log": "crimson_stem",
+  "primitive_stripped_log": "stripped_crimson_stem",
+  "outside_branch_texture": "block/crimson_stem",
+  "inside_branch_texture": "block/crimson_stem_top",
+  "max_branch_radius": 24
+}

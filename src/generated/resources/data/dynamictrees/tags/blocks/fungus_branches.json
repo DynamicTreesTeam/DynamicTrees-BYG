@@ -2,11 +2,13 @@
   "replace": false,
   "values": [
     "dtbyg:brown_mushroom_branch",
+    "dtbyg:crimson_mushroom_branch",
     "dtbyg:embur_branch",
     "dtbyg:fungal_imparius_branch",
     "dtbyg:imparius_mushroom_branch",
     "dtbyg:soul_shroom_branch",
     "dtbyg:sythian_branch",
+    "dtbyg:warped_mushroom_branch",
     "dtbyg:white_mushroom_branch"
   ]
 }

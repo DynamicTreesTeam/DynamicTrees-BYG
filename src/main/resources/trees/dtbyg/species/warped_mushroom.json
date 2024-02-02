@@ -1,0 +1,25 @@
+{
+  "type": "dynamictreesplus:mushroom",
+  "family": "dtbyg:warped_mushroom",
+  "tapering": 0.4,
+  "signal_energy": 10,
+  "growth_rate": 0.8,
+  "soil_longevity": 2,
+  "max_branch_radius": 16,
+  "cap_properties": "dtbyg:warped_mushroom",
+  "generate_seed": false,
+  "generate_sapling": false,
+  "mushroom_shape_kit": {
+    "name": "dynamictreesplus:bell",
+    "properties": {
+      "max_age_curve_factor": -0.2,
+      "min_age_curve_factor": 0.3
+    }
+  },
+  "acceptable_soils": ["fungus_like", "nether_soil_like"],
+  "accept_any_soil": false,
+  "world_gen_acceptable_soils": ["nether_like", "dirt_like"],
+  "features" : [
+    "bottom_flare"
+  ]
+}
