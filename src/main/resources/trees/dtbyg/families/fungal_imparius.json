@@ -8,5 +8,6 @@
   "outside_branch_texture": "byg:block/fungal_imparius_stem",
   "inside_branch_texture": "byg:block/fungal_imparius_stem_top",
   "stick": "stick",
-  "max_branch_radius": 24
+  "max_branch_radius": 24,
+  "max_signal_depth": 64
 }

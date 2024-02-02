@@ -1,10 +1,20 @@
 [
   {
-    "__comment": "Cancel standard tree features from the overworld.",
+    "__comment": "Cancel standard tree features from byg biomes.",
     "select": { "name": "byg.*" },
     "cancellers": {
       "types": [ "dtbyg:tree", "tree", "dtbyg:fungus" ],
       "namespaces": ["byg", "minecraft"]
+    }
+  },
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "__comment": "Cancel standard mushroom features from byg biomes.",
+    "select": { "name": "byg.*" },
+    "cancellers": {
+      "types": [ "dtbyg:tree", "tree", "dtbyg:fungus", "mushroom" ],
+      "namespaces": ["byg", "minecraft"],
+      "stages": ["UNDERGROUND_DECORATION", "VEGETAL_DECORATION"]
     }
   },
   {

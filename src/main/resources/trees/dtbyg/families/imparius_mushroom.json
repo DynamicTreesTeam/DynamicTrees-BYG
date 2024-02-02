@@ -8,5 +8,6 @@
   "inside_branch_texture": "byg:block/imparius_stem_top",
   "stick": "stick",
   "generate_stripped_branch": false,
-  "max_branch_radius": 24
+  "max_branch_radius": 24,
+  "max_signal_depth": 64
 }

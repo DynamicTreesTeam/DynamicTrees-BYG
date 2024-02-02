@@ -1,0 +1,19 @@
+{
+  "type": "dynamictreesplus:mushroom",
+  "family": "dynamictreesplus:mushroom",
+  "tapering": 0,
+  "signal_energy": 3.5,
+  "soil_longevity": 1,
+  "cap_properties": "dtbyg:weeping_milkcap",
+  "mushroom_shape_kit": {
+    "name": "dynamictreesplus:bell",
+    "properties": {
+      "max_age_curve_factor": 0.25,
+      "min_age_curve_factor": 0.3,
+      "pointed_tip_max_age": 6,
+      "max_cap_age": 2
+    }
+  },
+  "acceptable_soils": ["fungus_like", "nether_soil_like"],
+  "accept_any_soil": false
+}

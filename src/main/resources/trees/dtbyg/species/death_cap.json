@@ -19,6 +19,8 @@
   },
   "primitive_sapling": "byg:death_cap",
   "acceptable_soils": ["fungus_like"],
+  "world_gen_acceptable_soils": ["nether_like"],
+  "accept_any_soil": false,
   "sapling_shape": "dtbyg:small_flat_mushroom",
   "features" : [
     "bottom_flare"

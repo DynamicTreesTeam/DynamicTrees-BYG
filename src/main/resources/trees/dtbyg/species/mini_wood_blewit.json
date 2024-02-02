@@ -1,0 +1,18 @@
+{
+  "type": "dynamictreesplus:mushroom",
+  "family": "dtbyg:brown_mushroom",
+  "tapering": 0,
+  "signal_energy": 3.5,
+  "soil_longevity": 1,
+  "cap_properties": "dtbyg:wood_blewit",
+  "mushroom_shape_kit": {
+    "name": "dtbyg:linear",
+    "properties": {
+      "max_cap_age": 3,
+      "chance_to_age": 0.8,
+      "factor": 0.5
+    }
+  },
+  "acceptable_soils": ["fungus_like", "nether_soil_like"],
+  "accept_any_soil": false
+}

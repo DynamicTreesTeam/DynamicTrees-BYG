@@ -2,7 +2,7 @@
   "type": "dynamictreesplus:mushroom",
   "family": "dtbyg:embur",
   "tapering": 0,
-  "signal_energy": 6,
+  "signal_energy": 20,
   "growth_rate": 1.2,
   "soil_longevity": 3,
   "cap_properties": "dtbyg:embur",
@@ -17,6 +17,7 @@
   },
   "primitive_sapling": "byg:embur_wart",
   "acceptable_soils": ["fungus_like"],
+  "accept_any_soil": false,
   "features" : [
     {
       "name": "dtbyg:branch_sprouts",

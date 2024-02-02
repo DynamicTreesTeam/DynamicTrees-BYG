@@ -8,5 +8,6 @@
   "outside_branch_texture": "byg:block/embur_pedu",
   "inside_branch_texture": "byg:block/embur_pedu_top",
   "stick": "stick",
-  "max_branch_radius": 24
+  "max_branch_radius": 24,
+  "max_signal_depth": 64
 }

@@ -10,6 +10,10 @@ import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.ferreusveritas.dynamictrees.worldgen.GenerationContext;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
@@ -48,6 +52,10 @@ public class LamentSpecies extends Species {
     }
 
     @Override
+    public boolean isAcceptableSoilForWorldgen(LevelAccessor level, BlockPos pos, BlockState soilBlockState) {
+        return super.isAcceptableSoilForWorldgen(level, pos, soilBlockState) || altSpecies.isAcceptableSoilForWorldgen(level, pos, soilBlockState);
+    }
+    @Override
     public boolean isAcceptableSoil(LevelReader level, BlockPos pos, BlockState soilBlockState) {
         return super.isAcceptableSoil(level, pos, soilBlockState) || altSpecies.isAcceptableSoil(level, pos, soilBlockState);
     }
@@ -62,10 +70,12 @@ public class LamentSpecies extends Species {
     @Override
     public Species generateSeed() {
         return !this.shouldGenerateSeed() || this.seed != null ? this :
-                this.setSeed(RegistryHandler.addItem(getSeedName(), ()->new Seed(this)
-//                        {
-//                            @Override
-//                            public boolean isFireResistant() { return true; }
+                this.setSeed(RegistryHandler.addItem(getSeedName(), ()->new Seed(this){
+                            @Override
+                            public boolean isFireResistant() {
+                                return true;
+                            }
+
 //                            @Override
 //                            public ActionResult<ItemStack> use(World world, PlayerEntity player, Hand hand) {
 //                                BlockRayTraceResult rayTraceResult = getPlayerPOVHitResult(world, player, RayTraceContext.FluidMode.SOURCE_ONLY);
@@ -73,7 +83,7 @@ public class LamentSpecies extends Species {
 //                                ActionResultType actionresulttype = super.useOn(new ItemUseContext(player, hand, rayTraceResult.getDirection() == Direction.UP ? rayTraceResultUp : rayTraceResult));
 //                                return new ActionResult<>(actionresulttype, player.getItemInHand(hand));
 //                            }
-//                        }
+                        }
                 ));
     }
 

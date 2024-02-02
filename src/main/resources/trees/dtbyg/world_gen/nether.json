@@ -1,0 +1,125 @@
+[
+  {
+    "__comment": "Flag nether as being subterranean.",
+    "select": {
+      "names_or": [
+        "byg:brimstone_caverns","byg:crimson_gardens","byg:embur_bog","byg:glowstone_gardens",
+        "byg:magma_wastes","byg:subzero_hypogeal","byg:sythian_torrids","byg:warped_desert","byg:wailing_garth",
+        "byg:withering_woods","byg:weeping_mire","byg:quartz_desert"
+      ] },
+    "apply": {
+      "subterranean": true
+    }
+  },
+
+  {
+    "select": {
+      "name": "byg:embur_bog"
+    },
+    "apply": {
+      "species": "dtbyg:embur",
+      "density": [ 1.0 ],
+      "chance": 1.0
+    }
+  },
+  {
+    "select": {
+      "name": "byg:sythian_torrids"
+    },
+    "apply": {
+      "species": "dtbyg:sythian",
+      "density": [ 2.0 ],
+      "chance": 1.0
+    }
+  },
+  {
+    "select": {
+      "name": "byg:arisian_undergrowth"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:withering_oak": 3,
+          "dtbyg:sparse_withering_oak": 1,
+          "dtbyg:tapered_withering_oak": 2,
+          "dtbyg:sparse_tapered_withering_oak": 1
+        }
+      },
+      "density": [ 1.0 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+  {
+    "select": {
+      "name": "byg:weeping_mire"
+    },
+    "apply": {
+      "species": "dtbyg:lament",
+      "density": [ 1.0 ],
+      "chance": 1.0,
+      "forestness": 1
+    }
+  },
+
+
+
+
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "select": "byg:warped_desert",
+    "apply": {
+      "species": "dtbyg:warped_cactus",
+      "density" : { "math": { "add" : [ { "mul" : [ "noise", 0.6 ] }, 0.4 ] } },
+      "chance": 0.6
+    }
+  },
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "select": "byg:weeping_mire",
+    "apply": {
+      "species": {
+        "method": "splice_before",
+        "random": {
+          "...": 15,
+          "dtbyg:mini_red_mushroom": 1,
+          "dtbyg:mini_brown_mushroom": 1,
+          "dtbyg:mini_green_mushroom": 1,
+          "dtbyg:mini_wood_blewit": 1,
+          "dtbyg:mini_weeping_milkcap": 1
+        }
+      }
+    }
+  },
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "select": "byg:wailing_garth",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:mini_red_mushroom": 1,
+          "dtbyg:mini_brown_mushroom": 1,
+          "dtbyg:mini_green_mushroom": 1,
+          "dtbyg:mini_wood_blewit": 1,
+          "dtbyg:mini_weeping_milkcap": 1
+        }
+      },
+      "density": 3,
+      "chance": 0.2
+    }
+  },
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "select": "byg:glowstone_gardens",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:crimson_mushroom": 1,
+          "dtbyg:warped_mushroom": 1
+        }
+      },
+      "density": 2,
+      "chance": 1.0
+    }
+  }
+]

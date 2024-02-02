@@ -17,9 +17,11 @@ import com.ferreusveritas.dynamictrees.tree.family.Family;
 import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.ferreusveritas.dynamictrees.util.CommonVoxelShapes;
 import com.ferreusveritas.dynamictrees.worldgen.featurecancellation.TreeFeatureCanceller;
+import com.ferreusveritas.dynamictreesplus.block.mushroom.CapProperties;
 import com.ferreusveritas.dynamictreesplus.systems.mushroomlogic.shapekits.MushroomShapeKit;
 import maxhyper.dtbyg.DynamicTreesBYG;
 import maxhyper.dtbyg.blocks.DynamicArisianBloomBranch;
+import maxhyper.dtbyg.blocks.EmburGelCapProperties;
 import maxhyper.dtbyg.blocks.LavaSoilProperties;
 import maxhyper.dtbyg.cancellers.VegetationReplacement;
 import maxhyper.dtbyg.cells.DTBYGCellKits;
@@ -168,6 +170,11 @@ public class DTBYGRegistries {
     @SubscribeEvent
     public static void registerFruitTypes(final TypeRegistryEvent<Fruit> event) {
         event.registerType(DynamicTreesBYG.location("ether_bulbs"), EtherBulbsFruit.TYPE);
+    }
+
+    @SubscribeEvent
+    public static void registerCapPropertiesTypes (final TypeRegistryEvent<CapProperties> event){
+        event.registerType(DynamicTreesBYG.location("embur_gel_cap"), EmburGelCapProperties.TYPE);
     }
 
     @SubscribeEvent
