@@ -9,6 +9,7 @@
   "cap_properties": "dtbyg:warped_mushroom",
   "generate_seed": false,
   "generate_sapling": false,
+  "always_show_on_waila": true,
   "mushroom_shape_kit": {
     "name": "dynamictreesplus:bell",
     "properties": {

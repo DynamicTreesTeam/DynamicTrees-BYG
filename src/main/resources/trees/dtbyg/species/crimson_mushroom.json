@@ -8,6 +8,7 @@
   "cap_properties": "dtbyg:crimson_mushroom",
   "generate_seed": false,
   "generate_sapling": false,
+  "always_show_on_waila": true,
   "mushroom_shape_kit": {
     "name": "dtbyg:linear",
     "properties": {
