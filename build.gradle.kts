@@ -28,6 +28,9 @@ repositories {
     maven("https://harleyoconnor.com/maven")
     maven("https://squiddev.cc/maven/")
     mavenLocal()
+    flatDir {
+        dir("libs")
+    }
 }
 
 val modName = property("modName")
@@ -92,7 +95,8 @@ dependencies {
     //implementation(fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-$mcVersion:${property("dynamicTreesVersion")}"))
 
     // At runtime, use DT+ for BYG's cacti.
-    implementation(fg.deobf("curse.maven:dynamictreesplus-478155:4720556"))
+    implementation(fg.deobf("libs:DynamicTreesPlus:1.18.2-1.0.6"))
+    //implementation(fg.deobf("curse.maven:dynamictreesplus-478155:4720556"))
     //implementation(fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-$mcVersion:${property("dynamicTreesPlusVersion")}"))
 
     /////////////////////////////////////////

@@ -85,7 +85,7 @@ public class ImpariusMushroomCapProperties extends CapProperties {
                             }
                             if (!validDirs.isEmpty()){
                                 Direction facing = validDirs.get(level.getRandom().nextInt(validDirs.size()));
-                                level.setBlock(ringPos.above(), DTBYGRegistries.IMPARIUS_MUSHROOM_BRANCH.get().defaultBlockState().setValue(TreeBranchBlock.FACING, facing), 2);
+                                level.setBlock(ringPos.above(), DTBYGRegistries.IMPARIUS_MUSHROOM_BRANCH.get().defaultBlockState().setValue(TreeBranchBlock.FACING, facing.getOpposite()), 2);
                             }
                         }
                         ++placed;

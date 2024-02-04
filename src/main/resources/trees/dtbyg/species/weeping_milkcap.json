@@ -11,8 +11,8 @@
   "mushroom_shape_kit": {
     "name": "dynamictreesplus:bell",
     "properties": {
-      "max_age_curve_factor": 0.25,
-      "min_age_curve_factor": 0.3,
+      "max_age_curve_factor": 0.2,
+      "min_age_curve_factor": 0.25,
       "pointed_tip_max_age": 6,
       "max_cap_age": 4
     }

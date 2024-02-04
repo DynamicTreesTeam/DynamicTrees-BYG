@@ -1,7 +1,10 @@
 package maxhyper.dtbyg.blocks;
 
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
+import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.poissondisc.Vec2i;
+import com.ferreusveritas.dynamictrees.tree.family.Family;
+import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.ferreusveritas.dynamictreesplus.block.mushroom.CapProperties;
 import com.ferreusveritas.dynamictreesplus.block.mushroom.DynamicCapBlock;
 import com.ferreusveritas.dynamictreesplus.block.mushroom.DynamicCapCenterBlock;
@@ -10,6 +13,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -99,6 +103,7 @@ public class WartyCapProperties extends CapProperties {
     protected DynamicCapCenterBlock createDynamicCapCenter(BlockBehaviour.Properties properties) {
         return new DynamicCapCenterBlock(this, properties){
 
+            @Override
             public void clearRing(LevelAccessor level, BlockPos pos, int radius) {
                 List<Vec2i> ring = MushroomCapDisc.getPrecomputedRing(radius);
                 for (Vec2i vec : ring) {
@@ -116,6 +121,7 @@ public class WartyCapProperties extends CapProperties {
 
             }
 
+            @Override
             public boolean placeRing(LevelAccessor level, BlockPos pos, int radius, int step, boolean yMoved, boolean negFactor) {
                 List<Vec2i> ring = MushroomCapDisc.getPrecomputedRing(radius);
                 int placed = 0;

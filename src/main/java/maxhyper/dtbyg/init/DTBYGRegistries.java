@@ -169,6 +169,7 @@ public class DTBYGRegistries {
         event.registerType(DynamicTreesBYG.location("generates_on_extra_soil"), GenOnExtraSoilSpecies.TYPE);
         event.registerType(DynamicTreesBYG.location("mangrove"), MangroveSpecies.TYPE);
         event.registerType(DynamicTreesBYG.location("lament"), LamentSpecies.TYPE);
+        event.registerType(DynamicTreesBYG.location("woody_mushroom"), WoodyHugeMushroomSpecies.TYPE);
     }
     
     @SubscribeEvent
