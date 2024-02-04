@@ -18,23 +18,28 @@ import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.ferreusveritas.dynamictrees.util.CommonVoxelShapes;
 import com.ferreusveritas.dynamictrees.worldgen.featurecancellation.TreeFeatureCanceller;
 import com.ferreusveritas.dynamictreesplus.block.mushroom.CapProperties;
+import com.ferreusveritas.dynamictreesplus.block.mushroom.DynamicCapBlock;
 import com.ferreusveritas.dynamictreesplus.systems.mushroomlogic.shapekits.MushroomShapeKit;
 import maxhyper.dtbyg.DynamicTreesBYG;
-import maxhyper.dtbyg.blocks.DynamicArisianBloomBranch;
-import maxhyper.dtbyg.blocks.EmburGelCapProperties;
-import maxhyper.dtbyg.blocks.LavaSoilProperties;
+import maxhyper.dtbyg.blocks.*;
 import maxhyper.dtbyg.cancellers.VegetationReplacement;
 import maxhyper.dtbyg.cells.DTBYGCellKits;
-import maxhyper.dtbyg.fruits.EtherBulbsFruit;
 import maxhyper.dtbyg.genfeatures.DTBYGGenFeatures;
 import maxhyper.dtbyg.growthlogic.DTBYGGrowthLogicKits;
 import maxhyper.dtbyg.mushroomshape.BYGMushroomShapeKits;
 import maxhyper.dtbyg.trees.*;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.HorizontalDirectionalBlock;
+import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -42,6 +47,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import potionstudios.byg.BYGConstants;
 import potionstudios.byg.common.block.BYGBlocks;
+import potionstudios.byg.common.block.end.impariusgrove.FungalImpariusFilamentBlock;
 import potionstudios.byg.common.world.feature.config.BYGMushroomConfig;
 import potionstudios.byg.common.world.feature.config.BYGTreeConfig;
 import potionstudios.byg.common.world.feature.config.GiantFlowerConfig;
@@ -76,6 +82,16 @@ public class DTBYGRegistries {
     public static Supplier<DynamicArisianBloomBranch> EMBUR_GEL_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("embur_gel_branch"), ()->new DynamicArisianBloomBranch(BYGBlocks.EMBUR_GEL_BRANCH.get()));
     public static Supplier<DynamicArisianBloomBranch> WITCH_HAZEL_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("witch_hazel_side_branch"), ()->new DynamicArisianBloomBranch(BYGBlocks.WITCH_HAZEL_BRANCH.get()));
     public static Supplier<DynamicArisianBloomBranch> IMPARIUS_MUSHROOM_BRANCH = RegistryHandler.addBlock(DynamicTreesBYG.location("imparius_mushroom_side_branch"), ()->new DynamicArisianBloomBranch(BYGBlocks.IMPARIUS_MUSHROOM_BRANCH.get()));
+    public static Supplier<FungalImpariusFilamentBlock> FUNGAL_IMPARIUS_FILAMENT = RegistryHandler.addBlock(DynamicTreesBYG.location("fungal_imparius_filament"), () -> new FungalImpariusFilamentBlock(
+            BlockBehaviour.Properties.of(Material.GRASS, MaterialColor.COLOR_LIGHT_BLUE).instabreak().sound(SoundType.HONEY_BLOCK).noOcclusion().noCollission().lightLevel((state) -> 15)
+    ){
+        @Override public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
+            return worldIn.getBlockState(pos.above()).getBlock() instanceof DynamicCapBlock;
+        }
+        @Override public Item asItem() {
+            return BYGBlocks.FUNGAL_IMPARIUS_FILAMENT.asItem();
+        }
+    });
 
     public static void setup() {
         BYGConstants.ENABLE_CACTI = false;
@@ -160,6 +176,7 @@ public class DTBYGRegistries {
         event.registerType(DynamicTreesBYG.location("diagonal_palm"), DiagonalPalmFamily.TYPE);
         event.registerType(DynamicTreesBYG.location("sythian_fungus"), SythianFungusFamily.TYPE);
         event.registerType(DynamicTreesBYG.location("nightshade"), NightshadeFamily.TYPE);
+        event.registerType(DynamicTreesBYG.location("warty_mushroom"), WartyMushroomFamily.TYPE);
     }
 
     @SubscribeEvent
@@ -175,6 +192,9 @@ public class DTBYGRegistries {
     @SubscribeEvent
     public static void registerCapPropertiesTypes (final TypeRegistryEvent<CapProperties> event){
         event.registerType(DynamicTreesBYG.location("embur_gel_cap"), EmburGelCapProperties.TYPE);
+        event.registerType(DynamicTreesBYG.location("fungal_imparius_cap"), FungalImpariusCapProperties.TYPE);
+        event.registerType(DynamicTreesBYG.location("imparius_mushroom_cap"), ImpariusMushroomCapProperties.TYPE);
+        event.registerType(DynamicTreesBYG.location("warty_cap"), WartyCapProperties.TYPE);
     }
 
     @SubscribeEvent

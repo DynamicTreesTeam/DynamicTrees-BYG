@@ -1,6 +1,7 @@
 package maxhyper.dtbyg.mushroomshape;
 
 import com.ferreusveritas.dynamictrees.api.configuration.ConfigurationProperty;
+import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.ferreusveritas.dynamictreesplus.block.mushroom.DynamicCapCenterBlock;
 import com.ferreusveritas.dynamictreesplus.systems.mushroomlogic.MushroomShapeConfiguration;
 import com.ferreusveritas.dynamictreesplus.systems.mushroomlogic.context.MushroomCapContext;
@@ -23,6 +24,8 @@ public class LinearShape extends MushroomShapeKit {
      */
     public static final ConfigurationProperty<Float> FACTOR =
             ConfigurationProperty.floatProperty("factor");
+    public static final ConfigurationProperty<Float> FACTOR_VARIATION =
+            ConfigurationProperty.floatProperty("factor_variation");
 
     public LinearShape(ResourceLocation registryName) {
         super(registryName);
@@ -34,12 +37,13 @@ public class LinearShape extends MushroomShapeKit {
                 .with(CHANCE_TO_AGE, 0.75f)
                 .with(MAX_CAP_AGE, 6)
                 .with(POINTED_TIP_AGE, 0)
-                .with(FACTOR, 1f);
+                .with(FACTOR, 1f)
+                .with(FACTOR_VARIATION, 0f);
     }
 
     @Override
     protected void registerProperties() {
-        this.register(CHANCE_TO_AGE, MAX_CAP_AGE, POINTED_TIP_AGE, FACTOR);
+        this.register(CHANCE_TO_AGE, MAX_CAP_AGE, POINTED_TIP_AGE, FACTOR, FACTOR_VARIATION);
     }
 
     @Override
@@ -78,13 +82,14 @@ public class LinearShape extends MushroomShapeKit {
         DynamicCapCenterBlock centerBlock = context.species().getCapProperties().getDynamicCapCenterBlock().orElse(null);
         List<BlockPos> ringPositions = new LinkedList<>();
         if (centerBlock == null) return ringPositions;
-        float factor = configuration.get(FACTOR);
+        float rand = (float) CoordUtils.coordHashCode(new BlockPos(context.pos().getX(), 0, context.pos().getZ()), 2) / 65535.0F;
+        float factor = configuration.get(FACTOR) + configuration.get(FACTOR_VARIATION) * (2f*rand-1f);
         int y = 0;
         int radius = 1;
         for (int i=1; i<=age; i++){
 
             boolean tip = i == 1 && age > configuration.get(POINTED_TIP_AGE);
-            boolean moveY = !tip && (factor < 1 || i % factor == 0);
+            boolean moveY = !tip && (factor < 1 || i % (int)factor == 0);
             if (moveY) y+= 1;
 
             BlockPos pos = context.pos().below(y);
@@ -97,7 +102,7 @@ public class LinearShape extends MushroomShapeKit {
             else if (action == ringAction.GET)
                 ringPositions.addAll(centerBlock.getRing(context.level(), pos, radius));
 
-            if ((factor > 1 || i % (1/factor) == 0)) radius++;
+            if ((factor > 1 || i % (int)(1/factor) == 0)) radius++;
         }
         ringPositions.add(context.pos());
         return ringPositions;

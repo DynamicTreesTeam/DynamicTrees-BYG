@@ -20,5 +20,6 @@
   "accept_any_soil": false,
   "world_gen_acceptable_soils": ["nether_like", "dirt_like"],
   "features" : [
+    "dtbyg:mushroom_vines"
   ]
 }

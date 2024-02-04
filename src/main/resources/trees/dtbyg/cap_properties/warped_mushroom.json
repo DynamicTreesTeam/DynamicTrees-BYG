@@ -1,4 +1,5 @@
 {
+  "type": "dtbyg:warty_cap",
   "primitive_cap": "minecraft:warped_wart_block",
   "material_color": "WARPED_WART",
   "fire_spread": 0,

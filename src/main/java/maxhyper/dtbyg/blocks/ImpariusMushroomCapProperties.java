@@ -17,38 +17,44 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
+import potionstudios.byg.common.block.end.impariusgrove.TreeBranchBlock;
 
 import javax.annotation.Nonnull;
+import java.util.LinkedList;
 import java.util.List;
 
-public class EmburGelCapProperties extends CapProperties {
+public class ImpariusMushroomCapProperties extends CapProperties {
 
-    public static final TypedRegistry.EntryType<CapProperties> TYPE = TypedRegistry.newType(EmburGelCapProperties::new);
+    public static final TypedRegistry.EntryType<CapProperties> TYPE = TypedRegistry.newType(ImpariusMushroomCapProperties::new);
 
-    public EmburGelCapProperties(ResourceLocation registryName) {
+    public ImpariusMushroomCapProperties(ResourceLocation registryName) {
         super(registryName);
     }
 
-    protected float droopyFirstLevelChance = 0.5f;
-    protected float droopySecondLevelChance = 0.25f;
-    protected int minAgeForSecondLevelDroop = 4;
-
-    protected String getBlockRegistryNameSuffix() {
-        return "_gel";
-    }
-
-    protected String getCenterBlockRegistryNameSuffix() {
-        return "_gel_center";
-    }
+    protected float capSideBranchesChance = 0.5f;
 
     @Override
     public BlockBehaviour.Properties getDefaultBlockProperties(Material material, MaterialColor materialColor) {
-        return BlockBehaviour.Properties.of(Material.CLAY, MaterialColor.TERRACOTTA_YELLOW).sound(SoundType.HONEY_BLOCK).noOcclusion().speedFactor(1.3F);
+        return BlockBehaviour.Properties.of(Material.GRASS, MaterialColor.COLOR_CYAN).strength(0.2F).sound(SoundType.TWISTING_VINES).speedFactor(0.5F).jumpFactor(0.5F);
     }
 
     @Override
     protected DynamicCapCenterBlock createDynamicCapCenter(BlockBehaviour.Properties properties) {
         return new DynamicCapCenterBlock(this, properties){
+
+            public void clearRing(LevelAccessor level, BlockPos pos, int radius) {
+                List<Vec2i> ring = MushroomCapDisc.getPrecomputedRing(radius);
+                for (Vec2i vec : ring) {
+                    BlockPos ringPos = new BlockPos(pos.getX() + vec.x, pos.getY(), pos.getZ() + vec.z);
+                    if (this.properties.isPartOfCap(level.getBlockState(ringPos))) {
+                        if (level.getBlockState(ringPos.above()).is(DTBYGRegistries.IMPARIUS_MUSHROOM_BRANCH.get())){
+                            level.setBlock(ringPos.below(), Blocks.AIR.defaultBlockState(), 2);
+                        }
+                        level.setBlock(ringPos, Blocks.AIR.defaultBlockState(), 2);
+                    }
+                }
+
+            }
 
             public boolean placeRing(LevelAccessor level, BlockPos pos, int radius, int step, boolean yMoved, boolean negFactor) {
                 List<Vec2i> ring = MushroomCapDisc.getPrecomputedRing(radius);
@@ -70,15 +76,16 @@ public class EmburGelCapProperties extends CapProperties {
                     if (canCapReplace(level.getBlockState(ringPos))) {
                         BlockState placeCapState = this.getStateForAge(this.properties, step, new Vec2i(-vec.x, -vec.z), yMoved, negFactor, this.properties.isPartOfCap(level.getBlockState(ringPos.above())), lastRing);
                         level.setBlock(ringPos, placeCapState, 2);
-                        //place droopy blocks on last ring
-                        if (lastRing){
-                            if (level.getRandom().nextFloat() < droopyFirstLevelChance && canCapReplace(level.getBlockState(ringPos.below())) && step < 8){
-                                BlockState droopyCapState1 = properties.getDynamicCapState(step+1, new boolean[]{true, false, true, true, true, true});
-                                level.setBlock(ringPos.below(), droopyCapState1, 2);
-                                if (level.getRandom().nextFloat() < droopySecondLevelChance && canCapReplace(level.getBlockState(ringPos.below(2))) && age >= minAgeForSecondLevelDroop && step < 7){
-                                    BlockState droopyCapState2 = properties.getDynamicCapState(step+2, new boolean[]{true, false, true, true, true, true});
-                                    level.setBlock(ringPos.below(2), droopyCapState2.setValue(DynamicCapBlock.DISTANCE, step+2), 2);
-                                }
+                        //place branches
+                        if (level.getRandom().nextFloat() < capSideBranchesChance && level.getBlockState(ringPos.above()).isAir()){
+                            List<Direction> validDirs = new LinkedList<>();
+                            for (Direction dir : Direction.Plane.HORIZONTAL){
+                                if (level.getBlockState(ringPos.above().offset(dir.getNormal())).getBlock() instanceof DynamicCapBlock)
+                                    validDirs.add(dir);
+                            }
+                            if (!validDirs.isEmpty()){
+                                Direction facing = validDirs.get(level.getRandom().nextInt(validDirs.size()));
+                                level.setBlock(ringPos.above(), DTBYGRegistries.IMPARIUS_MUSHROOM_BRANCH.get().defaultBlockState().setValue(TreeBranchBlock.FACING, facing), 2);
                             }
                         }
                         ++placed;
@@ -105,6 +112,7 @@ public class EmburGelCapProperties extends CapProperties {
 
                 return properties.getDynamicCapState(age, dirs);
             }
+
         };
     }
 }

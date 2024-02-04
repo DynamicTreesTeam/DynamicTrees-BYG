@@ -17,6 +17,14 @@
   "acceptable_soils": ["fungus_like"],
   "sapling_shape": "dtbyg:tall_flat_mushroom",
   "features" : [
-    "bottom_flare"
+    "bottom_flare",
+    {
+      "name": "roots",
+      "properties": {
+        "min_trunk_radius": 9,
+        "level_limit": 5,
+        "scale_factor": 12
+      }
+    }
   ]
 }

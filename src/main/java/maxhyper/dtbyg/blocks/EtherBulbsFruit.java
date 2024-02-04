@@ -1,4 +1,4 @@
-package maxhyper.dtbyg.fruits;
+package maxhyper.dtbyg.blocks;
 
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
 import com.ferreusveritas.dynamictrees.block.FruitBlock;

@@ -1,6 +1,6 @@
 {
   "only_if_loaded": "dynamictreesplus",
-  "type": "dynamictreesplus:mushroom",
+  "type": "dtbyg:warty_mushroom",
   "common_cap": "dtbyg:crimson_mushroom",
   "common_species": "dtbyg:crimson_mushroom",
   "primitive_log": "crimson_stem",

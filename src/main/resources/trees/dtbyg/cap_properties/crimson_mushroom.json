@@ -1,4 +1,5 @@
 {
+  "type": "dtbyg:warty_cap",
   "primitive_cap": "minecraft:nether_wart_block",
   "material_color": "COLOR_RED",
   "fire_spread": 0,

@@ -4,8 +4,10 @@ import com.ferreusveritas.dynamictrees.api.applier.ApplierRegistryEvent;
 import com.ferreusveritas.dynamictrees.deserialisation.PropertyAppliers;
 import com.ferreusveritas.dynamictrees.tree.family.Family;
 import com.ferreusveritas.dynamictrees.tree.species.Species;
+import com.ferreusveritas.dynamictreesplus.block.mushroom.CapProperties;
 import com.google.gson.JsonElement;
 import maxhyper.dtbyg.DynamicTreesBYG;
+import maxhyper.dtbyg.blocks.WartyCapProperties;
 import maxhyper.dtbyg.trees.GenOnExtraSoilSpecies;
 import maxhyper.dtbyg.trees.LamentSpecies;
 import maxhyper.dtbyg.trees.NightshadeFamily;
@@ -26,6 +28,11 @@ public final class RegisterJSONAppliers {
         registerFamilyAppliers(event.getAppliers());
     }
 
+    @SubscribeEvent
+    public static void registerAppliersCapProperties(final ApplierRegistryEvent.Reload<CapProperties, JsonElement> event) {
+        registerCapPropertiesAppliers(event.getAppliers());
+    }
+
     public static void registerSpeciesAppliers(PropertyAppliers<Species, JsonElement> appliers) {
         appliers.register("alternative_species", LamentSpecies.class, Species.class,
                 LamentSpecies::setAltSpecies)
@@ -38,6 +45,11 @@ public final class RegisterJSONAppliers {
     public static void registerFamilyAppliers(PropertyAppliers<Family, JsonElement> appliers) {
         appliers.register("primitive_imbued_log", NightshadeFamily.class, Block.class,
                 NightshadeFamily::setPrimitiveImbuedLog);
+    }
+
+    public static void registerCapPropertiesAppliers(PropertyAppliers<CapProperties, JsonElement> appliers) {
+        appliers.register("shroomlight_block", WartyCapProperties.class, Block.class,
+                WartyCapProperties::setShroomlightBlock);
     }
 
     @SubscribeEvent public static void registerAppliersSpecies(final ApplierRegistryEvent.GatherData<Species, JsonElement> event) { registerSpeciesAppliers(event.getAppliers()); }

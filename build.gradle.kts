@@ -86,7 +86,7 @@ dependencies {
     // BYG requires this
     runtimeOnly(fg.deobf("curse.maven:terrablender-563928:3957976"))
     // Compile BYG and DT, of course.
-    implementation(fg.deobf("curse.maven:BYG-247560:4036050"))
+    implementation(fg.deobf("curse.maven:BYG-247560:4971536"))
 
     implementation(fg.deobf("curse.maven:dynamictrees-252818:4674900"))
     //implementation(fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-$mcVersion:${property("dynamicTreesVersion")}"))

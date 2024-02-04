@@ -1,6 +1,6 @@
 {
   "only_if_loaded": "dynamictreesplus",
-  "type": "dynamictreesplus:mushroom",
+  "type": "dtbyg:warty_mushroom",
   "common_cap": "dtbyg:warped_mushroom",
   "common_species": "dtbyg:warped_mushroom",
   "primitive_log": "warped_stem",

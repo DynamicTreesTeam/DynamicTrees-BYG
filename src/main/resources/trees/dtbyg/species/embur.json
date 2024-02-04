@@ -24,6 +24,14 @@
       "properties": {
         "sprout_block": "dtbyg:embur_gel_branch"
       }
+    },
+    {
+      "name": "dtbyg:mushroom_vines",
+      "properties": {
+        "max_length": 6,
+        "block": "byg:embur_gel_vines_plant",
+        "tip_block": "byg:embur_gel_vines"
+      }
     }
   ]
 }

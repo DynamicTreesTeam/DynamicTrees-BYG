@@ -10,7 +10,7 @@ public class DTBYGClient {
 
     public static void setup() {
         for (Block block : new Block[]{DTBYGRegistries.ARISIAN_BLOOM_BRANCH.get(), DTBYGRegistries.EMBUR_GEL_BRANCH.get(),
-                DTBYGRegistries.WITCH_HAZEL_BRANCH.get(), DTBYGRegistries.IMPARIUS_MUSHROOM_BRANCH.get()}){
+                DTBYGRegistries.WITCH_HAZEL_BRANCH.get(), DTBYGRegistries.IMPARIUS_MUSHROOM_BRANCH.get(), DTBYGRegistries.FUNGAL_IMPARIUS_FILAMENT.get()}){
             ItemBlockRenderTypes.setRenderLayer(block, RenderType.cutoutMipped());
         }
         Block embur_sapling = ForgeRegistries.BLOCKS.getValue(new ResourceLocation("dtbyg","embur_sapling"));

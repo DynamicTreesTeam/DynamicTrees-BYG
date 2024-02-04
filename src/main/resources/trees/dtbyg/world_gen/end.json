@@ -17,7 +17,7 @@
   },
   {
     "select": {
-      "names_or": [ "byg:ethereal_islands", "byg:ethereal_forest" ]
+      "name": "byg:ethereal_islands"
     },
     "apply": {
       "species": {
@@ -34,37 +34,50 @@
   },
   {
     "select": {
-      "name": "byg:ethereal_clearing"
-    },
-    "apply": {
-      "species": {
-        "random": {
-          "dtbyg:small_ether": 1,
-          "dtbyg:ether_twiglet": 6
-        }
-      },
-      "density": [ 2 ],
-      "chance": 0.1
-    }
-  },
-  {
-    "select": {
       "name": "byg:.*viscal_isles"
     },
+
     "apply": {
       "species": "dtbyg:bare_ether",
       "density": [ 0.2 ],
-      "chance": 0.75
+      "chance": 1,
+      "heightmap": "ocean_floor"
     }
   },
-
 
 
 
   {
     "only_if_loaded": "dynamictreesplus",
     "select": {
-      "name": "byg:shattered_desert.*"
+      "name": "byg:imparius_grove"
+    },
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:imparius_mushroom": 2,
+          "dtbyg:fungal_imparius": 1
+        }
+      },
+      "density": [ 0.2 ],
+      "chance": 1.0
+    }
+  },
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "select": {
+      "name": "byg:shulkren_forest"
+    },
+    "apply": {
+      "species": "dtbyg:shulkren",
+      "density": [ 0.2 ],
+      "chance": 1.0
+    }
+  },
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "select": {
+      "name": "byg:bulbis_gardens"
     },
     "cancellers": {
       "type": "dtbyg:oddity_cactus",
@@ -74,6 +87,15 @@
       "species": "dtbyg:oddity_cactus",
       "density" : { "math": { "add" : [ { "mul" : [ "noise", 0.6 ] }, 0.6 ] } },
       "chance": 0.7
+    }
+  },
+
+  {
+    "select": {
+      "type": "end"
+    },
+    "apply": {
+      "heightmap": "ocean_floor"
     }
   }
 ]

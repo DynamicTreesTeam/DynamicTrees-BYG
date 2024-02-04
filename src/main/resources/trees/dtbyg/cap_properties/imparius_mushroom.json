@@ -1,4 +1,5 @@
 {
+  "type": "dtbyg:imparius_mushroom_cap",
   "primitive_cap": "byg:imparius_mushroom_block",
   "material_color": "COLOR_CYAN"
 }

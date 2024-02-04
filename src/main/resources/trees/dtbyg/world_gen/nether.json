@@ -105,12 +105,26 @@
         }
       },
       "density": 3,
-      "chance": 0.2
+      "chance": 0.3
     }
   },
   {
     "only_if_loaded": "dynamictreesplus",
     "select": "byg:glowstone_gardens",
+    "apply": {
+      "species": {
+        "random": {
+          "dtbyg:death_cap": 1,
+          "dtbyg:soul_shroom": 2
+        }
+      },
+      "density": 2,
+      "chance": 1.0
+    }
+  },
+  {
+    "only_if_loaded": "dynamictreesplus",
+    "select": "byg:crimson_gardens",
     "apply": {
       "species": {
         "random": {

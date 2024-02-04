@@ -19,36 +19,43 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
 import javax.annotation.Nonnull;
+import java.util.Iterator;
 import java.util.List;
 
-public class EmburGelCapProperties extends CapProperties {
+public class FungalImpariusCapProperties extends CapProperties {
 
-    public static final TypedRegistry.EntryType<CapProperties> TYPE = TypedRegistry.newType(EmburGelCapProperties::new);
+    public static final TypedRegistry.EntryType<CapProperties> TYPE = TypedRegistry.newType(FungalImpariusCapProperties::new);
 
-    public EmburGelCapProperties(ResourceLocation registryName) {
+    public FungalImpariusCapProperties(ResourceLocation registryName) {
         super(registryName);
     }
 
     protected float droopyFirstLevelChance = 0.5f;
     protected float droopySecondLevelChance = 0.25f;
-    protected int minAgeForSecondLevelDroop = 4;
-
-    protected String getBlockRegistryNameSuffix() {
-        return "_gel";
-    }
-
-    protected String getCenterBlockRegistryNameSuffix() {
-        return "_gel_center";
-    }
+    protected int minAgeForSecondLevelDroop = 3;
 
     @Override
     public BlockBehaviour.Properties getDefaultBlockProperties(Material material, MaterialColor materialColor) {
-        return BlockBehaviour.Properties.of(Material.CLAY, MaterialColor.TERRACOTTA_YELLOW).sound(SoundType.HONEY_BLOCK).noOcclusion().speedFactor(1.3F);
+        return BlockBehaviour.Properties.of(Material.GRASS, MaterialColor.WARPED_WART_BLOCK).strength(0.2F).sound(SoundType.HONEY_BLOCK);
     }
 
     @Override
     protected DynamicCapCenterBlock createDynamicCapCenter(BlockBehaviour.Properties properties) {
         return new DynamicCapCenterBlock(this, properties){
+
+            public void clearRing(LevelAccessor level, BlockPos pos, int radius) {
+                List<Vec2i> ring = MushroomCapDisc.getPrecomputedRing(radius);
+                for (Vec2i vec : ring) {
+                    BlockPos ringPos = new BlockPos(pos.getX() + vec.x, pos.getY(), pos.getZ() + vec.z);
+                    if (this.properties.isPartOfCap(level.getBlockState(ringPos))) {
+                        if (level.getBlockState(ringPos.below()).is(DTBYGRegistries.FUNGAL_IMPARIUS_FILAMENT.get())){
+                            level.setBlock(ringPos.below(), Blocks.AIR.defaultBlockState(), 2);
+                        }
+                        level.setBlock(ringPos, Blocks.AIR.defaultBlockState(), 2);
+                    }
+                }
+
+            }
 
             public boolean placeRing(LevelAccessor level, BlockPos pos, int radius, int step, boolean yMoved, boolean negFactor) {
                 List<Vec2i> ring = MushroomCapDisc.getPrecomputedRing(radius);
@@ -80,6 +87,10 @@ public class EmburGelCapProperties extends CapProperties {
                                     level.setBlock(ringPos.below(2), droopyCapState2.setValue(DynamicCapBlock.DISTANCE, step+2), 2);
                                 }
                             }
+                        }
+                        //place filaments
+                        else if (level.getBlockState(ringPos.below()).isAir()){
+                            level.setBlock(ringPos.below(), DTBYGRegistries.FUNGAL_IMPARIUS_FILAMENT.get().defaultBlockState(), 2);
                         }
                         ++placed;
                     } else {

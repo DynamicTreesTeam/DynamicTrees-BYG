@@ -1,9 +1,150 @@
 {
-  "variants": {
-    "": [
-      { "model": "byg:block/fungal_imparius_block" },
-      { "model": "byg:block/fungal_imparius_block2" },
-      { "model": "byg:block/fungal_imparius_block3" }
-    ]
-  }
+  "multipart": [
+    {
+      "when": {
+        "age": "0"
+      },
+      "apply": [
+        {
+          "model": "dtbyg:block/fungal_imparius_face"
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face2"
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face3"
+        }
+      ]
+    },
+    {
+      "when": {
+        "age": "0"
+      },
+      "apply": [
+        {
+          "model": "dtbyg:block/fungal_imparius_face",
+          "y": 90,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face2",
+          "y": 90,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face3",
+          "y": 90,
+          "uvlock": true
+        }
+      ]
+    },
+    {
+      "when": {
+        "age": "0"
+      },
+      "apply": [
+        {
+          "model": "dtbyg:block/fungal_imparius_face",
+          "y": 180,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face2",
+          "y": 180,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face3",
+          "y": 180,
+          "uvlock": true
+        }
+      ]
+    },
+    {
+      "when": {
+        "age": "0"
+      },
+      "apply": [
+        {
+          "model": "dtbyg:block/fungal_imparius_face",
+          "y": 270,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face2",
+          "y": 270,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face3",
+          "y": 270,
+          "uvlock": true
+        }
+      ]
+    },
+    {
+      "when": {
+        "age": "1|2|3|4|5|6|7|8"
+      },
+      "apply": {
+        "model": "dtbyg:block/fungal_imparius_filament_face"
+      }
+    },
+    {
+      "when": {
+        "age": "1|2|3|4|5|6|7|8"
+      },
+      "apply": {
+        "model": "dtbyg:block/fungal_imparius_filament_face",
+        "y": 90,
+        "uvlock": false
+      }
+    },
+    {
+      "when": {
+        "age": "1|2|3|4|5|6|7|8"
+      },
+      "apply": {
+        "model": "dtbyg:block/fungal_imparius_filament_face",
+        "y": 180,
+        "uvlock": false
+      }
+    },
+    {
+      "when": {
+        "age": "1|2|3|4|5|6|7|8"
+      },
+      "apply": {
+        "model": "dtbyg:block/fungal_imparius_filament_face",
+        "y": 270,
+        "uvlock": false
+      }
+    },
+    {
+      "apply": [
+        {
+          "model": "dtbyg:block/fungal_imparius_face",
+          "x": 270,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face2",
+          "x": 270,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face3",
+          "x": 270,
+          "uvlock": true
+        }
+      ]
+    },
+    {
+      "apply": {
+        "model": "dtbyg:block/fungal_imparius_filament_face",
+        "x": 90,
+        "uvlock": false
+      }
+    }
+  ]
 }

@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "dtbyg:fungal_imparius_filament",
+    "dtbyg:imparius_mushroom_side_branch",
     "#forge:bushes",
     "byg:cattail",
     "byg:water_silk",
@@ -8,9 +10,20 @@
     "byg:flowering_tiny_lily_pads",
     "byg:ender_lily",
     "byg:embur_lily",
+    "byg:embur_roots",
+    "byg:nightshade_roots",
     "byg:clover_patch",
     "byg:lament_sprouts",
+    "byg:nightshade_sprouts",
     "byg:scorched_grass",
-    "byg:nether_bristle"
+    "byg:nether_bristle",
+    "byg:wailing_grass",
+    "byg:imparius_bush",
+    "byg:shulkren_moss_blanket",
+    "byg:tall_crimson_roots",
+    "byg:ether_grass",
+    "byg:tall_ether_grass",
+    "byg:vermilion_sculk_tendrils",
+    "byg:vermilion_sculk_growth"
   ]
 }

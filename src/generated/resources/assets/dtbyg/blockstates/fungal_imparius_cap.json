@@ -1,9 +1,188 @@
 {
-  "variants": {
-    "": [
-      { "model": "byg:block/fungal_imparius_block" },
-      { "model": "byg:block/fungal_imparius_block2" },
-      { "model": "byg:block/fungal_imparius_block3" }
-    ]
-  }
+  "multipart": [
+    {
+      "when": {
+        "north": true
+      },
+      "apply": [
+        {
+          "model": "dtbyg:block/fungal_imparius_face"
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face2"
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face3"
+        }
+      ]
+    },
+    {
+      "when": {
+        "east": true
+      },
+      "apply": [
+        {
+          "model": "dtbyg:block/fungal_imparius_face",
+          "y": 90,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face2",
+          "y": 90,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face3",
+          "y": 90,
+          "uvlock": true
+        }
+      ]
+    },
+    {
+      "when": {
+        "south": true
+      },
+      "apply": [
+        {
+          "model": "dtbyg:block/fungal_imparius_face",
+          "y": 180,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face2",
+          "y": 180,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face3",
+          "y": 180,
+          "uvlock": true
+        }
+      ]
+    },
+    {
+      "when": {
+        "west": true
+      },
+      "apply": [
+        {
+          "model": "dtbyg:block/fungal_imparius_face",
+          "y": 270,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face2",
+          "y": 270,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face3",
+          "y": 270,
+          "uvlock": true
+        }
+      ]
+    },
+    {
+      "when": {
+        "up": true
+      },
+      "apply": [
+        {
+          "model": "dtbyg:block/fungal_imparius_face",
+          "x": 270,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face2",
+          "x": 270,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face3",
+          "x": 270,
+          "uvlock": true
+        }
+      ]
+    },
+    {
+      "when": {
+        "down": true
+      },
+      "apply": [
+        {
+          "model": "dtbyg:block/fungal_imparius_face",
+          "x": 90,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face2",
+          "x": 90,
+          "uvlock": true
+        },
+        {
+          "model": "dtbyg:block/fungal_imparius_face3",
+          "x": 90,
+          "uvlock": true
+        }
+      ]
+    },
+    {
+      "when": {
+        "north": false
+      },
+      "apply": {
+        "model": "dtbyg:block/fungal_imparius_filament_face"
+      }
+    },
+    {
+      "when": {
+        "east": false
+      },
+      "apply": {
+        "model": "dtbyg:block/fungal_imparius_filament_face",
+        "y": 90,
+        "uvlock": false
+      }
+    },
+    {
+      "when": {
+        "south": false
+      },
+      "apply": {
+        "model": "dtbyg:block/fungal_imparius_filament_face",
+        "y": 180,
+        "uvlock": false
+      }
+    },
+    {
+      "when": {
+        "west": false
+      },
+      "apply": {
+        "model": "dtbyg:block/fungal_imparius_filament_face",
+        "y": 270,
+        "uvlock": false
+      }
+    },
+    {
+      "when": {
+        "up": false
+      },
+      "apply": {
+        "model": "dtbyg:block/fungal_imparius_filament_face",
+        "x": 270,
+        "uvlock": false
+      }
+    },
+    {
+      "when": {
+        "down": false
+      },
+      "apply": {
+        "model": "dtbyg:block/fungal_imparius_filament_face",
+        "x": 90,
+        "uvlock": false
+      }
+    }
+  ]
 }

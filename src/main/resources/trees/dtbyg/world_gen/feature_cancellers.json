@@ -1,7 +1,7 @@
 [
   {
     "__comment": "Cancel standard tree features from byg biomes.",
-    "select": { "name": "byg.*" },
+    "select": { "name": "byg.*", "names": ["!byg:bulbis_gardens","!byg:ivis_fields"] },
     "cancellers": {
       "types": [ "dtbyg:tree", "tree", "dtbyg:fungus" ],
       "namespaces": ["byg", "minecraft"]
@@ -10,7 +10,7 @@
   {
     "only_if_loaded": "dynamictreesplus",
     "__comment": "Cancel standard mushroom features from byg biomes.",
-    "select": { "name": "byg.*" },
+    "select": { "name": "byg.*", "names": ["!byg:bulbis_gardens","!byg:ivis_fields"] },
     "cancellers": {
       "types": [ "dtbyg:tree", "tree", "dtbyg:fungus", "mushroom" ],
       "namespaces": ["byg", "minecraft"],

@@ -1,4 +1,7 @@
 {
+  "type": "dtbyg:warty_cap",
   "primitive_cap": "byg:shulkren_wart_block",
-  "material_color": "COLOR_PURPLE"
+  "material_color": "COLOR_PURPLE",
+
+  "shroomlight_block": "byg:purple_shroomlight"
 }

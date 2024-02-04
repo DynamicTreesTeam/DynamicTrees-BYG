@@ -9,8 +9,8 @@
   "mushroom_shape_kit": {
     "name": "dynamictreesplus:bell",
     "properties": {
-      "max_age_curve_factor": 0.2,
-      "min_age_curve_factor": 0.5,
+      "max_age_curve_factor": 0.3,
+      "min_age_curve_factor": 0.3,
       "max_cap_age": 4
     }
   },
@@ -23,6 +23,22 @@
       "name": "dtbyg:branch_sprouts",
       "properties": {
         "sprout_block": "dtbyg:imparius_mushroom_side_branch"
+      }
+    },
+    {
+      "name": "roots",
+      "properties": {
+        "min_trunk_radius": 9,
+        "level_limit": 6,
+        "scale_factor": 16
+      }
+    },
+    {
+      "name": "dtbyg:mushroom_vines",
+      "properties": {
+        "max_length": 10,
+        "block": "byg:imparius_vine_plant",
+        "tip_block": "byg:imparius_vine"
       }
     }
   ]
