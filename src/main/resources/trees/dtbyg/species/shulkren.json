@@ -20,8 +20,12 @@
   "primitive_sapling": "byg:shulkren_fungus",
   "acceptable_soils": ["fungus_like"],
   "sapling_shape": "dtbyg:shulkren_mushroom",
+  "sapling_sound": "FUNGUS",
   "features" : [
-    "bottom_flare",
+    {
+      "name": "bottom_flare",
+      "properties": { "min_radius": 5 }
+    },
     {
       "name": "dtbyg:mushroom_vines",
       "properties": {

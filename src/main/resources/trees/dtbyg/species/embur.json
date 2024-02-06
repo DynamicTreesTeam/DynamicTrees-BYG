@@ -16,6 +16,7 @@
     }
   },
   "primitive_sapling": "byg:embur_wart",
+  "sapling_sound": "FUNGUS",
   "acceptable_soils": ["fungus_like"],
   "accept_any_soil": false,
   "features" : [

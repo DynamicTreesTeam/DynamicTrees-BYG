@@ -22,9 +22,6 @@ import potionstudios.byg.common.world.biome.BYGBiomes;
 import potionstudios.byg.common.world.feature.features.overworld.BYGOverworldVegetationFeatures;
 import potionstudios.byg.common.world.feature.placement.BYGPlacedFeaturesUtil;
 
-/**
- * This class is used to re-add vegetation that is removed by the cactus canceller
- */
 public class VegetationReplacement {
 
     private static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, DynamicTreesBYG.MOD_ID);

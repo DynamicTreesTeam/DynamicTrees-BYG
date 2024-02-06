@@ -49,7 +49,13 @@ public final class RegisterJSONAppliers {
 
     public static void registerCapPropertiesAppliers(PropertyAppliers<CapProperties, JsonElement> appliers) {
         appliers.register("shroomlight_block", WartyCapProperties.class, Block.class,
-                WartyCapProperties::setShroomlightBlock);
+                WartyCapProperties::setShroomlightBlock)
+                .register("shroomlight_above_place_chance", WartyCapProperties.class, Float.class,
+                        WartyCapProperties::setShroomlightUpChance)
+                .register("shroomlight_below_place_chance", WartyCapProperties.class, Float.class,
+                        WartyCapProperties::setShroomlightDownChance)
+                .register("shroomlight_requires_support", WartyCapProperties.class, Boolean.class,
+                        WartyCapProperties::setShroomlightRequireSupport);
     }
 
     @SubscribeEvent public static void registerAppliersSpecies(final ApplierRegistryEvent.GatherData<Species, JsonElement> event) { registerSpeciesAppliers(event.getAppliers()); }

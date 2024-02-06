@@ -3,5 +3,8 @@
   "primitive_cap": "minecraft:nether_wart_block",
   "material_color": "COLOR_RED",
   "fire_spread": 0,
-  "flammability": 0
+  "flammability": 0,
+
+  "shroomlight_above_place_chance": 0.2,
+  "shroomlight_below_place_chance": 0.02
 }

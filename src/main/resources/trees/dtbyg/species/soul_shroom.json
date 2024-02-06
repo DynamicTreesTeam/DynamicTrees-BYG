@@ -6,6 +6,7 @@
   "growth_rate": 1.2,
   "soil_longevity": 3,
   "cap_properties": "dtbyg:soul_shroom",
+  "cap_thickness_multiplier": 0.5,
   "mushroom_shape_kit": {
     "name": "dynamictreesplus:bell",
     "properties": {
@@ -20,6 +21,14 @@
   "world_gen_acceptable_soils": ["nether_like"],
   "sapling_shape": "dtbyg:soul_shroom",
   "features" : [
-    "bottom_flare"
+    "bottom_flare",
+    {
+      "name": "dtbyg:mushroom_vines",
+      "properties": {
+        "max_length": 6,
+        "block": "byg:soul_shroom_spore",
+        "tip_block": "byg:soul_shroom_spore_end"
+      }
+    }
   ]
 }

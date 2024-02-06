@@ -16,6 +16,7 @@
   "primitive_sapling": "byg:fungal_imparius",
   "acceptable_soils": ["fungus_like"],
   "sapling_shape": "dtbyg:tall_flat_mushroom",
+  "sapling_sound": "FUNGUS",
   "features" : [
     "bottom_flare",
     {

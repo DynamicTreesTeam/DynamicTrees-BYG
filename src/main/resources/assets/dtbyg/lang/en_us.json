@@ -37,6 +37,8 @@
   "block.dtbyg.fungal_imparius_branch": "Imparuius Fungus",
   "block.dtbyg.imparius_mushroom_branch": "Imparius Mushroom",
   "block.dtbyg.soul_shroom_branch": "Soul Shroom",
+  "block.dtbyg.crimson_mushroom_branch": "Crimson Fungus",
+  "block.dtbyg.warped_mushroom_branch": "Warped Fungus",
 
   "species.dtbyg.maple": "Maple",
   "species.dtbyg.maple_twiglet": "Maple Twiglet",
@@ -170,6 +172,8 @@
   "species.dtbyg.fungal_imparius": "Imparuius Fungus",
   "species.dtbyg.shulkren": "Shulkren Fungus",
   "species.dtbyg.embur": "Embur Fungus",
+  "species.dtbyg.crimson_mushroom": "Crimson Fungus",
+  "species.dtbyg.warped_mushroom": "Warped Fungus",
 
   "item.dtbyg.maple_seed": "Maple Samara",
   "item.dtbyg.red_maple_seed": "Red Maple Samara",

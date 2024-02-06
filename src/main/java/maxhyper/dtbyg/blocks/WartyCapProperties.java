@@ -25,6 +25,7 @@ import net.minecraft.world.level.material.MaterialColor;
 import potionstudios.byg.common.block.BYGBlocks;
 
 import javax.annotation.Nonnull;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -38,10 +39,10 @@ public class WartyCapProperties extends CapProperties {
     }
 
     protected Block shroomlightBlock = Blocks.SHROOMLIGHT;
-
     protected float extraWartChance = 0.5f;
     protected float shroomlightUpChance = 0.02f;
-    protected float shroomlightDownChance = 0.1f;
+    protected float shroomlightDownChance = 0.2f;
+    protected boolean shroomlightRequireSupport = true;
 
     protected String getBlockRegistryNameSuffix() {
         return "_wart";
@@ -57,6 +58,18 @@ public class WartyCapProperties extends CapProperties {
 
     public Block getShroomlightBlock() {
         return shroomlightBlock;
+    }
+
+    public void setShroomlightUpChance(float shroomlightUpChance) {
+        this.shroomlightUpChance = shroomlightUpChance;
+    }
+
+    public void setShroomlightDownChance(float shroomlightDownChance) {
+        this.shroomlightDownChance = shroomlightDownChance;
+    }
+
+    public void setShroomlightRequireSupport(boolean shroomlightRequireSupport) {
+        this.shroomlightRequireSupport = shroomlightRequireSupport;
     }
 
     @Override
@@ -102,6 +115,24 @@ public class WartyCapProperties extends CapProperties {
     @Override
     protected DynamicCapCenterBlock createDynamicCapCenter(BlockBehaviour.Properties properties) {
         return new DynamicCapCenterBlock(this, properties){
+
+            public List<BlockPos> getRing(LevelAccessor level, BlockPos pos, int radius) {
+                List<Vec2i> ring = MushroomCapDisc.getPrecomputedRing(radius);
+                List<BlockPos> positions = new LinkedList<>();
+
+                for (Vec2i vec : ring) {
+                    BlockPos ringPos = new BlockPos(pos.getX() + vec.x, pos.getY(), pos.getZ() + vec.z);
+                    if (this.properties.isPartOfCap(level.getBlockState(ringPos))) {
+                        positions.add(ringPos);
+                        if (this.properties.isPartOfCap(level.getBlockState(ringPos.above())))
+                            positions.add(ringPos.above());
+                        if (this.properties.isPartOfCap(level.getBlockState(ringPos.below())))
+                            positions.add(ringPos.below());
+                    }
+                }
+
+                return positions;
+            }
 
             @Override
             public void clearRing(LevelAccessor level, BlockPos pos, int radius) {
@@ -157,7 +188,11 @@ public class WartyCapProperties extends CapProperties {
             }
 
             private void placeExtraWart (LevelAccessor level, BlockPos ringPos, BlockState placeCapState, boolean checkAround, float shroomlightChance){
-                if (level.getRandom().nextFloat() < extraWartChance && level.getBlockState(ringPos).isAir()){
+                if (level.getRandom().nextFloat() < extraWartChance && canCapReplace(level.getBlockState(ringPos))){
+                    if (!shroomlightRequireSupport && level.getRandom().nextFloat() < shroomlightChance) {
+                        level.setBlock(ringPos, shroomlightBlock.defaultBlockState(), 2);
+                        return;
+                    }
                     boolean canPlace = !checkAround;
                     if (checkAround){
                         for (Direction dir : Direction.Plane.HORIZONTAL){

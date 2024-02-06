@@ -1,6 +1,7 @@
 package maxhyper.dtbyg.init;
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
+import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.cell.CellKit;
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
@@ -10,6 +11,7 @@ import com.ferreusveritas.dynamictrees.block.rooty.SoilHelper;
 import com.ferreusveritas.dynamictrees.block.rooty.SoilProperties;
 import com.ferreusveritas.dynamictrees.block.rooty.SpreadableSoilProperties;
 import com.ferreusveritas.dynamictrees.growthlogic.GrowthLogicKit;
+import com.ferreusveritas.dynamictrees.init.DTConfigs;
 import com.ferreusveritas.dynamictrees.systems.BranchConnectables;
 import com.ferreusveritas.dynamictrees.systems.fruit.Fruit;
 import com.ferreusveritas.dynamictrees.systems.genfeature.GenFeature;
@@ -20,6 +22,7 @@ import com.ferreusveritas.dynamictrees.worldgen.featurecancellation.TreeFeatureC
 import com.ferreusveritas.dynamictreesplus.block.mushroom.CapProperties;
 import com.ferreusveritas.dynamictreesplus.block.mushroom.DynamicCapBlock;
 import com.ferreusveritas.dynamictreesplus.systems.mushroomlogic.shapekits.MushroomShapeKit;
+import com.google.common.collect.UnmodifiableIterator;
 import maxhyper.dtbyg.DynamicTreesBYG;
 import maxhyper.dtbyg.blocks.*;
 import maxhyper.dtbyg.cancellers.VegetationReplacement;
@@ -30,6 +33,8 @@ import maxhyper.dtbyg.mushroomshape.BYGMushroomShapeKits;
 import maxhyper.dtbyg.trees.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.data.worldgen.features.NetherFeatures;
+import net.minecraft.util.random.WeightedEntry;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
@@ -38,6 +43,12 @@ import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
+import net.minecraft.world.level.levelgen.feature.SimpleBlockFeature;
+import net.minecraft.world.level.levelgen.feature.configurations.*;
+import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
+import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -51,6 +62,8 @@ import potionstudios.byg.common.block.end.impariusgrove.FungalImpariusFilamentBl
 import potionstudios.byg.common.world.feature.config.BYGMushroomConfig;
 import potionstudios.byg.common.world.feature.config.BYGTreeConfig;
 import potionstudios.byg.common.world.feature.config.GiantFlowerConfig;
+import potionstudios.byg.common.world.feature.features.end.BYGEndVegetationFeatures;
+import potionstudios.byg.common.world.feature.features.nether.BYGNetherVegetationFeatures;
 import potionstudios.byg.common.world.feature.gen.overworld.trees.structure.TreeFromStructureNBTConfig;
 
 import java.util.function.Supplier;
@@ -59,7 +72,7 @@ import java.util.function.Supplier;
 public class DTBYGRegistries {
 
     public static final VoxelShape MUSHROOM_STEM_LONG = Block.box(7D, 0D, 7D, 9D, 10D, 9D);
-    public static final VoxelShape TALL_MUSHROOM_CAP_FLAT = Block.box(4.0D, 8.0D, 4.0D, 12.0D, 11.0D, 12.0D);
+    public static final VoxelShape TALL_MUSHROOM_CAP_FLAT = Block.box(5.0D, 7.0D, 5.0D, 11.0D, 10.0D, 11.0D);
     public static final VoxelShape SMALL_MUSHROOM_CAP_FLAT = Block.box(5.0D, 5.0D, 5.0D, 11.0D, 7.0D, 11.0D);
     public static final VoxelShape MUSHROOM_CAP_SHORT_ROUND = Block.box(5.0D, 3.0D, 5.0D, 11.0D, 7.0D, 11.0D);
     public static final VoxelShape SOUL_SHROOM_CAP = Block.box(5.5D, 3.0D, 5.5D, 10.5D, 10.0D, 10.5D);
@@ -108,6 +121,9 @@ public class DTBYGRegistries {
     public static void setupBlocks() {
         setUpSoils();
         setupConnectables();
+        if (DTConfigs.REPLACE_NYLIUM_FUNGI.get()) {
+            DTBYGRegistries.replaceNyliumFungiFeatures();
+        }
     }
 
     private static void setUpSoils() {
@@ -218,6 +234,27 @@ public class DTBYGRegistries {
 
     public static void onBiomeLoading(final BiomeLoadingEvent event){
         VegetationReplacement.OnBiomeLoadingEvent(event);
+    }
+
+    public static void replaceNyliumFungiFeatures() {
+        TreeRegistry.findSpecies(DynamicTreesBYG.location("shulkren")).getSapling().ifPresent((shulkrenSapling) ->
+                TreeRegistry.findSpecies(DynamicTreesBYG.location("embur")).getSapling().ifPresent((emburSapling) ->
+                        TreeRegistry.findSpecies(DynamicTreesBYG.location("sythian")).getSapling().ifPresent((sythianSapling) -> {
+                            replacePatchConfigs(BYGEndVegetationFeatures.SHULKREN_FUNGUS.value(), shulkrenSapling, BYGBlocks.SHULKREN_FUNGUS.get());
+                            replaceFeatureConfigs(BYGNetherVegetationFeatures.EMBUR_BOG_VEGETATION.value(), emburSapling, BYGBlocks.EMBUR_WART.get());
+                            replaceFeatureConfigs(BYGNetherVegetationFeatures.SYTHIAN_VEGETATION.value(), sythianSapling, BYGBlocks.SYTHIAN_FUNGUS.get());
+                        })));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void replaceFeatureConfigs(ConfiguredFeature<RandomFeatureConfiguration,?> configuredFeature, Block dynamicSapling, Block basicSapling) {
+        replacePatchConfigs((ConfiguredFeature<RandomPatchConfiguration,?>)configuredFeature.config().defaultFeature.value().feature().value(), dynamicSapling, basicSapling);
+    }
+    private static void replacePatchConfigs(ConfiguredFeature<RandomPatchConfiguration,?> configuredFeature, Block dynamicSapling, Block basicSapling) {
+        var f2 = configuredFeature.config().feature().value().feature().value();
+        if (f2.config() instanceof SimpleBlockConfiguration sbc && sbc.toPlace() instanceof SimpleStateProvider ssp && ssp.state.is(basicSapling))
+            ssp.state = dynamicSapling.defaultBlockState();
+
     }
 
 }
