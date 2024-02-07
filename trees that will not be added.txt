@@ -1,0 +1,2 @@
+Origin Tree
+	- making it dynamic would be against the spirit of the tree and the biome it spawns in
