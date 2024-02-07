@@ -212,6 +212,7 @@ public class DTBYGRegistries {
         event.registerType(DynamicTreesBYG.location("fungal_imparius_cap"), FungalImpariusCapProperties.TYPE);
         event.registerType(DynamicTreesBYG.location("imparius_mushroom_cap"), ImpariusMushroomCapProperties.TYPE);
         event.registerType(DynamicTreesBYG.location("warty_cap"), WartyCapProperties.TYPE);
+        event.registerType(DynamicTreesBYG.location("weeping_milkcap_cap"), WeepingMilkcapCapProperties.TYPE);
     }
 
     @SubscribeEvent
