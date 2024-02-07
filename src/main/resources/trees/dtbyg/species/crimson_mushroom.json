@@ -17,7 +17,8 @@
       "factor": 0.5
     }
   },
-  "acceptable_soils": ["fungus_like", "nether_soil_like"],
+  "acceptable_soils": ["nether_soil_like", "fungus_like", "dirt_like"],
+  "acceptable_growth_blocks": ["minecraft:crimson_nylium", "dynamictrees:rooty_crimson_nylium"],
   "accept_any_soil": false,
   "world_gen_acceptable_soils": ["nether_like", "dirt_like"],
   "features" : [

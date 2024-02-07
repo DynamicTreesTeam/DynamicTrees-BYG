@@ -2,33 +2,28 @@
   "type": "dtbyg:woody_mushroom",
   "family": "dtbyg:fungal_imparius",
   "tapering": 0,
-  "signal_energy": 20,
+  "signal_energy": 4,
   "growth_rate": 1.2,
-  "soil_longevity": 3,
-  "growth_logic_kit": "dtbyg:ether",
+  "soil_longevity": 1,
   "cap_properties": "dtbyg:fungal_imparius",
   "mushroom_shape_kit": {
     "name": "dynamictreesplus:bell",
     "properties": {
-      "max_age_curve_factor": 0.3,
-      "min_age_curve_factor": 0.5,
-      "pointed_tip_max_age": 1
+      "max_age_curve_factor": 0.4,
+      "min_age_curve_factor": 0.6,
+      "curve_factor_variation": 0,
+      "max_cap_age": 3,
+      "pointed_tip_max_age": 2
     }
   },
-  "primitive_sapling": "byg:fungal_imparius",
   "acceptable_soils": ["end_soil_like", "fungus_like"],
   "acceptable_growth_blocks": ["byg:imparius_phylium", "dtbyg:rooty_imparius_phylium"],
   "accept_any_soil": false,
-  "sapling_shape": "dtbyg:tall_flat_mushroom",
-  "sapling_sound": "FUNGUS",
   "features" : [
-    "bottom_flare",
     {
-      "name": "roots",
+      "name": "bottom_flare",
       "properties": {
-        "min_trunk_radius": 9,
-        "level_limit": 5,
-        "scale_factor": 12
+        "min_radius": 3
       }
     }
   ]

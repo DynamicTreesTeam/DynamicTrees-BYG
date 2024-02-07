@@ -19,6 +19,7 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
 import javax.annotation.Nonnull;
+import java.util.LinkedList;
 import java.util.List;
 
 public class EmburGelCapProperties extends CapProperties {
@@ -49,6 +50,39 @@ public class EmburGelCapProperties extends CapProperties {
     @Override
     protected DynamicCapCenterBlock createDynamicCapCenter(BlockBehaviour.Properties properties) {
         return new DynamicCapCenterBlock(this, properties){
+
+            public List<BlockPos> getRing(LevelAccessor level, BlockPos pos, int radius) {
+                List<Vec2i> ring = MushroomCapDisc.getPrecomputedRing(radius);
+                List<BlockPos> positions = new LinkedList<>();
+
+                for (Vec2i vec : ring) {
+                    BlockPos ringPos = new BlockPos(pos.getX() + vec.x, pos.getY(), pos.getZ() + vec.z);
+                    if (this.properties.isPartOfCap(level.getBlockState(ringPos))) {
+                        positions.add(ringPos);
+                        if (this.properties.isPartOfCap(level.getBlockState(ringPos.below(2))))
+                            positions.add(ringPos.below(2));
+                        if (this.properties.isPartOfCap(level.getBlockState(ringPos.below())))
+                            positions.add(ringPos.below());
+                    }
+                }
+
+                return positions;
+            }
+
+            public void clearRing(LevelAccessor level, BlockPos pos, int radius) {
+                List<Vec2i> ring = MushroomCapDisc.getPrecomputedRing(radius);
+                for (Vec2i vec : ring) {
+                    BlockPos ringPos = new BlockPos(pos.getX() + vec.x, pos.getY(), pos.getZ() + vec.z);
+                    if (this.properties.isPartOfCap(level.getBlockState(ringPos))) {
+                        if (this.properties.isPartOfCap(level.getBlockState(ringPos.below(2))))
+                            level.setBlock(ringPos.below(2), Blocks.AIR.defaultBlockState(), 2);
+                        if (this.properties.isPartOfCap(level.getBlockState(ringPos.below())))
+                            level.setBlock(ringPos.below(), Blocks.AIR.defaultBlockState(), 2);
+                        level.setBlock(ringPos, Blocks.AIR.defaultBlockState(), 2);
+                    }
+                }
+
+            }
 
             public boolean placeRing(LevelAccessor level, BlockPos pos, int radius, int step, boolean yMoved, boolean negFactor) {
                 List<Vec2i> ring = MushroomCapDisc.getPrecomputedRing(radius);

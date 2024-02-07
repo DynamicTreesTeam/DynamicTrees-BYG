@@ -122,7 +122,7 @@ public class DTBYGRegistries {
         setUpSoils();
         setupConnectables();
         if (DTConfigs.REPLACE_NYLIUM_FUNGI.get()) {
-            DTBYGRegistries.replaceNyliumFungiFeatures();
+            VegetationReplacement.replaceNyliumFungiFeatures();
         }
     }
 
@@ -234,27 +234,6 @@ public class DTBYGRegistries {
 
     public static void onBiomeLoading(final BiomeLoadingEvent event){
         VegetationReplacement.OnBiomeLoadingEvent(event);
-    }
-
-    public static void replaceNyliumFungiFeatures() {
-        TreeRegistry.findSpecies(DynamicTreesBYG.location("shulkren")).getSapling().ifPresent((shulkrenSapling) ->
-                TreeRegistry.findSpecies(DynamicTreesBYG.location("embur")).getSapling().ifPresent((emburSapling) ->
-                        TreeRegistry.findSpecies(DynamicTreesBYG.location("sythian")).getSapling().ifPresent((sythianSapling) -> {
-                            replacePatchConfigs(BYGEndVegetationFeatures.SHULKREN_FUNGUS.value(), shulkrenSapling, BYGBlocks.SHULKREN_FUNGUS.get());
-                            replaceFeatureConfigs(BYGNetherVegetationFeatures.EMBUR_BOG_VEGETATION.value(), emburSapling, BYGBlocks.EMBUR_WART.get());
-                            replaceFeatureConfigs(BYGNetherVegetationFeatures.SYTHIAN_VEGETATION.value(), sythianSapling, BYGBlocks.SYTHIAN_FUNGUS.get());
-                        })));
-    }
-
-    @SuppressWarnings("unchecked")
-    private static void replaceFeatureConfigs(ConfiguredFeature<RandomFeatureConfiguration,?> configuredFeature, Block dynamicSapling, Block basicSapling) {
-        replacePatchConfigs((ConfiguredFeature<RandomPatchConfiguration,?>)configuredFeature.config().defaultFeature.value().feature().value(), dynamicSapling, basicSapling);
-    }
-    private static void replacePatchConfigs(ConfiguredFeature<RandomPatchConfiguration,?> configuredFeature, Block dynamicSapling, Block basicSapling) {
-        var f2 = configuredFeature.config().feature().value().feature().value();
-        if (f2.config() instanceof SimpleBlockConfiguration sbc && sbc.toPlace() instanceof SimpleStateProvider ssp && ssp.state.is(basicSapling))
-            ssp.state = dynamicSapling.defaultBlockState();
-
     }
 
 }

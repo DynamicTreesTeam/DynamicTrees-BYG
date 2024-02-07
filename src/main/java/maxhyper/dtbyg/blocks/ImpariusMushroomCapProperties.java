@@ -11,6 +11,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -31,7 +32,7 @@ public class ImpariusMushroomCapProperties extends CapProperties {
         super(registryName);
     }
 
-    protected float capSideBranchesChance = 0.5f;
+    protected float capSideBranchesChance = 0.75f;
 
     @Override
     public BlockBehaviour.Properties getDefaultBlockProperties(Material material, MaterialColor materialColor) {
@@ -80,7 +81,7 @@ public class ImpariusMushroomCapProperties extends CapProperties {
                         if (level.getRandom().nextFloat() < capSideBranchesChance && level.getBlockState(ringPos.above()).isAir()){
                             List<Direction> validDirs = new LinkedList<>();
                             for (Direction dir : Direction.Plane.HORIZONTAL){
-                                if (level.getBlockState(ringPos.above().offset(dir.getNormal())).getBlock() instanceof DynamicCapBlock)
+                                if (properties.isPartOfCap(level.getBlockState(ringPos.above().offset(dir.getNormal()))))
                                     validDirs.add(dir);
                             }
                             if (!validDirs.isEmpty()){

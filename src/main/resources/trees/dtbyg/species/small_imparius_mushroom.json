@@ -4,40 +4,30 @@
   "tapering": 0,
   "signal_energy": 6,
   "growth_rate": 1.2,
-  "soil_longevity": 3,
+  "soil_longevity": 1,
   "cap_properties": "dtbyg:imparius_mushroom",
   "mushroom_shape_kit": {
     "name": "dynamictreesplus:bell",
     "properties": {
-      "max_age_curve_factor": 0.3,
-      "min_age_curve_factor": 0.3,
-      "max_cap_age": 4,
+      "max_age_curve_factor": 0.4,
+      "min_age_curve_factor": 0.5,
+      "curve_factor_variation": 0,
+      "max_cap_age": 3,
       "pointed_tip_max_age": 1
     }
   },
-  "primitive_sapling": "byg:imparius_mushroom",
   "acceptable_soils": ["end_soil_like", "fungus_like"],
-  "sapling_shape": "dtbyg:small_flat_mushroom",
   "features" : [
-    "bottom_flare",
     {
-      "name": "dtbyg:branch_sprouts",
+      "name": "bottom_flare",
       "properties": {
-        "sprout_block": "dtbyg:imparius_mushroom_side_branch"
-      }
-    },
-    {
-      "name": "roots",
-      "properties": {
-        "min_trunk_radius": 9,
-        "level_limit": 6,
-        "scale_factor": 16
+        "min_radius": 5
       }
     },
     {
       "name": "dtbyg:mushroom_vines",
       "properties": {
-        "max_length": 10,
+        "max_length": 3,
         "block": "byg:imparius_vine_plant",
         "tip_block": "byg:imparius_vine"
       }

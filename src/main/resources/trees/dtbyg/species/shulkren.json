@@ -18,7 +18,9 @@
     }
   },
   "primitive_sapling": "byg:shulkren_fungus",
-  "acceptable_soils": ["fungus_like"],
+  "acceptable_soils": ["end_soil_like", "fungus_like"],
+  "acceptable_growth_blocks": ["byg:shulkren_phylium", "dtbyg:rooty_shulkren_phylium"],
+  "accept_any_soil": false,
   "sapling_shape": "dtbyg:shulkren_mushroom",
   "sapling_sound": "FUNGUS",
   "features" : [

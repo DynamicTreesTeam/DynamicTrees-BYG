@@ -17,7 +17,8 @@
   },
   "primitive_sapling": "byg:embur_wart",
   "sapling_sound": "FUNGUS",
-  "acceptable_soils": ["fungus_like"],
+  "acceptable_soils": ["nether_soil_like", "fungus_like", "dirt_like"],
+  "acceptable_growth_blocks": ["byg:embur_nylium", "dtbyg:rooty_embur_nylium"],
   "accept_any_soil": false,
   "features" : [
     {
