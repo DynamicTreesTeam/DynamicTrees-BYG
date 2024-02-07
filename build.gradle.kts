@@ -88,8 +88,10 @@ dependencies {
 
     implementation(fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-$mcVersion:${property("dynamicTreesVersion")}"))
     implementation(fg.deobf("curse.maven:oh-the-biomes-youll-go-247560:4841635"))
+    implementation(fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-$mcVersion:${property("dynamicTreesPlusVersion")}"))
 
-    runtimeOnly(fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-$mcVersion:${property("dynamicTreesPlusVersion")}"))
+    runtimeOnly(fg.deobf("curse.maven:geckolib-388172:4407241"))
+    runtimeOnly(fg.deobf("curse.maven:corgilib-693313:4554111"))
     runtimeOnly(fg.deobf("curse.maven:terrablender-563928:4618490"))
     runtimeOnly(fg.deobf("curse.maven:jade-324717:4433884"))
     runtimeOnly(fg.deobf("curse.maven:jei-238222:4615177"))

@@ -1,10 +1,13 @@
 package maxhyper.dtbyg.cancellers;
 
+import com.ferreusveritas.dynamictrees.api.worldgen.BiomePropertySelectors;
 import com.ferreusveritas.dynamictrees.api.worldgen.FeatureCanceller;
+import com.ferreusveritas.dynamictrees.util.RandomXOR;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.CactusBlock;
+import net.minecraft.world.level.levelgen.WorldgenRandom;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 import net.minecraft.world.level.levelgen.feature.configurations.BlockColumnConfiguration;
 import net.minecraft.world.level.levelgen.feature.configurations.FeatureConfiguration;
@@ -12,16 +15,14 @@ import net.minecraft.world.level.levelgen.feature.configurations.RandomPatchConf
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
-
-import java.util.Random;
-import java.util.Set;
+import net.minecraftforge.registries.ForgeRegistries;
 
 /**
  * @author Max Hyper
  */
 public class CactusFeatureCanceller<T extends Block> extends FeatureCanceller {
 
-    private static final Random PLACEHOLDER_RAND = new Random();
+    private static final RandomSource PLACEHOLDER_RAND = new RandomXOR();
 
     private final Class<T> cactusBlockClass;
 
@@ -31,9 +32,10 @@ public class CactusFeatureCanceller<T extends Block> extends FeatureCanceller {
     }
 
     @Override
-    public boolean shouldCancel(ConfiguredFeature<?, ?> configuredFeature, Set<String> namespaces) {
-        ResourceLocation featureResLoc = configuredFeature.feature().getRegistryName();
-        if (featureResLoc == null)
+    public boolean shouldCancel(ConfiguredFeature<?, ?> configuredFeature, BiomePropertySelectors.NormalFeatureCancellation featureCancellations) {
+        final ResourceLocation featureRegistryName = ForgeRegistries.FEATURES.getKey(configuredFeature.feature());
+
+        if (featureRegistryName == null)
             return false;
 
         FeatureConfiguration featureConfig = configuredFeature.config();
@@ -43,8 +45,8 @@ public class CactusFeatureCanceller<T extends Block> extends FeatureCanceller {
             featureConfig = placedFeature.feature().value().config();
         }
 
-        if (!(featureConfig instanceof BlockColumnConfiguration blockColumnConfiguration) || !namespaces.contains(featureResLoc.getNamespace())) {
-            return false;
+        if (!(featureConfig instanceof BlockColumnConfiguration blockColumnConfiguration)) {
+            return featureCancellations.shouldCancelNamespace(featureRegistryName.getNamespace());
         }
 
         for (BlockColumnConfiguration.Layer layer : blockColumnConfiguration.layers()) {

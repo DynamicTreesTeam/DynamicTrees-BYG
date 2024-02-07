@@ -22,6 +22,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.apache.logging.log4j.LogManager;
 
+import java.util.stream.Collectors;
+
 /**
  * @author Max Hyper
  */
@@ -97,7 +99,7 @@ public class AlternativeBranchGenFeature extends GenFeature {
 
         if (!validSpots.isEmpty()) {
             if (isWorldgen){
-                for (BlockPos listPos : validSpots.unwrap().stream().map(WeightedEntry.Wrapper::getData).toList())
+                for (BlockPos listPos : validSpots.unwrap().stream().map(WeightedEntry.Wrapper::getData).collect(Collectors.toList()))
                     if (world.getRandom().nextFloat() < configuration.get(WORLDGEN_PLACE_CHANCE))
                         placeBranch(configuration, world, listPos);
             } else {

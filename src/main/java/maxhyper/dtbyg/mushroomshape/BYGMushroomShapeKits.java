@@ -1,8 +1,6 @@
 package maxhyper.dtbyg.mushroomshape;
 
 import com.ferreusveritas.dynamictrees.api.registry.Registry;
-import com.ferreusveritas.dynamictreesplus.DynamicTreesPlus;
-import com.ferreusveritas.dynamictreesplus.systems.mushroomlogic.shapekits.BellShape;
 import com.ferreusveritas.dynamictreesplus.systems.mushroomlogic.shapekits.MushroomShapeKit;
 import maxhyper.dtbyg.DynamicTreesBYG;
 

@@ -1,10 +1,7 @@
 package maxhyper.dtbyg.blocks;
 
 import com.ferreusveritas.dynamictrees.api.registry.TypedRegistry;
-import com.ferreusveritas.dynamictrees.systems.GrowSignal;
 import com.ferreusveritas.dynamictrees.systems.poissondisc.Vec2i;
-import com.ferreusveritas.dynamictrees.tree.family.Family;
-import com.ferreusveritas.dynamictrees.tree.species.Species;
 import com.ferreusveritas.dynamictreesplus.block.mushroom.CapProperties;
 import com.ferreusveritas.dynamictreesplus.block.mushroom.DynamicCapBlock;
 import com.ferreusveritas.dynamictreesplus.block.mushroom.DynamicCapCenterBlock;
@@ -13,7 +10,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.level.Level;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -22,10 +19,8 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
-import potionstudios.byg.common.block.BYGBlocks;
 
 import javax.annotation.Nonnull;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -80,7 +75,7 @@ public class WartyCapProperties extends CapProperties {
     @Override
     protected DynamicCapBlock createDynamicCap(BlockBehaviour.Properties properties) {
         return new DynamicCapBlock(this, properties){
-            public void tick(BlockState pState, ServerLevel level, BlockPos pos, Random pRandom) {
+            public void tick(BlockState pState, ServerLevel level, BlockPos pos, RandomSource pRandom) {
                 if (level.getBlockState(pos).getBlock() == this) {
                     int dist = pState.getValue(DISTANCE);
                     boolean supportFound = false;

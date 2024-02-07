@@ -1,46 +1,46 @@
 package maxhyper.dtbyg.models;
 
 import com.ferreusveritas.dynamictrees.block.leaves.PalmLeavesProperties;
-import com.ferreusveritas.dynamictrees.client.ModelUtils;
 import com.ferreusveritas.dynamictrees.util.CoordUtils;
 import com.google.common.primitives.Ints;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.*;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.client.resources.model.Material;
 import net.minecraft.client.resources.model.SimpleBakedModel;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.data.IDynamicBakedModel;
-import net.minecraftforge.client.model.data.IModelData;
+import net.minecraftforge.client.model.IDynamicBakedModel;
+import net.minecraftforge.client.model.data.ModelData;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.*;
+import java.util.function.Function;
 
 public class PalmLeavesBakedModel implements IDynamicBakedModel {
 
-    public static List<PalmLeavesBakedModel> INSTANCES = new ArrayList<>();
-
     protected final BlockModel blockModel;
 
-    ResourceLocation frondsResLoc;
-    TextureAtlasSprite frondsTexture;
+    protected final TextureAtlasSprite frondsTexture;
 
     private final BakedModel[] bakedFronds = new BakedModel[8]; // 8 = Number of surrounding blocks
 
-    public PalmLeavesBakedModel (ResourceLocation modelResLoc, ResourceLocation frondsResLoc){
+    public PalmLeavesBakedModel(ResourceLocation frondsTextureLocation, Function<Material, TextureAtlasSprite> spriteGetter) {
         this.blockModel = new BlockModel(null, new ArrayList<>(), new HashMap<>(), false, BlockModel.GuiLight.FRONT, ItemTransforms.NO_TRANSFORMS, new ArrayList<>());
-        this.frondsResLoc = frondsResLoc;
-        INSTANCES.add(this);
+        this.frondsTexture = spriteGetter.apply(new Material(InventoryMenu.BLOCK_ATLAS, frondsTextureLocation));
+        initModels();
     }
 
-    public void setupModels (){
-        frondsTexture = ModelUtils.getTexture(frondsResLoc);
-
+    public void initModels() {
         for (CoordUtils.Surround surr : CoordUtils.Surround.values()) {
 
-            SimpleBakedModel.Builder builder = new SimpleBakedModel.Builder(blockModel.customData, ItemOverrides.EMPTY).particle(frondsTexture);
+            SimpleBakedModel.Builder builder = new SimpleBakedModel.Builder(blockModel, ItemOverrides.EMPTY, true).particle(frondsTexture);
 
             BlockVertexData[] quadData = {
                     new BlockVertexData(0, 0, 3, 15, 4),
@@ -85,22 +85,12 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
                         // Rotate on x axis
                         len = Math.sqrt(y * y + z * z);
                         angle = Math.atan2(y, z);
-                        switch (pass){
-                            case 0:
-                                mult = -0.26;
-                                break;
-                            case 1:
-                                mult = -0.05;
-                                break;
-//                            case 2:
-//                                mult = 0.04;
-//                                break;
-                            case 2:
-                                mult = 0.12;
-                                break;
-                            default:
-                                mult = 0;
-                        }
+                        mult = switch (pass) {
+                            case 0 -> -0.26;
+                            case 1 -> -0.05;
+                            case 2 -> 0.12;
+                            default -> 0;
+                        };
                         angle += Math.PI * mult;
                         y = (float) (Math.sin(angle) * len);
                         z = (float) (Math.cos(angle) * len);
@@ -113,19 +103,12 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
                         // Rotate on y axis
                         len = Math.sqrt(x * x + z * z);
                         angle = Math.atan2(x, z);
-                        switch (pass){
-                            default:
-//                            case 3:
-                            case 0:
-                                mult = 0;
-                                break;
-                            case 1:
-                                mult = 0.185 - 0.25;
-                                break;
-                            case 2:
-                                mult = 0.08;
-                                break;
-                        }
+                        mult = switch (pass) {
+                            case 0 -> 0;
+                            case 1 -> 0.185 - 0.25;
+                            case 2 -> 0.08;
+                            default -> mult;
+                        };
                         angle += Math.PI * 0.25 * surr.ordinal() + (Math.PI * mult);
                         x = (float) (Math.sin(angle) * len);
                         z = (float) (Math.cos(angle) * len);
@@ -134,18 +117,11 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
                         // Move to center of block
                         x += 0.5f;
                         z += 0.5f;
-                        switch (pass){
-                            case 0:
-                                y += 0.125;
-                                break;
-                            case 2:
-                                y += -0.125;
-                                break;
-                            default:
-                                y += 0;
+                        switch (pass) {
+                            case 0 -> y += 0.125;
+                            case 2 -> y -= 0.125;
+                            default -> y += 0;
                         }
-                        //y -= 0.25f;
-
 
                         // Move to center of palm crown
                         x += surr.getOffset().getX();
@@ -185,7 +161,7 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
 
     @Nonnull
     @Override
-    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull Random rand, @Nonnull IModelData extraData) {
+    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, @Nonnull RandomSource rand, @Nonnull ModelData extraData, @Nullable RenderType renderType) {
         if (state == null || side != null)
             return Collections.emptyList();
 
@@ -194,22 +170,11 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
         int direction = state.getValue(PalmLeavesProperties.DynamicPalmLeavesBlock.DIRECTION);
 
         if (direction != 0)
-            quads.addAll(bakedFronds[direction-1].getQuads(state, null, rand, extraData));
+            quads.addAll(bakedFronds[direction - 1].getQuads(state, null, rand, extraData, renderType));
 
 
         return quads;
     }
-
-//    @Nonnull
-//    @Override
-//    public IModelData getModelData(@Nonnull IBlockDisplayReader world, @Nonnull BlockPos pos, @Nonnull BlockState state, @Nonnull IModelData tileData) {
-//        final Block block = state.getBlock();
-//
-//        if (!(block instanceof PalmLeavesProperties.DynamicPalmLeavesBlock))
-//            return new ModelPalmSurround();
-//
-//        return new ModelPalmSurround(((PalmLeavesProperties.DynamicPalmLeavesBlock) block).getHydroSurround(state, world, pos), state.getValue(DynamicLeavesBlock.DISTANCE));
-//    }
 
     @Override
     public boolean useAmbientOcclusion() {
@@ -231,20 +196,16 @@ public class PalmLeavesBakedModel implements IDynamicBakedModel {
         return true;
     }
 
-    @Override
+    @Override @NotNull
     public TextureAtlasSprite getParticleIcon() {
         return frondsTexture;
     }
 
-    @Override
+    @Override @NotNull
     public ItemOverrides getOverrides() {
         return ItemOverrides.EMPTY;
     }
 
-    @Override
-    public boolean doesHandlePerspectives() {
-        return false;
-    }
 
     public static class BlockVertexData {
 

@@ -53,7 +53,6 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import potionstudios.byg.BYGConstants;
@@ -64,7 +63,6 @@ import potionstudios.byg.common.world.feature.config.BYGTreeConfig;
 import potionstudios.byg.common.world.feature.config.GiantFlowerConfig;
 import potionstudios.byg.common.world.feature.features.end.BYGEndVegetationFeatures;
 import potionstudios.byg.common.world.feature.features.nether.BYGNetherVegetationFeatures;
-import potionstudios.byg.common.world.feature.gen.overworld.trees.structure.TreeFromStructureNBTConfig;
 
 import java.util.function.Supplier;
 
@@ -122,7 +120,7 @@ public class DTBYGRegistries {
         setUpSoils();
         setupConnectables();
         if (DTConfigs.REPLACE_NYLIUM_FUNGI.get()) {
-            VegetationReplacement.replaceNyliumFungiFeatures();
+            //VegetationReplacement.replaceNyliumFungiFeatures();
         }
     }
 
@@ -220,21 +218,21 @@ public class DTBYGRegistries {
         BYGMushroomShapeKits.register(event.getRegistry());
     }
 
-    public static final FeatureCanceller BYG_TREE_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("tree"), BYGTreeConfig.class);
-    public static final FeatureCanceller BYG_TREE_STRUCTURE_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("tree_structure"), TreeFromStructureNBTConfig.class);
-    public static final FeatureCanceller BYG_FUNGUS_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("fungus"), BYGMushroomConfig.class);
-    public static final FeatureCanceller GIANT_FLOWER_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("giant_flower"), GiantFlowerConfig.class);
+//    public static final FeatureCanceller BYG_TREE_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("tree"), BYGTreeConfig.class);
+//    public static final FeatureCanceller BYG_TREE_STRUCTURE_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("tree_structure"), TreeFromStructureNBTConfig.class);
+//    public static final FeatureCanceller BYG_FUNGUS_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("fungus"), BYGMushroomConfig.class);
+//    public static final FeatureCanceller GIANT_FLOWER_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("giant_flower"), GiantFlowerConfig.class);
+//
+//    @SubscribeEvent
+//    public static void onFeatureCancellerRegistry(final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<FeatureCanceller> event) {
+//        event.getRegistry().registerAll(BYG_TREE_CANCELLER);
+//        event.getRegistry().registerAll(BYG_TREE_STRUCTURE_CANCELLER);
+//        event.getRegistry().registerAll(BYG_FUNGUS_CANCELLER);
+//        event.getRegistry().registerAll(GIANT_FLOWER_CANCELLER);
+//    }
 
-    @SubscribeEvent
-    public static void onFeatureCancellerRegistry(final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<FeatureCanceller> event) {
-        event.getRegistry().registerAll(BYG_TREE_CANCELLER);
-        event.getRegistry().registerAll(BYG_TREE_STRUCTURE_CANCELLER);
-        event.getRegistry().registerAll(BYG_FUNGUS_CANCELLER);
-        event.getRegistry().registerAll(GIANT_FLOWER_CANCELLER);
-    }
-
-    public static void onBiomeLoading(final BiomeLoadingEvent event){
-        VegetationReplacement.OnBiomeLoadingEvent(event);
-    }
+//    public static void onBiomeLoading(final BiomeLoadingEvent event){
+//        VegetationReplacement.OnBiomeLoadingEvent(event);
+//    }
 
 }

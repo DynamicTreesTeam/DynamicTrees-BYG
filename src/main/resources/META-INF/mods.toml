@@ -6,8 +6,8 @@ license="MIT"
 modId="dtbyg"
 version="${file.jarVersion}"
 displayName="Dynamic Trees for BYG"
-#updateJSONURL="https://github.com/supermassimo/DynamicTrees-ExC/blob/1.12.2/.DONE/DynamicTrees-BYG/version_info.json?raw=true" #optional
-#displayURL="https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-byg" #optional
+updateJSONURL="https://github.com/DynamicTreesTeam/DynamicTreesVersionInfo/blob/master/Add-ons/BYG.json?raw=true"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/dynamic-trees-byg"
 logoFile=""
 credits=""
 authors="Max Hyper, Harley O' Connor, Corgi Taco, SuperCoder79"
@@ -18,34 +18,34 @@ Compatibility Mod between Dynamic trees and Oh The Biomes You'll Go
 [[dependencies.dtbyg]]
     modId="forge"
     mandatory=true
-    versionRange="[40,)"
+    versionRange="[41,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.dtbyg]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.18.2,1.19)"
+    versionRange="[1.19,1.19.3)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies.dtbyg]]
     modId="dynamictrees"
     mandatory=true
-    versionRange="[0.11.0,)"
+    versionRange="[1.2.0-BETA1,)"
     ordering="AFTER"
     side="BOTH"
 
 [[dependencies.dtbyg]]
     modId="dynamictreesplus"
     mandatory=true
-    versionRange="[0.2.0,)"
+    versionRange="[1.1.0,)"
     ordering="AFTER"
     side="BOTH"
 
 [[dependencies.dtbyg]]
     modId="byg"
     mandatory=true
-    versionRange="[1.4,2.0)"
+    versionRange="[2.0,3.0)"
     ordering="AFTER"
     side="BOTH"

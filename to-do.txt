@@ -1,2 +1,0 @@
-- Dynamic glowshroom and toadstool
-- glowing grotto generation

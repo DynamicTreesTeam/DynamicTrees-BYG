@@ -24,12 +24,9 @@ import potionstudios.byg.common.block.BYGBlocks;
 import potionstudios.byg.common.block.end.impariusgrove.TreeBranchBlock;
 import potionstudios.byg.reg.BlockRegistryObject;
 
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 @Mod.EventBusSubscriber(modid = DynamicTreesBYG.MOD_ID)
 public class SideBranchPlaceEventHandler {
@@ -44,7 +41,7 @@ public class SideBranchPlaceEventHandler {
     @SubscribeEvent
     public static void onPlayerRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
 
-        Player player = event.getPlayer();
+        Player player = event.getEntity();
         InteractionHand hand = event.getHand();
         ItemStack heldItem = player.getItemInHand(hand);
 
@@ -57,7 +54,7 @@ public class SideBranchPlaceEventHandler {
         }
         if (bloomBranch == null) return;
 
-        Level world = event.getWorld();
+        Level world = event.getLevel();
         BlockPos branchPos = event.getPos();
         BlockState state = world.getBlockState(branchPos);
 
