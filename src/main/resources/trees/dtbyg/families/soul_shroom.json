@@ -4,9 +4,11 @@
   "common_cap": "dtbyg:soul_shroom",
   "common_species": "dtbyg:soul_shroom",
   "primitive_log": "byg:soul_shroom_stem",
-  "outside_branch_texture": "byg:block/soul_shroom_stem",
-  "inside_branch_texture": "block/mushroom_block_inside",
   "stick": "air",
   "generate_stripped_branch": false,
-  "max_branch_radius": 24
+  "max_branch_radius": 24,
+  "texture_overrides": {
+    "branch": "byg:block/soul_shroom_stem",
+    "branch_top": "block/mushroom_block_inside"
+  }
 }

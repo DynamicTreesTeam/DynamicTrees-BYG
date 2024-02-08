@@ -1,7 +1,7 @@
 {
   "parent": "dynamictrees:item/branch",
   "textures": {
-    "bark": "byg:block/embur_pedu",
-    "rings": "byg:block/embur_pedu_top"
+    "bark": "byg:block/embur/log",
+    "rings": "byg:block/embur/log_top"
   }
 }

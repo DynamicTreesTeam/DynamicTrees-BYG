@@ -1,7 +1,7 @@
 {
   "parent": "dynamictrees:item/branch",
   "textures": {
-    "bark": "byg:block/ebony_log",
-    "rings": "byg:block/ebony_log_top"
+    "bark": "byg:block/ebony/log",
+    "rings": "byg:block/ebony/log_top"
   }
 }

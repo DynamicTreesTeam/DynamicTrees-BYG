@@ -1,7 +1,7 @@
 {
   "loader": "dynamictrees:branch",
   "textures": {
-    "bark": "byg:block/fir_log",
-    "rings": "byg:block/fir_log_top"
+    "bark": "byg:block/fir/log",
+    "rings": "byg:block/fir/log_top"
   }
 }

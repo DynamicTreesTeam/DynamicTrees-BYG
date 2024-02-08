@@ -4,5 +4,11 @@
   "primitive_log": "byg:willow_log",
   "primitive_stripped_log": "byg:stripped_willow_log",
   "max_branch_radius": 24,
-  "generate_surface_root": true
+  "generate_surface_root": true,
+  "texture_overrides": {
+    "branch": "byg:block/willow/log",
+    "branch_top": "byg:block/willow/log_top",
+    "stripped_branch": "byg:block/willow/stripped_log",
+    "stripped_branch_top": "byg:block/willow/stripped_log_top"
+  }
 }

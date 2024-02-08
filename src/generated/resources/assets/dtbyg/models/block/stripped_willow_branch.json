@@ -1,7 +1,7 @@
 {
   "loader": "dynamictrees:branch",
   "textures": {
-    "bark": "byg:block/stripped_willow_log",
-    "rings": "byg:block/stripped_willow_log_top"
+    "bark": "byg:block/willow/stripped_log",
+    "rings": "byg:block/willow/stripped_log_top"
   }
 }

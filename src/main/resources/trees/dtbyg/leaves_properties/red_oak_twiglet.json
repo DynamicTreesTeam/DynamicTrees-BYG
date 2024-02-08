@@ -1,5 +1,8 @@
 {
   "primitive_leaves": "byg:red_oak_leaves",
   "cell_kit": "dtbyg:sparse",
-  "can_grow_on_ground": true
+  "can_grow_on_ground": true,
+  "texture_overrides": {
+    "leaves": "byg:block/oak_leaves_red"
+  }
 }

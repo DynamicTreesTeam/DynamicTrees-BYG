@@ -1,6 +1,8 @@
 {
-	"parent": "dtbyg:block/saplings/mushroom_long",
-	"textures": {
-		"cap": "dtbyg:block/soul_shroom_cap"
-	}
+  "parent": "dynamictrees:block/smartmodel/mushroom_round",
+  "render_type": "minecraft:cutout_mipped",
+  "textures": {
+    "cap": "dtbyg:block/soul_shroom_cap",
+    "stem": "dtbyg:block/soul_shroom_cap"
+  }
 }

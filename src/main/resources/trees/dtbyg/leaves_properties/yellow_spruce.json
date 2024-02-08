@@ -2,5 +2,7 @@
   "primitive_leaves": "byg:yellow_spruce_leaves",
   "smother": 3,
   "cell_kit": "dynamictrees:conifer",
-  "leaves_texture": "byg:block/spruce_leaves_yellow"
+  "texture_overrides": {
+    "leaves": "byg:block/spruce_leaves_yellow"
+  }
 }

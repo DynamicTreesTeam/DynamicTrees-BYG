@@ -1,7 +1,7 @@
 {
   "loader": "dynamictrees:branch",
   "textures": {
-    "bark": "byg:block/imparius_stem",
-    "rings": "byg:block/imparius_stem_top"
+    "bark": "byg:block/imparius/log",
+    "rings": "byg:block/imparius/log_top"
   }
 }

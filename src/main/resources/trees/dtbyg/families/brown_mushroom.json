@@ -4,9 +4,11 @@
   "common_cap": "dtbyg:wood_blewit",
   "common_species": "dtbyg:wood_blewit",
   "primitive_log": "byg:brown_mushroom_stem",
-  "outside_branch_texture": "byg:block/brown_mushroom_stem",
-  "inside_branch_texture": "block/mushroom_block_inside",
   "stick": "air",
   "generate_stripped_branch": false,
-  "max_branch_radius": 24
+  "max_branch_radius": 24,
+  "texture_overrides": {
+    "branch": "byg:block/brown_mushroom_stem",
+    "branch_top": "block/mushroom_block_inside"
+  }
 }

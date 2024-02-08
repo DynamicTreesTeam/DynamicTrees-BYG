@@ -1,8 +1,8 @@
 {
   "parent": "dynamictrees:block/smartmodel/sapling",
+  "render_type": "minecraft:cutout_mipped",
   "textures": {
-    "particle": "byg:block/fir_leaves",
-    "log": "byg:block/fir_log",
-    "leaves": "byg:block/fir_leaves"
+    "leaves": "byg:block/fir/leaves",
+    "log": "byg:block/fir/log"
   }
 }

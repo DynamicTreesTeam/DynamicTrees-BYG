@@ -1,5 +1,11 @@
 {
   "primitive_leaves": "byg:nightshade_leaves",
   "cell_kit": "acacia",
-  "light_requirement": 0
+  "light_requirement": 0,
+  "model_overrides": {
+    "leaves": "byg:block/nightshade/leaves"
+  },
+  "texture_overrides": {
+    "leaves": "byg:block/nightshade/leaves"
+  }
 }

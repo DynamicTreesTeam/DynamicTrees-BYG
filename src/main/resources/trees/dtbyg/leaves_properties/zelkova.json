@@ -2,5 +2,11 @@
   "primitive_leaves": "byg:zelkova_leaves",
   "cell_kit": "dynamictrees:conifer",
   "smother": 20,
-  "light_requirement": 11
+  "light_requirement": 11,
+  "model_overrides": {
+    "leaves": "byg:block/zelkova/leaves"
+  },
+  "texture_overrides": {
+    "leaves": "byg:block/zelkova/leaves"
+  }
 }

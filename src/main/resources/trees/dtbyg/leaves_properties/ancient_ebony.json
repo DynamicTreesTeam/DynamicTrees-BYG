@@ -1,5 +1,11 @@
 {
   "primitive_leaves": "byg:ebony_leaves",
   "cell_kit": "dynamictrees:dark_oak",
-  "smother": 3
+  "smother": 3,
+  "model_overrides": {
+    "leaves": "byg:block/ebony/leaves"
+  },
+  "texture_overrides": {
+    "leaves": "byg:block/ebony/leaves"
+  }
 }

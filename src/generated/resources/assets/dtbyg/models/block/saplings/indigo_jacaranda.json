@@ -1,8 +1,8 @@
 {
   "parent": "dynamictrees:block/smartmodel/sapling",
+  "render_type": "minecraft:cutout_mipped",
   "textures": {
-    "particle": "byg:block/indigo_jacaranda_leaves",
-    "log": "byg:block/jacaranda_log",
-    "leaves": "byg:block/indigo_jacaranda_leaves"
+    "leaves": "byg:block/indigo_jacaranda_leaves",
+    "log": "byg:block/jacaranda/log"
   }
 }

@@ -2,5 +2,11 @@
   "primitive_leaves": "byg:cika_leaves",
   "cell_kit": "dynamictrees:conifer",
   "smother": 32,
-  "light_requirement": 6
+  "light_requirement": 6,
+  "model_overrides": {
+    "leaves": "byg:block/cika/leaves"
+  },
+  "texture_overrides": {
+    "leaves": "byg:block/cika/leaves"
+  }
 }

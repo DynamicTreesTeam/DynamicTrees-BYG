@@ -4,5 +4,11 @@
   "primitive_log": "byg:lament_log",
   "primitive_stripped_log": "byg:stripped_lament_log",
   "fire_proof": true,
-  "max_branch_radius": 24
+  "max_branch_radius": 24,
+  "texture_overrides": {
+    "branch": "byg:block/lament/log",
+    "branch_top": "byg:block/lament/log_top",
+    "stripped_branch": "byg:block/lament/stripped_log",
+    "stripped_branch_top": "byg:block/lament/stripped_log_top"
+  }
 }

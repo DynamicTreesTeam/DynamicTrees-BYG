@@ -4,9 +4,11 @@
   "common_cap": "dtbyg:green_mushroom",
   "common_species": "dtbyg:green_mushroom",
   "primitive_log": "byg:white_mushroom_stem",
-  "outside_branch_texture": "byg:block/white_mushroom_stem",
-  "inside_branch_texture": "block/mushroom_block_inside",
   "stick": "air",
   "generate_stripped_branch": false,
-  "max_branch_radius": 24
+  "max_branch_radius": 24,
+  "texture_overrides": {
+    "branch": "byg:block/white_mushroom_stem",
+    "branch_top": "block/mushroom_block_inside"
+  }
 }

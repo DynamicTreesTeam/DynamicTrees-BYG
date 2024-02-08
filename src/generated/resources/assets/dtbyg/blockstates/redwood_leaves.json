@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "byg:block/redwood_leaves"
+      "model": "byg:block/redwood/leaves"
     }
   }
 }

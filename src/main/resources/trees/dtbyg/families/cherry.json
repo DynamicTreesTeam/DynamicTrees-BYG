@@ -3,5 +3,11 @@
   "common_species": "dtbyg:pink_cherry",
   "primitive_log": "byg:cherry_log",
   "primitive_stripped_log": "byg:stripped_cherry_log",
-  "max_branch_radius": 24
+  "max_branch_radius": 24,
+  "texture_overrides": {
+    "branch": "byg:block/cherry/log",
+    "branch_top": "byg:block/cherry/log_top",
+    "stripped_branch": "byg:block/cherry/stripped_log",
+    "stripped_branch_top": "byg:block/cherry/stripped_log_top"
+  }
 }

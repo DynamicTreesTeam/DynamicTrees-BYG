@@ -5,5 +5,11 @@
   "primitive_stripped_log": "byg:stripped_cypress_log",
   "max_branch_radius": 24,
   "max_signal_depth": 64,
-  "generate_surface_root": true
+  "generate_surface_root": true,
+  "texture_overrides": {
+    "branch": "byg:block/cypress/log",
+    "branch_top": "byg:block/cypress/log_top",
+    "stripped_branch": "byg:block/cypress/stripped_log",
+    "stripped_branch_top": "byg:block/cypress/stripped_log_top"
+  }
 }

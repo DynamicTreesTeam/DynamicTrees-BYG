@@ -6,5 +6,11 @@
   "max_branch_radius": 24,
   "max_signal_depth": 64,
   "generate_surface_root": true,
-  "conifer_variants": true
+  "conifer_variants": true,
+  "texture_overrides": {
+    "branch": "byg:block/redwood/log",
+    "branch_top": "byg:block/redwood/log_top",
+    "stripped_branch": "byg:block/redwood/stripped_log",
+    "stripped_branch_top": "byg:block/redwood/stripped_log_top"
+  }
 }

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "byg:block/lament_leaves"
+      "model": "byg:block/lament/leaves"
     }
   }
 }

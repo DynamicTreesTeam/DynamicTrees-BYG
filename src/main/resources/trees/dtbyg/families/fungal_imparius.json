@@ -5,10 +5,14 @@
   "common_species": "dtbyg:fungal_imparius",
   "primitive_log": "byg:fungal_imparius_stem",
   "primitive_stripped_log": "byg:imparius_stem",
-  "outside_branch_texture": "byg:block/fungal_imparius_stem",
-  "inside_branch_texture": "byg:block/fungal_imparius_stem_top",
   "stick": "stick",
   "max_branch_radius": 24,
   "max_signal_depth": 64,
-  "generate_surface_root": true
+  "generate_surface_root": true,
+  "texture_overrides": {
+    "branch": "byg:block/fungal_imparius_stem",
+    "branch_top": "byg:block/fungal_imparius_stem_top",
+    "stripped_branch": "byg:block/imparius/log",
+    "stripped_branch_top": "byg:block/imparius/log_top"
+  }
 }

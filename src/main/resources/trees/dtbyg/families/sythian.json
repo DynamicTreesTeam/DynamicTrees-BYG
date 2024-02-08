@@ -6,5 +6,11 @@
   "primitive_stripped_log": "byg:stripped_sythian_stem",
   "max_branch_radius": 8,
   "conifer_variants": true,
-  "connect_any_radius": true
+  "connect_any_radius": true,
+  "texture_overrides": {
+    "branch": "byg:block/sythian/log",
+    "branch_top": "byg:block/sythian/log_top",
+    "stripped_branch": "byg:block/sythian/stripped_log",
+    "stripped_branch_top": "byg:block/sythian/stripped_log_top"
+  }
 }

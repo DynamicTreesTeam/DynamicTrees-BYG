@@ -1,4 +1,10 @@
 {
   "primitive_leaves": "byg:willow_leaves",
-  "cell_kit": "dtbyg:willow"
+  "cell_kit": "dtbyg:willow",
+  "model_overrides": {
+    "leaves": "byg:block/willow/leaves"
+  },
+  "texture_overrides": {
+    "leaves": "byg:block/willow/leaves"
+  }
 }

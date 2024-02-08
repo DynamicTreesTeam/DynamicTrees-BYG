@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "byg:block/nightshade_leaves"
+      "model": "byg:block/nightshade/leaves"
     }
   }
 }

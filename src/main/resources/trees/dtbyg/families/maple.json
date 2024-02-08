@@ -4,5 +4,11 @@
   "primitive_log": "byg:maple_log",
   "primitive_stripped_log": "byg:stripped_maple_log",
   "max_branch_radius": 24,
-  "generate_surface_root": true
+  "generate_surface_root": true,
+  "texture_overrides": {
+    "branch": "byg:block/maple/log",
+    "branch_top": "byg:block/maple/log_top",
+    "stripped_branch": "byg:block/maple/stripped_log",
+    "stripped_branch_top": "byg:block/maple/stripped_log_top"
+  }
 }

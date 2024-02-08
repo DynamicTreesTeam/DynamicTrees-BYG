@@ -3,5 +3,11 @@
   "cell_kit": "dtbyg:poplar",
   "smother": 9,
   "light": 15,
-  "light_requirement": 13
+  "light_requirement": 13,
+  "model_overrides": {
+    "leaves": "byg:block/green_enchanted/leaves"
+  },
+  "texture_overrides": {
+    "leaves": "byg:block/green_enchanted/leaves"
+  }
 }

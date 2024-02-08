@@ -1,6 +1,8 @@
 {
-	"parent": "dtbyg:block/saplings/mushroom_cone",
-	"textures": {
-		"cap": "dtbyg:block/shulkren_cap"
-	}
+  "parent": "dynamictrees:block/smartmodel/mushroom_round",
+  "render_type": "minecraft:cutout_mipped",
+  "textures": {
+    "cap": "dtbyg:block/shulkren_cap",
+    "stem": "dtbyg:block/shulkren_cap"
+  }
 }

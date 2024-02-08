@@ -1,5 +1,11 @@
 {
   "primitive_leaves": "byg:holly_leaves",
   "cell_kit": "dtbyg:round_conifer",
-  "smother": 9
+  "smother": 9,
+  "model_overrides": {
+    "leaves": "byg:block/holly/leaves"
+  },
+  "texture_overrides": {
+    "leaves": "byg:block/holly/leaves"
+  }
 }

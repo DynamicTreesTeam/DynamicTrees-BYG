@@ -31,6 +31,9 @@ repositories {
     }
     maven("https://harleyoconnor.com/maven")
     maven("https://squiddev.cc/maven/")
+    flatDir {
+        dir("libs")
+    }
 }
 
 val modName = property("modName")
@@ -72,7 +75,8 @@ minecraft {
                 "--output", file("src/generated/resources/"),
                 "--existing", file("src/main/resources"),
                 "--existing-mod", "dynamictrees",
-                "--existing-mod", "biomesoplenty"
+                "--existing-mod", "dynamictreesplus",
+                "--existing-mod", "byg"
             )
         }
     }
@@ -86,9 +90,11 @@ sourceSets.main.get().resources {
 dependencies {
     minecraft("net.minecraftforge:forge:${mcVersion}-${property("forgeVersion")}")
 
-    implementation(fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-$mcVersion:${property("dynamicTreesVersion")}"))
+    implementation(fg.deobf("libs:DynamicTrees:1.19.2-1.2.0-BETA2.002"))
+    //implementation(fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-$mcVersion:${property("dynamicTreesVersion")}"))
+    implementation(fg.deobf("libs:DynamicTreesPlus:1.19.2-1.1.4.001"))
+    //implementation(fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-$mcVersion:${property("dynamicTreesPlusVersion")}"))
     implementation(fg.deobf("curse.maven:oh-the-biomes-youll-go-247560:4841635"))
-    implementation(fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-$mcVersion:${property("dynamicTreesPlusVersion")}"))
 
     runtimeOnly(fg.deobf("curse.maven:geckolib-388172:4407241"))
     runtimeOnly(fg.deobf("curse.maven:corgilib-693313:4554111"))

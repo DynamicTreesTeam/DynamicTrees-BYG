@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "dtbyg:ancient_ebony_leaves",
     "dtbyg:ancient_silver_maple_leaves",
@@ -30,10 +29,10 @@
     "dtbyg:flowering_nightshade_leaves",
     "dtbyg:flowering_orchard_leaves",
     "dtbyg:flowering_palo_verde_leaves",
+    "dtbyg:flowering_skyris_leaves",
     "dtbyg:green_apple_skyris_leaves",
     "dtbyg:green_enchanted_leaves",
     "dtbyg:holly_leaves",
-    "dtbyg:holly_berry_leaves",
     "dtbyg:indigo_jacaranda_leaves",
     "dtbyg:jacaranda_leaves",
     "dtbyg:joshua_leaves",

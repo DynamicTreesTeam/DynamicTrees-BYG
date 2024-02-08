@@ -1,5 +1,7 @@
 {
   "type": "scruffy",
   "primitive_leaves": "byg:red_oak_leaves",
-  "leaves_texture": "byg:block/oak_leaves_red"
+  "texture_overrides": {
+    "leaves": "byg:block/oak_leaves_red"
+  }
 }

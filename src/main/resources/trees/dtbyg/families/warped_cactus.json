@@ -5,5 +5,10 @@
   "common_species": "dtbyg:warped_cactus",
   "primitive_log": "byg:warped_cactus",
   "stick": "air",
-  "generate_stripped_branch": false
+  "generate_stripped_branch": false,
+  "texture_overrides": {
+    "branch": "byg:block/warped_cactus_side",
+    "branch_top": "byg:block/warped_cactus_top",
+    "branch_bottom": "byg:block/warped_cactus_bottom"
+  }
 }

@@ -4,5 +4,8 @@
   "scruffy_max_hydro": 1,
   "primitive_leaves": "byg:orange_oak_leaves",
   "cell_kit": "dtbyg:round_conifer",
-  "smother": 9
+  "smother": 9,
+  "texture_overrides": {
+    "leaves": "byg:block/oak_leaves_orange"
+  }
 }

@@ -3,5 +3,11 @@
   "scruffy_leaf_chance": 0.66,
   "scruffy_max_hydro": 1,
   "primitive_leaves": "byg:witch_hazel_leaves",
-  "cell_kit": "dtbyg:willow"
+  "cell_kit": "dtbyg:willow",
+  "model_overrides": {
+    "leaves": "byg:block/witch_hazel/leaves"
+  },
+  "texture_overrides": {
+    "leaves": "byg:block/witch_hazel/leaves"
+  }
 }

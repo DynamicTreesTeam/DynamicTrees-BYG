@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "byg:block/ether_leaves"
+      "model": "byg:block/ether/leaves"
     }
   }
 }

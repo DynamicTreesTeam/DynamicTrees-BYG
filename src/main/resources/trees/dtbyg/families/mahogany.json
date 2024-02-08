@@ -5,5 +5,11 @@
   "primitive_stripped_log": "byg:stripped_mahogany_log",
   "max_branch_radius": 24,
   "generate_surface_root": true,
-  "max_signal_depth": 64
+  "max_signal_depth": 64,
+  "texture_overrides": {
+    "branch": "byg:block/mahogany/log",
+    "branch_top": "byg:block/mahogany/log_top",
+    "stripped_branch": "byg:block/mahogany/stripped_log",
+    "stripped_branch_top": "byg:block/mahogany/stripped_log_top"
+  }
 }

@@ -6,5 +6,11 @@
   "primitive_stripped_log": "byg:stripped_palm_log",
   "primary_thickness": 3,
   "secondary_thickness": 4,
-  "max_branch_radius": 16
+  "max_branch_radius": 16,
+  "texture_overrides": {
+    "branch": "byg:block/palm/log",
+    "branch_top": "byg:block/palm/log_top",
+    "stripped_branch": "byg:block/palm/stripped_log",
+    "stripped_branch_top": "byg:block/palm/stripped_log_top"
+  }
 }

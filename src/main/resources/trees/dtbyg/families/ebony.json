@@ -4,5 +4,11 @@
   "primitive_log": "byg:ebony_log",
   "primitive_stripped_log": "byg:stripped_ebony_log",
   "max_branch_radius": 24,
-  "generate_surface_root": true
+  "generate_surface_root": true,
+  "texture_overrides": {
+    "branch": "byg:block/ebony/log",
+    "branch_top": "byg:block/ebony/log_top",
+    "stripped_branch": "byg:block/ebony/stripped_log",
+    "stripped_branch_top": "byg:block/ebony/stripped_log_top"
+  }
 }

@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "byg:block/blue_enchanted_leaves"
+      "model": "byg:block/blue_enchanted/leaves"
     }
   }
 }

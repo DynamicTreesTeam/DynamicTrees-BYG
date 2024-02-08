@@ -5,7 +5,11 @@
   "common_species": "dtbyg:warped_mushroom",
   "primitive_log": "warped_stem",
   "primitive_stripped_log": "stripped_warped_stem",
-  "outside_branch_texture": "block/warped_stem",
-  "inside_branch_texture": "block/warped_stem_top",
-  "max_branch_radius": 24
+  "max_branch_radius": 24,
+  "texture_overrides": {
+    "branch": "block/warped_stem",
+    "branch_top": "block/warped_stem_top",
+    "stripped_branch": "block/stripped_warped_stem",
+    "stripped_branch_top": "block/stripped_warped_stem_top"
+  }
 }

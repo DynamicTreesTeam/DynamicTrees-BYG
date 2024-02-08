@@ -4,5 +4,11 @@
   "primitive_log": "byg:witch_hazel_log",
   "primitive_stripped_log": "byg:stripped_witch_hazel_log",
   "max_branch_radius": 24,
-  "generate_surface_root": true
+  "generate_surface_root": true,
+  "texture_overrides": {
+    "branch": "byg:block/witch_hazel/log",
+    "branch_top": "byg:block/witch_hazel/log_top",
+    "stripped_branch": "byg:block/witch_hazel/stripped_log",
+    "stripped_branch_top": "byg:block/witch_hazel/stripped_log_top"
+  }
 }

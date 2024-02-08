@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "byg:block/rainbow_eucalyptus_leaves"
+      "model": "byg:block/rainbow_eucalyptus/leaves"
     }
   }
 }

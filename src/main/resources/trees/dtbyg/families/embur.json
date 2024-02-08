@@ -5,9 +5,13 @@
   "common_species": "dtbyg:embur",
   "primitive_log": "byg:embur_pedu",
   "primitive_stripped_log": "byg:stripped_embur_pedu",
-  "outside_branch_texture": "byg:block/embur_pedu",
-  "inside_branch_texture": "byg:block/embur_pedu_top",
   "stick": "stick",
   "max_branch_radius": 24,
-  "max_signal_depth": 64
+  "max_signal_depth": 64,
+  "texture_overrides": {
+    "branch": "byg:block/embur/log",
+    "branch_top": "byg:block/embur/log_top",
+    "stripped_branch": "byg:block/embur/stripped_log",
+    "stripped_branch_top": "byg:block/embur/stripped_log_top"
+  }
 }

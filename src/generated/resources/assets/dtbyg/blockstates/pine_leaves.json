@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "byg:block/pine_leaves"
+      "model": "byg:block/pine/leaves"
     }
   }
 }

@@ -1,4 +1,10 @@
 {
   "primitive_leaves": "byg:cypress_leaves",
-  "cell_kit": "acacia"
+  "cell_kit": "acacia",
+  "model_overrides": {
+    "leaves": "byg:block/cypress/leaves"
+  },
+  "texture_overrides": {
+    "leaves": "byg:block/cypress/leaves"
+  }
 }

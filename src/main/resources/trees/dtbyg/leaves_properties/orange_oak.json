@@ -3,5 +3,7 @@
   "scruffy_leaf_chance": 0.66,
   "scruffy_max_hydro": 1,
   "primitive_leaves": "byg:orange_oak_leaves",
-  "leaves_texture": "byg:block/oak_leaves_orange"
+  "texture_overrides": {
+    "leaves": "byg:block/oak_leaves_orange"
+  }
 }

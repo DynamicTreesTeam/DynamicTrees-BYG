@@ -3,5 +3,11 @@
   "common_species": "dtbyg:baobab",
   "primitive_log": "byg:baobab_log",
   "primitive_stripped_log": "byg:stripped_baobab_log",
-  "max_branch_radius": 24
+  "max_branch_radius": 24,
+  "texture_overrides": {
+    "branch": "byg:block/baobab/log",
+    "branch_top": "byg:block/baobab/log_top",
+    "stripped_branch": "byg:block/baobab/stripped_log",
+    "stripped_branch_top": "byg:block/baobab/stripped_log_top"
+  }
 }

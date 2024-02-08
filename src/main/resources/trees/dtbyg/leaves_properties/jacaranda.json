@@ -1,6 +1,12 @@
 {
   "primitive_leaves": "byg:jacaranda_leaves",
   "cell_kit": "dtbyg:willow",
+  "model_overrides": {
+    "leaves": "byg:block/jacaranda/leaves"
+  },
+  "texture_overrides": {
+    "leaves": "byg:block/jacaranda/leaves"
+  },
 
   "type": "scruffy",
   "scruffy_leaf_chance": 0.5,

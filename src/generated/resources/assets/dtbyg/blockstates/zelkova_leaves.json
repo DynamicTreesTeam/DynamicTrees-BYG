@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "byg:block/zelkova_leaves"
+      "model": "byg:block/zelkova/leaves"
     }
   }
 }

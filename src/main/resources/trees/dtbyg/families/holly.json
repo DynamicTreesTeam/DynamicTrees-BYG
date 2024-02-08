@@ -4,5 +4,11 @@
   "primitive_log": "byg:holly_log",
   "primitive_stripped_log": "byg:stripped_holly_log",
   "max_branch_radius": 24,
-  "conifer_variants": true
+  "conifer_variants": true,
+  "texture_overrides": {
+    "branch": "byg:block/holly/log",
+    "branch_top": "byg:block/holly/log_top",
+    "stripped_branch": "byg:block/holly/stripped_log",
+    "stripped_branch_top": "byg:block/holly/stripped_log_top"
+  }
 }

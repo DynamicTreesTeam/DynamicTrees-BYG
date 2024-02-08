@@ -5,7 +5,11 @@
   "common_species": "dtbyg:crimson_mushroom",
   "primitive_log": "crimson_stem",
   "primitive_stripped_log": "stripped_crimson_stem",
-  "outside_branch_texture": "block/crimson_stem",
-  "inside_branch_texture": "block/crimson_stem_top",
-  "max_branch_radius": 24
+  "max_branch_radius": 24,
+  "texture_overrides": {
+    "branch": "block/crimson_stem",
+    "branch_top": "block/crimson_stem_top",
+    "stripped_branch": "block/stripped_crimson_stem",
+    "stripped_branch_top": "block/stripped_crimson_stem_top"
+  }
 }

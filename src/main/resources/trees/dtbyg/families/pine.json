@@ -6,5 +6,11 @@
   "max_branch_radius": 24,
   "conifer_variants": true,
   "generate_surface_root": true,
-  "max_signal_depth": 64
+  "max_signal_depth": 64,
+  "texture_overrides": {
+    "branch": "byg:block/pine/log",
+    "branch_top": "byg:block/pine/log_top",
+    "stripped_branch": "byg:block/pine/stripped_log",
+    "stripped_branch_top": "byg:block/pine/stripped_log_top"
+  }
 }

@@ -4,5 +4,11 @@
   "scruffy_max_hydro": 1,
   "primitive_leaves": "byg:ether_leaves",
   "cell_kit": "dtbyg:willow",
-  "light_requirement": 0
+  "light_requirement": 0,
+  "model_overrides": {
+    "leaves": "byg:block/ether/leaves"
+  },
+  "texture_overrides": {
+    "leaves": "byg:block/ether/leaves"
+  }
 }

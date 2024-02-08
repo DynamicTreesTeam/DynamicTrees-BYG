@@ -5,5 +5,11 @@
   "primitive_log": "byg:nightshade_log",
   "primitive_stripped_log": "byg:stripped_nightshade_log",
   "primitive_imbued_log": "byg:imbued_nightshade_log",
-  "max_branch_radius": 24
+  "max_branch_radius": 24,
+  "texture_overrides": {
+    "branch": "byg:block/nightshade/log",
+    "branch_top": "byg:block/nightshade/log_top",
+    "stripped_branch": "byg:block/nightshade/stripped_log",
+    "stripped_branch_top": "byg:block/nightshade/stripped_log_top"
+  }
 }

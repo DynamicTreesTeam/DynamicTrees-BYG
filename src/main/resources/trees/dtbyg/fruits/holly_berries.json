@@ -1,4 +1,5 @@
 {
+  "only_if_loaded": "_",
   "item_stack": "byg:holly_berries",
   "block_shapes": [
     { "function": "fruit", "parameters": { "radius": 1, "height": 1, "stem_length": 0, "fraction": 16 } },

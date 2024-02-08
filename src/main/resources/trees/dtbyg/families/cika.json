@@ -5,5 +5,11 @@
   "primitive_stripped_log": "byg:stripped_cika_log",
   "max_branch_radius": 24,
   "max_signal_depth": 64,
-  "conifer_variants": true
+  "conifer_variants": true,
+  "texture_overrides": {
+    "branch": "byg:block/cika/log",
+    "branch_top": "byg:block/cika/log_top",
+    "stripped_branch": "byg:block/cika/stripped_log",
+    "stripped_branch_top": "byg:block/cika/stripped_log_top"
+  }
 }

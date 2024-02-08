@@ -1,12 +1,5 @@
 {
-  "replace": false,
   "values": [
-    "dtbyg:sythian_wart",
-    "dtbyg:shulkren_wart",
-    "dtbyg:shulkren_wart_center",
-    "dtbyg:crimson_mushroom_wart",
-    "dtbyg:crimson_mushroom_wart_center",
-    "dtbyg:warped_mushroom_wart",
-    "dtbyg:warped_mushroom_wart_center"
+    "dtbyg:sythian_wart"
   ]
 }

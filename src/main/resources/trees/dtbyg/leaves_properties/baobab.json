@@ -1,4 +1,10 @@
 {
   "primitive_leaves": "byg:baobab_leaves",
-  "cell_kit": "dynamictrees:acacia"
+  "cell_kit": "dynamictrees:acacia",
+  "model_overrides": {
+    "leaves": "byg:block/baobab/leaves"
+  },
+  "texture_overrides": {
+    "leaves": "byg:block/baobab/leaves"
+  }
 }

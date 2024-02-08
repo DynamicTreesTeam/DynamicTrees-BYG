@@ -1,9 +1,9 @@
 {
   "parent": "dynamictreesplus:block/smart_model/saguaro_cactus",
+  "render_type": "minecraft:cutout_mipped",
   "textures": {
-    "particle": "byg:block/oddity_cactus_side",
+    "bottom": "byg:block/oddity_cactus_bottom",
     "side": "byg:block/oddity_cactus_side",
-    "top": "byg:block/oddity_cactus_top",
-    "bottom": "byg:block/oddity_cactus_bottom"
+    "top": "byg:block/oddity_cactus_top"
   }
 }

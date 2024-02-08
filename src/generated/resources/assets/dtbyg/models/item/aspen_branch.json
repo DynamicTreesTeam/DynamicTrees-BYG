@@ -1,7 +1,7 @@
 {
   "parent": "dynamictrees:item/branch",
   "textures": {
-    "bark": "byg:block/aspen_log",
-    "rings": "byg:block/aspen_log_top"
+    "bark": "byg:block/aspen/log",
+    "rings": "byg:block/aspen/log_top"
   }
 }

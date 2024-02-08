@@ -1,5 +1,11 @@
 {
   "primitive_leaves": "byg:fir_leaves",
   "cell_kit": "dynamictrees:conifer",
-  "smother": 7
+  "smother": 7,
+  "model_overrides": {
+    "leaves": "byg:block/fir/leaves"
+  },
+  "texture_overrides": {
+    "leaves": "byg:block/fir/leaves"
+  }
 }

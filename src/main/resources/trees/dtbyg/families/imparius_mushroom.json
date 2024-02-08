@@ -4,11 +4,13 @@
   "common_cap": "dtbyg:imparius_mushroom",
   "common_species": "dtbyg:imparius_mushroom",
   "primitive_log": "byg:imparius_stem",
-  "outside_branch_texture": "byg:block/imparius_stem",
-  "inside_branch_texture": "byg:block/imparius_stem_top",
   "stick": "stick",
   "generate_stripped_branch": false,
   "max_branch_radius": 24,
   "max_signal_depth": 64,
-  "generate_surface_root": true
+  "generate_surface_root": true,
+  "texture_overrides": {
+    "branch": "byg:block/imparius/log",
+    "branch_top": "byg:block/imparius/log_top"
+  }
 }

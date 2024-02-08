@@ -5,5 +5,11 @@
   "primitive_stripped_log": "byg:stripped_rainbow_eucalyptus_log",
   "max_branch_radius": 24,
   "generate_surface_root": true,
-  "max_signal_depth": 64
+  "max_signal_depth": 64,
+  "texture_overrides": {
+    "branch": "byg:block/rainbow_eucalyptus/log",
+    "branch_top": "byg:block/rainbow_eucalyptus/log_top",
+    "stripped_branch": "byg:block/rainbow_eucalyptus/stripped_log",
+    "stripped_branch_top": "byg:block/rainbow_eucalyptus/stripped_log_top"
+  }
 }

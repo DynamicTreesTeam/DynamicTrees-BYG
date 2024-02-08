@@ -8,5 +8,10 @@
   "generate_stripped_branch": false,
   "branch_properties": {
     "light": 8
+  },
+  "texture_overrides": {
+    "branch": "byg:block/oddity_cactus_side",
+    "branch_top": "byg:block/oddity_cactus_top",
+    "branch_bottom": "byg:block/oddity_cactus_bottom"
   }
 }

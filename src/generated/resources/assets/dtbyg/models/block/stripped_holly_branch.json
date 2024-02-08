@@ -1,7 +1,7 @@
 {
   "loader": "dynamictrees:branch",
   "textures": {
-    "bark": "byg:block/stripped_holly_log",
-    "rings": "byg:block/stripped_holly_log_top"
+    "bark": "byg:block/holly/stripped_log",
+    "rings": "byg:block/holly/stripped_log_top"
   }
 }

@@ -1,5 +1,8 @@
 {
   "primitive_leaves": "byg:silver_maple_leaves",
   "cell_kit": "dynamictrees:dark_oak",
-  "smother": 3
+  "smother": 3,
+  "texture_overrides": {
+    "leaves": "byg:block/maple_leaves_silver"
+  }
 }

@@ -2,5 +2,11 @@
   "primitive_leaves": "byg:ether_leaves",
   "cell_kit": "dtbyg:sparse",
   "can_grow_on_ground": true,
-  "light_requirement": 0
+  "light_requirement": 0,
+  "model_overrides": {
+    "leaves": "byg:block/ether/leaves"
+  },
+  "texture_overrides": {
+    "leaves": "byg:block/ether/leaves"
+  }
 }

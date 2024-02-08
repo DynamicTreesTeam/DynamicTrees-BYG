@@ -1,5 +1,11 @@
 {
   "primitive_leaves": "byg:mahogany_leaves",
   "cell_kit": "dtbyg:sparse",
-  "can_grow_on_ground": true
+  "can_grow_on_ground": true,
+  "model_overrides": {
+    "leaves": "byg:block/mahogany/leaves"
+  },
+  "texture_overrides": {
+    "leaves": "byg:block/mahogany/leaves"
+  }
 }

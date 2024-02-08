@@ -1,7 +1,7 @@
 {
   "variants": {
     "": {
-      "model": "byg:block/cika_leaves"
+      "model": "byg:block/cika/leaves"
     }
   }
 }
