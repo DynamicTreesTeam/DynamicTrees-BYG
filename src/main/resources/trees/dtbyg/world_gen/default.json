@@ -160,7 +160,7 @@
     }
   },
   {
-    "select": { "category": "beach", "name": "minecraft:.*" },
+    "select": { "tag": "#forge:is_beach", "name": "minecraft:.*" },
     "apply": {
       "species": {
         "random": {
@@ -171,7 +171,7 @@
     }
   },
   {
-    "select": { "category": "beach", "name": "byg:.*" },
+    "select": { "tag": "#forge:is_beach", "name": "byg:.*" },
     "apply": {
       "species": {
         "random": {

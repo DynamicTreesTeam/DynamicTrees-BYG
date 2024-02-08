@@ -4,7 +4,7 @@
     "select": { "name": "byg.*", "names": ["!byg:bulbis_gardens","!byg:ivis_fields"] },
     "cancellers": {
       "types": [ "dtbyg:tree", "tree", "dtbyg:fungus" ],
-      "namespaces": ["byg", "minecraft"]
+      "namespaces": ["byg", "corgilib", "minecraft"]
     }
   },
   {
@@ -13,17 +13,8 @@
     "select": { "name": "byg.*", "names": ["!byg:bulbis_gardens","!byg:ivis_fields"] },
     "cancellers": {
       "types": [ "dtbyg:tree", "tree", "dtbyg:fungus", "mushroom" ],
-      "namespaces": ["byg", "minecraft"],
+      "namespaces": ["byg", "corgilib", "minecraft"],
       "stages": ["UNDERGROUND_DECORATION", "VEGETAL_DECORATION"]
-    }
-  },
-  {
-    "select": {
-      "name": "byg:white_mangrove_marshes"
-    },
-    "cancellers": {
-      "types": [ "dtbyg:tree_structure" ],
-      "namespaces": ["byg", "minecraft"]
     }
   },
   {
@@ -43,36 +34,10 @@
 
   {
     "only_if_loaded": "dynamictreesplus",
-    "select": "byg:warped_desert",
-    "cancellers": {
-      "type": "dtbyg:warped_cactus",
-      "namespace": "minecraft"
-    }
-  },
-  {
-    "only_if_loaded": "dynamictreesplus",
     "select": {
-      "name": "byg:shattered_desert.*"
+      "names_or": ["byg:warped_desert","byg:mojave_desert","byg:windswept_desert"]
     },
     "cancellers": {
-      "type": "dtbyg:oddity_cactus",
-      "namespace": "minecraft"
-    }
-  },
-  {
-    "only_if_loaded": "dynamictreesplus",
-    "select": "byg:mojave_desert",
-    "cancellers": {
-      "method": "splice_after",
-      "type": "dynamictreesplus:cactus",
-      "namespace": "minecraft"
-    }
-  },
-  {
-    "only_if_loaded": "dynamictreesplus",
-    "select": "byg:windswept_desert",
-    "cancellers": {
-      "method": "splice_after",
       "type": "dynamictreesplus:cactus",
       "namespace": "minecraft"
     }

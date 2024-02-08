@@ -1,7 +1,6 @@
 package maxhyper.dtbyg.init;
 
 import com.ferreusveritas.dynamictrees.api.TreeHelper;
-import com.ferreusveritas.dynamictrees.api.TreeRegistry;
 import com.ferreusveritas.dynamictrees.api.cell.CellKit;
 import com.ferreusveritas.dynamictrees.api.registry.RegistryHandler;
 import com.ferreusveritas.dynamictrees.api.registry.TypeRegistryEvent;
@@ -22,9 +21,10 @@ import com.ferreusveritas.dynamictrees.worldgen.featurecancellation.TreeFeatureC
 import com.ferreusveritas.dynamictreesplus.block.mushroom.CapProperties;
 import com.ferreusveritas.dynamictreesplus.block.mushroom.DynamicCapBlock;
 import com.ferreusveritas.dynamictreesplus.systems.mushroomlogic.shapekits.MushroomShapeKit;
-import com.google.common.collect.UnmodifiableIterator;
+import corgitaco.corgilib.world.level.feature.gen.configurations.TreeFromStructureNBTConfig;
 import maxhyper.dtbyg.DynamicTreesBYG;
 import maxhyper.dtbyg.blocks.*;
+import maxhyper.dtbyg.cancellers.BYGTreeFeatureCanceller;
 import maxhyper.dtbyg.cancellers.VegetationReplacement;
 import maxhyper.dtbyg.cells.DTBYGCellKits;
 import maxhyper.dtbyg.genfeatures.DTBYGGenFeatures;
@@ -33,8 +33,6 @@ import maxhyper.dtbyg.mushroomshape.BYGMushroomShapeKits;
 import maxhyper.dtbyg.trees.*;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.data.worldgen.features.NetherFeatures;
-import net.minecraft.util.random.WeightedEntry;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
@@ -43,12 +41,6 @@ import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
-import net.minecraft.world.level.levelgen.feature.SimpleBlockFeature;
-import net.minecraft.world.level.levelgen.feature.configurations.*;
-import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.SimpleStateProvider;
-import net.minecraft.world.level.levelgen.feature.stateproviders.WeightedStateProvider;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -61,8 +53,6 @@ import potionstudios.byg.common.block.end.impariusgrove.FungalImpariusFilamentBl
 import potionstudios.byg.common.world.feature.config.BYGMushroomConfig;
 import potionstudios.byg.common.world.feature.config.BYGTreeConfig;
 import potionstudios.byg.common.world.feature.config.GiantFlowerConfig;
-import potionstudios.byg.common.world.feature.features.end.BYGEndVegetationFeatures;
-import potionstudios.byg.common.world.feature.features.nether.BYGNetherVegetationFeatures;
 
 import java.util.function.Supplier;
 
@@ -120,7 +110,7 @@ public class DTBYGRegistries {
         setUpSoils();
         setupConnectables();
         if (DTConfigs.REPLACE_NYLIUM_FUNGI.get()) {
-            //VegetationReplacement.replaceNyliumFungiFeatures();
+            VegetationReplacement.replaceNyliumFungiFeatures();
         }
     }
 
@@ -218,18 +208,16 @@ public class DTBYGRegistries {
         BYGMushroomShapeKits.register(event.getRegistry());
     }
 
-//    public static final FeatureCanceller BYG_TREE_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("tree"), BYGTreeConfig.class);
-//    public static final FeatureCanceller BYG_TREE_STRUCTURE_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("tree_structure"), TreeFromStructureNBTConfig.class);
-//    public static final FeatureCanceller BYG_FUNGUS_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("fungus"), BYGMushroomConfig.class);
-//    public static final FeatureCanceller GIANT_FLOWER_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("giant_flower"), GiantFlowerConfig.class);
-//
-//    @SubscribeEvent
-//    public static void onFeatureCancellerRegistry(final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<FeatureCanceller> event) {
-//        event.getRegistry().registerAll(BYG_TREE_CANCELLER);
-//        event.getRegistry().registerAll(BYG_TREE_STRUCTURE_CANCELLER);
-//        event.getRegistry().registerAll(BYG_FUNGUS_CANCELLER);
-//        event.getRegistry().registerAll(GIANT_FLOWER_CANCELLER);
-//    }
+    public static final FeatureCanceller BYG_TREE_CANCELLER = new BYGTreeFeatureCanceller<>(DynamicTreesBYG.location("tree"), TreeFromStructureNBTConfig.class);
+    public static final FeatureCanceller BYG_FUNGUS_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("fungus"), BYGMushroomConfig.class);
+    public static final FeatureCanceller GIANT_FLOWER_CANCELLER = new TreeFeatureCanceller<>(DynamicTreesBYG.location("giant_flower"), GiantFlowerConfig.class);
+
+    @SubscribeEvent
+    public static void onFeatureCancellerRegistry(final com.ferreusveritas.dynamictrees.api.registry.RegistryEvent<FeatureCanceller> event) {
+        event.getRegistry().registerAll(BYG_TREE_CANCELLER);
+        event.getRegistry().registerAll(BYG_FUNGUS_CANCELLER);
+        event.getRegistry().registerAll(GIANT_FLOWER_CANCELLER);
+    }
 
 //    public static void onBiomeLoading(final BiomeLoadingEvent event){
 //        VegetationReplacement.OnBiomeLoadingEvent(event);

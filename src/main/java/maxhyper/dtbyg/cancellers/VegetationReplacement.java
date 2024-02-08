@@ -23,6 +23,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 import potionstudios.byg.common.block.BYGBlocks;
+import potionstudios.byg.common.block.BYGWoodTypes;
 import potionstudios.byg.common.world.biome.BYGBiomes;
 import potionstudios.byg.common.world.feature.features.end.BYGEndVegetationFeatures;
 import potionstudios.byg.common.world.feature.features.nether.BYGNetherVegetationFeatures;
@@ -31,27 +32,27 @@ import potionstudios.byg.common.world.feature.placement.BYGPlacedFeaturesUtil;
 
 public class VegetationReplacement {
 
-//    public static void replaceNyliumFungiFeatures() {
-//        TreeRegistry.findSpecies(DynamicTreesBYG.location("shulkren")).getSapling().ifPresent((shulkrenSapling) ->
-//                TreeRegistry.findSpecies(DynamicTreesBYG.location("embur")).getSapling().ifPresent((emburSapling) ->
-//                        TreeRegistry.findSpecies(DynamicTreesBYG.location("sythian")).getSapling().ifPresent((sythianSapling) -> {
-//                            replacePatchConfig(BYGEndVegetationFeatures.SHULKREN_FUNGUS.value(), shulkrenSapling, BYGBlocks.SHULKREN_FUNGUS.get());
-//                            replaceFeatureConfig(BYGNetherVegetationFeatures.EMBUR_BOG_VEGETATION.value(), emburSapling, BYGBlocks.EMBUR_WART.get());
-//                            replaceFeatureConfig(BYGNetherVegetationFeatures.SYTHIAN_VEGETATION.value(), sythianSapling, BYGBlocks.SYTHIAN_FUNGUS.get());
-//                        })));
-//    }
-//
-//    @SuppressWarnings("unchecked")
-//    private static void replaceFeatureConfig(ConfiguredFeature<RandomFeatureConfiguration,?> configuredFeature, Block dynamicSapling, Block basicSapling) {
-//        replacePatchConfig((ConfiguredFeature<RandomPatchConfiguration,?>)configuredFeature.config().defaultFeature.value().feature().value(), dynamicSapling, basicSapling);
-//    }
-//    private static void replacePatchConfig(ConfiguredFeature<RandomPatchConfiguration,?> configuredFeature, Block dynamicSapling, Block basicSapling) {
-//        var f2 = configuredFeature.config().feature().value().feature().value();
-//        if (f2.config() instanceof SimpleBlockConfiguration sbc && sbc.toPlace() instanceof SimpleStateProvider ssp && ssp.state.is(basicSapling))
-//            ssp.state = dynamicSapling.defaultBlockState();
-//
-//    }
-//
+    public static void replaceNyliumFungiFeatures() {
+        TreeRegistry.findSpecies(DynamicTreesBYG.location("shulkren")).getSapling().ifPresent((shulkrenSapling) ->
+                TreeRegistry.findSpecies(DynamicTreesBYG.location("embur")).getSapling().ifPresent((emburSapling) ->
+                        TreeRegistry.findSpecies(DynamicTreesBYG.location("sythian")).getSapling().ifPresent((sythianSapling) -> {
+                            replacePatchConfig(BYGEndVegetationFeatures.SHULKREN_FUNGUS.value(), shulkrenSapling, BYGBlocks.SHULKREN_FUNGUS.get());
+                            replaceFeatureConfig(BYGNetherVegetationFeatures.EMBUR_BOG_VEGETATION.value(), emburSapling, BYGWoodTypes.EMBUR.growerItem().get());
+                            replaceFeatureConfig(BYGNetherVegetationFeatures.SYTHIAN_VEGETATION.value(), sythianSapling, BYGWoodTypes.SYTHIAN.growerItem().get());
+                        })));
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void replaceFeatureConfig(ConfiguredFeature<RandomFeatureConfiguration,?> configuredFeature, Block dynamicSapling, Block basicSapling) {
+        replacePatchConfig((ConfiguredFeature<RandomPatchConfiguration,?>)configuredFeature.config().defaultFeature.value().feature().value(), dynamicSapling, basicSapling);
+    }
+    private static void replacePatchConfig(ConfiguredFeature<RandomPatchConfiguration,?> configuredFeature, Block dynamicSapling, Block basicSapling) {
+        var f2 = configuredFeature.config().feature().value().feature().value();
+        if (f2.config() instanceof SimpleBlockConfiguration sbc && sbc.toPlace() instanceof SimpleStateProvider ssp && ssp.state.is(basicSapling))
+            ssp.state = dynamicSapling.defaultBlockState();
+
+    }
+
 //    private static final DeferredRegister<ConfiguredFeature<?, ?>> CONFIGURED_FEATURES = DeferredRegister.create(Registry.CONFIGURED_FEATURE_REGISTRY, DynamicTreesBYG.MOD_ID);
 //    private static final DeferredRegister<PlacedFeature> PLACED_FEATURES = DeferredRegister.create(Registry.PLACED_FEATURE_REGISTRY, DynamicTreesBYG.MOD_ID);
 //
