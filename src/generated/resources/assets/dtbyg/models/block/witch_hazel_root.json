@@ -1,6 +1,6 @@
 {
   "loader": "dynamictrees:surface_root",
   "textures": {
-    "bark": "byg:block/witch_hazel_log"
+    "bark": "byg:block/witch_hazel/log"
   }
 }

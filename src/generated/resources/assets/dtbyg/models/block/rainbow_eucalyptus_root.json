@@ -1,6 +1,6 @@
 {
   "loader": "dynamictrees:surface_root",
   "textures": {
-    "bark": "byg:block/rainbow_eucalyptus_log"
+    "bark": "byg:block/rainbow_eucalyptus/log"
   }
 }

@@ -1,6 +1,6 @@
 {
   "loader": "dynamictrees:surface_root",
   "textures": {
-    "bark": "byg:block/cypress_log"
+    "bark": "byg:block/cypress/log"
   }
 }

@@ -3,6 +3,6 @@
   "render_type": "minecraft:cutout_mipped",
   "textures": {
     "cap": "dtbyg:block/sythian_cap",
-    "stem": "byg:block/sythian/log"
+    "stem": "dtbyg:block/sythian_cap"
   }
 }

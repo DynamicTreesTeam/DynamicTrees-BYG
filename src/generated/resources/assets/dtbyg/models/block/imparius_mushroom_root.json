@@ -1,6 +1,6 @@
 {
   "loader": "dynamictrees:surface_root",
   "textures": {
-    "bark": "byg:block/imparius_stem"
+    "bark": "byg:block/imparius/log"
   }
 }

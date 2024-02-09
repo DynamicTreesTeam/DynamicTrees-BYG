@@ -1,6 +1,6 @@
 {
   "loader": "dynamictrees:surface_root",
   "textures": {
-    "bark": "byg:block/maple_log"
+    "bark": "byg:block/maple/log"
   }
 }

@@ -34,6 +34,13 @@
         "mound_cutoff_radius": 999
       }
     },
-    "bottom_flare"
+    "bottom_flare",
+    {
+      "name": "vines",
+      "properties": {
+        "quantity": 32,
+        "max_length": 16
+      }
+    }
   ]
 }

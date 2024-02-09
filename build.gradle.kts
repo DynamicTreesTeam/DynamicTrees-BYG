@@ -91,7 +91,7 @@ sourceSets.main.get().resources {
 dependencies {
     minecraft("net.minecraftforge:forge:${mcVersion}-${property("forgeVersion")}")
 
-    implementation(fg.deobf("libs:DynamicTrees:1.19.2-1.2.0-BETA2.002"))
+    implementation(fg.deobf("libs:DynamicTrees:1.19.2-1.2.0-BETA2.004"))
     //implementation(fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-$mcVersion:${property("dynamicTreesVersion")}"))
     implementation(fg.deobf("libs:DynamicTreesPlus:1.19.2-1.1.4.001"))
     //implementation(fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-$mcVersion:${property("dynamicTreesPlusVersion")}"))
