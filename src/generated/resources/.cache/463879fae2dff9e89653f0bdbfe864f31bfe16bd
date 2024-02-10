@@ -1,11 +1,10 @@
-// 1.19.2	2024-02-08T01:39:38.5959812	Item Models: dtbyg
+// 1.19.2	2024-02-09T20:01:30.336508	Item Models: dtbyg
 c02d0e4ac7d8176575e0f607b9f2d3f6de3c287a assets/dtbyg/models/item/araucaria_seed.json
 934cd3232f2b884b7ee50b2e306c7c8750ced089 assets/dtbyg/models/item/aspen_branch.json
 6e7aed831fa9959ef3bf312bbf5f37c7d0c09d75 assets/dtbyg/models/item/aspen_seed.json
 8d44dd1427c0ab7c9e520145f9f3c1f059d85ffd assets/dtbyg/models/item/baobab_branch.json
 f5e3b959694583e3df2edbee046e6189f3b7d050 assets/dtbyg/models/item/baobab_seed.json
 e6455cfcc4f63cb7dff99930308a97bc93a0742e assets/dtbyg/models/item/blue_enchanted_branch.json
-f3ea07ccc48a6d6b10ed1b8fcb5bdc63fd1c83c5 assets/dtbyg/models/item/blue_enchanted_poplar_seed.json
 5bd30ecddbcc9abbe4e9b41e5987f3cd45eaf9fe assets/dtbyg/models/item/blue_enchanted_seed.json
 6511fd58132ff263edd703d2a7e77bb6f023e2de assets/dtbyg/models/item/blue_spruce_seed.json
 998b2c668700e91761515e98c9b5c6f6377fdf71 assets/dtbyg/models/item/brown_birch_seed.json
@@ -30,7 +29,6 @@ e5df907161bf8615a01a0a6e89660065b2ac5090 assets/dtbyg/models/item/fir_seed.json
 2397a5422f1e1b37beaa4393986d2030e43850ef assets/dtbyg/models/item/fungal_imparius_branch.json
 7cd09dabd1c995254bda94f324d9ea7470886436 assets/dtbyg/models/item/fungal_imparius_seed.json
 9654e64addb0be01a3ead0743413365fd7c9aca8 assets/dtbyg/models/item/green_enchanted_branch.json
-57385e0e67f1d2e169de6f627a31f40807ad945d assets/dtbyg/models/item/green_enchanted_poplar_seed.json
 f3da8d80e8b7fddcd5c821827e13216642543d17 assets/dtbyg/models/item/green_enchanted_seed.json
 3d244096369a3d1bf50c23b1248d17b8505a1283 assets/dtbyg/models/item/green_mushroom_seed.json
 90a088726c01758d9ceebc53135eb1abe597dbb9 assets/dtbyg/models/item/holly_branch.json

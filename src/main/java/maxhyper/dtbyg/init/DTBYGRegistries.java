@@ -51,7 +51,6 @@ import potionstudios.byg.BYGConstants;
 import potionstudios.byg.common.block.BYGBlocks;
 import potionstudios.byg.common.block.end.impariusgrove.FungalImpariusFilamentBlock;
 import potionstudios.byg.common.world.feature.config.BYGMushroomConfig;
-import potionstudios.byg.common.world.feature.config.BYGTreeConfig;
 import potionstudios.byg.common.world.feature.config.GiantFlowerConfig;
 
 import java.util.function.Supplier;
@@ -178,9 +177,9 @@ public class DTBYGRegistries {
     
     @SubscribeEvent
     public static void registerFamilyTypes (final TypeRegistryEvent<Family> event) {
+        event.registerType(DynamicTreesBYG.location("imbued_log"), ImbuedLogFamily.TYPE);
         event.registerType(DynamicTreesBYG.location("diagonal_palm"), DiagonalPalmFamily.TYPE);
         event.registerType(DynamicTreesBYG.location("sythian_fungus"), SythianFungusFamily.TYPE);
-        event.registerType(DynamicTreesBYG.location("nightshade"), NightshadeFamily.TYPE);
         event.registerType(DynamicTreesBYG.location("warty_mushroom"), WartyMushroomFamily.TYPE);
     }
 

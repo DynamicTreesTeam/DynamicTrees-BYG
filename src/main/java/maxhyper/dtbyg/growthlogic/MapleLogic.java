@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class MapleLogic extends VariateHeightLogic {
 
+    public static final ConfigurationProperty<Boolean> FORCE_UP_AFTER_BRANCHING = ConfigurationProperty.bool("force_up_after_branching");
     public static final ConfigurationProperty<Integer> CANOPY_DEPTH = ConfigurationProperty.integer("canopy_depth");
     public static final ConfigurationProperty<Integer> BRANCHING_HEIGHT = ConfigurationProperty.integer("branching_height");
     public static final ConfigurationProperty<Integer> ZIGZAG_UP_CHANCE = ConfigurationProperty.integer("zigzag_up_chance");
@@ -21,6 +22,7 @@ public class MapleLogic extends VariateHeightLogic {
     @Override
     protected GrowthLogicKitConfiguration createDefaultConfiguration() {
         return super.createDefaultConfiguration()
+                .with(FORCE_UP_AFTER_BRANCHING, true)
                 .with(HEIGHT_VARIATION, 4)
                 .with(CANOPY_DEPTH, 3)
                 .with(BRANCHING_HEIGHT, 3)
@@ -29,7 +31,7 @@ public class MapleLogic extends VariateHeightLogic {
 
     @Override
     protected void registerProperties() {
-        this.register(HEIGHT_VARIATION, CANOPY_DEPTH, BRANCHING_HEIGHT, ZIGZAG_UP_CHANCE);
+        this.register(FORCE_UP_AFTER_BRANCHING, HEIGHT_VARIATION, CANOPY_DEPTH, BRANCHING_HEIGHT, ZIGZAG_UP_CHANCE);
     }
 
     @Override
@@ -43,9 +45,10 @@ public class MapleLogic extends VariateHeightLogic {
         // disable down direction
         probMap[0] = 0;
         if (!signal.isInTrunk() && deltaYFromLowest >= 0 && deltaYFromLowest <= branchingHeight) {
-            boolean evenEnergy = signal.energy % 2 == 0 || CoordUtils.coordHashCode(context.pos(), 2) % configuration.get(ZIGZAG_UP_CHANCE) == 0;
-            probMap[1] = evenEnergy ? 1 : 0;
-            probMap[2] = probMap[3] = probMap[4] = probMap[5] = evenEnergy ? 0 : 1;
+            boolean goUp =  CoordUtils.coordHashCode(context.pos(), 2) % configuration.get(ZIGZAG_UP_CHANCE) == 0
+                    || (signal.energy % 2 == 0 && configuration.get(FORCE_UP_AFTER_BRANCHING));
+            probMap[1] = goUp ? 1 : 0;
+            probMap[2] = probMap[3] = probMap[4] = probMap[5] = goUp ? 0 : 1;
         } else {
             // disable up in the trunk if the signal is above the branching height, to force branching
             probMap[1] = (signal.isInTrunk() &&

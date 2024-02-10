@@ -30,12 +30,13 @@ public class DTBYGGrowthLogicKits {
     public static final GrowthLogicKit ARAUCARIA = new AraucariaLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "araucaria"));
     public static final GrowthLogicKit TWISTING = new TwistingTreeLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "twisting"));
     public static final GrowthLogicKit ETHER = new EtherTreeLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "ether"));
+    public static final GrowthLogicKit ENCHANTED = new EnchantedTreeLogic(new ResourceLocation(DynamicTreesBYG.MOD_ID, "enchanted"));
 
     public static void register(final Registry<GrowthLogicKit> registry) {
         registry.registerAll(POPLAR, MAPLE, ASPEN, TAPERED, DIAGONAL_PALM,
                 ZELKOVA, THIN_CONIFER, MEGA_PINE, EBONY, REDWOOD, SMALL_REDWOOD,
                 BAOBAB, VARIATE_HEIGHT, SYTHIAN_FUNGUS, CYPRESS, MANGROVE, TAPERED_WITHERED,
-                ANCIENT_LOGIC, MEGA_RAINBOW_EUCALYPTUS, WILLOW, ARAUCARIA, TWISTING, ETHER);
+                ANCIENT_LOGIC, MEGA_RAINBOW_EUCALYPTUS, WILLOW, ARAUCARIA, TWISTING, ETHER, ENCHANTED);
     }
 
 }

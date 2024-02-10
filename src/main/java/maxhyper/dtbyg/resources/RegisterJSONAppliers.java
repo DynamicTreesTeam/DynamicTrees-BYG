@@ -10,7 +10,7 @@ import maxhyper.dtbyg.DynamicTreesBYG;
 import maxhyper.dtbyg.blocks.WartyCapProperties;
 import maxhyper.dtbyg.trees.GenOnExtraSoilSpecies;
 import maxhyper.dtbyg.trees.LamentSpecies;
-import maxhyper.dtbyg.trees.NightshadeFamily;
+import maxhyper.dtbyg.trees.ImbuedLogFamily;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -43,8 +43,8 @@ public final class RegisterJSONAppliers {
     }
 
     public static void registerFamilyAppliers(PropertyAppliers<Family, JsonElement> appliers) {
-        appliers.register("primitive_imbued_log", NightshadeFamily.class, Block.class,
-                NightshadeFamily::setPrimitiveImbuedLog);
+        appliers.register("primitive_imbued_log", ImbuedLogFamily.class, Block.class,
+                ImbuedLogFamily::setPrimitiveImbuedLog);
     }
 
     public static void registerCapPropertiesAppliers(PropertyAppliers<CapProperties, JsonElement> appliers) {

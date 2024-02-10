@@ -2,6 +2,6 @@
   "loader": "dynamictrees:branch",
   "textures": {
     "bark": "byg:block/imbued_nightshade_log",
-    "rings": "byg:block/nightshade_log_top"
+    "rings": "byg:block/imbued_nightshade_log_top"
   }
 }

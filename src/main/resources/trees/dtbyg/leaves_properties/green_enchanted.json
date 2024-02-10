@@ -1,9 +1,6 @@
 {
   "primitive_leaves": "byg:green_enchanted_leaves",
-  "cell_kit": "dtbyg:poplar",
-  "smother": 9,
-  "light": 15,
-  "light_requirement": 13,
+  "cell_kit": "acacia",
   "model_overrides": {
     "leaves": "byg:block/green_enchanted/leaves"
   },

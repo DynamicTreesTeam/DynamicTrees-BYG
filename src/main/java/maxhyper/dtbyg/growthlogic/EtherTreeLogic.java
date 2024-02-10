@@ -24,16 +24,15 @@ public class EtherTreeLogic extends TwistingTreeLogic{
     protected GrowthLogicKitConfiguration createDefaultConfiguration() {
         return super.createDefaultConfiguration()
                 .with(CHANCE_TO_SPLIT, 0f)
-                .with(DOWN_PROBABILITY, 0)
                 .with(HEIGHT_VARIATION, 30)
                 .with(CANOPY_SIDE_ENERGY, 15f)
-                .with(HEIGHT_BETWEEN_CANOPY_LAYERS, 8)
-                .with(SPLIT_ENDS, true);
+                .with(HEIGHT_BETWEEN_CANOPY_LAYERS, 8);
     }
 
     @Override
     protected void registerProperties() {
-        this.register(CHANCE_TO_SPLIT, DOWN_PROBABILITY, HEIGHT_VARIATION, SPLIT_ENDS, CANOPY_SIDE_ENERGY, HEIGHT_BETWEEN_CANOPY_LAYERS);
+        super.registerProperties();
+        this.register(CANOPY_SIDE_ENERGY, HEIGHT_BETWEEN_CANOPY_LAYERS);
     }
 
     @Override

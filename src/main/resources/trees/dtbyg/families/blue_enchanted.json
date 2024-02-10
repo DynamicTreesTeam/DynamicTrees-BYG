@@ -1,8 +1,10 @@
 {
+  "type": "dtbyg:imbued_log",
   "common_leaves": "dtbyg:blue_enchanted",
   "common_species": "dtbyg:blue_enchanted",
   "primitive_log": "byg:blue_enchanted_log",
   "primitive_stripped_log": "byg:stripped_blue_enchanted_log",
+  "primitive_imbued_log": "byg:imbued_blue_enchanted_log",
   "max_branch_radius": 24,
   "conifer_variants": true,
   "texture_overrides": {

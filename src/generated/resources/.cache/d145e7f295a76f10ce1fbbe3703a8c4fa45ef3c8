@@ -1,4 +1,4 @@
-// 1.19.2	2024-02-08T01:33:27.4906598	dtbyg
+// 1.19.2	2024-02-09T20:25:15.2324438	dtbyg
 6a81262c98c7e272dfe401b266353df9924a7fbe data/dtbyg/loot_tables/blocks/ancient_ebony_leaves.json
 96221ee1c59ee1c7402174de82988d9ed6def5d9 data/dtbyg/loot_tables/blocks/ancient_silver_maple_leaves.json
 574f7d46ec9ea616b8772922085cd92b6e0a59a6 data/dtbyg/loot_tables/blocks/araucaria_leaves.json
@@ -23,6 +23,7 @@ e54dcc646f5f3863017891b6b4189380ba8c809b data/dtbyg/loot_tables/blocks/cika_leav
 2f8b9f360625ebd9ea1dc59f0d01c1f7417ce6b6 data/dtbyg/loot_tables/blocks/ether_bulbs.json
 b7241ade7610f966344c7261b9fd958032f10413 data/dtbyg/loot_tables/blocks/ether_leaves.json
 b7241ade7610f966344c7261b9fd958032f10413 data/dtbyg/loot_tables/blocks/ether_twiglet_leaves.json
+839d073c73066aced4379b71cfb9c59d9503a018 data/dtbyg/loot_tables/blocks/firecracker_leaves.json
 839d073c73066aced4379b71cfb9c59d9503a018 data/dtbyg/loot_tables/blocks/firecracker_twiglet_leaves.json
 67fd608ebe1d4c5f3e53326c0ba0062ea0c73813 data/dtbyg/loot_tables/blocks/fir_leaves.json
 5d13d956c5eb0795b203134e6c4b4cab30e4ab2f data/dtbyg/loot_tables/blocks/flowering_indigo_jacaranda_leaves.json
@@ -99,7 +100,9 @@ def5f47da264ae8a1c2711883341f470f97b4638 data/dtbyg/loot_tables/trees/branches/e
 5a89fc72ff93bf8aa439840ee56197c97b4d1096 data/dtbyg/loot_tables/trees/branches/fungal_imparius.json
 cbb17d495f3bdbb71e752e05615e9d044237d24b data/dtbyg/loot_tables/trees/branches/green_enchanted.json
 f6987685e317d86ba4fbb7b62a2d69ef65837f5e data/dtbyg/loot_tables/trees/branches/holly.json
-2ce6dc63de4bbefc6b27871559e427c802ea7310 data/dtbyg/loot_tables/trees/branches/imbued_nightshade.json
+951a3a7facfa8153df1d213423d03b72cf0f7e4e data/dtbyg/loot_tables/trees/branches/imbued_blue_enchanted.json
+3d010e3d27f629e7f51a0cd74ba5f3a48d1ae35c data/dtbyg/loot_tables/trees/branches/imbued_green_enchanted.json
+87efc189b56f18354a0e5663c37a7907f5d1caf5 data/dtbyg/loot_tables/trees/branches/imbued_nightshade.json
 f13ea281858b3ccfd24674194eaebe5e242de560 data/dtbyg/loot_tables/trees/branches/imparius_mushroom.json
 da181844d242bf048a5db3106eca24d344903a1b data/dtbyg/loot_tables/trees/branches/jacaranda.json
 184d09310557e6247dbcd5a81ab76d97e5cedfc8 data/dtbyg/loot_tables/trees/branches/lament.json
@@ -173,6 +176,7 @@ d8a3f34536b8d1e9660d6fb5cc5a7f2d5e4b8283 data/dtbyg/loot_tables/trees/branches/z
 986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/ether.json
 986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/ether_twiglet.json
 986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/fir.json
+986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/firecracker.json
 986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/firecracker_twiglet.json
 986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/flowering_indigo_jacaranda.json
 986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/flowering_jacaranda.json
@@ -236,7 +240,6 @@ b2c8ceba432a9d8c4710e3cd058ebd0f058c5f50 data/dtbyg/loot_tables/trees/leaves/syt
 b4af9901810c10572bf82a9ee3f3adc22abb0f06 data/dtbyg/loot_tables/trees/voluntary/aspen.json
 50960d866b95ebcd06cef8b2e2a7d03e21ec5e8a data/dtbyg/loot_tables/trees/voluntary/baobab.json
 46b70b42dc69a191fd461626ce0a5aa89a27fad8 data/dtbyg/loot_tables/trees/voluntary/blue_enchanted.json
-164581f0d39e384fd56bab1236604b588aa412f3 data/dtbyg/loot_tables/trees/voluntary/blue_enchanted_poplar.json
 adae996501f59d074942d2fe5230d3dfbe6ad5de data/dtbyg/loot_tables/trees/voluntary/blue_spruce.json
 b96f0bbf93feb577777dc4edfac9fbe80fbdfa84 data/dtbyg/loot_tables/trees/voluntary/brown_birch.json
 a99b1419ab78bd792dc7d95addd670bb68bcbb05 data/dtbyg/loot_tables/trees/voluntary/brown_oak.json
@@ -249,7 +252,6 @@ b14e67472237a3b1cb3d35ad188966a2ebfd0b32 data/dtbyg/loot_tables/trees/voluntary/
 7999b1e4e3f304abf9bf7d22d3a987ccb9aff248 data/dtbyg/loot_tables/trees/voluntary/fir.json
 aa2da903685871cbd021e93a10dbb178e47306f4 data/dtbyg/loot_tables/trees/voluntary/fungal_imparius.json
 dddb29059597c09fe2443e3662ddfe4c89f359d9 data/dtbyg/loot_tables/trees/voluntary/green_enchanted.json
-33aa8a4fe40179953d65c4408156a133bdefaad2 data/dtbyg/loot_tables/trees/voluntary/green_enchanted_poplar.json
 b57efb8f776f9f6b1b45fabd72041809b513c09a data/dtbyg/loot_tables/trees/voluntary/green_mushroom.json
 6b41b9115177f8937426b3c60e201926eb3eb2a6 data/dtbyg/loot_tables/trees/voluntary/holly.json
 f8978216ad6d458f89c29f5a7bb6b35081f0dcea data/dtbyg/loot_tables/trees/voluntary/imparius_mushroom.json

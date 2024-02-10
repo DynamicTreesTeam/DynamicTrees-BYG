@@ -53,7 +53,14 @@
       "name": "byg:rose_fields"
     },
     "apply": {
-      "species": "dtbyg:red_spruce",
+      "species": {
+        "random": {
+          "dtbyg:red_spruce": 1,
+          "dtbyg:tall_red_spruce": 1,
+          "dtbyg:blue_spruce": 1,
+          "dtbyg:tall_blue_spruce": 1
+        }
+      },
       "density": [ 0.2 ],
       "chance": 0.2
     }
@@ -208,7 +215,13 @@
   {
     "select": "byg:redwood_thicket",
     "apply": {
-      "species": "dtbyg:redwood",
+      "species": {
+        "random": {
+          "dtbyg:redwood": 4,
+          "dtbyg:small_redwood": 1,
+          "dtbyg:tall_spruce": 2
+        }
+      },
       "density": [ 0.5 ],
       "chance": 1.0,
       "forestness": 1
@@ -221,8 +234,11 @@
     "apply": {
       "species": {
         "random": {
-          "dtbyg:green_enchanted": 1,
-          "dtbyg:blue_enchanted": 1
+          "dtbyg:green_enchanted": 4,
+          "dtbyg:blue_enchanted": 8,
+          "cocoa": 2,
+          "jungle_undergrowth": 1,
+          "oak": 1
         }
       },
       "density": 0.6,
@@ -262,11 +278,12 @@
         "random": {
           "dtbyg:canopy_oak": 1,
           "dtbyg:caonpy_dark_oak": 1,
-          "dtbyg:dark_oak_twiglet": 4
+          "dtbyg:dark_oak_twiglet": 4,
+          "oak_undergrowth": 8
         }
       },
-      "density": [ 0.2 ],
-      "chance": 0.7
+      "density": [ 2 ],
+      "chance": 0.5
     }
   },
   {
@@ -691,7 +708,7 @@
 
   {
     "only_if_loaded": "dynamictreesplus",
-    "select": { "names_or" : ["byg:weeping_witch_forest", "byg:ebony_woods","byg:temperate_rainforest","byg:forgotten_forest"] },
+    "select": { "names_or" : ["byg:weeping_witch_forest", "byg:ebony_woods","byg:temperate_rainforest","byg:forgotten_forest","byg:tropical_rainforest"] },
     "apply": {
       "species": {
         "method": "splice_before",
