@@ -1,0 +1,14 @@
+{
+  "common_leaves": "dtbyg:white_mangrove",
+  "common_species": "dtbyg:white_mangrove",
+  "primitive_log": "byg:white_mangrove_log",
+  "primitive_stripped_log": "byg:stripped_white_mangrove_log",
+  "max_branch_radius": 16,
+  "generate_surface_root": true,
+  "texture_overrides": {
+    "branch": "byg:block/white_mangrove/log",
+    "branch_top": "byg:block/white_mangrove/log_top",
+    "stripped_branch": "byg:block/white_mangrove/stripped_log",
+    "stripped_branch_top": "byg:block/white_mangrove/stripped_log_top"
+  }
+}

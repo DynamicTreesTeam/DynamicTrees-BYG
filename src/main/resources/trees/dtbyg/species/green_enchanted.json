@@ -1,26 +1,28 @@
 {
     "family": "dtbyg:green_enchanted",
-    "tapering": 0.3,
-    "signal_energy": 18.0,
+    "tapering": 0.5,
+    "signal_energy": 20.0,
     "growth_rate": 0.8,
-    "lowest_branch_height": 8,
+    "up_probability": 3,
+    "lowest_branch_height": 4,
+    "soil_longevity": 4,
+    "max_branch_radius": 24,
     "leaves_properties": "dtbyg:green_enchanted",
+    "growth_logic_kit": {
+        "name": "dtbyg:enchanted",
+        "properties": {
+            "chance_to_split": 0,
+            "force_branching_at_step": 10,
+            "height_variation": 5
+        }
+    },
     "perfect_biomes": { "types": [ "forest", "overworld" ] },
     "primitive_sapling": "byg:green_enchanted_sapling",
     "features": [
         {
-            "name": "biome_predicate",
+            "name": "dtbyg:alt_branch",
             "properties": {
-                "only_world_gen": true,
-                "gen_feature": {
-                    "name": "dtbyg:huge_mushrooms",
-                    "properties": {
-                        "place_chance": 0.4,
-                        "max_count": 2,
-                        "max_attempts": 3
-                    }
-                },
-                "biome_predicate": { "name": "byg:enchanted.*" }
+                "alternative_branch_block": "dtbyg:imbued_green_enchanted_branch"
             }
         }
     ]

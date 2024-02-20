@@ -1,0 +1,4 @@
+{
+  "primitive_soil": "byg:rocky_stone",
+  "acceptable_soils": [ "stone_like" ]
+}

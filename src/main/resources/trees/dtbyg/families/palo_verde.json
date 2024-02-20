@@ -3,5 +3,8 @@
   "common_species": "dtbyg:palo_verde",
   "primitive_log": "byg:palo_verde_log",
   "primitive_stripped_log": "byg:stripped_palo_verde_log",
-  "max_branch_radius": 8
+  "max_branch_radius": 8,
+  "texture_overrides": {
+    "stripped_branch_top": "byg:block/stripped_palo_verde_top"
+  }
 }

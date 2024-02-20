@@ -1,0 +1,10 @@
+{
+  "primitive_leaves": "byg:white_mangrove_leaves",
+  "cell_kit": "acacia",
+  "model_overrides": {
+    "leaves": "byg:block/white_mangrove/leaves"
+  },
+  "texture_overrides": {
+    "leaves": "byg:block/white_mangrove/leaves"
+  }
+}

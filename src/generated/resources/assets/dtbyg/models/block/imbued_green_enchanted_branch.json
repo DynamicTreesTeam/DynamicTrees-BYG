@@ -3,5 +3,6 @@
   "textures": {
     "bark": "byg:block/green_enchanted/log2",
     "rings": "byg:block/green_enchanted/log_top"
-  }
+  },
+  "family": "dtbyg:green_enchanted"
 }

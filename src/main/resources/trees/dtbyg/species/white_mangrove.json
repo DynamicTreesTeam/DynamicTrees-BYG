@@ -1,0 +1,40 @@
+{
+  "type": "dtbyg:mangrove",
+  "family": "dtbyg:white_mangrove",
+  "tapering": 0.1,
+  "signal_energy": 12.0,
+  "lowest_branch_height": 3,
+  "growth_rate": 0.6,
+  "growth_logic_kit": "dtbyg:white_mangrove",
+  "leaves_properties": "dtbyg:white_mangrove",
+  "environment_factors" : {
+    "cold": 0.75,
+    "dry": 0.5
+  },
+  "perfect_biomes": { "types": [ "swamp", "overworld" ] },
+  "primitive_sapling": "byg:white_mangrove_sapling",
+  "acceptable_soils": [ "water_like", "dirt_like" ],
+  "features": [
+    "dtbyg:mangrovelings",
+    {
+      "name": "vines",
+      "properties": {
+        "quantity": 32
+      }
+    },
+    {
+      "name": "bottom_flare",
+      "properties": {
+        "min_radius": 4
+      }
+    },
+    {
+      "name": "roots",
+      "properties": {
+        "min_trunk_radius": 9,
+        "level_limit": 5,
+        "scale_factor": 12
+      }
+    }
+  ]
+}
