@@ -1,0 +1,7 @@
+{
+  "parent": "dynamictrees:item/root_branch",
+  "textures": {
+    "bark": "dtbyg:block/white_mangrove_roots_side",
+    "rings": "dtbyg:block/white_mangrove_roots_top"
+  }
+}

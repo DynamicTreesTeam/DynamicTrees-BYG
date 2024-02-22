@@ -692,7 +692,7 @@
       "name": "byg:white_mangrove_marshes"
     },
     "apply": {
-      "species": "dtbyg:mangrove",
+      "species": "dtbyg:white_mangrove",
       "density": [ 1.0 ],
       "chance": 1.0
     }

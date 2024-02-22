@@ -1,4 +1,4 @@
-// 1.19.2	2024-02-09T20:01:30.336508	Item Models: dtbyg
+// 1.19.2	2024-02-20T19:36:52.51924	Item Models: dtbyg
 c02d0e4ac7d8176575e0f607b9f2d3f6de3c287a assets/dtbyg/models/item/araucaria_seed.json
 934cd3232f2b884b7ee50b2e306c7c8750ced089 assets/dtbyg/models/item/aspen_branch.json
 6e7aed831fa9959ef3bf312bbf5f37c7d0c09d75 assets/dtbyg/models/item/aspen_seed.json
@@ -43,7 +43,6 @@ f8c5bb08b99e4e17fd514a618506971c5609ba20 assets/dtbyg/models/item/joshua_seed.js
 c5e28b7ae774da04bb593909248dd94c306a027f assets/dtbyg/models/item/lament_seed.json
 b9ce4db23f6f797ad260f55978e6e8ab1a3d0fbe assets/dtbyg/models/item/mahogany_branch.json
 74c33869e38c226cc0710e38c28e3f0db5547445 assets/dtbyg/models/item/mahogany_seed.json
-b8a92ccbadeca8116a3ea394f2881dfe126d3173 assets/dtbyg/models/item/mangrove_seed.json
 f81498cec349f0cfa74fe5d0d2f81d23407f3de8 assets/dtbyg/models/item/maple_branch.json
 894b389cd75dddd611ebcd18ebdb69356ab08842 assets/dtbyg/models/item/maple_seed.json
 5363f80ffcfc57495cec055ab2124cb3ad901f37 assets/dtbyg/models/item/nightshade_branch.json
@@ -83,6 +82,9 @@ fd0d109430a36aa57fd9a457a5584ed5f5f8c919 assets/dtbyg/models/item/warped_cactus_
 d0fda0f42af26639766d71a6317ad5ef30287f67 assets/dtbyg/models/item/warped_mushroom_branch.json
 7f3951299bfcdedf499d21219b00cff3c5812fc6 assets/dtbyg/models/item/weeping_milkcap_seed.json
 9a438669cfe699fef755741b34f2c6810aa1c84b assets/dtbyg/models/item/white_cherry_seed.json
+33543d12aa6b39abe224c4b385a8f502e03523bc assets/dtbyg/models/item/white_mangrove_branch.json
+1ef3b0d26a42523f218e5af446f504aec32d632f assets/dtbyg/models/item/white_mangrove_roots.json
+fbe8cd1dd28166d67c125baecc4a05e1e12fb406 assets/dtbyg/models/item/white_mangrove_seed.json
 3bacb60b2ff7a3f645126d8c8b79d3474eca5e83 assets/dtbyg/models/item/white_mushroom_branch.json
 ee823e2cd7aee5fb9ece8faacfd2d38a807841cb assets/dtbyg/models/item/willow_branch.json
 67a220fab1bf253023531b49dc0333d585a53736 assets/dtbyg/models/item/willow_seed.json

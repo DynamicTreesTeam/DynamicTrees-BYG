@@ -1,6 +1,6 @@
 {
-  "parent": "dynamictrees:block/smartmodel/mushroom_round",
-  "render_type": "minecraft:cutout_mipped",
+  "parent": "dtbyg:block/saplings/mushroom_round",
+  "render_type": "minecraft:translucent",
   "textures": {
     "cap": "dtbyg:block/embur_cap",
     "stem": "dtbyg:block/embur_cap"

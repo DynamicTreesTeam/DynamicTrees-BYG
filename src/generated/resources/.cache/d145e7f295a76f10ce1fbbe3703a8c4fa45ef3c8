@@ -1,4 +1,4 @@
-// 1.19.2	2024-02-09T20:25:15.2324438	dtbyg
+// 1.19.2	2024-02-20T19:36:52.5112697	dtbyg
 6a81262c98c7e272dfe401b266353df9924a7fbe data/dtbyg/loot_tables/blocks/ancient_ebony_leaves.json
 96221ee1c59ee1c7402174de82988d9ed6def5d9 data/dtbyg/loot_tables/blocks/ancient_silver_maple_leaves.json
 574f7d46ec9ea616b8772922085cd92b6e0a59a6 data/dtbyg/loot_tables/blocks/araucaria_leaves.json
@@ -79,6 +79,7 @@ c06200515486c5fdb916ecf37f87d14cd16f1e52 data/dtbyg/loot_tables/blocks/sparse_wi
 c06200515486c5fdb916ecf37f87d14cd16f1e52 data/dtbyg/loot_tables/blocks/tapered_withering_oak_leaves.json
 cb3b396068cf905024b7776447148b4d38540925 data/dtbyg/loot_tables/blocks/weeping_lament_leaves.json
 69a53b46e2c89113871422a226a72e857deda0f9 data/dtbyg/loot_tables/blocks/white_cherry_leaves.json
+1e5f4094e04354b376721acb4aa534d6f55133d5 data/dtbyg/loot_tables/blocks/white_mangrove_leaves.json
 a9e13fdeddff51bd7c3243b0872ac950cd7490d6 data/dtbyg/loot_tables/blocks/willow_leaves.json
 461cff2a7929d841c9ada7c4ca88e217a7115219 data/dtbyg/loot_tables/blocks/witch_hazel_leaves.json
 c06200515486c5fdb916ecf37f87d14cd16f1e52 data/dtbyg/loot_tables/blocks/withering_oak_leaves.json
@@ -143,12 +144,14 @@ d779be747b7d90f98fb8afb1c077fb2762473872 data/dtbyg/loot_tables/trees/branches/s
 2e71fa651c38b581a878c427bfc0be0b577bbf0d data/dtbyg/loot_tables/trees/branches/stripped_skyris.json
 be642885a3b84c8e69fe05127b31a9f7bb97c548 data/dtbyg/loot_tables/trees/branches/stripped_sythian.json
 d4f6aebaf3cbdacf59eff1b236ca32a1fe8a3dc4 data/dtbyg/loot_tables/trees/branches/stripped_warped_mushroom.json
+e7cc275079eb9d9086013eff456b154c35f8cac9 data/dtbyg/loot_tables/trees/branches/stripped_white_mangrove.json
 42612d3510d60be82f5f4344fc3553ac61458a3c data/dtbyg/loot_tables/trees/branches/stripped_willow.json
 81bb07948545db8b9fc9f09c0965fd4961355dc9 data/dtbyg/loot_tables/trees/branches/stripped_witch_hazel.json
 11c45f276064daba0a7dfbf862da6f45ef2e3e1c data/dtbyg/loot_tables/trees/branches/stripped_zelkova.json
 2a01847e12df9a645230664ee6527371957b5b33 data/dtbyg/loot_tables/trees/branches/sythian.json
 19c5e3d855e263ae9225bb17a8ca87e466fb9699 data/dtbyg/loot_tables/trees/branches/warped_cactus.json
 e87a1bfc553c77bb7eccabb81955594a4c780444 data/dtbyg/loot_tables/trees/branches/warped_mushroom.json
+bb9e32903119463bc6348c32c48a7ff945f7860c data/dtbyg/loot_tables/trees/branches/white_mangrove.json
 03297a0703bb3540db2c75241c66b0caa9eec634 data/dtbyg/loot_tables/trees/branches/willow.json
 6a7c0e531790d138e288b059989b1b794333c8d6 data/dtbyg/loot_tables/trees/branches/witch_hazel.json
 d01c82e18241fc86bc0b34682e7b0303c95f38b3 data/dtbyg/loot_tables/trees/branches/withering_oak.json
@@ -229,6 +232,7 @@ b2c8ceba432a9d8c4710e3cd058ebd0f058c5f50 data/dtbyg/loot_tables/trees/leaves/syt
 986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/tapered_withering_oak.json
 986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/weeping_lament.json
 986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/white_cherry.json
+986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/white_mangrove.json
 986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/willow.json
 986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/witch_hazel.json
 986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/withering_oak.json
@@ -236,6 +240,7 @@ b2c8ceba432a9d8c4710e3cd058ebd0f058c5f50 data/dtbyg/loot_tables/trees/leaves/syt
 986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/yellow_poplar.json
 986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/yellow_spruce.json
 986afb00ce7ce1ff4ba0d792936eed67cb913515 data/dtbyg/loot_tables/trees/leaves/zelkova.json
+5c5b6ccaad7755b7517968ea26d2607cadff40cc data/dtbyg/loot_tables/trees/roots/white_mangrove.json
 57d9ecc5b4495ad426c47141b9aaec737128636e data/dtbyg/loot_tables/trees/voluntary/araucaria.json
 b4af9901810c10572bf82a9ee3f3adc22abb0f06 data/dtbyg/loot_tables/trees/voluntary/aspen.json
 50960d866b95ebcd06cef8b2e2a7d03e21ec5e8a data/dtbyg/loot_tables/trees/voluntary/baobab.json
@@ -260,7 +265,6 @@ f8978216ad6d458f89c29f5a7bb6b35081f0dcea data/dtbyg/loot_tables/trees/voluntary/
 fa435b7e898cf4b95ea6808bf36b93a20d272701 data/dtbyg/loot_tables/trees/voluntary/joshua.json
 9e1cd474b151973b0a50da7a99e31dea8acac618 data/dtbyg/loot_tables/trees/voluntary/lament.json
 edfb1351aa32c3a6b21721f656da56d895643aa5 data/dtbyg/loot_tables/trees/voluntary/mahogany.json
-19c9125683c702146994113756475d4e8418669a data/dtbyg/loot_tables/trees/voluntary/mangrove.json
 2358916d8713be55ecdfaf7339c4c246f1edfef8 data/dtbyg/loot_tables/trees/voluntary/maple.json
 ee78d948f04519456cef5a54fe4e17e4e33d3d9b data/dtbyg/loot_tables/trees/voluntary/nightshade.json
 6af899eba0c95b192ea782acab87a94ccfd2c45e data/dtbyg/loot_tables/trees/voluntary/orange_birch.json
@@ -286,6 +290,7 @@ f5cd04939f9098be59e0f96c5cb9b92b30380fae data/dtbyg/loot_tables/trees/voluntary/
 0192f483b81863254110fc05cc6bb76517913eae data/dtbyg/loot_tables/trees/voluntary/sythian.json
 c528851e343e123675882bba7888c79beedaa071 data/dtbyg/loot_tables/trees/voluntary/weeping_milkcap.json
 90fc554b4266b04af4be224c1f4bfcfb1f4b3c23 data/dtbyg/loot_tables/trees/voluntary/white_cherry.json
+ac0ce60f1728e7c450ae1eee5c730c4ee9e08f9f data/dtbyg/loot_tables/trees/voluntary/white_mangrove.json
 28b0b284d8ed045b40ff9d0aa7b01e4126d7e1dd data/dtbyg/loot_tables/trees/voluntary/willow.json
 8c02e3c7dfbd5286d50f0aebef716a2a87900033 data/dtbyg/loot_tables/trees/voluntary/witch_hazel.json
 eb9e99f87eceb27363a4045a99ed0e4b37b904ef data/dtbyg/loot_tables/trees/voluntary/withering_oak.json

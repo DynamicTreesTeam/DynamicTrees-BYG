@@ -1,4 +1,5 @@
 {
+  "type": "scruffy",
   "primitive_leaves": "byg:white_mangrove_leaves",
   "cell_kit": "acacia",
   "model_overrides": {

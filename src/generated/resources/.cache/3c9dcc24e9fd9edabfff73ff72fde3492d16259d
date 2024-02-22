@@ -1,6 +1,14 @@
-// 1.19.2	2024-02-09T20:25:15.2374485	dtbyg DT Block Tags
-72d7d3b10a0f03c5b417e2add7c4a9fe9a2703b3 data/dynamictrees/tags/items/branches.json
-56f888211b1a08b2d36c44a33ae4e3ecd9037c23 data/dynamictrees/tags/items/branches_that_burn.json
-7bf219c029cc1d629c86c0d270ff18a817cec455 data/dynamictrees/tags/items/fungus_branches.json
-8d0433816af2d36f8682594d1af5c46115e9a4a3 data/dynamictrees/tags/items/fungus_caps.json
-0be8d07c374ebb080e7a337f58c53564c6ec5243 data/dynamictrees/tags/items/seeds.json
+// 1.19.2	2024-02-20T20:51:33.7178394	dtbyg DT Block Tags
+0d6dc446c5aa1547bd190df508b5b6ca4898b8a4 data/dynamictrees/tags/blocks/aerial_roots_rooty_soil.json
+72d7d3b10a0f03c5b417e2add7c4a9fe9a2703b3 data/dynamictrees/tags/blocks/branches.json
+a46f948c7ca125b0e675a1fa552035e1002f5115 data/dynamictrees/tags/blocks/branches_that_burn.json
+7bf219c029cc1d629c86c0d270ff18a817cec455 data/dynamictrees/tags/blocks/fungus_branches.json
+d70a91cc43ff64e2f1c194b662bc9ad8d6023e95 data/dynamictrees/tags/blocks/fungus_caps.json
+b4a595535b631cca5c2d101fcf66f210663c1047 data/dynamictrees/tags/blocks/leaves.json
+db4189c4d2d6528d50e0d59b69ee498bbb37436f data/dynamictrees/tags/blocks/roots.json
+6051c093ef1bf56aa175814628611d4b0313a210 data/dynamictrees/tags/blocks/rooty_soil.json
+48b5ececf9c7635ad88d798c302208a9f6ecd611 data/dynamictrees/tags/blocks/saplings.json
+50e21b26d4d7c8273dd097be0064e0ef1025772b data/dynamictrees/tags/blocks/stripped_branches.json
+99911e005ea9ae7f166fed4648597f3ec73b9b9d data/dynamictrees/tags/blocks/stripped_branches_that_burn.json
+f1f9ac9ff61f4f6df7b92f2f014c686f37fc66b2 data/dynamictrees/tags/blocks/stripped_fungus_branches.json
+8ff6a745f776eb56261590b84dd037ee5fe549d1 data/dynamictrees/tags/blocks/wart_blocks.json

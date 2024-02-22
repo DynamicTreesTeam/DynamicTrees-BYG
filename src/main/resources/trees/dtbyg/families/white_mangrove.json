@@ -1,14 +1,19 @@
 {
+  "type": "mangrove",
   "common_leaves": "dtbyg:white_mangrove",
   "common_species": "dtbyg:white_mangrove",
   "primitive_log": "byg:white_mangrove_log",
   "primitive_stripped_log": "byg:stripped_white_mangrove_log",
-  "max_branch_radius": 16,
-  "generate_surface_root": true,
+  "max_branch_radius": 8,
   "texture_overrides": {
     "branch": "byg:block/white_mangrove/log",
     "branch_top": "byg:block/white_mangrove/log_top",
     "stripped_branch": "byg:block/white_mangrove/stripped_log",
     "stripped_branch_top": "byg:block/white_mangrove/stripped_log_top"
-  }
+  },
+  "default_soil": "dtbyg:white_mangrove_aerial_roots",
+  "primitive_root": "byg:white_mangrove_log",
+  "primitive_filled_root": "byg:white_mangrove_log",
+  "primitive_covered_root": "moss_block",
+  "root_system_acceptable_soils": ["dirt_like", "mud_like", "sand_like", "clay_like"]
 }

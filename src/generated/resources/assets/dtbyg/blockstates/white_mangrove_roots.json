@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "layer=covered": {
+      "model": "minecraft:block/moss_block"
+    },
+    "layer=exposed": {
+      "model": "dtbyg:block/white_mangrove_roots"
+    },
+    "layer=filled": {
+      "model": "dtbyg:block/white_mangrove_roots_filled"
+    }
+  }
+}
