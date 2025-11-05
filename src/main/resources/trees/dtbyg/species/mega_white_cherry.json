@@ -17,7 +17,6 @@
   "perfect_biomes": {
     "name": ".*cherry.*"
   },
-  "primitive_sapling": "byg:cherry_sapling",
   "features": [
     "bee_nest",
     {
