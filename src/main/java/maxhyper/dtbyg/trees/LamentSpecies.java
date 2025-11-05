@@ -24,6 +24,8 @@ import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 
+import java.io.Console;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
 
 /**
@@ -62,10 +64,21 @@ public class LamentSpecies extends Species {
 
     @Override
     protected boolean transitionToTree(World world, BlockPos pos, Family family) {
-        if (altSpecies.isAcceptableSoil(world, pos.below(), world.getBlockState(pos.below()))) {
-            return altSpecies.transitionToTree(world, pos);
+        if (altSpecies.isValid() && altSpecies.isAcceptableSoil(world, pos.below(), world.getBlockState(pos.below()))) {
+            try {
+                return transitionToTreeReflection(world, pos, family);
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+            }
         }
-        return super.transitionToTree(world, pos);
+        return super.transitionToTree(world, pos, family);
+    }
+
+    private boolean transitionToTreeReflection(World world, BlockPos pos, Family family) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException {
+        java.lang.reflect.Method method = altSpecies.getClass().getSuperclass()
+                .getDeclaredMethod("transitionToTree", World.class, BlockPos.class, Family.class);
+        method.setAccessible(true);
+        return (boolean) method.invoke(altSpecies, world, pos, family);
     }
 
     @Override

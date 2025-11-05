@@ -82,7 +82,7 @@ dependencies {
 
     //compileOnly(fg.deobf("curse.maven:Jade-324717:3389760"))
 
-    implementation(fg.deobf("curse.maven:BYG-247560:3485079"))
+    implementation(fg.deobf("curse.maven:BYG-247560:4024011"))
     implementation(fg.deobf("com.ferreusveritas.dynamictrees:DynamicTrees-$mcVersion:${property("dynamicTreesVersion")}"))
 
     runtimeOnly(fg.deobf("com.ferreusveritas.dynamictreesplus:DynamicTreesPlus-$mcVersion:${property("dynamicTreesPlusVersion")}"))
